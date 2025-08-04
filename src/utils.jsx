@@ -50,3 +50,149 @@ export const questions=[
     "answer": "Suhani Shah"
   }
 ]
+
+export const ChaatBotQuestion=[
+   {
+    "question": "How are you feeling?",
+    "options": ["😄 Happy", "😌 Chill", "😫 Tired", "😎 Sassy"],
+  },
+  {
+    "type":"Spice preference!",
+    "question": "A gentle kick or a bold burst?",
+    "options": ["🌶️ Mild", "🌶️🌶️ Medium", "🌶️🌶️🌶️ Hot"],
+  },
+    {
+    "type":"Tell us your taste preference?",
+    "question": "What's your chaat flavour today?",
+    "options": ["🧂 Salty", "🍬 Sweet", "😋 Tangy", "🥵 Chilli"],
+  },
+]
+
+
+export const creators=[
+  {
+    "fullName": "Dimpy Dimpy",
+    "category": "Art",
+    "handle": "yanaveer."
+  },
+  {
+    "fullName": "Chauhan Pragnya",
+    "category": "Art",
+    "handle": "artofhousewife"
+  },
+  {
+    "fullName": "Jaidev Koushal",
+    "category": "Business & Entrepreneurship",
+    "handle": "manishloot90"
+  },
+  {
+    "fullName": "Raju Yadav Kavali",
+    "category": "Business & Entrepreneurship",
+    "handle": "businesstipstelugu"
+  },
+  {
+    "fullName": "Kiran Patnecha",
+    "category": "Cooking",
+    "handle": "kiranbhatikitchen2905"
+  },
+  {
+    "fullName": "Meet Vaghela",
+    "category": "Cooking",
+    "handle": "rupalstastytreats"
+  },
+  {
+    "fullName": "Mridula Verma",
+    "category": "Cooking",
+    "handle": "meerutkadesitadka"
+  },
+  {
+    "fullName": "Savita Wankhede",
+    "category": "Cooking",
+    "handle": "shagunskitchen86"
+  },
+  {
+    "fullName": "Trusha Parsaniya",
+    "category": "Cooking",
+    "handle": "trushastastegujarati"
+  },
+  {
+    "fullName": "Aayushi Vora",
+    "category": "Dance",
+    "handle": "aayushi_vora75"
+  },
+  {
+    "fullName": "Himanshu Vasava",
+    "category": "Dance",
+    "handle": "himanshuvasava"
+  },
+  {
+    "fullName": "Shailesh Zala",
+    "category": "Education & Learning",
+    "handle": "mrtsgujarati07"
+  },
+  {
+    "fullName": "Dhairya Dholakia",
+    "category": "Education & Learning",
+    "handle": "dhairyascreationgujarati"
+  },
+  {
+    "fullName": "Dev Soni",
+    "category": "Education & Learning",
+    "handle": "gmhsstudyclasses"
+  },
+  {
+    "fullName": "Shailesh Makwana",
+    "category": "Education & Learning",
+    "handle": "hngustudypoint"
+  },
+  {
+    "fullName": "Vishalaben Parmar",
+    "category": "Education & Learning",
+    "handle": "vishalaparmar"
+  },
+  {
+    "fullName": "Bhaveshkumar Ravjibhai Variya",
+    "category": "Education & Learning",
+    "handle": "brvariya"
+  },
+  {
+    "fullName": "Beena Thacker",
+    "category": "Education & Learning",
+    "handle": "beenascreationgujarati427"
+  },
+  {
+    "fullName": "Girish Pidadi Plan My Study",
+    "category": "Education & Learning",
+    "handle": "planmystudy"
+  },
+  {
+    "fullName": "Sakshi Patel",
+    "category": "Education & Learning",
+    "handle": "paramshantimeditation"
+  }
+]
+
+
+
+export const categories = [
+  'Art',
+  'Automobile',
+  'Business & Entrepreneurship',
+  'Cooking',
+  'Dance',
+  'Education & Learning',
+  'Entertainment',
+  'Food',
+  'Gaming',
+  'Health',
+  'Lifestyle',
+  'Music',
+  'News & Information',
+  'Others',
+  'Pets & Animals',
+  'Podcast',
+  'Religious',
+  'Spiritual',
+  'Sports',
+  'Technology',
+]
