@@ -15,9 +15,9 @@ export const QuizStart = ({ onStart }) => (
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-    className="absolute inset-0 flex flex-col items-center justify-center z-50 text-center gap-10 bg-white"
+    className="absolute inset-0 flex flex-col items-center justify-center z-50 text-center gap-16 bg-white"
   >
-    <img src={logo} className="w-56" alt="Creator Logo" />
+    <img src={logo} className="w-60" alt="Creator Logo" />
     <img src={gemini} className="h-14" alt="Gemini Logo" />
     <Button
   onClick={onStart}
@@ -27,8 +27,8 @@ export const QuizStart = ({ onStart }) => (
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    width:'100px',
-    height:'53px'
+    width:'150px',
+    height:'63px'
   }}
 >
   Start

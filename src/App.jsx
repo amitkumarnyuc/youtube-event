@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ChaatbotQuiz from "./Chaatbot/ChaatbotQuiz";
 import QuizApp from "./Quiz/Quiz";
 import HandleHunt from "./HandleHunt/HandleHunt";
+import LeaderBoard from "./Quiz/LeaderBoard";
 
 function Home() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/chaat" element={<ChaatbotQuiz />} />
         <Route path="/quiz" element={<QuizApp />} />
          <Route path="/handleHunt" element={<HandleHunt />} />
+         <Route path="/leaderborad" element={<LeaderBoard/>}/>
       </Routes>
     </Router>
   );

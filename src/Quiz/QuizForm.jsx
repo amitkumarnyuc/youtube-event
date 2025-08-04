@@ -32,7 +32,7 @@ function QuizForm({ onSubmit, shouldExit , setTeamName, teamName}) {
     required
     value={teamName}
     onChange={handleTeamName}
-    className="border p-2 pt-4 pb-4 mb-8 rounded-xl w-full max-w-xs bg-black border-black text-white"
+    className="border p-2 pt-4 pb-4 mb-8 rounded-xl w-full max-w-md bg-black border-black text-white"
   />
 
   <Button
@@ -43,8 +43,8 @@ function QuizForm({ onSubmit, shouldExit , setTeamName, teamName}) {
       backgroundSize: '100% 100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
-      width: '100px',
-      height: '53px',
+      width:'150px',
+    height:'63px'
     }}
   >
     Start

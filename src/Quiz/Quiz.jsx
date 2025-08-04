@@ -109,27 +109,19 @@ export default function QuizApp() {
           >
             <Card>
               <CardContent className="p-6 space-y-4">
-                <div className="relative flex justify-between items-center text-lg h-16 m-3">
+                <div className="relative flex justify-between items-center text-lg h-16 m-3 mb-11">
                   <span className="font-extrabold flex items-center gap-1 text-2xl">
                     <ClockIcon />
-                    <span
-                      className={`${
-                        timeLeft < 6
-                          ? "text-red-600 animate-blink"
-                          : "text-black-600"
-                      }`}
-                    >
-                      00:{timeLeft.toString().padStart(2, "0")}
+                    <span className={`${timeLeft < 6 ? "text-red-600 animate-blink text-3xl" : "text-black-600 text-3xl"}`}>
+                      00:{timeLeft.toString().padStart(2, '0')}
                     </span>
                   </span>
 
-                  <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-extrabold text-center">
-                    Question
-                    <br />
-                    {currentIndex + 1} / {questions.length}
+                  <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-extrabold text-center">
+                    Question<br />{currentIndex + 1} / {questions.length}
                   </span>
 
-                  <span className="font-extrabold text-2xl">{score} ⭐</span>
+                  <span className="font-extrabold text-3xl">{score} ⭐</span>
                 </div>
 
                 <div className="text-lg font-medium text-center bg-black text-white p-5 rounded-xl">
