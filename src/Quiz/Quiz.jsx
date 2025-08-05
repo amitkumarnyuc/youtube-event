@@ -51,7 +51,7 @@ export default function QuizApp() {
 
   // Fetch quiz questions
   useEffect(() => {
-    fetch("http://localhost:5001/api/quiz")
+    fetch(`${url}/api/quiz`)
       .then((res) => (res.ok ? res.json() : []))
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {

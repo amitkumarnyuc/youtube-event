@@ -68,7 +68,7 @@ export const ChaatBotQuestion=[
   },
 ]
 
-const chaatNamesByFlavour = {
+export const chaatNamesByFlavour = {
   Salty: [
     "Desi Crunch Aloo Tikki Chaat",
     "Snack Mode Chan Jor Garam Chaat",

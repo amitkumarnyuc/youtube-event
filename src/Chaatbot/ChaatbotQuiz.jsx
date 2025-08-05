@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Card, CardContent } from "../components/ui/Cards";
 import { Button } from "../components/ui/Buttons";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChaatBotQuestion } from '../utils';
+import { ChaatBotQuestion, chaatNamesByFlavour } from '../utils';
 import bg from '../assets/bg2.png';
 import logo from '../assets/creator-logo.svg';
 import btn from '../assets/btn.svg';
@@ -11,12 +11,7 @@ import { TypingText } from '../components/ui/TypingText';
 import { ChaatbotStart } from './ChaatbotStart';
 import ChaatbotForm from './ChaatbotForm';
 
-const chaatNamesByFlavour = {
-  Salty: [ /* names... */ ],
-  Sweet: [ /* names... */ ],
-  Tangy: [ /* names... */ ],
-  Chilli: [ /* names... */ ],
-};
+
 
 export default function ChaatbotQuiz() {
   const [step, setStep] = useState("intro"); // intro, form, quiz, loading, final
