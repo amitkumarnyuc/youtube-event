@@ -48,7 +48,7 @@ function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
             list="teamSuggestions" // ✅ Link to datalist
             value={teamName.name}
             onChange={handleTeamName}
-            placeholder="Type your name..."
+            // placeholder="Type your name..."
             className="border ml-2 mr-2 mt-8 p-1 pt-4 pb-4 rounded-xl w-full max-w-lg bg-black border-black text-white"
           />
         </span>
