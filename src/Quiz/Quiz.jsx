@@ -50,7 +50,7 @@ export default function QuizApp() {
       try {
         const res = await fetch(`${url}/api/quiz/is-started`);
         const data = await res.json();
-        if (data.isStarted && !showQuiz && teamName.length) {
+        if (data.isStarted && isWaiting && teamName.length) {
           console.log("hi")
           setIsWaiting(false);
           setShowQuiz(true);
@@ -172,7 +172,7 @@ console.log(s)
                   });
                   const data = await res.json();
                   setID(data._id);
-                  // setIsWaiting(true);
+                  setIsWaiting(true);
                 } catch (err) {
                   console.error("Error creating score", err);
                 }
