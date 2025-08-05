@@ -49,7 +49,7 @@ function Creator({ handleClick, data , handleBack, handleHome}) {
           Find your handle and tap to reveal your surprise
         </motion.h1>
 
-        <div className="flex flex-col gap-y-20 mt-10">
+        <div className="flex flex-col gap-y-20 mt-10"  style={{height:"1090px", overflow:"scroll"}}>
           {/* Full rows (3 items) */}
           {Array.from({ length: fullRows }).map((_, rowIndex) => (
             <div
@@ -67,6 +67,7 @@ function Creator({ handleClick, data , handleBack, handleHome}) {
                     }}
                     transition={{ duration: 0.4, ease: 'easeOut' }}
                     className="flex justify-center"
+                    
                   >
                     <Button
                       onClick={() => setSelectedCreator(creator)}
