@@ -130,7 +130,7 @@ export default function ChaatbotQuiz() {
       <AnimatePresence mode="wait">
         {showLoading ? (
           <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }} className="flex flex-col items-center justify-start min-h-screen gap-16 p-24" >
-            <img src={logo} className="w-48 " alt="Loading..." />
+            <img src={logo} className="w-8/12" alt="Loading..." />
             <canvas ref={canvasRef} style={{ display: 'none' }} />
             <TypingText text={"Reading your vibe...\nmixing the perfect chaat..."} speed={50} pause={1500} />
           </motion.div>
@@ -141,25 +141,28 @@ export default function ChaatbotQuiz() {
             <ChaatbotForm onSubmit={() => setShowQuiz(true)} setTeamName={setFormData} teamName={formData} />
           </motion.div>
         ) : showQuiz && !showFinalScore ? (
-          <motion.div key={`question-${currentIndex}`} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -50, opacity: 0 }} transition={{ duration: 0.4 }} className="inset-0 z-50 p-14 flex flex-col items-center gap-16">
-            <img src={logo} alt="Creator Logo" className="w-56" />
-            <div className="text-center space-y-8 w-full">
-              <h1 className="text-4xl font-bold">{currentQuestion.type || `Hey ${formData.name}`}</h1>
-              <div className="text-3xl font-bold">{currentQuestion.question}</div>
-              <div className={`grid gap-4 ${currentQuestion.options.length === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}>
+          <motion.div key={`question-${currentIndex}`} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -50, opacity: 0 }} transition={{ duration: 0.4 }} className="inset-0 w-full z-50 p-14 flex flex-col items-center gap-24 flex-1">
+            <img src={logo} alt="Creator Logo" className="w-6/12" />
+            <div className="text-center space-y-12 w-full">
+              <h1 className="text-5xl font-bold">{currentQuestion.type || `Hey ${formData.name}`}</h1>
+              <div className="text-5xl font-bold">{currentQuestion.question}</div>
+              <div className={`grid gap-4 gap-x-4 ${currentQuestion.options.length === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}>
                 {currentQuestion.options.map((option) => (
-                  <Button key={option} onClick={() => handleOptionClick(option)} disabled={!!selectedOption} className="px-4 py-2 text-white" style={{ backgroundImage: `url(${btn})`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '70px' }}>{option}</Button>
+                  <Button key={option} onClick={() => handleOptionClick(option)} disabled={!!selectedOption} className="text-3xl text-white" style={{ backgroundImage: `url(${btn})`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '100px' }}>
+                   <div className="text-3xl">{option.split(" ")[0]}</div>
+    <span className="text-3xl mt-2">{option.split(" ").slice(1).join(" ")}</span>
+                    </Button>
                 ))}
               </div>
             </div>
           </motion.div>
         ) : showFinalScore ? (
-          <motion.div key="final" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="p-10 text-center flex flex-col items-center gap-6">
-            <img src={logo} className="w-56" alt="Creator Logo" />
-            <p className="text-3xl font-bold">Here's what we have cooked up for you</p>
-            <Button onClick={() => generateCanvasAndQr(formData)} className="px-4 py-2 text-white bg-black tracking-wide">{formData[1]} + {formData[2]} + {formData[3]}</Button>
-            <p className="text-3xl font-bold">Spice things up</p>
-            <p className="text-3xl font-bold">Grab a plate of {formData.name}'s Chilli-Tangy Papdi Chaat!</p>
+          <motion.div key="final" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="p-10 text-center flex flex-col items-center gap-20 flex-1">
+            <img src={logo} className="w-6/12" alt="Creator Logo" />
+            <p className="text-5xl font-bold">Here's what we have cooked up for you</p>
+            <Button onClick={() => generateCanvasAndQr(formData)} className="px-8 py-8 text-white bg-black tracking-wide text-4xl font-bold">{formData[1]} + {formData[2]} + {formData[3]}</Button>
+            <p className="text-5xl font-bold">Spice things up</p>
+            <p className="text-5xl font-bold">Grab a plate of {formData.name}'s Chilli-Tangy Papdi Chaat!</p>
             {qrValue && (
               <div className="flex flex-col items-center gap-2">
                 <QRCodeSVG value={qrValue} size={180} />

@@ -7,20 +7,20 @@ function HandleHuntStart({handleClick}) {
 
 
   return (
-    <div className='flex flex-col justify-around items-center gap-20 h-screen'>
-       <img src={logo} className="w-4/12" alt="Creator Logo" />
-       <h1 className="text-6xl font-bold uppercase">Handle Hunt</h1>
+    <div className='flex flex-col justify-around items-center gap-4 h-screen pb-96'>
+       <img src={logo} className="w-6/12" alt="Creator Logo" />
+       <h1 className="text-8xl font-bold uppercase">Handle Hunt</h1>
 
          <Button 
          onClick={handleClick}
-         className="px-4 py-2 text-white text-2xl uppercase font-bold" 
+         className="px-4 py-2 text-white text-5xl uppercase font-bold" 
          style={{ 
           backgroundImage: `url(${btn})`, 
           backgroundSize: '100% 100%', 
           backgroundRepeat: 'no-repeat', 
           backgroundPosition: 'center', 
           width:'50%',
-          height: '100px' }}>Start</Button>
+          height: '160px' }}>Start</Button>
               
     </div>
   )

@@ -50,7 +50,7 @@ function HandleHunt() {
             variants={variants}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
-            <Category handleClick={() => handleClick(2)} data={categories} />
+            <Category handleClick={() => handleClick(2)} data={categories} handleBack={()=>handleClick(0)} handleHome={()=>handleClick(0)}/>
           </motion.div>
         )}
 
@@ -63,7 +63,7 @@ function HandleHunt() {
             variants={variants}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
-            <Creator handleClick={() => handleClick(2)} data={creators} />
+            <Creator handleClick={() => handleClick(2)} data={creators} handleBack={()=>handleClick(1)} handleHome={()=>handleClick(0)}/>
           </motion.div>
         )}
       </AnimatePresence>

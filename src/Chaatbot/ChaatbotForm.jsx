@@ -16,7 +16,7 @@ function ChaatbotForm({ onSubmit, shouldExit , setTeamName, teamName}) {
       transition={{ duration: 0.6 }}
       className="absolute inset-0 flex  justify-center z-50"
     >
-<form className="text-center space-y-4 flex flex-col justify-around place-items-center gap-5 p-10"
+<form className="text-center space-y-4 flex flex-col justify-around place-items-center gap-5 pb-20"
 
  onSubmit={(e) => {
     e.preventDefault(); // Prevent full-page reload
@@ -24,29 +24,30 @@ function ChaatbotForm({ onSubmit, shouldExit , setTeamName, teamName}) {
       onSubmit(); // Only call onSubmit if teamName is not empty
     }
   }}>
-       <img src={logo} className="w-56" alt="Creator Logo" />
+       <img src={logo} className="w-8/12" alt="Creator Logo" />
 
-  <span className='text-2xl font-bold text-left'>
-     Hey Gemini, I<input
+  <span className='text-5xl font-bold text-center'>
+     Hey Gemini, I am <br></br><input
     name="teamName"
     required
     value={teamName.name}
     onChange={handleTeamName}
-    className="border ml-2 mr-2  p-1 pt-4 pb-4 rounded-xl w-full max-w-xs bg-black border-black text-white"
-  />am
+    className="border ml-2 mr-2 mt-8 p-1 pt-4 pb-4 rounded-xl w-full max-w-lg bg-black border-black text-white"
+  />
   </span>
  
 
   <Button
     type="submit"  // ✅ Submit form via button
-    className="text-white py-2 hover:opacity-80 transition w-6/12 "
-    style={{
-      backgroundImage: `url(${btn})`,
-      backgroundSize: '100% 100%',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      height:'60px'
-    }}
+   className="text-white px-6 py-2 hover:opacity-80 transition text-2xl font-bold"
+  style={{
+    backgroundImage: `url(${btn})`,
+    backgroundSize: '100% 100%',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    width: '250px',
+    height: '100px',
+  }}
   >
     CONTINUE
   </Button>

@@ -16,9 +16,9 @@ function QuizForm({ onSubmit, shouldExit , setTeamName, teamName}) {
       transition={{ duration: 0.6 }}
       className="absolute inset-0 flex items-center justify-center z-50"
     >
-<div className="text-center space-y-4 flex flex-col justify-center place-items-center gap-5">
-        <h1 className="text-3xl font-bold uppercase">Hey Creators!</h1>
-        <h2 className="text-3xl font-bold uppercase m-4">Please enter your team's <br></br>name to begin.</h2>
+<div className="text-center space-y-4 flex flex-col justify-center place-items-center gap-10">
+        <h1 className="text-5xl font-bold uppercase">Hey Creators!</h1>
+        <h2 className="text-4xl font-bold uppercase m-4">Please enter your team's <br></br>name to begin.</h2>
 <form
   onSubmit={(e) => {
     e.preventDefault(); // Prevent full-page reload
@@ -32,20 +32,20 @@ function QuizForm({ onSubmit, shouldExit , setTeamName, teamName}) {
     required
     value={teamName}
     onChange={handleTeamName}
-    className="border p-2 pt-4 pb-4 mb-8 rounded-xl w-full max-w-md bg-black border-black text-white"
+    className="border p-2 pt-4 pb-4 mb-14 rounded-xl w-full max-w-lg bg-black border-black text-white text-xl"
   />
 
   <Button
     type="submit"  // ✅ Submit form via button
-    className="text-white py-2 hover:opacity-80 transition"
-    style={{
-      backgroundImage: `url(${btn})`,
-      backgroundSize: '100% 100%',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      width:'150px',
-    height:'63px'
-    }}
+    className="text-white px-6 py-2 hover:opacity-80 transition text-2xl font-bold"
+  style={{
+    backgroundImage: `url(${btn})`,
+    backgroundSize: '100% 100%',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    width: '200px',
+    height: '80px',
+  }}
   >
     Start
   </Button>

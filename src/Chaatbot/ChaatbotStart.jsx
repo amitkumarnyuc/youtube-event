@@ -15,24 +15,24 @@ export const ChaatbotStart = ({ onStart }) => (
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-    className="absolute inset-0 flex flex-col items-center z-50 p-14 place-content-around"
+    className="absolute inset-0 flex flex-col items-center z-50 p-14 place-content-around "
   >
-    <img src={logo} className="w-56" alt="Creator Logo" />
-    <div className="flex justify-center items-center gap-14 flex-col">
-      <img src={gemini} className="w-10/12" alt="Gemini Logo" />
-    <h1 className="text-3xl text-center">Let your taste and mood decide your perfect chaat!</h1>
+    <img src={logo} className="w-6/12" alt="Creator Logo" />
+    <div className="flex justify-center items-center gap-20 flex-col">
+      <img src={gemini} className="w-12/12" alt="Gemini Logo" />
+    <h1 className="text-5xl text-center">Let your taste and mood decide your perfect chaat!</h1>
     </div>
     
     <Button
   onClick={onStart}
-  className="text-white px-6 py-2 hover:opacity-80 transition "
+  className="text-white px-6 py-2 hover:opacity-80 transition font-bold text-3xl"
   style={{
     backgroundImage: `url(${btn})`,
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    width:'100px',
-    height:'53px'
+    width:'150px',
+    height:'203px'
   }}
 >
   Start

@@ -1,8 +1,8 @@
 export const ClockIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="48"
-    height="48"
+    width="65"            // Increased from 48
+    height="65"           // Increased from 48
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -12,11 +12,11 @@ export const ClockIcon = () => (
     className="feather feather-clock"
   >
     <circle cx="12" cy="12" r="10" />
-    
-    {/* Hour hand (static) */}
+
+    {/* Hour hand */}
     <line x1="12" y1="12" x2="12" y2="8" />
-    
-    {/* Second hand (rotating) */}
+
+    {/* Second hand with animation */}
     <line
       x1="12"
       y1="12"
@@ -24,11 +24,11 @@ export const ClockIcon = () => (
       y2="15"
       style={{
         transformOrigin: 'center',
-        animation: 'spinClock 15s linear infinite'
+        animation: 'spinClock 15s linear infinite',
       }}
     />
 
-    {/* Keyframes directly in SVG using <style> */}
+    {/* Keyframes */}
     <style>
       {`
         @keyframes spinClock {
