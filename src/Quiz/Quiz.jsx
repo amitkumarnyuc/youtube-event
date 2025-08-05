@@ -45,6 +45,22 @@ export default function QuizApp() {
       .catch(() => setQuizQuestions(defaultQuestions));
   }, []);
 
+  useEffect(()=>{
+    setInterval(async()=>{
+       await fetch(`${url}/api/quiz/is-started`)
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => {
+        if(data.isStarted)
+        {
+          setShowQuiz(true);
+          setIsWaiting(false);
+        }
+       console.log(data)
+      })
+      .catch(() => setQuizQuestions(defaultQuestions));
+    },[2000])
+  },[])
+
   const questions = useMemo(() => quizQuestions.length ? quizQuestions : defaultQuestions, [quizQuestions]);
   const currentQuestion = questions[currentIndex];
 
@@ -146,10 +162,7 @@ export default function QuizApp() {
               onSubmit={(data) => {
                 setID(data)
                 setIsWaiting(true);
-                setTimeout(() => {
-                  setShowQuiz(true);
-                  setIsWaiting(false);
-                }, 9000); // 3 seconds wait
+              
               }}
               shouldExit={showQuiz}
               setTeamName={setTeamName}
