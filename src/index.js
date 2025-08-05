@@ -10,3 +10,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// Register the PWA service worker
+serviceWorkerRegistration.register();
