@@ -11,10 +11,9 @@ import btn from "../assets/btn.svg";
 import Tableno from "./Tableno";
 import { Waiting } from "./Waiting";
 
-
 export default function QuizApp() {
   const [quizQuestions, setQuizQuestions] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(9);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(20);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -24,14 +23,14 @@ export default function QuizApp() {
   const [showIntro, setShowIntro] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [showFinalScore, setShowFinalScore] = useState(false);
-  const [isWaiting, setIsWaiting] = useState(false); // <-- NEW STATE
+  const [isWaiting, setIsWaiting] = useState(false);
 
   const [teamName, setTeamName] = useState("");
-  const [id, setID]=useState(0)
+  const [id, setID] = useState("");
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
   const [tableNo, setTableNo] = useState("");
 
-  // Fetch quiz questions
+  // Load questions from server
   useEffect(() => {
     fetch(`${url}/api/quiz`)
       .then((res) => (res.ok ? res.json() : []))
@@ -45,21 +44,24 @@ export default function QuizApp() {
       .catch(() => setQuizQuestions(defaultQuestions));
   }, []);
 
-  useEffect(()=>{
-    setInterval(async()=>{
-       await fetch(`${url}/api/quiz/is-started`)
-      .then((res) => (res.ok ? res.json() : []))
-      .then((data) => {
-        if(data.isStarted)
-        {
-          setShowQuiz(true);
+  // Poll server to start quiz
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`${url}/api/quiz/is-started`);
+        const data = await res.json();
+        if (data.isStarted && !showQuiz && teamName.length) {
+          console.log("hi")
           setIsWaiting(false);
+          setShowQuiz(true);
         }
-       console.log(data)
-      })
-      .catch(() => setQuizQuestions(defaultQuestions));
-    },[2000])
-  },[])
+      } catch (err) {
+        console.error("Failed to check quiz start", err);
+      }
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [showQuiz, teamName]);
 
   const questions = useMemo(() => quizQuestions.length ? quizQuestions : defaultQuestions, [quizQuestions]);
   const currentQuestion = questions[currentIndex];
@@ -75,26 +77,24 @@ export default function QuizApp() {
   }, [showQuiz, timeLeft, hasSubmitted]);
 
   const handleOptionClick = (option) => {
-    if (!hasSubmitted) {
-      setSelectedOption(option);
-    }
+    if (!hasSubmitted) setSelectedOption(option);
   };
 
   const handleSubmit = () => {
     if (!selectedOption) return;
-
-    if (selectedOption === currentQuestion.answer) {
+    let s=score
+    const isCorrect = selectedOption === currentQuestion.answer;
+    if (isCorrect) {
+      s+=10;
       setScore((prev) => prev + 10);
     }
 
     setHasSubmitted(true);
-
-    setTimeout(() => {
-      handleNext();
-    }, 1000);
+console.log(s)
+    setTimeout(() => handleNext(s), 1000);
   };
 
-  const handleNext = () => {
+  const handleNext = (score) => {
     setSelectedOption(null);
     setHasSubmitted(false);
     setTimeLeft(20);
@@ -103,22 +103,22 @@ export default function QuizApp() {
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      const payload = {
-        score: Number(score),
-        teamName: teamName,
-        timeTaken: 1,
-        id:id
-      };
-
+      // Submit final score
       fetch(`${url}/api/score`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          score: score,
+          timeTaken: totalTimeSpent,
+          id:id
+        }),
       })
-        .then((res) => {
+        .then((res) => res.json())
+        .then(() => setShowFinalScore(true))
+        .catch((err) => {
+          console.error("Score update failed", err);
           setShowFinalScore(true);
-        })
-        .catch(() => setShowFinalScore(true));
+        });
     }
   };
 
@@ -143,12 +143,11 @@ export default function QuizApp() {
           />
         )}
 
-        {showIntro && !showQuiz && !showFinalScore && (
+        {showIntro && !showQuiz && (
           <QuizStart onStart={() => setShowIntro(false)} />
         )}
 
-        {/* Waiting screen shown after form submission */}
-        {isWaiting && !showQuiz && <Waiting />}
+        {isWaiting && <Waiting />}
 
         {!showLanding && !showIntro && !showQuiz && !showFinalScore && !isWaiting && (
           <motion.div
@@ -159,10 +158,24 @@ export default function QuizApp() {
             className="absolute inset-0 z-50"
           >
             <QuizForm
-              onSubmit={(data) => {
-                setID(data)
-                setIsWaiting(true);
-              
+              onSubmit={async () => {
+                try {
+                  const res = await fetch(`${url}/api/score`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      teamName,
+                      tableNo: Number(tableNo),
+                      score: 0,
+                      timeTaken: 0,
+                    }),
+                  });
+                  const data = await res.json();
+                  setID(data._id);
+                  // setIsWaiting(true);
+                } catch (err) {
+                  console.error("Error creating score", err);
+                }
               }}
               shouldExit={showQuiz}
               setTeamName={setTeamName}
@@ -190,7 +203,7 @@ export default function QuizApp() {
                       className={`${
                         timeLeft < 6
                           ? "text-red-600 animate-blink text-3xl"
-                          : "text-black-600 text-3xl"
+                          : "text-black text-3xl"
                       }`}
                     >
                       00:{timeLeft.toString().padStart(2, "0")}
@@ -218,18 +231,14 @@ export default function QuizApp() {
 
                     if (hasSubmitted) {
                       if (isCorrect) {
-                        optionStyle =
-                          "bg-green-500 text-white border-green-600 text-3xl font-bold shadow-md";
+                        optionStyle = "bg-green-500 text-white border-green-600 text-3xl font-bold shadow-md";
                       } else if (isSelected) {
-                        optionStyle =
-                          "bg-red-500 text-white border-red-600 text-2xl";
+                        optionStyle = "bg-red-500 text-white border-red-600 text-2xl";
                       } else {
-                        optionStyle =
-                          "bg-gray-200 text-gray-700 border-gray-300 text-black text-2xl";
+                        optionStyle = "bg-gray-200 text-gray-700 border-gray-300 text-black text-2xl";
                       }
                     } else if (isSelected) {
-                      optionStyle =
-                        "border-4 border-white-500 bg-black text-white text-2xl";
+                      optionStyle = "border-4 border-white bg-black text-white text-2xl";
                     }
 
                     return (

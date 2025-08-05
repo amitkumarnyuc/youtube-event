@@ -201,12 +201,12 @@ export default function ChaatbotQuiz() {
         {step === "final" && (
           <motion.div key="final" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-10 text-center flex flex-col items-center gap-12 flex-1">
             <img src={logo} className="w-6/12 cursor-pointer" alt="Creator Logo" onClick={resetQuiz} />
-            <p className="text-4xl font-bold">Here's what we have cooked up for you</p>
-            <Button onClick={() => generateCanvasAndQr(formData)} className="px-8 py-8 text-white bg-black tracking-wide text-4xl font-bold">
+            <p className="text-3xl font-bold">Here's what we have cooked up for you</p>
+            <Button onClick={() => generateCanvasAndQr(formData)} className="px-6 py-8 text-white bg-black tracking-wide text-3xl font-bold">
               {formData[1]} + {formData[2]} + {formData[3]}
             </Button>
-            <p className="text-4xl font-bold">Spice things up</p>
-            <p className="text-4xl font-bold">Grab a plate of {formData.name}'s {formData.chaatName}!</p>
+            <p className="text-3xl font-bold">Spice things up</p>
+            <p className="text-3xl font-bold">Grab a plate of {formData.name}'s {formData.chaatName}!</p>
             {qrValue && (
               <div className="flex flex-col items-center gap-2">
                 <QRCodeSVG value={qrValue} size={180} />

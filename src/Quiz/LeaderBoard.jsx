@@ -8,27 +8,27 @@ function LeaderBoard() {
   const [loading, setLoading] = useState(true);
   const [prevLength, setPrevLength] = useState(0);
 
-  useEffect(() => {
-    const fetchData = () => {
-      fetch(`${url}/api/score/top`)
-        .then((res) => res.json())
-        .then((json) => {
-          if (json.length > data.length) {
-            setPrevLength(data.length);
-            setData(json);
-          } else if (data.length === 0) {
-            setData(json);
-          }
-          setLoading(false);
-        })
-        .catch(() => setLoading(false));
-    };
+useEffect(() => {
+  const fetchData = () => {
+    fetch(`${url}/api/score/top`)
+      .then((res) => res.json())
+      .then((json) => {
+        const hasChanged = JSON.stringify(json) !== JSON.stringify(data);
+        if (hasChanged) {
+          setPrevLength(data.length);
+          setData(json);
+        }
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  };
 
-    fetchData(); // initial fetch
-    const interval = setInterval(fetchData, 1000);
+  fetchData(); // initial fetch
+  const interval = setInterval(fetchData, 1000);
 
-    return () => clearInterval(interval); // cleanup on unmount
-  }, [data.length]);
+  return () => clearInterval(interval); // cleanup
+}, [data]);
+
 
   return (
  <div
