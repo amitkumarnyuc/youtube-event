@@ -2,13 +2,14 @@
 import bg from "../assets/bg.png";
 
 import { useEffect, useState } from "react";
+import { url } from "../utils";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/score/top")
+    fetch(`${url}/api/score`)
       .then((res) => res.json())
       .then((json) => {
         setData(json);
