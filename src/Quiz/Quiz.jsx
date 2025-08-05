@@ -107,9 +107,9 @@ export default function QuizApp() {
     } else {
       const payload = {
         tableNo: Number(tableNo) || 0,
-        score:1,
-        teamName:1,
-        timeTaken: totalTimeSpent + (20 - timeLeft),
+        score:Number(score),
+        teamName:teamName,
+        timeTaken: 1,
       };
 
       fetch(`${url}/api/score`, {
@@ -119,11 +119,11 @@ export default function QuizApp() {
       })
         .then((res) => {
           setShowFinalScore(true);
-          if (res.status === 201) {
-            setTimeout(() => {
-              window.location.href = "/quiz";
-            }, 3000);
-          }
+          // if (res.status === 201) {
+          //   setTimeout(() => {
+          //     window.location.href = "/quiz";
+          //   }, 3000);
+          // }
         })
         .catch(() => setShowFinalScore(true));
     }

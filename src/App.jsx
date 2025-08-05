@@ -52,7 +52,7 @@ function App() {
         <Route path="/quiz" element={<QuizApp />} />
          <Route path="/handleHunt1" element={<HandleHunt creators={creatorsByCategory}/>} />
           <Route path="/handleHunt2" element={<HandleHunt creators={creatorsByCategory}/>} />
-         <Route path="/leaderborad" element={<LeaderBoard/>}/>
+         <Route path="/leaderboard" element={<LeaderBoard/>}/>
       </Routes>
     </Router>
   );
