@@ -10,7 +10,7 @@ function LeaderBoard() {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch(`${url}/api/score`)
+      fetch(`${url}/api/score/top`)
         .then((res) => res.json())
         .then((json) => {
           if (json.length > data.length) {

@@ -11,6 +11,7 @@ import btn from "../assets/btn.svg";
 import Tableno from "./Tableno";
 import { Waiting } from "./Waiting";
 
+
 export default function QuizApp() {
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,6 +27,7 @@ export default function QuizApp() {
   const [isWaiting, setIsWaiting] = useState(false); // <-- NEW STATE
 
   const [teamName, setTeamName] = useState("");
+  const [id, setID]=useState(0)
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
   const [tableNo, setTableNo] = useState("");
 
@@ -86,14 +88,14 @@ export default function QuizApp() {
       setCurrentIndex((prev) => prev + 1);
     } else {
       const payload = {
-        tableNo: Number(tableNo) || 0,
         score: Number(score),
         teamName: teamName,
         timeTaken: 1,
+        id:id
       };
 
       fetch(`${url}/api/score`, {
-        method: "POST",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       })
@@ -141,7 +143,8 @@ export default function QuizApp() {
             className="absolute inset-0 z-50"
           >
             <QuizForm
-              onSubmit={() => {
+              onSubmit={(data) => {
+                setID(data)
                 setIsWaiting(true);
                 setTimeout(() => {
                   setShowQuiz(true);
@@ -151,6 +154,7 @@ export default function QuizApp() {
               shouldExit={showQuiz}
               setTeamName={setTeamName}
               teamName={teamName}
+              tableNo={tableNo}
             />
           </motion.div>
         )}
