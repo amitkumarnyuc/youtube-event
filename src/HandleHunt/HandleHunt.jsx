@@ -79,6 +79,7 @@ function HandleHunt({creators}) {
               data={creators[selectedCategory] || []}
               handleBack={() => handleClick(1)}
               handleHome={() => handleClick(0)}
+              Category={selectedCategory}
             />
           </motion.div>
         )}

@@ -9,18 +9,20 @@ function LeaderBoard() {
   const [prevLength, setPrevLength] = useState(0);
 
 useEffect(() => {
-  const fetchData = () => {
-    fetch(`${url}/api/score/top`)
-      .then((res) => res.json())
-      .then((json) => {
-        const hasChanged = JSON.stringify(json) !== JSON.stringify(data);
-        if (hasChanged) {
-          setPrevLength(data.length);
-          setData(json);
-        }
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+  const fetchData = async () => {
+    try {
+      const res = await fetch(`${url}/api/score/top`);
+      const json = await res.json();
+      const hasChanged = JSON.stringify(json) !== JSON.stringify(data);
+      if (hasChanged) {
+        setPrevLength(data.length);
+        setData(json);
+      }
+    } catch (error) {
+      console.error("Failed to fetch leaderboard data:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   fetchData(); // initial fetch

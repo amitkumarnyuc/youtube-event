@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '../components/ui/Buttons'
 import back from '../assets/back.svg'
 import home from '../assets/home.svg'
-function Creator({ handleClick, data , handleBack, handleHome}) {
+function Creator({ handleClick, data , handleBack, handleHome, Category}) {
   const [selectedCreator, setSelectedCreator] = useState(null)
   const timerRef = useRef(null)
 
@@ -41,12 +41,17 @@ function Creator({ handleClick, data , handleBack, handleHome}) {
   <img src={home} alt="Home" className="h-24 cursor-pointer" onClick={handleHome}/>
 </div>
         <motion.h1
-          className="uppercase font-bold text-6xl mb-28 text-center text-black"
+          className="uppercase font-bold text-6xl mb-20 text-center text-black"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
           Find your handle and tap to reveal your surprise
+          <br></br>
+        </motion.h1>
+
+        <motion.h1 className=" font-bold text-3xl mb-20 text-center text-black">
+           {Category}
         </motion.h1>
 
         <div className="flex flex-col gap-y-20 mt-10"  style={{height:"1090px", overflow:"scroll"}}>

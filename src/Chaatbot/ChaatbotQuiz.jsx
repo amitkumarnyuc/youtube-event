@@ -205,12 +205,15 @@ export default function ChaatbotQuiz() {
             <Button onClick={() => generateCanvasAndQr(formData)} className="px-6 py-8 text-white bg-black tracking-wide text-3xl font-bold">
               {formData[1]} + {formData[2]} + {formData[3]}
             </Button>
-            <p className="text-3xl font-bold">Spice things up</p>
-            <p className="text-3xl font-bold">Grab a plate of {formData.name}'s {formData.chaatName}!</p>
+            {/* <p className="text-3xl font-bold">Spice things up</p> */}
+            <p className="text-4xl font-bold">
+              <span className='text-3xl font-normal'>
+                Grab a plate of 
+                </span><br></br>{formData.name}'s {formData.chaatName}!</p>
             {qrValue && (
               <div className="flex flex-col items-center gap-2">
                 <QRCodeSVG value={qrValue} size={180} />
-                <a href={qrValue} download="chaat-result.png" className="text-black text-xl mt-2">
+                <a href={qrValue} download="chaat-result.png" className="text-black text-xl mt-6 ">
                   Here’s a QR code to download your custom chaat! <br />
                   Show this to the chef to get it.
                 </a>

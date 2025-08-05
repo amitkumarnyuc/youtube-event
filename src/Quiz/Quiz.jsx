@@ -45,23 +45,27 @@ export default function QuizApp() {
   }, []);
 
   // Poll server to start quiz
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(`${url}/api/quiz/is-started`);
-        const data = await res.json();
-        if (data.isStarted && isWaiting && teamName.length) {
-          console.log("hi")
-          setIsWaiting(false);
-          setShowQuiz(true);
-        }
-      } catch (err) {
-        console.error("Failed to check quiz start", err);
-      }
-    }, 2000);
+useEffect(() => {
+  if (!tableNo || !teamName || showQuiz || !isWaiting) return;
 
-    return () => clearInterval(interval);
-  }, [showQuiz, teamName]);
+  const interval = setInterval(async () => {
+    try {
+      const res = await fetch(`${url}/api/quiz/is-started`);
+      const data = await res.json();
+
+      if (data.isStarted) {
+        setIsWaiting(false);
+        setShowQuiz(true);
+        clearInterval(interval); // stop polling once started
+      }
+    } catch (err) {
+      console.error("Failed to check quiz start", err);
+    }
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, [isWaiting, showQuiz, tableNo, teamName]);
+
 
   const questions = useMemo(() => quizQuestions.length ? quizQuestions : defaultQuestions, [quizQuestions]);
   const currentQuestion = questions[currentIndex];
@@ -172,7 +176,7 @@ console.log(s)
                   });
                   const data = await res.json();
                   setID(data._id);
-                  setIsWaiting(true);
+                  if(!isWaiting)setIsWaiting(true);
                 } catch (err) {
                   console.error("Error creating score", err);
                 }
@@ -286,7 +290,7 @@ console.log(s)
           >
             <h1 className="text-5xl font-extrabold uppercase">Well Done, Creator!</h1>
             <h2 className="text-5xl font-extrabold uppercase mt-16 mb-16">Your final score is</h2>
-            <div className="text-6xl font-bold text-white">⭐{score}</div>
+            <div className="text-6xl font-bold text-white">🏆{score}</div>
           </motion.div>
         )}
       </AnimatePresence>
