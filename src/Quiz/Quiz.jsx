@@ -1,28 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Card, CardContent } from "../components/ui/Cards";
 import { Button } from "../components/ui/Buttons";
 import { AnimatePresence, motion } from "framer-motion";
-import { questions as defaultQuestions } from "../utils";
+import { questions as defaultQuestions, url } from "../utils";
 import bg from "../assets/bg.png";
 import { ClockIcon } from "../components/ui/Clock";
 import QuizForm from "./QuizForm";
 import { QuizStart } from "./QuizStart";
 import btn from '../assets/btn.svg';
+import Tableno from "./Tableno";
+
+// NEW COMPONENT: Welcome Page
+function WelcomePage({ onEnter }) {
+  return (
+    <motion.div
+      key="welcome"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex flex-col items-center justify-center min-h-screen gap-12 p-8 text-center"
+    >
+      <h1 className="text-6xl font-bold text-white">Welcome to the Quiz Show!</h1>
+      <p className="text-3xl text-white">Test your skills, race the clock, and have fun 🔥</p>
+      <Button
+        onClick={onEnter}
+        className="px-12 py-6 text-4xl font-bold text-white bg-black rounded-xl"
+      >
+        Get Started
+      </Button>
+    </motion.div>
+  );
+}
 
 export default function QuizApp() {
   const [quizQuestions, setQuizQuestions] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(9);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(20);
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
+
+  const [showLanding, setShowLanding] = useState(true);     // NEW STATE
+  const [showIntro, setShowIntro] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [showFinalScore, setShowFinalScore] = useState(false);
+
   const [teamName, setTeamName] = useState("");
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
+  const [tableNo, setTableNo] = useState("");
 
-  // Fetch quizzes from API or fallback to default
+  // Fetch quiz questions
   useEffect(() => {
     fetch("http://localhost:5001/api/quiz")
       .then((res) => (res.ok ? res.json() : []))
@@ -33,32 +60,27 @@ export default function QuizApp() {
           setQuizQuestions(defaultQuestions);
         }
       })
-      .catch(() => {
-        setQuizQuestions(defaultQuestions);
-      });
+      .catch(() => setQuizQuestions(defaultQuestions));
   }, []);
 
-  const questions = quizQuestions.length > 0 ? quizQuestions : defaultQuestions;
+  const questions = useMemo(() => quizQuestions.length ? quizQuestions : defaultQuestions, [quizQuestions]);
   const currentQuestion = questions[currentIndex];
 
-    useEffect(() => {
-      if (showQuiz && !hasSubmitted) {
-        if (timeLeft === 0) {
-          handleSubmit(); // Auto-submit when time is over
-          return;
-        }
-        const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000);
-        return () => clearTimeout(timer);
-      }
-    }, [timeLeft, showQuiz, hasSubmitted]);
+  // Timer logic
+  useEffect(() => {
+    if (showQuiz && !hasSubmitted && timeLeft > 0) {
+      const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (showQuiz && timeLeft === 0) {
+      handleSubmit(); // Auto-submit on timeout
+    }
+  }, [showQuiz, timeLeft, hasSubmitted]);
 
-
-    const handleOptionClick = (option) => {
-      if (!hasSubmitted) {
-        setSelectedOption(option);
-      }
-    };
-
+  const handleOptionClick = (option) => {
+    if (!hasSubmitted) {
+      setSelectedOption(option);
+    }
+  };
 
   const handleSubmit = () => {
     if (!selectedOption) return;
@@ -66,6 +88,7 @@ export default function QuizApp() {
     if (selectedOption === currentQuestion.answer) {
       setScore((prev) => prev + 10);
     }
+
     setHasSubmitted(true);
 
     setTimeout(() => {
@@ -83,13 +106,13 @@ export default function QuizApp() {
       setCurrentIndex((prev) => prev + 1);
     } else {
       const payload = {
-        tableNo: Number(1) || 0,
-        score: +score,
-        teamName: teamName,
+        tableNo: Number(tableNo) || 0,
+        score:1,
+        teamName:1,
         timeTaken: totalTimeSpent + (20 - timeLeft),
       };
 
-      fetch("http://localhost:5001/api/score", {
+      fetch(`${url}/api/score`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -100,13 +123,9 @@ export default function QuizApp() {
             setTimeout(() => {
               window.location.href = "/quiz";
             }, 3000);
-          } else {
-            setShowFinalScore(true);
           }
         })
-        .catch((err) => {
-          setShowFinalScore(true);
-        });
+        .catch(() => setShowFinalScore(true));
     }
   };
 
@@ -120,9 +139,19 @@ export default function QuizApp() {
       }}
     >
       <AnimatePresence mode="wait">
-        {showIntro && <QuizStart onStart={() => setShowIntro(false)} />}
+        {showLanding && (
 
-        {!showIntro && !showQuiz && !showFinalScore && (
+          <Tableno tableno={tableNo} onChange={(e)=>setTableNo(e.target.value)} onClick={() => {
+            setShowLanding(false);
+            setShowIntro(true);
+          }} />
+        )}
+
+        {showIntro && !showQuiz && !showFinalScore && (
+          <QuizStart onStart={() => setShowIntro(false)} />
+        )}
+
+        {!showLanding && !showIntro && !showQuiz && !showFinalScore && (
           <motion.div
             key="form"
             initial={{ y: 0, opacity: 1 }}
@@ -130,6 +159,7 @@ export default function QuizApp() {
             transition={{ duration: 0.6 }}
             className="absolute inset-0 z-50"
           >
+            
             <QuizForm
               onSubmit={() => setShowQuiz(true)}
               shouldExit={showQuiz}
@@ -165,43 +195,41 @@ export default function QuizApp() {
                   </span>
 
                   <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-extrabold text-center">
-                    Question
-                    <br />
+                    Question <br />
                     {currentIndex + 1} / {questions.length}
                   </span>
 
                   <span className="font-extrabold text-5xl">{score} ⭐</span>
                 </div>
 
-                <div className="text-2xl font-medium text-center bg-black text-white p-10  rounded-xl">
+                <div className="text-2xl font-medium text-center bg-black text-white p-10 rounded-xl">
                   {currentQuestion.question}
                 </div>
 
-                <div className="grid grid-cols-2 gap-8 gap-y-10 ">
+                <div className="grid grid-cols-2 gap-8 gap-y-10">
                   {currentQuestion.options.map((option) => {
                     const isCorrect = option === currentQuestion.answer;
                     const isSelected = selectedOption === option;
 
-               let optionStyle = "bg-black border border-gray-300 text-white text-2xl";
+                    let optionStyle = "bg-black border border-gray-300 text-white text-2xl";
 
-                if (hasSubmitted) {
-                  if (isCorrect) {
-                    optionStyle = "bg-green-500 text-white border-green-600 text-3xl font-bold shadow-md";
-                  } else if (isSelected) {
-                    optionStyle = "bg-red-500 text-white border-red-600 text-2xl";
-                  } else {
-                    optionStyle = "bg-gray-200 text-gray-700 border-gray-300 text-black text-2xl";
-                  }
-                } else if (isSelected) {
-                  optionStyle = "border-4 border-white-500 bg-black text-white text-2xl"; // 🔵 Highlight with thicker blue border
-                }
-
+                    if (hasSubmitted) {
+                      if (isCorrect) {
+                        optionStyle = "bg-green-500 text-white border-green-600 text-3xl font-bold shadow-md";
+                      } else if (isSelected) {
+                        optionStyle = "bg-red-500 text-white border-red-600 text-2xl";
+                      } else {
+                        optionStyle = "bg-gray-200 text-gray-700 border-gray-300 text-black text-2xl";
+                      }
+                    } else if (isSelected) {
+                      optionStyle = "border-4 border-white-500 bg-black text-white text-2xl";
+                    }
 
                     return (
                       <Button
                         key={option}
                         onClick={() => handleOptionClick(option)}
-                       disabled={hasSubmitted} 
+                        disabled={hasSubmitted}
                         className={`w-full text-center justify-start px-4 py-4 rounded transition-colors duration-300 border ${optionStyle}`}
                       >
                         {option}
@@ -240,12 +268,8 @@ export default function QuizApp() {
             transition={{ duration: 0.5 }}
             className="p-10 text-center"
           >
-            <h1 className="text-5xl font-extrabold uppercase">
-              Well Done, Creator!
-            </h1>
-            <h2 className="text-5xl font-extrabold uppercase mt-16 mb-16">
-              Your final score is
-            </h2>
+            <h1 className="text-5xl font-extrabold uppercase">Well Done, Creator!</h1>
+            <h2 className="text-5xl font-extrabold uppercase mt-16 mb-16">Your final score is</h2>
             <div className="text-6xl font-bold text-white">⭐{score}</div>
           </motion.div>
         )}

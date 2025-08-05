@@ -4,51 +4,59 @@ import { Button } from "../components/ui/Buttons";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChaatBotQuestion } from '../utils';
 import bg from '../assets/bg2.png';
-import { ChaatbotStart } from './ChaatbotStart';
-import ChaatbotForm from './ChaatbotForm';
 import logo from '../assets/creator-logo.svg';
 import btn from '../assets/btn.svg';
 import { QRCodeSVG } from 'qrcode.react';
 import { TypingText } from '../components/ui/TypingText';
+import { ChaatbotStart } from './ChaatbotStart';
+import ChaatbotForm from './ChaatbotForm';
+
+const chaatNamesByFlavour = {
+  Salty: [ /* names... */ ],
+  Sweet: [ /* names... */ ],
+  Tangy: [ /* names... */ ],
+  Chilli: [ /* names... */ ],
+};
 
 export default function ChaatbotQuiz() {
+  const [step, setStep] = useState("intro"); // intro, form, quiz, loading, final
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [showIntro, setShowIntro] = useState(true);
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [showFinalScore, setShowFinalScore] = useState(false);
-  const [showLoading, setShowLoading] = useState(false);
-  const [formData, setFormData] = useState({ name: "", "1": "", "2": "", "3": "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    "1": "", "2": "", "3": "",
+    chaatName: "", image: ""
+  });
   const [qrValue, setQrValue] = useState('');
-
   const canvasRef = useRef(null);
+
   const currentQuestion = ChaatBotQuestion[currentIndex];
 
   const handleOptionClick = (option) => {
-    const data = {
+    const updatedForm = {
       ...formData,
       [`${currentIndex + 1}`]: option,
     };
-    setFormData(data);
+    setFormData(updatedForm);
 
     if (currentIndex + 1 < ChaatBotQuestion.length) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      setShowQuiz(false);
-      setShowLoading(true);
-      setTimeout(() => {
-        generateCanvasAndQr(data);
-        setShowLoading(false);
-        setShowFinalScore(true);
-      }, 4000);
+      setStep("loading");
+      generateCanvasAndQr(updatedForm);
     }
   };
 
   const generateCanvasAndQr = (data) => {
+    const flavour = data[3].split(" ")[1]; // "🌶 Chilli" -> "Chilli"
+    const chaatOptions = chaatNamesByFlavour[flavour] || [];
+    const chaatName = chaatOptions[Math.floor(Math.random() * chaatOptions.length)] || "Surprise Chaat";
+    const updatedForm = { ...data, chaatName };
+    setFormData(updatedForm);
+
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext("2d");
+
     canvas.width = 1024;
     canvas.height = 1366;
 
@@ -57,120 +65,163 @@ export default function ChaatbotQuiz() {
     bgImage.src = bg;
     logoImage.src = logo;
 
-    let bgLoaded = false;
-    let logoLoaded = false;
+    let bgLoaded = false, logoLoaded = false;
 
-    const draw = () => {
+    const draw = async () => {
       if (!bgLoaded || !logoLoaded) return;
 
       ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-      const logoWidth = 230;
-      const logoHeight = 149;
-      const logoX = (canvas.width - logoWidth) / 2;
+
+      const logoX = (canvas.width - 362) / 2;
       const logoY = 100;
-      ctx.drawImage(logoImage, logoX, logoY, logoWidth, logoHeight);
+      ctx.drawImage(logoImage, logoX, logoY, 362, 215.3);
 
       ctx.fillStyle = "#000";
       ctx.textAlign = "center";
-
-      let currentY = logoY + logoHeight + 80;
       ctx.font = "bold 30px sans-serif";
-      ctx.fillText("Here's what we have cooked up for you", canvas.width / 2, currentY);
-      currentY += 60;
 
-      const cardWidth = 400;
-      const cardHeight = 60;
-      const cardX = (canvas.width - cardWidth) / 2;
-      const cardY = currentY;
+      let y = logoY + 215.3 + 80;
+      ctx.fillText("Here's what we have cooked up for you", canvas.width / 2, y);
+      y += 60;
+
+      // Draw rounded card
+      const cardWidth = 400, cardHeight = 60;
+      const x = (canvas.width - cardWidth) / 2;
       const radius = 25;
-
-      ctx.fillStyle = "#000";
       ctx.beginPath();
-      ctx.moveTo(cardX + radius, cardY);
-      ctx.lineTo(cardX + cardWidth - radius, cardY);
-      ctx.quadraticCurveTo(cardX + cardWidth, cardY, cardX + cardWidth, cardY + radius);
-      ctx.lineTo(cardX + cardWidth, cardY + cardHeight - radius);
-      ctx.quadraticCurveTo(cardX + cardWidth, cardY + cardHeight, cardX + cardWidth - radius, cardY + cardHeight);
-      ctx.lineTo(cardX + radius, cardY + cardHeight);
-      ctx.quadraticCurveTo(cardX, cardY + cardHeight, cardX, cardY + cardHeight - radius);
-      ctx.lineTo(cardX, cardY + radius);
-      ctx.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + cardWidth - radius, y);
+      ctx.quadraticCurveTo(x + cardWidth, y, x + cardWidth, y + radius);
+      ctx.lineTo(x + cardWidth, y + cardHeight - radius);
+      ctx.quadraticCurveTo(x + cardWidth, y + cardHeight, x + cardWidth - radius, y + cardHeight);
+      ctx.lineTo(x + radius, y + cardHeight);
+      ctx.quadraticCurveTo(x, y + cardHeight, x, y + cardHeight - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
       ctx.closePath();
       ctx.fill();
 
       ctx.fillStyle = "#fff";
       ctx.font = "20px sans-serif";
-      ctx.fillText(`${data[1]} + ${data[2]} + ${data[3]}`, canvas.width / 2, cardY + cardHeight / 2 + 5);
+      ctx.fillText(`${updatedForm[1]} + ${updatedForm[2]} + ${updatedForm[3]}`, canvas.width / 2, y + cardHeight / 2 + 5);
 
-      currentY = cardY + cardHeight + 65;
+      y += cardHeight + 65;
       ctx.fillStyle = "#000";
       ctx.font = "bold 30px sans-serif";
-      ctx.fillText("Spice things up", canvas.width / 2, currentY);
+      ctx.fillText("Spice things up", canvas.width / 2, y);
 
-      currentY += 56;
-      ctx.font = "bold 30px sans-serif";
-      ctx.fillText(`Grab a plate of ${data.name} Chilli-Tangy Papdi Chaat!`, canvas.width / 2, currentY);
+      y += 56;
+      ctx.fillText(`Grab a plate of ${updatedForm.name}'s ${updatedForm.chaatName}!`, canvas.width / 2, y);
 
       const dataURL = canvas.toDataURL("image/png");
-      console.log(dataURL)
-      // setQrValue(dataURL);
+      await handleApi(dataURL, updatedForm);
     };
 
     bgImage.onload = () => { bgLoaded = true; draw(); };
     logoImage.onload = () => { logoLoaded = true; draw(); };
+    bgImage.onerror = logoImage.onerror = (e) => console.error("Image load error", e);
+  };
 
-    bgImage.onerror = logoImage.onerror = (e) => {
-      console.error("Image load error", e);
-      setShowFinalScore(true);
-    };
+  const handleApi = async (base64Image, data) => {
+    try {
+      const imageFile = base64ToFile(base64Image, 'chaat-image.png');
+      const form = new FormData();
+      form.append('name', data.name);
+      form.append('mood', data["1"]);
+      form.append('spicePreference', data["2"]);
+      form.append('chatFlavour', data["3"]);
+      form.append('image', imageFile);
+
+      const response = await fetch("https://youtube-server1-f228ee9b9bbd.herokuapp.com/api/chatbot/user-details", {
+        method: "POST",
+        body: form,
+        headers: {
+          "Referer": "https://main.d34f1na9mv0h1j.amplifyapp.com/",
+          "User-Agent": "Mozilla/5.0",
+          "sec-ch-ua-platform": '"Android"',
+          "sec-ch-ua": '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+          "sec-ch-ua-mobile": "?1"
+        }
+      });
+
+      const result = await response.json();
+      if (result.url) {
+        setQrValue(result.url);
+        setStep("final");
+      } else throw new Error("No URL in API response");
+    } catch (error) {
+      console.error("API error:", error);
+      setStep("final"); // Show final even on error (or show error message if needed)
+    }
+  };
+
+  const base64ToFile = (base64, filename) => {
+    const [meta, data] = base64.split(',');
+    const mime = meta.match(/:(.*?);/)[1];
+    const bstr = atob(data);
+    const u8arr = new Uint8Array(bstr.length);
+    for (let i = 0; i < bstr.length; i++) u8arr[i] = bstr.charCodeAt(i);
+    return new File([u8arr], filename, { type: mime });
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-2" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <canvas ref={canvasRef} style={{ display: 'none' }} />
+
       <AnimatePresence mode="wait">
-        {showLoading ? (
-          <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }} className="flex flex-col items-center justify-start min-h-screen gap-16 p-24" >
+        {step === "loading" && (
+          <motion.div key="loading" className="flex flex-col items-center min-h-screen gap-16 p-24 flex-1">
             <img src={logo} className="w-8/12" alt="Loading..." />
-            <canvas ref={canvasRef} style={{ display: 'none' }} />
             <TypingText text={"Reading your vibe...\nmixing the perfect chaat..."} speed={50} pause={1500} />
           </motion.div>
-        ) : showIntro ? (
-          <ChaatbotStart onStart={() => setShowIntro(false)} />
-        ) : !showQuiz && !showFinalScore ? (
-          <motion.div key="form" initial={{ y: 0, opacity: 1 }} animate={{ y: showQuiz ? "-100%" : 0, opacity: showQuiz ? 0 : 1 }} transition={{ duration: 0.6 }} className="inset-0 z-50">
-            <ChaatbotForm onSubmit={() => setShowQuiz(true)} setTeamName={setFormData} teamName={formData} />
+        )}
+
+        {step === "intro" && <ChaatbotStart onStart={() => setStep("form")} />}
+
+        {step === "form" && (
+          <motion.div key="form" className="inset-0 z-50">
+            <ChaatbotForm onSubmit={() => setStep("quiz")} setTeamName={setFormData} teamName={formData} />
           </motion.div>
-        ) : showQuiz && !showFinalScore ? (
-          <motion.div key={`question-${currentIndex}`} initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -50, opacity: 0 }} transition={{ duration: 0.4 }} className="inset-0 w-full z-50 p-14 flex flex-col items-center gap-24 flex-1">
+        )}
+
+        {step === "quiz" && (
+          <motion.div key={`question-${currentIndex}`} className="inset-0 w-full z-50 p-14 flex flex-col items-center gap-24 flex-1">
             <img src={logo} alt="Creator Logo" className="w-6/12" />
             <div className="text-center space-y-12 w-full">
               <h1 className="text-5xl font-bold">{currentQuestion.type || `Hey ${formData.name}`}</h1>
               <div className="text-5xl font-bold">{currentQuestion.question}</div>
-              <div className={`grid gap-4 gap-x-4 ${currentQuestion.options.length === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}>
+              <div className={`grid gap-4 ${currentQuestion.options.length === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}>
                 {currentQuestion.options.map((option) => (
-                  <Button key={option} onClick={() => handleOptionClick(option)} disabled={!!selectedOption} className="text-3xl text-white" style={{ backgroundImage: `url(${btn})`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '100px' }}>
-                   <div className="text-3xl">{option.split(" ")[0]}</div>
-    <span className="text-3xl mt-2">{option.split(" ").slice(1).join(" ")}</span>
-                    </Button>
+                  <Button key={option} onClick={() => handleOptionClick(option)} className="text-3xl text-white" style={{ backgroundImage: `url(${btn})`, backgroundSize: '100% 100%', height: '100px' }}>
+                    <div className="text-3xl">{option.split(" ")[0]}</div>
+                    <span className="text-3xl mt-2">{option.split(" ").slice(1).join(" ")}</span>
+                  </Button>
                 ))}
               </div>
             </div>
           </motion.div>
-        ) : showFinalScore ? (
-          <motion.div key="final" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="p-10 text-center flex flex-col items-center gap-20 flex-1">
+        )}
+
+        {step === "final" && (
+          <motion.div key="final" className="p-10 text-center flex flex-col items-center gap-12 flex-1">
             <img src={logo} className="w-6/12" alt="Creator Logo" />
-            <p className="text-5xl font-bold">Here's what we have cooked up for you</p>
-            <Button onClick={() => generateCanvasAndQr(formData)} className="px-8 py-8 text-white bg-black tracking-wide text-4xl font-bold">{formData[1]} + {formData[2]} + {formData[3]}</Button>
-            <p className="text-5xl font-bold">Spice things up</p>
-            <p className="text-5xl font-bold">Grab a plate of {formData.name}'s Chilli-Tangy Papdi Chaat!</p>
+            <p className="text-4xl font-bold">Here's what we have cooked up for you</p>
+            <Button onClick={() => generateCanvasAndQr(formData)} className="px-8 py-8 text-white bg-black tracking-wide text-4xl font-bold">
+              {formData[1]} + {formData[2]} + {formData[3]}
+            </Button>
+            <p className="text-4xl font-bold">Spice things up</p>
+            <p className="text-4xl font-bold">Grab a plate of {formData.name}'s {formData.chaatName}!</p>
             {qrValue && (
               <div className="flex flex-col items-center gap-2">
                 <QRCodeSVG value={qrValue} size={180} />
-                <a href={qrValue} download="chaat-result.png" className="text-blue-500 underline mt-2">Download Image</a>
+                <a href={qrValue} download="chaat-result.png" className="text-black text-xl  mt-2">
+                  Here’s a QR code to download your custom chaat! <br></br>
+Show this to the chef to get it.
+                </a>
               </div>
             )}
           </motion.div>
-        ) : null}
+        )}
       </AnimatePresence>
     </div>
   );

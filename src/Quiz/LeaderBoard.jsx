@@ -1,4 +1,4 @@
-import React from "react";
+
 import bg from "../assets/bg.png";
 
 import { useEffect, useState } from "react";

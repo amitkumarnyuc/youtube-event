@@ -68,110 +68,138 @@ export const ChaatBotQuestion=[
   },
 ]
 
+const chaatNamesByFlavour = {
+  Salty: [
+    "Desi Crunch Aloo Tikki Chaat",
+    "Snack Mode Chan Jor Garam Chaat",
+    "Salt Pop Papdi Chaat",
+    "Salt Swirl Dahi Bhalla Chaat",
+    "Flavour Pop Dahi Makhana Chaat",
+    "Chaat House Samosa Chaat",
+    "Crunch & Salt Corn Peanut Chaat",
+    "Classic Gravy Ragda Tikki Chaat",
+    "Savory Buzz Sev Puri Chaat",
+    "Crunch Storm Mumbai Bhel Puri"
+  ],
+  Sweet: [
+    "Meetha Crisp Papdi Chaat",
+    "Drizzle-Drenched Dahi Bhalla Chaat",
+    "Nutty-Witty Dahi Makhana Chaat"
+  ],
+  Tangy: [
+    "Sassy Tang-a-licious Aloo Tikki Chaat",
+    "Zingy Chan Jor Garam Chaat",
+    "Crackle Pop Papdi Chaat",
+    "Zesty Dip Dahi Bhalla Chaat",
+    "Zingy Corn Peanut Chaat",
+    "Tamarind Tilt Ragda Tikki Chaat",
+    "Zest Fest Sev Puri Chaat",
+    "Tingle Mix Mumbai Bhel Puri"
+  ],
+  Chilli: [
+    "Mirchi Mash Aloo Tikki Chaat",
+    "Heatwave Crunch Chan Jor Garam Chaat",
+    "Teekha Twist Papdi Chaat",
+    "Fiery Samosa Chaat",
+    "Red-Hot Razzle Ragda Tikki Chaat",
+    "Lava Pop Sev Puri Chaat",
+    "Fire Trail Mumbai Bhel Puri"
+  ]
+};
 
-export const creators=[
-  {
-    "fullName": "Dimpy Dimpy",
-    "category": "Art",
-    "handle": "yanaveer."
-  },
-  {
-    "fullName": "Chauhan Pragnya",
-    "category": "Art",
-    "handle": "artofhousewife"
-  },
-  {
-    "fullName": "Jaidev Koushal",
-    "category": "Business & Entrepreneurship",
-    "handle": "manishloot90"
-  },
-  {
-    "fullName": "Raju Yadav Kavali",
-    "category": "Business & Entrepreneurship",
-    "handle": "businesstipstelugu"
-  },
-  {
-    "fullName": "Kiran Patnecha",
-    "category": "Cooking",
-    "handle": "kiranbhatikitchen2905"
-  },
-  {
-    "fullName": "Meet Vaghela",
-    "category": "Cooking",
-    "handle": "rupalstastytreats"
-  },
-  {
-    "fullName": "Mridula Verma",
-    "category": "Cooking",
-    "handle": "meerutkadesitadka"
-  },
-  {
-    "fullName": "Savita Wankhede",
-    "category": "Cooking",
-    "handle": "shagunskitchen86"
-  },
-  {
-    "fullName": "Trusha Parsaniya",
-    "category": "Cooking",
-    "handle": "trushastastegujarati"
-  },
-  {
-    "fullName": "Aayushi Vora",
-    "category": "Dance",
-    "handle": "aayushi_vora75"
-  },
-  {
-    "fullName": "Himanshu Vasava",
-    "category": "Dance",
-    "handle": "himanshuvasava"
-  },
-  {
-    "fullName": "Shailesh Zala",
-    "category": "Education & Learning",
-    "handle": "mrtsgujarati07"
-  },
-  {
-    "fullName": "Dhairya Dholakia",
-    "category": "Education & Learning",
-    "handle": "dhairyascreationgujarati"
-  },
-  {
-    "fullName": "Dev Soni",
-    "category": "Education & Learning",
-    "handle": "gmhsstudyclasses"
-  },
-  {
-    "fullName": "Shailesh Makwana",
-    "category": "Education & Learning",
-    "handle": "hngustudypoint"
-  },
-  {
-    "fullName": "Vishalaben Parmar",
-    "category": "Education & Learning",
-    "handle": "vishalaparmar"
-  },
-  {
-    "fullName": "Bhaveshkumar Ravjibhai Variya",
-    "category": "Education & Learning",
-    "handle": "brvariya"
-  },
-  {
-    "fullName": "Beena Thacker",
-    "category": "Education & Learning",
-    "handle": "beenascreationgujarati427"
-  },
-  {
-    "fullName": "Girish Pidadi Plan My Study",
-    "category": "Education & Learning",
-    "handle": "planmystudy"
-  },
-  {
-    "fullName": "Sakshi Patel",
-    "category": "Education & Learning",
-    "handle": "paramshantimeditation"
-  }
-]
 
+export const creatorsByCategory = {
+  "Art": [
+    {
+      "fullName": "Dimpy Dimpy",
+      "handle": "yanaveer."
+    },
+    {
+      "fullName": "Chauhan Pragnya",
+      "handle": "artofhousewife"
+    }
+  ],
+  "Business & Entrepreneurship": [
+    {
+      "fullName": "Jaidev Koushal",
+      "handle": "manishloot90"
+    },
+    {
+      "fullName": "Raju Yadav Kavali",
+      "handle": "businesstipstelugu"
+    }
+  ],
+  "Cooking": [
+    {
+      "fullName": "Kiran Patnecha",
+      "handle": "kiranbhatikitchen2905"
+    },
+    {
+      "fullName": "Meet Vaghela",
+      "handle": "rupalstastytreats"
+    },
+    {
+      "fullName": "Mridula Verma",
+      "handle": "meerutkadesitadka"
+    },
+    {
+      "fullName": "Savita Wankhede",
+      "handle": "shagunskitchen86"
+    },
+    {
+      "fullName": "Trusha Parsaniya",
+      "handle": "trushastastegujarati"
+    }
+  ],
+  "Dance": [
+    {
+      "fullName": "Aayushi Vora",
+      "handle": "aayushi_vora75"
+    },
+    {
+      "fullName": "Himanshu Vasava",
+      "handle": "himanshuvasava"
+    }
+  ],
+  "Education & Learning": [
+    {
+      "fullName": "Shailesh Zala",
+      "handle": "mrtsgujarati07"
+    },
+    {
+      "fullName": "Dhairya Dholakia",
+      "handle": "dhairyascreationgujarati"
+    },
+    {
+      "fullName": "Dev Soni",
+      "handle": "gmhsstudyclasses"
+    },
+    {
+      "fullName": "Shailesh Makwana",
+      "handle": "hngustudypoint"
+    },
+    {
+      "fullName": "Vishalaben Parmar",
+      "handle": "vishalaparmar"
+    },
+    {
+      "fullName": "Bhaveshkumar Ravjibhai Variya",
+      "handle": "brvariya"
+    },
+    {
+      "fullName": "Beena Thacker",
+      "handle": "beenascreationgujarati427"
+    },
+    {
+      "fullName": "Girish Pidadi Plan My Study",
+      "handle": "planmystudy"
+    },
+    {
+      "fullName": "Sakshi Patel",
+      "handle": "paramshantimeditation"
+    }
+  ]
+}
 
 
 export const categories = [
@@ -196,3 +224,21 @@ export const categories = [
   'Sports',
   'Technology',
 ]
+
+
+export const base64ToFile = (base64Data, filename) => {
+  const arr = base64Data.split(',');
+  const mime = arr[0].match(/:(.*?);/)[1];
+  const bstr = atob(arr[1]);
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
+
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new File([u8arr], filename, { type: mime });
+};
+
+
+export const url="https://youtube-server1-f228ee9b9bbd.herokuapp.com"

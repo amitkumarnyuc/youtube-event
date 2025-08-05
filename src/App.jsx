@@ -3,6 +3,7 @@ import ChaatbotQuiz from "./Chaatbot/ChaatbotQuiz";
 import QuizApp from "./Quiz/Quiz";
 import HandleHunt from "./HandleHunt/HandleHunt";
 import LeaderBoard from "./Quiz/LeaderBoard";
+import { creatorsByCategory } from "./utils";
 
 function Home() {
   return (
@@ -20,9 +21,21 @@ function Home() {
           </button>
         </Link>
 
-          <Link to="/handlehunt">
+          <Link to="/handlehunt1">
           <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition">
-            Handle Hunt
+            Handle Hunt 1
+          </button>
+        </Link>
+
+         <Link to="/handlehunt2">
+          <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition">
+            Handle Hunt 2
+          </button>
+        </Link>
+
+         <Link to="/leaderboard">
+          <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition">
+           leaderboard
           </button>
         </Link>
       </div>
@@ -37,7 +50,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/chaat" element={<ChaatbotQuiz />} />
         <Route path="/quiz" element={<QuizApp />} />
-         <Route path="/handleHunt" element={<HandleHunt />} />
+         <Route path="/handleHunt1" element={<HandleHunt creators={creatorsByCategory}/>} />
+          <Route path="/handleHunt2" element={<HandleHunt creators={creatorsByCategory}/>} />
          <Route path="/leaderborad" element={<LeaderBoard/>}/>
       </Routes>
     </Router>

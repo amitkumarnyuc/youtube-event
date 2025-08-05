@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import HandleHuntStart from './HandleHuntStart'
 import bg from '../assets/bg.png'
 import Category from './Category'
-import { categories, creators } from '../utils'
+import { categories, creatorsByCategory } from '../utils'
 import Creator from './Creators'
 
-function HandleHunt() {
+function HandleHunt({creators}) {
   const [page, setPage] = useState(0)
+  const [selectedCategory, setSelectedCategory] = useState("")
 
   const handleClick = (page) => setPage(page)
 
@@ -50,7 +51,17 @@ function HandleHunt() {
             variants={variants}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
-            <Category handleClick={() => handleClick(2)} data={categories} handleBack={()=>handleClick(0)} handleHome={()=>handleClick(0)}/>
+            <Category
+              handleClick={(category) => {
+
+                console.log(creators[category])
+                setSelectedCategory(category)
+                handleClick(2)
+              }}
+              data={categories}
+              handleBack={() => handleClick(0)}
+              handleHome={() => handleClick(0)}
+            />
           </motion.div>
         )}
 
@@ -63,7 +74,12 @@ function HandleHunt() {
             variants={variants}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
-            <Creator handleClick={() => handleClick(2)} data={creators} handleBack={()=>handleClick(1)} handleHome={()=>handleClick(0)}/>
+            <Creator
+              handleClick={() => handleClick(2)}
+              data={creators[selectedCategory] || []}
+              handleBack={() => handleClick(1)}
+              handleHome={() => handleClick(0)}
+            />
           </motion.div>
         )}
       </AnimatePresence>

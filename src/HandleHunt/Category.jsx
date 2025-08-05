@@ -53,7 +53,7 @@ function Category({ handleClick, data, handleBack, handleHome }) {
                     className="flex justify-center"
                   >
                     <Button
-                      onClick={handleClick}
+                      onClick={()=>handleClick(category)}
                       className="w-full bg-black bg-opacity-90 text-white hover:bg-opacity-100 transition duration-200 font-semibold h-20 text-xl"
                     >
                       {category}

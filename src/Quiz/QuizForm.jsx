@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
 import { Button } from '../components/ui/Buttons';
 import btn from '../assets/btn.svg'
 
