@@ -7,30 +7,9 @@ import bg from "../assets/bg.png";
 import { ClockIcon } from "../components/ui/Clock";
 import QuizForm from "./QuizForm";
 import { QuizStart } from "./QuizStart";
-import btn from '../assets/btn.svg';
+import btn from "../assets/btn.svg";
 import Tableno from "./Tableno";
-
-// NEW COMPONENT: Welcome Page
-function WelcomePage({ onEnter }) {
-  return (
-    <motion.div
-      key="welcome"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="flex flex-col items-center justify-center min-h-screen gap-12 p-8 text-center"
-    >
-      <h1 className="text-6xl font-bold text-white">Welcome to the Quiz Show!</h1>
-      <p className="text-3xl text-white">Test your skills, race the clock, and have fun 🔥</p>
-      <Button
-        onClick={onEnter}
-        className="px-12 py-6 text-4xl font-bold text-white bg-black rounded-xl"
-      >
-        Get Started
-      </Button>
-    </motion.div>
-  );
-}
+import { Waiting } from "./Waiting";
 
 export default function QuizApp() {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -40,10 +19,11 @@ export default function QuizApp() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  const [showLanding, setShowLanding] = useState(true);     // NEW STATE
+  const [showLanding, setShowLanding] = useState(true);
   const [showIntro, setShowIntro] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [showFinalScore, setShowFinalScore] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false); // <-- NEW STATE
 
   const [teamName, setTeamName] = useState("");
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
@@ -72,7 +52,7 @@ export default function QuizApp() {
       const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000);
       return () => clearTimeout(timer);
     } else if (showQuiz && timeLeft === 0) {
-      handleSubmit(); // Auto-submit on timeout
+      handleSubmit();
     }
   }, [showQuiz, timeLeft, hasSubmitted]);
 
@@ -107,8 +87,8 @@ export default function QuizApp() {
     } else {
       const payload = {
         tableNo: Number(tableNo) || 0,
-        score:Number(score),
-        teamName:teamName,
+        score: Number(score),
+        teamName: teamName,
         timeTaken: 1,
       };
 
@@ -119,11 +99,6 @@ export default function QuizApp() {
       })
         .then((res) => {
           setShowFinalScore(true);
-          // if (res.status === 201) {
-          //   setTimeout(() => {
-          //     window.location.href = "/quiz";
-          //   }, 3000);
-          // }
         })
         .catch(() => setShowFinalScore(true));
     }
@@ -140,18 +115,24 @@ export default function QuizApp() {
     >
       <AnimatePresence mode="wait">
         {showLanding && (
-
-          <Tableno tableno={tableNo} onChange={(e)=>setTableNo(e.target.value)} onClick={() => {
-            setShowLanding(false);
-            setShowIntro(true);
-          }} />
+          <Tableno
+            tableno={tableNo}
+            onChange={(e) => setTableNo(e.target.value)}
+            onClick={() => {
+              setShowLanding(false);
+              setShowIntro(true);
+            }}
+          />
         )}
 
         {showIntro && !showQuiz && !showFinalScore && (
           <QuizStart onStart={() => setShowIntro(false)} />
         )}
 
-        {!showLanding && !showIntro && !showQuiz && !showFinalScore && (
+        {/* Waiting screen shown after form submission */}
+        {isWaiting && !showQuiz && <Waiting />}
+
+        {!showLanding && !showIntro && !showQuiz && !showFinalScore && !isWaiting && (
           <motion.div
             key="form"
             initial={{ y: 0, opacity: 1 }}
@@ -159,9 +140,14 @@ export default function QuizApp() {
             transition={{ duration: 0.6 }}
             className="absolute inset-0 z-50"
           >
-            
             <QuizForm
-              onSubmit={() => setShowQuiz(true)}
+              onSubmit={() => {
+                setIsWaiting(true);
+                setTimeout(() => {
+                  setShowQuiz(true);
+                  setIsWaiting(false);
+                }, 9000); // 3 seconds wait
+              }}
               shouldExit={showQuiz}
               setTeamName={setTeamName}
               teamName={teamName}
@@ -215,14 +201,18 @@ export default function QuizApp() {
 
                     if (hasSubmitted) {
                       if (isCorrect) {
-                        optionStyle = "bg-green-500 text-white border-green-600 text-3xl font-bold shadow-md";
+                        optionStyle =
+                          "bg-green-500 text-white border-green-600 text-3xl font-bold shadow-md";
                       } else if (isSelected) {
-                        optionStyle = "bg-red-500 text-white border-red-600 text-2xl";
+                        optionStyle =
+                          "bg-red-500 text-white border-red-600 text-2xl";
                       } else {
-                        optionStyle = "bg-gray-200 text-gray-700 border-gray-300 text-black text-2xl";
+                        optionStyle =
+                          "bg-gray-200 text-gray-700 border-gray-300 text-black text-2xl";
                       }
                     } else if (isSelected) {
-                      optionStyle = "border-4 border-white-500 bg-black text-white text-2xl";
+                      optionStyle =
+                        "border-4 border-white-500 bg-black text-white text-2xl";
                     }
 
                     return (
@@ -245,11 +235,11 @@ export default function QuizApp() {
                     className={`text-white text-2xl font-bold py-2 hover:opacity-80 transition disabled:opacity-40 disabled:cursor-not-allowed`}
                     style={{
                       backgroundImage: `url(${btn})`,
-                      backgroundSize: '100% 100%',
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: 'center',
-                      width: '200px',
-                      height: '80px',
+                      backgroundSize: "100% 100%",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                      width: "200px",
+                      height: "80px",
                     }}
                   >
                     Submit

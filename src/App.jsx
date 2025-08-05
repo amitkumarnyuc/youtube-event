@@ -3,7 +3,7 @@ import ChaatbotQuiz from "./Chaatbot/ChaatbotQuiz";
 import QuizApp from "./Quiz/Quiz";
 import HandleHunt from "./HandleHunt/HandleHunt";
 import LeaderBoard from "./Quiz/LeaderBoard";
-import { creatorsByCategory } from "./utils";
+import { creatorsByCategory, creatorsByCategory2 } from "./utils";
 
 function Home() {
   return (
@@ -51,7 +51,7 @@ function App() {
         <Route path="/chaat" element={<ChaatbotQuiz />} />
         <Route path="/quiz" element={<QuizApp />} />
          <Route path="/handleHunt1" element={<HandleHunt creators={creatorsByCategory}/>} />
-          <Route path="/handleHunt2" element={<HandleHunt creators={creatorsByCategory}/>} />
+          <Route path="/handleHunt2" element={<HandleHunt creators={creatorsByCategory2}/>} />
          <Route path="/leaderboard" element={<LeaderBoard/>}/>
       </Routes>
     </Router>

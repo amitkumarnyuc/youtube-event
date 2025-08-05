@@ -1,4 +1,4 @@
-import bg from "../assets/bg.png";
+import bg from "../assets/bg3.png";
 import { useEffect, useState } from "react";
 import { url } from "../utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,68 +31,67 @@ function LeaderBoard() {
   }, [data.length]);
 
   return (
-    <div
-      className="p-4"
-      style={{
-        backgroundImage: `url(${bg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <h1 className="text-3xl font-bold mb-6 text-white text-center drop-shadow-lg">
-        Leaderboard
-      </h1>
-      <div className="overflow-x-auto rounded-lg shadow-lg max-w-4xl mx-auto bg-black/60">
-        <table className="min-w-full text-white">
-          <thead className="bg-black/40">
-            <tr>
-              <th className="px-4 py-2 border-b text-center">Rank</th>
-              <th className="px-4 py-2 border-b text-center">Team Name</th>
-              <th className="px-4 py-2 border-b text-center">Table No</th>
-              <th className="px-4 py-2 border-b text-center">Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            {loading ? (
-              <tr>
-                <td colSpan={4} className="text-center py-4">
-                  Loading...
-                </td>
-              </tr>
-            ) : (
-              <AnimatePresence initial={false}>
-                {data.map((player, idx) => {
-                  const isNew = idx >= prevLength;
+ <div
+  className="p-4"
+  style={{
+    backgroundImage: `url(${bg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "100vh",
+    paddingTop: "24vh",
+  }}
+>
+  <div className="overflow-x-auto rounded-lg shadow-lg w-full bg-black/60">
+    <table className="min-w-full text-white">
+      <thead className="bg-black/40">
+        <tr>
+          <th className="px-4 py-2 border-b text-center">Rank</th>
+          <th className="px-4 py-2 border-b text-center">Team Name</th>
+          <th className="px-4 py-2 border-b text-center">Table No</th>
+          <th className="px-4 py-2 border-b text-center">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {loading ? (
+          <tr>
+            <td colSpan={4} className="text-center py-4">
+              Loading...
+            </td>
+          </tr>
+        ) : (
+          <AnimatePresence initial={false}>
+            {data.map((player, idx) => {
+              const isNew = idx >= prevLength;
 
-                  return (
-                    <motion.tr
-                      key={player.id || `${player.teamName}-${idx}`}
-                      initial={isNew ? { opacity: 0, scale: 0.95 } : false}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
-                      className="hover:bg-white/10"
-                    >
-                      <td className="px-4 py-2 border-b text-center">{idx + 1}</td>
-                      <td className="px-4 py-2 border-b text-center">
-                        {player.teamName || player.name}
-                      </td>
-                      <td className="px-4 py-2 border-b text-center">
-                        {player.tableNo}
-                      </td>
-                      <td className="px-4 py-2 border-b text-center">
-                        {player.score}
-                      </td>
-                    </motion.tr>
-                  );
-                })}
-              </AnimatePresence>
-            )}
-          </tbody>
-        </table>
-      </div>
-    </div>
+              return (
+                <motion.tr
+                  key={player.id || `${player.teamName}-${idx}`}
+                  initial={isNew ? { opacity: 0, scale: 0.95 } : false}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                  className="hover:bg-white/10"
+                >
+                  <td className="px-4 py-2 border-b text-center">{idx + 1}</td>
+                  <td className="px-4 py-2 border-b text-center">
+                    {player.teamName || player.name}
+                  </td>
+                  <td className="px-4 py-2 border-b text-center">
+                    {player.tableNo}
+                  </td>
+                  <td className="px-4 py-2 border-b text-center">
+                    {player.score}
+                  </td>
+                </motion.tr>
+              );
+            })}
+          </AnimatePresence>
+        )}
+      </tbody>
+    </table>
+  </div>
+</div>
+
   );
 }
 
