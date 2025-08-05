@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "../components/ui/Cards";
 import { Button } from "../components/ui/Buttons";
 import { AnimatePresence, motion } from "framer-motion";
-import { questions } from "../utils";
+import { questions as defaultQuestions } from "../utils";
 import bg from "../assets/bg.png";
 import { ClockIcon } from "../components/ui/Clock";
 import QuizForm from "./QuizForm";
 import { QuizStart } from "./QuizStart";
 
 export default function QuizApp() {
+  const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(20);
@@ -19,6 +20,23 @@ export default function QuizApp() {
   const [teamName, setTeamName] = useState("");
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
 
+  // Fetch quizzes from API or fallback to default
+  useEffect(() => {
+    fetch("http://localhost:5001/api/quiz")
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setQuizQuestions(data);
+        } else {
+          setQuizQuestions(defaultQuestions);
+        }
+      })
+      .catch(() => {
+        setQuizQuestions(defaultQuestions);
+      });
+  }, []);
+
+  const questions = quizQuestions.length > 0 ? quizQuestions : defaultQuestions;
   const currentQuestion = questions[currentIndex];
 
   useEffect(() => {
@@ -60,6 +78,7 @@ export default function QuizApp() {
         body: JSON.stringify(payload),
       })
         .then((res) => {
+          setShowFinalScore(true);
           if (res.status === 201) {
             setTimeout(() => {
               window.location.href = "/quiz";
