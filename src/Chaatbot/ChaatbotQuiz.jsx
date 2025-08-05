@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { Card, CardContent } from "../components/ui/Cards";
-import { Button } from "../components/ui/Buttons";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChaatBotQuestion, chaatNamesByFlavour } from '../utils';
 import bg from '../assets/bg2.png';
@@ -10,15 +8,13 @@ import { QRCodeSVG } from 'qrcode.react';
 import { TypingText } from '../components/ui/TypingText';
 import { ChaatbotStart } from './ChaatbotStart';
 import ChaatbotForm from './ChaatbotForm';
-
-
+import { Button } from "../components/ui/Buttons";
 
 export default function ChaatbotQuiz() {
-  const [step, setStep] = useState("intro"); // intro, form, quiz, loading, final
+  const [step, setStep] = useState("intro");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formData, setFormData] = useState({
-    name: "",
-    "1": "", "2": "", "3": "",
+    name: "", "1": "", "2": "", "3": "",
     chaatName: "", image: ""
   });
   const [qrValue, setQrValue] = useState('');
@@ -42,7 +38,7 @@ export default function ChaatbotQuiz() {
   };
 
   const generateCanvasAndQr = (data) => {
-    const flavour = data[3].split(" ")[1]; // "🌶 Chilli" -> "Chilli"
+    const flavour = data[3]?.split(" ")[1];
     const chaatOptions = chaatNamesByFlavour[flavour] || [];
     const chaatName = chaatOptions[Math.floor(Math.random() * chaatOptions.length)] || "Surprise Chaat";
     const updatedForm = { ...data, chaatName };
@@ -79,7 +75,6 @@ export default function ChaatbotQuiz() {
       ctx.fillText("Here's what we have cooked up for you", canvas.width / 2, y);
       y += 60;
 
-      // Draw rounded card
       const cardWidth = 400, cardHeight = 60;
       const x = (canvas.width - cardWidth) / 2;
       const radius = 25;
@@ -130,23 +125,18 @@ export default function ChaatbotQuiz() {
       const response = await fetch("https://youtube-server1-f228ee9b9bbd.herokuapp.com/api/chatbot/user-details", {
         method: "POST",
         body: form,
-        headers: {
-          "Referer": "https://main.d34f1na9mv0h1j.amplifyapp.com/",
-          "User-Agent": "Mozilla/5.0",
-          "sec-ch-ua-platform": '"Android"',
-          "sec-ch-ua": '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
-          "sec-ch-ua-mobile": "?1"
-        }
       });
 
       const result = await response.json();
       if (result.url) {
         setQrValue(result.url);
         setStep("final");
-      } else throw new Error("No URL in API response");
+      } else {
+        throw new Error("No URL in API response");
+      }
     } catch (error) {
       console.error("API error:", error);
-      setStep("final"); // Show final even on error (or show error message if needed)
+      setStep("final");
     }
   };
 
@@ -159,29 +149,40 @@ export default function ChaatbotQuiz() {
     return new File([u8arr], filename, { type: mime });
   };
 
+  const resetQuiz = () => {
+    console.log("Clicked logo → resetting to intro");
+    setStep("intro");
+    setFormData({ name: "", "1": "", "2": "", "3": "", chaatName: "", image: "" });
+    setCurrentIndex(0);
+    setQrValue('');
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-2" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
-
       <AnimatePresence mode="wait">
         {step === "loading" && (
           <motion.div key="loading" className="flex flex-col items-center min-h-screen gap-16 p-24 flex-1">
-            <img src={logo} className="w-8/12" alt="Loading..." onClick={()=>setStep("intro")}/>
+            <img src={logo} className="w-8/12 cursor-pointer" alt="Loading..." onClick={resetQuiz} />
             <TypingText text={"Reading your vibe...\nmixing the perfect chaat..."} speed={50} pause={1500} />
           </motion.div>
         )}
 
-        {step === "intro" && <ChaatbotStart onStart={() => setStep("form")} />}
+        {step === "intro" && (
+          <motion.div key="intro" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full">
+            <ChaatbotStart onStart={() => setStep("form")} />
+          </motion.div>
+        )}
 
         {step === "form" && (
-          <motion.div key="form" className="inset-0 z-50">
+          <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <ChaatbotForm onSubmit={() => setStep("quiz")} setTeamName={setFormData} teamName={formData} />
           </motion.div>
         )}
 
         {step === "quiz" && (
-          <motion.div key={`question-${currentIndex}`} className="inset-0 w-full z-50 p-14 flex flex-col items-center gap-24 flex-1">
-            <img src={logo} alt="Creator Logo" className="w-6/12" onClick={()=>setStep("intro")}/>
+          <motion.div key={`question-${currentIndex}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="inset-0 w-full z-50 p-14 flex flex-col items-center gap-24 flex-1">
+            <img src={logo} alt="Creator Logo" className="w-6/12 cursor-pointer" onClick={resetQuiz} />
             <div className="text-center space-y-12 w-full">
               <h1 className="text-5xl font-bold">{currentQuestion.type || `Hey ${formData.name}`}</h1>
               <div className="text-5xl font-bold">{currentQuestion.question}</div>
@@ -198,8 +199,8 @@ export default function ChaatbotQuiz() {
         )}
 
         {step === "final" && (
-          <motion.div key="final" className="p-10 text-center flex flex-col items-center gap-12 flex-1">
-            <img src={logo} className="w-6/12" alt="Creator Logo" onClick={()=>setStep("intro")}/>
+          <motion.div key="final" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-10 text-center flex flex-col items-center gap-12 flex-1">
+            <img src={logo} className="w-6/12 cursor-pointer" alt="Creator Logo" onClick={resetQuiz} />
             <p className="text-4xl font-bold">Here's what we have cooked up for you</p>
             <Button onClick={() => generateCanvasAndQr(formData)} className="px-8 py-8 text-white bg-black tracking-wide text-4xl font-bold">
               {formData[1]} + {formData[2]} + {formData[3]}
@@ -209,9 +210,9 @@ export default function ChaatbotQuiz() {
             {qrValue && (
               <div className="flex flex-col items-center gap-2">
                 <QRCodeSVG value={qrValue} size={180} />
-                <a href={qrValue} download="chaat-result.png" className="text-black text-xl  mt-2">
-                  Here’s a QR code to download your custom chaat! <br></br>
-Show this to the chef to get it.
+                <a href={qrValue} download="chaat-result.png" className="text-black text-xl mt-2">
+                  Here’s a QR code to download your custom chaat! <br />
+                  Show this to the chef to get it.
                 </a>
               </div>
             )}
