@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "../components/ui/Cards";
 import { Button } from "../components/ui/Buttons";
 import { AnimatePresence, motion } from "framer-motion";
-import { questions } from "../utils";
+import { questions as defaultQuestions } from "../utils";
 import bg from "../assets/bg.png";
 import { ClockIcon } from "../components/ui/Clock";
 import QuizForm from "./QuizForm";
@@ -10,6 +10,7 @@ import { QuizStart } from "./QuizStart";
 import btn from '../assets/btn.svg';
 
 export default function QuizApp() {
+  const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(20);
@@ -21,6 +22,23 @@ export default function QuizApp() {
   const [teamName, setTeamName] = useState("");
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
 
+  // Fetch quizzes from API or fallback to default
+  useEffect(() => {
+    fetch("http://localhost:5001/api/quiz")
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setQuizQuestions(data);
+        } else {
+          setQuizQuestions(defaultQuestions);
+        }
+      })
+      .catch(() => {
+        setQuizQuestions(defaultQuestions);
+      });
+  }, []);
+
+  const questions = quizQuestions.length > 0 ? quizQuestions : defaultQuestions;
   const currentQuestion = questions[currentIndex];
 
     useEffect(() => {
@@ -75,9 +93,20 @@ export default function QuizApp() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      });
-
-      setShowFinalScore(true);
+      })
+        .then((res) => {
+          setShowFinalScore(true);
+          if (res.status === 201) {
+            setTimeout(() => {
+              window.location.href = "/quiz";
+            }, 3000);
+          } else {
+            setShowFinalScore(true);
+          }
+        })
+        .catch((err) => {
+          setShowFinalScore(true);
+        });
     }
   };
 
@@ -124,13 +153,21 @@ export default function QuizApp() {
                 <div className="relative flex justify-between items-center text-xl h-16 m-3 mb-24">
                   <span className="font-extrabold flex items-center gap-1 text-2xl">
                     <ClockIcon />
-                    <span className={`${timeLeft < 6 ? "text-red-600 animate-blink text-5xl" : "text-black-600 text-5xl"}`}>
-                      00:{timeLeft.toString().padStart(2, '0')}
+                    <span
+                      className={`${
+                        timeLeft < 6
+                          ? "text-red-600 animate-blink text-3xl"
+                          : "text-black-600 text-3xl"
+                      }`}
+                    >
+                      00:{timeLeft.toString().padStart(2, "0")}
                     </span>
                   </span>
 
-                  <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl font-extrabold text-center">
-                    Question<br />{currentIndex + 1} / {questions.length}
+                  <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-extrabold text-center">
+                    Question
+                    <br />
+                    {currentIndex + 1} / {questions.length}
                   </span>
 
                   <span className="font-extrabold text-5xl">{score} ⭐</span>
