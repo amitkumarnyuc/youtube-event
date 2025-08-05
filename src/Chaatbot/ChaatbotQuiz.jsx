@@ -166,7 +166,7 @@ export default function ChaatbotQuiz() {
       <AnimatePresence mode="wait">
         {step === "loading" && (
           <motion.div key="loading" className="flex flex-col items-center min-h-screen gap-16 p-24 flex-1">
-            <img src={logo} className="w-8/12" alt="Loading..." />
+            <img src={logo} className="w-8/12" alt="Loading..." onClick={()=>setStep("intro")}/>
             <TypingText text={"Reading your vibe...\nmixing the perfect chaat..."} speed={50} pause={1500} />
           </motion.div>
         )}
@@ -181,7 +181,7 @@ export default function ChaatbotQuiz() {
 
         {step === "quiz" && (
           <motion.div key={`question-${currentIndex}`} className="inset-0 w-full z-50 p-14 flex flex-col items-center gap-24 flex-1">
-            <img src={logo} alt="Creator Logo" className="w-6/12" />
+            <img src={logo} alt="Creator Logo" className="w-6/12" onClick={()=>setStep("intro")}/>
             <div className="text-center space-y-12 w-full">
               <h1 className="text-5xl font-bold">{currentQuestion.type || `Hey ${formData.name}`}</h1>
               <div className="text-5xl font-bold">{currentQuestion.question}</div>
@@ -199,7 +199,7 @@ export default function ChaatbotQuiz() {
 
         {step === "final" && (
           <motion.div key="final" className="p-10 text-center flex flex-col items-center gap-12 flex-1">
-            <img src={logo} className="w-6/12" alt="Creator Logo" />
+            <img src={logo} className="w-6/12" alt="Creator Logo" onClick={()=>setStep("intro")}/>
             <p className="text-4xl font-bold">Here's what we have cooked up for you</p>
             <Button onClick={() => generateCanvasAndQr(formData)} className="px-8 py-8 text-white bg-black tracking-wide text-4xl font-bold">
               {formData[1]} + {formData[2]} + {formData[3]}

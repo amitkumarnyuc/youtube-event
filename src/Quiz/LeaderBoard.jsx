@@ -1,22 +1,34 @@
-
 import bg from "../assets/bg.png";
-
 import { useEffect, useState } from "react";
 import { url } from "../utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [prevLength, setPrevLength] = useState(0);
 
   useEffect(() => {
-    fetch(`${url}/api/score`)
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+    const fetchData = () => {
+      fetch(`${url}/api/score`)
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.length > data.length) {
+            setPrevLength(data.length);
+            setData(json);
+          } else if (data.length === 0) {
+            setData(json);
+          }
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
+    };
+
+    fetchData(); // initial fetch
+    const interval = setInterval(fetchData, 1000);
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, [data.length]);
 
   return (
     <div
@@ -49,20 +61,33 @@ function LeaderBoard() {
                 </td>
               </tr>
             ) : (
-              data.map((player, idx) => (
-                <tr key={player.id || idx} className="hover:bg-white/10">
-                  <td className="px-4 py-2 border-b text-center">{idx + 1}</td>
-                  <td className="px-4 py-2 border-b text-center">
-                    {player.teamName || player.name}
-                  </td>
-                  <td className="px-4 py-2 border-b text-center">
-                    {player.tableNo}
-                  </td>
-                  <td className="px-4 py-2 border-b text-center">
-                    {player.score}
-                  </td>
-                </tr>
-              ))
+              <AnimatePresence initial={false}>
+                {data.map((player, idx) => {
+                  const isNew = idx >= prevLength;
+
+                  return (
+                    <motion.tr
+                      key={player.id || `${player.teamName}-${idx}`}
+                      initial={isNew ? { opacity: 0, scale: 0.95 } : false}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      className="hover:bg-white/10"
+                    >
+                      <td className="px-4 py-2 border-b text-center">{idx + 1}</td>
+                      <td className="px-4 py-2 border-b text-center">
+                        {player.teamName || player.name}
+                      </td>
+                      <td className="px-4 py-2 border-b text-center">
+                        {player.tableNo}
+                      </td>
+                      <td className="px-4 py-2 border-b text-center">
+                        {player.score}
+                      </td>
+                    </motion.tr>
+                  );
+                })}
+              </AnimatePresence>
             )}
           </tbody>
         </table>

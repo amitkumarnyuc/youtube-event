@@ -34,7 +34,7 @@ function WelcomePage({ onEnter }) {
 
 export default function QuizApp() {
   const [quizQuestions, setQuizQuestions] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(9);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(20);
   const [selectedOption, setSelectedOption] = useState(null);
