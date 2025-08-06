@@ -4,6 +4,7 @@ import gemini from '../assets/Gemini_LogoPNG.png';
 import logo from '../assets/creator-logo.svg';
 import bg from '../assets/bg.png'
 import btn from '../assets/btn.svg'
+import Footer from "../components/ui/Footer";
 export const QuizStart = ({ onStart }) => (
   <motion.div
     initial={{ opacity: 0 }}
@@ -33,6 +34,6 @@ export const QuizStart = ({ onStart }) => (
 >
   Start
 </Button>
-
+<Footer/>
   </motion.div>
 );
