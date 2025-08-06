@@ -124,7 +124,7 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedCreator(null)}
-                className="absolute top-0 right-3 text-white text-3xl font-bold z-50"
+                className="absolute top-0 right-3 text-white text-8xl font-bold z-50"
               >
                 &times;
               </button>
