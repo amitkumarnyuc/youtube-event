@@ -9,7 +9,7 @@ import { TypingText } from '../components/ui/TypingText';
 import { ChaatbotStart } from './ChaatbotStart';
 import ChaatbotForm from './ChaatbotForm';
 import { Button } from "../components/ui/Buttons";
-
+import Footer from '../components/ui/Footer'
 export default function ChaatbotQuiz() {
   const [step, setStep] = useState("intro");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,7 +21,7 @@ export default function ChaatbotQuiz() {
   const canvasRef = useRef(null);
 
   const currentQuestion = ChaatBotQuestion[currentIndex];
-
+console.log(formData)
   const handleOptionClick = (option) => {
     const updatedForm = {
       ...formData,
@@ -101,7 +101,7 @@ export default function ChaatbotQuiz() {
       ctx.fillText("Spice things up", canvas.width / 2, y);
 
       y += 56;
-      ctx.fillText(`Grab a plate of ${updatedForm.name}'s ${updatedForm.chaatName}!`, canvas.width / 2, y);
+      ctx.fillText(`Grab a plate of ${updatedForm.fullName}'s ${updatedForm.chaatName}!`, canvas.width / 2, y);
 
       const dataURL = canvas.toDataURL("image/png");
       await handleApi(dataURL, updatedForm);
@@ -116,7 +116,7 @@ export default function ChaatbotQuiz() {
     try {
       const imageFile = base64ToFile(base64Image, 'chaat-image.png');
       const form = new FormData();
-      form.append('name', data.name);
+      form.append('name', data.fullName);
       form.append('mood', data["1"]);
       form.append('spicePreference', data["2"]);
       form.append('chatFlavour', data["3"]);
@@ -162,7 +162,7 @@ export default function ChaatbotQuiz() {
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       <AnimatePresence mode="wait">
         {step === "loading" && (
-          <motion.div key="loading" className="flex flex-col items-center min-h-screen gap-16 p-24 flex-1">
+          <motion.div key="loading" className="flex flex-col items-center min-h-screen gap-16 p-24 flex-1 w-full">
             <img src={logo} className="w-8/12 cursor-pointer" alt="Loading..." onClick={resetQuiz} />
             <TypingText text={"Reading your vibe...\nmixing the perfect chaat..."} speed={50} pause={1500} />
           </motion.div>
@@ -184,7 +184,7 @@ export default function ChaatbotQuiz() {
           <motion.div key={`question-${currentIndex}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="inset-0 w-full z-50 p-14 flex flex-col items-center gap-24 flex-1">
             <img src={logo} alt="Creator Logo" className="w-6/12 cursor-pointer" onClick={resetQuiz} />
             <div className="text-center space-y-12 w-full">
-              <h1 className="text-5xl font-bold">{currentQuestion.type || `Hey ${formData.name}`}</h1>
+              <h1 className="text-5xl font-bold">{currentQuestion.type || `Hey ${formData.handles}`}</h1>
               <div className="text-5xl font-bold">{currentQuestion.question}</div>
               <div className={`grid gap-4 ${currentQuestion.options.length === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}>
                 {currentQuestion.options.map((option) => (
@@ -209,7 +209,7 @@ export default function ChaatbotQuiz() {
             <p className="text-4xl font-bold">
               <span className='text-3xl font-normal'>
                 Grab a plate of 
-                </span><br></br>{formData.name}'s {formData.chaatName}!</p>
+                </span><br></br>{formData.fullName}'s {formData.chaatName}!</p>
             {qrValue && (
               <div className="flex flex-col items-center gap-2">
                 <QRCodeSVG value={qrValue} size={180} />
@@ -222,6 +222,7 @@ export default function ChaatbotQuiz() {
           </motion.div>
         )}
       </AnimatePresence>
+      <Footer/>
     </div>
   );
 }

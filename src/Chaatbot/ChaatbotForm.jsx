@@ -3,41 +3,44 @@ import React, { useState } from 'react';
 import { Button } from '../components/ui/Buttons';
 import btn from '../assets/btn.svg';
 import logo from '../assets/creator-logo.svg';
-import { all } from '../utils'; // Array of objects with `handles`, etc.
+import { all } from '../utils';
 
-function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
+function ChaatbotForm({ shouldExit, onSubmit, teamName, setTeamName }) {
   const [inputValue, setInputValue] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
+    setShowSuggestions(true);
 
     const matched = all.find(
-      (item) =>
-        typeof item.handles === 'string' &&
-        item.handles.toLowerCase() === value.toLowerCase()
+      (item) => item.handles?.toLowerCase() === value.toLowerCase()
     );
+    setTeamName(matched || null);
+  };
 
-    if (matched) {
-      setTeamName(matched);
-    }
+  const handleSelect = (handle) => {
+    setInputValue(handle);
+    const matched = all.find((item) => item.handles === handle);
+    setTeamName(matched || null);
+    setShowSuggestions(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!teamName || !teamName.handles) {
       alert('Please select a valid user from the list');
       return;
     }
 
-    onSubmit();
+    onSubmit(teamName);
   };
 
   return (
     <motion.div
       initial={{ y: 0, opacity: 1 }}
-      animate={shouldExit ? { y: "-100%", opacity: 0 } : { y: 0, opacity: 1 }}
+      animate={shouldExit ? { y: '-100%', opacity: 0 } : { y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className="absolute inset-0 flex justify-center z-50"
     >
@@ -47,31 +50,43 @@ function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
       >
         <img src={logo} className="w-8/12" alt="Creator Logo" />
 
-        <span className="text-5xl font-bold text-center">
-          Hey Gemini, I am <br />
+        <div className="relative w-full max-w-lg">
+          <span className="text-5xl font-bold text-center block">
+            Hey Gemini, I am <br />
+          </span>
+
           <input
             name="teamName"
             required
-            list="teamSuggestions"
             value={inputValue}
             onChange={handleInputChange}
             placeholder="Type your handle..."
-            className="border ml-2 mr-2 mt-8 p-1 pt-4 pb-4 rounded-xl w-full max-w-lg bg-black border-black text-white"
+            className="border p-4 mt-8 rounded-xl w-full bg-black border-black text-white"
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setTimeout(() => setShowSuggestions(false), 150)} // delay to allow click
           />
-        </span>
 
-        <datalist id="teamSuggestions">
-          {inputValue.length > 0 &&
-            all
-              .filter(
-                (item) =>
-                  typeof item.handles === 'string' &&
-                  item.handles.toLowerCase().includes(inputValue.toLowerCase())
-              )
-              .map((item, index) => (
-                <option key={index} value={item.handles} />
-              ))}
-        </datalist>
+          {/* Suggestion box */}
+          {showSuggestions && inputValue.length > 0 && (
+            <div className="absolute w-full bg-black border-gray-300 rounded-md mt-1 z-50 max-h-60 overflow-y-auto shadow-lg">
+              {all
+                .filter(
+                  (item) =>
+                    typeof item.handles === 'string' &&
+                    item.handles.toLowerCase().includes(inputValue.toLowerCase())
+                )
+                .map((item, index) => (
+                  <div
+                    key={index}
+                    onClick={() => handleSelect(item.handles)}
+                    className="px-4 py-2 hover:bg-gray-200 cursor-pointer text-left text-white"
+                  >
+                    {item.handles}
+                  </div>
+                ))}
+            </div>
+          )}
+        </div>
 
         <Button
           type="submit"
