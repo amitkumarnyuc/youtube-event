@@ -17,18 +17,18 @@ export const QuizStart = ({ onStart }) => (
       }}
     className="absolute inset-0 flex flex-col items-center justify-center z-50 text-center gap-28 bg-white"
   >
-    <img src={logo} className="w-60" alt="Creator Logo" />
-    <img src={gemini} className="h-14" alt="Gemini Logo" />
+    <img src={logo} className="w-4/12" alt="Creator Logo" />
+    <img src={gemini} className="w-10/12" alt="Gemini Logo" />
     <Button
   onClick={onStart}
-  className="text-white px-6 py-2 hover:opacity-80 transition text-2xl font-bold"
+  className="text-white px-6 py-2 hover:opacity-80 transition text-4xl font-bold"
   style={{
     backgroundImage: `url(${btn})`,
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     width: '200px',
-    height: '80px',
+    height: '110px',
   }}
 >
   Start
