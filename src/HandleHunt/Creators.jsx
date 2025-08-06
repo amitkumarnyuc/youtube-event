@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '../components/ui/Buttons'
 import back from '../assets/back.svg'
 import home from '../assets/home.svg'
+import Footer from '../components/ui/Footer'
 function Creator({ handleClick, data , handleBack, handleHome, Category}) {
   const [selectedCreator, setSelectedCreator] = useState(null)
   const timerRef = useRef(null)
@@ -136,7 +137,7 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
                 className="w-full rounded-xl shadow-md m-2"
               />
 
-              <h3 className="text-white font-semibold text-center text-5xl " style={{lineHeight:'4rem'}}>
+              <h3 className="text-white font-semibold text-left text-2xl ">
                 Create a fun channel drawing art image for my YouTube channel in 2560p X 1440P,16:9 dimension about {Category}, hosted by {selectedCreator.fullName}. The overall vibe should be happy.
               </h3>
 
@@ -151,8 +152,11 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
                 Scan the QR code to download your channel art.
               </p>
             </div>
+             <Footer/>
           </motion.div>
         )}
+
+        <Footer/>
       </AnimatePresence>
     </div>
   )
