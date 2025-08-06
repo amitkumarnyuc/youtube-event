@@ -18,9 +18,11 @@
 }
 
 
-
+*{
+ font-family: 'youtube' !important;
+}
 
 body{
   overflow: hidden;
-  font-family: 'youtube';
+ 
 }
