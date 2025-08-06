@@ -10,6 +10,7 @@ import { QuizStart } from "./QuizStart";
 import btn from "../assets/btn.svg";
 import Tableno from "./Tableno";
 import { Waiting } from "./Waiting";
+import Footer from "../components/ui/Footer";
 
 export default function QuizApp() {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -294,6 +295,7 @@ console.log(s)
           </motion.div>
         )}
       </AnimatePresence>
+      <Footer/>
     </div>
   );
 }

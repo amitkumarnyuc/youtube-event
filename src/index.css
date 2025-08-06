@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'youtube';
-  src: url('./assets/Fonts/YOUTUBESANSMONOITALIC-REGULAR.OTF');
+  src: url('./assets/Fonts/YouTubeSans-Medium.otf');
 }
 
 @keyframes pulse {
@@ -22,5 +22,5 @@
 
 body{
   overflow: hidden;
-  /* font-family: 'youtube'; */
+  font-family: 'youtube';
 }
