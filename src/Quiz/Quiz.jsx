@@ -286,7 +286,7 @@ export default function QuizApp() {
           >
             <h1 className="text-5xl font-extrabold ">Well Done, Creator!</h1>
             <h2 className="text-5xl font-extrabold  mt-16 mb-16">Your final score is</h2>
-            <div className="text-6xl font-bold text-white">🏆{score}</div>
+            <div className="text-6xl font-bold text-white">⭐{score}</div>
           </motion.div>
         )}
       </AnimatePresence>
