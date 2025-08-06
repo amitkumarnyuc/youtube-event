@@ -136,6 +136,10 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
                 className="w-full rounded-xl shadow-md m-2"
               />
 
+              <h3 className="text-white font-semibold text-center text-5xl " style={{lineHeight:'4rem'}}>
+                Create a fun channel drawing art image for my YouTube channel in 2560p X 1440P,16:9 dimension about {Category}, hosted by {selectedCreator.fullName}. The overall vibe should be happy.
+              </h3>
+
               {/* QR Code */}
               <img
               src={selectedCreator.qr}
@@ -143,7 +147,7 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
                 className="w-6/12 mt-12 mb-12"
               />
 
-              <p className="text-white font-semibold text-center text-5xl">
+              <p className="text-white font-semibold text-center text-4xl">
                 Scan the QR code to download your channel art.
               </p>
             </div>
