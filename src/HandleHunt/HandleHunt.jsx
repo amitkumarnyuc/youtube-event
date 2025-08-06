@@ -84,7 +84,7 @@ function HandleHunt({creators}) {
           </motion.div>
         )}
       </AnimatePresence>
-      <Footer/>
+    
     </div>
   )
 }

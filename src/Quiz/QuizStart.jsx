@@ -34,6 +34,6 @@ export const QuizStart = ({ onStart }) => (
 >
   Start
 </Button>
-<Footer/>
+
   </motion.div>
 );

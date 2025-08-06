@@ -4,6 +4,7 @@ import QuizApp from "./Quiz/Quiz";
 import HandleHunt from "./HandleHunt/HandleHunt";
 import LeaderBoard from "./Quiz/LeaderBoard";
 import { creatorsByCategory, creatorsByCategory2 } from "./utils";
+import Footer from "./components/ui/Footer";
 
 function Home() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="/handleHunt2" element={<HandleHunt creators={creatorsByCategory2}/>} />
          <Route path="/leaderboard" element={<LeaderBoard/>}/>
       </Routes>
+      <Footer/>
     </Router>
   );
 }

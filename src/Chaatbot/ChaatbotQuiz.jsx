@@ -9,7 +9,7 @@ import { TypingText } from '../components/ui/TypingText';
 import { ChaatbotStart } from './ChaatbotStart';
 import ChaatbotForm from './ChaatbotForm';
 import { Button } from "../components/ui/Buttons";
-import Footer from '../components/ui/Footer'
+
 export default function ChaatbotQuiz() {
   const [step, setStep] = useState("intro");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -222,7 +222,7 @@ console.log(formData)
           </motion.div>
         )}
       </AnimatePresence>
-      <Footer/>
+  
     </div>
   );
 }
