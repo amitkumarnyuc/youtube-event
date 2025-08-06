@@ -46,7 +46,7 @@ export default function QuizApp() {
 
   // Poll server to start quiz
 useEffect(() => {
-  if (!tableNo || !teamName || showQuiz || !isWaiting) return;
+  if (!isWaiting) return;
 
   const interval = setInterval(async () => {
     try {

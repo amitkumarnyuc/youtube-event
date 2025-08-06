@@ -5,6 +5,12 @@
   animation: pulse 2s infinite;
 }
 
+
+@font-face {
+  font-family: 'youtube';
+  src: url('./assets/Fonts/YOUTUBESANSMONOITALIC-REGULAR.OTF');
+}
+
 @keyframes pulse {
   0% { opacity: 0.4; transform: scale(0.95); }
   50% { opacity: 1; transform: scale(1); }
@@ -12,6 +18,9 @@
 }
 
 
+
+
 body{
   overflow: hidden;
+  font-family: 'youtube';
 }
