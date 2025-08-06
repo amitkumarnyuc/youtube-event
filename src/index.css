@@ -8,8 +8,9 @@
 
 @font-face {
   font-family: youtube-sans;
-  src: url('./assets/Fonts/YouTubeSans-Medium.otf');
+  src: url('/assets/Fonts/YouTubeSans-Medium.otf') format("opentype");
 }
+
 
 @keyframes pulse {
   0% { opacity: 0.4; transform: scale(0.95); }
