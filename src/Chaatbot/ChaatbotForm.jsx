@@ -7,6 +7,7 @@ import { all } from '../utils'; // ✅ Make sure this is where you export `all`
 
 function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
   const handleTeamName = (e) => {
+    console.log(e)
     setTeamName({ name: e.target.value });
   };
 
@@ -27,7 +28,7 @@ function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
 
           // Match against fullName (case-insensitive)
           const matched = all.find(
-            (item) => item.fullName.toLowerCase() === inputName.toLowerCase()
+            (item) => item.handles.toLowerCase() === inputName.toLowerCase()
           );
 
           if (!matched) {
@@ -56,7 +57,7 @@ function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
         {/* ✅ Suggestions from `all` */}
         <datalist id="teamSuggestions">
           {all.map((item, index) => (
-            <option key={index} value={item.fullName} />
+            <option key={index} value={item.handles} />
           ))}
         </datalist>
 

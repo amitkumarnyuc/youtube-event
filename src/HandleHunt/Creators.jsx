@@ -54,7 +54,7 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
            {Category}
         </motion.h1>
 
-        <div className="flex flex-col gap-y-20 mt-10"  style={{height:"1090px", overflow:"scroll"}}>
+        <div className="flex flex-col gap-y-20 mt-10"  style={{height:"1090px", overflowY:"scroll",overflowX:"hidden"}}>
           {/* Full rows (3 items) */}
           {Array.from({ length: fullRows }).map((_, rowIndex) => (
             <div
@@ -76,7 +76,7 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
                   >
                     <Button
                       onClick={() => setSelectedCreator(creator)}
-                      className="w-full bg-black bg-opacity-90 text-white hover:bg-opacity-100 transition duration-200 font-semibold h-20 text-xl"
+                      className="w-full bg-black bg-opacity-90 text-white hover:bg-opacity-100 transition duration-200 font-semibold h-20 text-2xl"
                     >
                       {creator.handle}
                     </Button>
@@ -100,7 +100,7 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
                 >
                   <Button
                     onClick={() => setSelectedCreator(creator)}
-                    className="w-full bg-black bg-opacity-90 text-white hover:bg-opacity-100 transition duration-200 font-semibold h-20 text-xl"
+                    className="w-full bg-black bg-opacity-90 text-white hover:bg-opacity-100 transition duration-200 font-semibold h-20 text-2xl"
                   >
                     {creator.handle}
                   </Button>
@@ -131,15 +131,15 @@ function Creator({ handleClick, data , handleBack, handleHome, Category}) {
 
               {/* Channel Art Image */}
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/mrtsgujarati07%20(Shailesh%20Zala)%2Fmrtsgujarati07.jpeg?alt=media&token=5e075d5e-3e1c-4b24-b767-f4298674991b"
+                src={selectedCreator.banner}
                 alt="Channel Art"
                 className="w-full rounded-xl shadow-md m-2"
               />
 
               {/* QR Code */}
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/mrtsgujarati07%20(Shailesh%20Zala)%2FShailesh%20Zala.png?alt=media&token=c0393a12-a7b3-455f-9c3f-345407b21b37"
-                alt="QR Code"
+              src={selectedCreator.qr}
+              alt="QR Code"
                 className="w-6/12 mt-12 mb-12"
               />
 
