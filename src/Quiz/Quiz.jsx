@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Card, CardContent } from "../components/ui/Cards";
 import { Button } from "../components/ui/Buttons";
 import { AnimatePresence, motion } from "framer-motion";
-import { questions as defaultQuestions, url } from "../utils";
+import { questions as defaultQuestions, randomizeQuestionsAndOptions, url } from "../utils";
 import bg from "../assets/bg.png";
 import { ClockIcon } from "../components/ui/Clock";
 import QuizForm from "./QuizForm";
@@ -13,7 +13,6 @@ import { Waiting } from "./Waiting";
 import Footer from "../components/ui/Footer";
 
 export default function QuizApp() {
-  const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(20);
@@ -31,45 +30,31 @@ export default function QuizApp() {
   const [totalTimeSpent, setTotalTimeSpent] = useState(0);
   const [tableNo, setTableNo] = useState("");
 
-  // Load questions from server
-  useEffect(() => {
-    fetch(`${url}/api/quiz`)
-      .then((res) => (res.ok ? res.json() : []))
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setQuizQuestions(data);
-        } else {
-          setQuizQuestions(defaultQuestions);
-        }
-      })
-      .catch(() => setQuizQuestions(defaultQuestions));
-  }, []);
-
-  // Poll server to start quiz
-useEffect(() => {
-  if (!isWaiting) return;
-
-  const interval = setInterval(async () => {
-    try {
-      const res = await fetch(`${url}/api/quiz/is-started`);
-      const data = await res.json();
-
-      if (data.isStarted) {
-        setIsWaiting(false);
-        setShowQuiz(true);
-        clearInterval(interval); // stop polling once started
-      }
-    } catch (err) {
-      console.error("Failed to check quiz start", err);
-    }
-  }, 1000);
-
-  return () => clearInterval(interval);
-}, [isWaiting, showQuiz, tableNo, teamName]);
-
-
-  const questions = useMemo(() => quizQuestions.length ? quizQuestions : defaultQuestions, [quizQuestions]);
+  // Randomize and memoize questions once
+  const questions = useMemo(() => randomizeQuestionsAndOptions(defaultQuestions), []);
   const currentQuestion = questions[currentIndex];
+
+  // Poll server to check if quiz has started
+  useEffect(() => {
+    if (!isWaiting) return;
+
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`${url}/api/quiz/is-started`);
+        const data = await res.json();
+
+        if (data.isStarted) {
+          setIsWaiting(false);
+          setShowQuiz(true);
+          clearInterval(interval);
+        }
+      } catch (err) {
+        console.error("Failed to check quiz start", err);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isWaiting]);
 
   // Timer logic
   useEffect(() => {
@@ -87,15 +72,17 @@ useEffect(() => {
 
   const handleSubmit = () => {
     if (!selectedOption) return;
-    let s=score
+
+    let s = score;
     const isCorrect = selectedOption === currentQuestion.answer;
+
     if (isCorrect) {
-      s+=10;
+      s += 10;
       setScore((prev) => prev + 10);
     }
 
     setHasSubmitted(true);
-console.log(s)
+
     setTimeout(() => handleNext(s), 1000);
   };
 
@@ -108,14 +95,13 @@ console.log(s)
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      // Submit final score
       fetch(`${url}/api/score`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           score: score,
           timeTaken: totalTimeSpent,
-          id:id
+          id: id,
         }),
       })
         .then((res) => res.json())
@@ -154,41 +140,45 @@ console.log(s)
 
         {isWaiting && <Waiting />}
 
-        {!showLanding && !showIntro && !showQuiz && !showFinalScore && !isWaiting && (
-          <motion.div
-            key="form"
-            initial={{ y: 0, opacity: 1 }}
-            animate={{ y: showQuiz ? "-100%" : 0, opacity: showQuiz ? 0 : 1 }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0 z-50"
-          >
-            <QuizForm
-              onSubmit={async () => {
-                try {
-                  const res = await fetch(`${url}/api/score`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      teamName,
-                      tableNo: Number(tableNo),
-                      score: 0,
-                      timeTaken: 0,
-                    }),
-                  });
-                  const data = await res.json();
-                  setID(data._id);
-                  if(!isWaiting)setIsWaiting(true);
-                } catch (err) {
-                  console.error("Error creating score", err);
-                }
-              }}
-              shouldExit={showQuiz}
-              setTeamName={setTeamName}
-              teamName={teamName}
-              tableNo={tableNo}
-            />
-          </motion.div>
-        )}
+        {!showLanding &&
+          !showIntro &&
+          !showQuiz &&
+          !showFinalScore &&
+          !isWaiting && (
+            <motion.div
+              key="form"
+              initial={{ y: 0, opacity: 1 }}
+              animate={{ y: showQuiz ? "-100%" : 0, opacity: showQuiz ? 0 : 1 }}
+              transition={{ duration: 0.6 }}
+              className="absolute inset-0 z-50"
+            >
+              <QuizForm
+                onSubmit={async () => {
+                  try {
+                    const res = await fetch(`${url}/api/score`, {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        teamName,
+                        tableNo: Number(tableNo),
+                        score: 0,
+                        timeTaken: 0,
+                      }),
+                    });
+                    const data = await res.json();
+                    setID(data._id);
+                    if (!isWaiting) setIsWaiting(true);
+                  } catch (err) {
+                    console.error("Error creating score", err);
+                  }
+                }}
+                shouldExit={showQuiz}
+                setTeamName={setTeamName}
+                teamName={teamName}
+                tableNo={tableNo}
+              />
+            </motion.div>
+          )}
 
         {showQuiz && !showFinalScore && (
           <motion.div
@@ -202,20 +192,20 @@ console.log(s)
             <Card>
               <CardContent className="p-6 space-y-14">
                 <div className="relative flex justify-between items-center text-xl h-16 m-3 mb-24">
-                  <span className="font-extrabold flex items-center gap-1 text-2xl">
+                  <span className="font-extrabold flex items-center gap-1 text-5xl">
                     <ClockIcon />
                     <span
                       className={`${
                         timeLeft < 6
-                          ? "text-red-600 animate-blink text-3xl"
-                          : "text-black text-3xl"
+                          ? "text-red-600 animate-blink text-5xl"
+                          : "text-black text-5xl"
                       }`}
                     >
                       00:{timeLeft.toString().padStart(2, "0")}
                     </span>
                   </span>
 
-                  <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-extrabold text-center">
+                  <span className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl font-extrabold text-center">
                     Question <br />
                     {currentIndex + 1} / {questions.length}
                   </span>
@@ -232,18 +222,23 @@ console.log(s)
                     const isCorrect = option === currentQuestion.answer;
                     const isSelected = selectedOption === option;
 
-                    let optionStyle = "bg-black border border-gray-300 text-white text-2xl";
+                    let optionStyle =
+                      "bg-black border border-gray-300 text-white text-2xl";
 
                     if (hasSubmitted) {
                       if (isCorrect) {
-                        optionStyle = "bg-green-500 text-white border-green-600 text-3xl font-bold shadow-md";
+                        optionStyle =
+                          "bg-green-500 text-white border-green-600 text-3xl font-bold shadow-md";
                       } else if (isSelected) {
-                        optionStyle = "bg-red-500 text-white border-red-600 text-2xl";
+                        optionStyle =
+                          "bg-red-500 text-white border-red-600 text-2xl";
                       } else {
-                        optionStyle = "bg-gray-200 text-gray-700 border-gray-300 text-black text-2xl";
+                        optionStyle =
+                          "bg-gray-200 text-gray-700 border-gray-300 text-black text-2xl";
                       }
                     } else if (isSelected) {
-                      optionStyle = "border-4 border-white bg-black text-white text-2xl";
+                      optionStyle =
+                        "border-4 border-white bg-black text-white text-2xl";
                     }
 
                     return (
@@ -295,7 +290,7 @@ console.log(s)
           </motion.div>
         )}
       </AnimatePresence>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

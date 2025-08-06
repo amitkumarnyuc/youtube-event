@@ -63,8 +63,8 @@ function QuizForm({ onSubmit, shouldExit, setTeamName, teamName, tableNo }) {
       className="absolute inset-0 flex items-center justify-center z-50"
     >
       <div className="text-center space-y-4 flex flex-col justify-center place-items-center gap-10">
-        <h1 className="text-5xl font-bold uppercase">Hey Creators!</h1>
-        <h2 className="text-4xl font-bold uppercase m-4">
+        <h1 className="text-5xl font-bold ">Hey Creators!</h1>
+        <h2 className="text-4xl font-bold  m-4">
           Please enter your team's <br /> name to begin.
         </h2>
 
@@ -74,8 +74,8 @@ function QuizForm({ onSubmit, shouldExit, setTeamName, teamName, tableNo }) {
             required
             value={teamName}
             onChange={handleTeamName}
-            className="border p-2 pt-4 pb-4 mb-6 rounded-xl w-full max-w-lg bg-black border-black text-white text-xl"
-            placeholder="Enter team name"
+            className="border p-2 pt-4 pb-4 mb-6 rounded-xl w-full max-w-lg bg-black border-black text-white text-xl capitalize"
+            placeholder="Enter Team Name*"
           />
 
           {error && <p className="text-red-500 text-lg">{error}</p>}

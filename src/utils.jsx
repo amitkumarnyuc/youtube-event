@@ -4863,4 +4863,26 @@ export const all=[
   }
 ]
 
+export function shuffleArray(array) {
+  return array
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+
+export function randomizeQuestionsAndOptions() {
+  // First, shuffle the questions
+  const shuffledQuestions = shuffleArray(questions);
+
+  // Then, shuffle the options in each question
+  return shuffledQuestions.map((q) => {
+    const shuffledOptions = shuffleArray(q.options);
+    return {
+      question: q.question,
+      options: shuffledOptions,
+      answer: q.answer, // original answer remains, even if not first in options
+    };
+  });
+}
+
 export const url="https://youtube-server1-f228ee9b9bbd.herokuapp.com"

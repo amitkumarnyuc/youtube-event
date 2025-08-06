@@ -18,8 +18,8 @@ export const Waiting = ({ onStart }) => (
     className="absolute inset-0 flex flex-1 flex-col items-center justify-center z-50 text-center gap-20 bg-white"
   >
     <img src={logo} className="w-60 mb-20" alt="Creator Logo" />
-      <h1 className="text-5xl font-extrabold uppercase">Great!</h1>
-       <h1 className="text-5xl font-extrabold">QUIZ WILL START SHORTLY!</h1>
+      <h1 className="text-5xl font-extrabold ">Great!</h1>
+       <h1 className="text-5xl font-extrabold capitalize">Quiz will start shortly!</h1>
     
 
   </motion.div>
