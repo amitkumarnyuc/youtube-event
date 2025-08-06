@@ -55,16 +55,12 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
 
         {/* Title */}
         <motion.h1
-          className="uppercase font-bold text-4xl sm:text-6xl mb-6 sm:mb-20 text-center text-black"
+          className="uppercase font-bold text-4xl sm:text-6xl mb-16 sm:mb-20 text-center text-black"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
           Find your handle and tap to reveal your surprise
-        </motion.h1>
-
-        <motion.h1 className="font-bold text-xl sm:text-3xl mb-10 text-center text-black">
-          {Category}
         </motion.h1>
 
         {/* 6x3 Grid */}

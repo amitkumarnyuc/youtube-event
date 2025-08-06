@@ -21,21 +21,26 @@ export default function ChaatbotQuiz() {
   const canvasRef = useRef(null);
 
   const currentQuestion = ChaatBotQuestion[currentIndex];
-console.log(formData)
-  const handleOptionClick = (option) => {
-    const updatedForm = {
-      ...formData,
-      [`${currentIndex + 1}`]: option,
-    };
-    setFormData(updatedForm);
 
-    if (currentIndex + 1 < ChaatBotQuestion.length) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      setStep("loading");
-      generateCanvasAndQr(updatedForm);
-    }
+const handleOptionClick = (option) => {
+  // Remove everything except alphabets (A-Z, a-z) and spaces
+  const sanitizedOption = option.replace(/[^a-zA-Z\s]/g, "");
+
+  const updatedForm = {
+    ...formData,
+    [`${currentIndex + 1}`]: sanitizedOption,
   };
+
+  setFormData(updatedForm);
+
+  if (currentIndex + 1 < ChaatBotQuestion.length) {
+    setCurrentIndex((prev) => prev + 1);
+  } else {
+    setStep("loading");
+    generateCanvasAndQr(updatedForm);
+  }
+};
+
 
 const generateCanvasAndQr = (data) => {
   const flavour = data[3]?.split(" ")[1];
