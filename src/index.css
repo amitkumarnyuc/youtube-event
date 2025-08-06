@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: youtube-sans;
-  src: url('/assets/Fonts/YouTubeSans-Medium.otf') format("opentype");
+  src: url('../public/assets/Fonts/YouTubeSans-Medium.otf') format("opentype");
 }
 
 
