@@ -1,14 +1,37 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../components/ui/Buttons';
 import btn from '../assets/btn.svg';
 import logo from '../assets/creator-logo.svg';
-import { all } from '../utils'; // ✅ Make sure this is where you export `all`
+import { all } from '../utils'; // Array of objects with `handles`, etc.
 
 function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
-  const handleTeamName = (e) => {
-    console.log(e)
-    setTeamName({ name: e.target.value });
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    const matched = all.find(
+      (item) =>
+        typeof item.handles === 'string' &&
+        item.handles.toLowerCase() === value.toLowerCase()
+    );
+
+    if (matched) {
+      setTeamName(matched);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!teamName || !teamName.handles) {
+      alert('Please select a valid user from the list');
+      return;
+    }
+
+    onSubmit();
   };
 
   return (
@@ -20,24 +43,7 @@ function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
     >
       <form
         className="text-center space-y-4 flex flex-col justify-around place-items-center gap-5 pb-20"
-        onSubmit={(e) => {
-          e.preventDefault();
-
-          const inputName = teamName.name.trim();
-          if (inputName === '') return;
-
-          // Match against fullName (case-insensitive)
-          const matched = all.find(
-            (item) => item.handles.toLowerCase() === inputName.toLowerCase()
-          );
-
-          if (!matched) {
-            alert("User not found");
-            return;
-          }
-
-          onSubmit(); // Proceed
-        }}
+        onSubmit={handleSubmit}
       >
         <img src={logo} className="w-8/12" alt="Creator Logo" />
 
@@ -46,19 +52,25 @@ function ChaatbotForm({ onSubmit, shouldExit, setTeamName, teamName }) {
           <input
             name="teamName"
             required
-            list="teamSuggestions" // ✅ Link to datalist
-            value={teamName.name}
-            onChange={handleTeamName}
-            // placeholder="Type your name..."
+            list="teamSuggestions"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder="Type your handle..."
             className="border ml-2 mr-2 mt-8 p-1 pt-4 pb-4 rounded-xl w-full max-w-lg bg-black border-black text-white"
           />
         </span>
 
-        {/* ✅ Suggestions from `all` */}
         <datalist id="teamSuggestions">
-          {all.map((item, index) => (
-            <option key={index} value={item.handles} />
-          ))}
+          {inputValue.length > 0 &&
+            all
+              .filter(
+                (item) =>
+                  typeof item.handles === 'string' &&
+                  item.handles.toLowerCase().includes(inputValue.toLowerCase())
+              )
+              .map((item, index) => (
+                <option key={index} value={item.handles} />
+              ))}
         </datalist>
 
         <Button
