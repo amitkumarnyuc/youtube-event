@@ -186,7 +186,7 @@ const generateCanvasAndQr = (data) => {
       <AnimatePresence mode="wait">
         {step === "loading" && (
           <motion.div key="loading" className="flex flex-col items-center min-h-screen gap-16 p-24 flex-1 w-full">
-            <img src={logo} className="w-6/12 cursor-pointer" alt="Loading..." onClick={resetQuiz} />
+            <img src={logo} className="w-60 cursor-pointer pb-20" alt="Loading..." onClick={resetQuiz} />
             <TypingText text={"Reading your vibe...\nmixing the perfect chaat..."} speed={50} pause={1500} />
           </motion.div>
         )}
@@ -204,10 +204,13 @@ const generateCanvasAndQr = (data) => {
         )}
 
         {step === "quiz" && (
-          <motion.div key={`question-${currentIndex}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="inset-0 w-full z-50 p-14 flex flex-col items-center gap-24 flex-1">
-            <img src={logo} alt="Creator Logo" className="w-6/12 cursor-pointer" onClick={resetQuiz} />
-            <div className="text-center space-y-12 w-full">
-              <h1 className="text-5xl font-bold">{currentQuestion.type || `Hey ${formData.handles}`}</h1>
+          <motion.div key={`question-${currentIndex}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="inset-0 w-full z-50 p-16 pt-20 flex flex-col items-center gap-24 flex-1">
+            <img src={logo} alt="Creator Logo" className="w-4/12 cursor-pointer" onClick={resetQuiz} />
+            <div className="text-center space-y-16 w-full">
+              <h1 className={`font-bold ${currentQuestion.type?.startsWith("Hey") || (!currentQuestion.type && formData.handles) ? 'text-6xl' : 'text-5xl'}`}>
+                {currentQuestion.type || `Hey ${formData.handles}`}
+              </h1>
+
               <div className="text-5xl font-bold">{currentQuestion.question}</div>
               <div className={`grid gap-4 ${currentQuestion.options.length === 3 ? 'grid-cols-3' : 'grid-cols-4'}`}>
                 {currentQuestion.options.map((option) => (
@@ -222,7 +225,7 @@ const generateCanvasAndQr = (data) => {
         )}
 
         {step === "final" && (
-          <motion.div key="final" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-10 text-center flex flex-col items-center gap-12 flex-1">
+          <motion.div key="final" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-10 text-center flex flex-col items-center gap-14 flex-1">
             <img src={logo} className="w-4/12 cursor-pointer" alt="Creator Logo" onClick={resetQuiz} />
             <p className="text-3xl font-bold">Here's what we have cooked up for you</p>
             <Button onClick={() => generateCanvasAndQr(formData)} className="px-6 py-8 text-white bg-black tracking-wide text-3xl font-bold">

@@ -15,12 +15,12 @@ export const ChaatbotStart = ({ onStart }) => (
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-    className="absolute inset-0 flex flex-col items-center z-50 p-14 place-content-around "
+    className="absolute inset-0 flex flex-col items-center z-50 p-10 place-content-around "
   >
     <img src={logo} className="w-6/12" alt="Creator Logo" />
     <div className="flex justify-center items-center gap-20 flex-col">
-      <img src={gemini} className="w-12/12" alt="Gemini Logo" />
-    <h1 className="text-5xl text-center font-bold">Let your taste and mood decide your perfect chaat!</h1>
+          <h1 className="text-5xl text-center font-bold uppercase">Chaatbot</h1>
+    <h1 className="text-5xl text-center ">Let your taste and mood decide your perfect chaat!</h1>
     </div>
     
     <Button

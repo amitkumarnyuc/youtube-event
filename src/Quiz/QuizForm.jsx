@@ -62,10 +62,10 @@ function QuizForm({ onSubmit, shouldExit, setTeamName, teamName, tableNo }) {
       transition={{ duration: 0.6 }}
       className="absolute inset-0 flex items-center justify-center z-50"
     >
-      <div className="text-center space-y-4 flex flex-col justify-center place-items-center gap-10">
+      <div className="text-center space-y-4 flex flex-col justify-center place-items-center gap-10 w-full">
         <h1 className="text-5xl font-bold ">Hey Creators!</h1>
         <h2 className="text-4xl font-bold  m-4">
-          Please enter your team's <br /> name to begin.
+          Please enter your team's name <br />to begin.
         </h2>
 
         <form onSubmit={handleSubmit}>

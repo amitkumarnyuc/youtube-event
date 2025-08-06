@@ -2,12 +2,17 @@ import React from 'react'
 import logo from '../assets/creator-logo.svg'
 import btn from '../assets/btn.svg'
 import { Button } from '../components/ui/Buttons'
-
+import bg from '../assets/bg4.png'
 function HandleHuntStart({handleClick}) {
 
 
   return (
-    <div className='flex flex-col justify-around items-center gap-4 h-screen pb-96'>
+    <div className='flex flex-col justify-around items-center gap-4 h-screen pb-96' style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+      }}>
        <img src={logo} className="w-6/12" alt="Creator Logo" />
        <h1 className="text-8xl font-bold uppercase">Handle Hunt</h1>
 

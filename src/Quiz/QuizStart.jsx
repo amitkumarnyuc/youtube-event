@@ -16,10 +16,12 @@ export const QuizStart = ({ onStart }) => (
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-    className="absolute inset-0 flex flex-col items-center justify-center z-50 text-center gap-28 bg-white"
+    className="absolute inset-0 flex flex-col items-center justify-center z-50 text-center gap-24 bg-white"
   >
     <img src={logo} className="w-4/12" alt="Creator Logo" />
-    <img src={gemini} className="w-10/12" alt="Gemini Logo" />
+   
+       <h1 className="text-8xl font-bold ">Quiz & <br></br>Conquer</h1>
+
     <Button
   onClick={onStart}
   className="text-white px-6 py-2 hover:opacity-80 transition text-4xl font-bold"

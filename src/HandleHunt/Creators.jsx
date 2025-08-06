@@ -31,7 +31,7 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
   useEffect(() => {
     if (selectedCreator) {
       if (timerRef.current) clearTimeout(timerRef.current)
-      timerRef.current = setTimeout(() => setSelectedCreator(null), 300000)
+      timerRef.current = setTimeout(() => setSelectedCreator(null), 5000000)
     }
     return () => clearTimeout(timerRef.current)
   }, [selectedCreator])
@@ -74,13 +74,19 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
               key={index}
               className="flex items-center justify-center h-24 sm:h-28 bg-transparent"
             >
-              <AnimatePresence>
+              <AnimatePresence mode="popLayout">
                 {creator && (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.5 }}
-                    transition={{ duration: 0.3 }}
+                    key={creator.handle + index}
+                    initial={{ opacity: 0, y: 30, scale: 0 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 30, scale: 0 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 600,
+                      damping: 25,
+                      duration: 0.3,
+                    }}
                     className="w-full px-2"
                   >
                     <Button
@@ -121,6 +127,7 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
               />
 
               <h3 className="text-white font-semibold text-left text-2xl">
+                Prompt:<br></br>
                 Create a fun channel drawing art image for my YouTube channel in 2560x1440, 16:9 dimension about {Category}, hosted by {selectedCreator.fullName}. The overall vibe should be happy.
               </h3>
 

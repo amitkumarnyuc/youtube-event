@@ -1,7 +1,7 @@
 import  { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import HandleHuntStart from './HandleHuntStart'
-import bg from '../assets/bg4.png'
+import bg from '../assets/bg.png'
 import Category from './Category'
 import { categories, creatorsByCategory } from '../utils'
 import Creator from './Creators'
