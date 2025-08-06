@@ -7,7 +7,7 @@
 
 
 @font-face {
-  font-family: 'youtube';
+  font-family: youtube-sans;
   src: url('./assets/Fonts/YouTubeSans-Medium.otf');
 }
 
@@ -19,7 +19,7 @@
 
 
 *{
- font-family: 'youtube' !important;
+ font-family: youtube-sans
 }
 
 body{

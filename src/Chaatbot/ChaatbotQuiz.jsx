@@ -37,80 +37,103 @@ console.log(formData)
     }
   };
 
-  const generateCanvasAndQr = (data) => {
-    const flavour = data[3]?.split(" ")[1];
-    const chaatOptions = chaatNamesByFlavour[flavour] || [];
-    const chaatName = chaatOptions[Math.floor(Math.random() * chaatOptions.length)] || "Surprise Chaat";
-    const updatedForm = { ...data, chaatName };
-    setFormData(updatedForm);
+const generateCanvasAndQr = (data) => {
+  const flavour = data[3]?.split(" ")[1];
+  const chaatOptions = chaatNamesByFlavour[flavour] || [];
+  const chaatName = chaatOptions[Math.floor(Math.random() * chaatOptions.length)] || "Surprise Chaat";
+  const updatedForm = { ...data, chaatName };
+  setFormData(updatedForm);
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+  const canvas = canvasRef.current;
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
 
-    canvas.width = 1024;
-    canvas.height = 1366;
+  canvas.width = 1024;
+  canvas.height = 1366;
 
-    const bgImage = new Image();
-    const logoImage = new Image();
-    bgImage.src = bg;
-    logoImage.src = logo;
+  const bgImage = new Image();
+  const logoImage = new Image();
+  bgImage.src = bg;
+  logoImage.src = logo;
 
-    let bgLoaded = false, logoLoaded = false;
+  let bgLoaded = false, logoLoaded = false;
 
-    const draw = async () => {
-      if (!bgLoaded || !logoLoaded) return;
+  const draw = async () => {
+    if (!bgLoaded || !logoLoaded) return;
 
-      ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+    // Clear previous drawing
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const logoX = (canvas.width - 362) / 2;
-      const logoY = 100;
-      ctx.drawImage(logoImage, logoX, logoY, 362, 215.3);
+    // Draw background image
+    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#000";
-      ctx.textAlign = "center";
-      ctx.font = "bold 30px sans-serif";
+    // Draw logo
+    const logoX = (canvas.width - 362) / 2;
+    const logoY = 100;
+    ctx.drawImage(logoImage, logoX, logoY, 362, 215.3);
 
-      let y = logoY + 215.3 + 80;
-      ctx.fillText("Here's what we have cooked up for you", canvas.width / 2, y);
-      y += 60;
+    // Title
+    ctx.fillStyle = "#000";
+    ctx.textAlign = "center";
+    ctx.font = "bold 30px sans-serif";
 
-      const cardWidth = 400, cardHeight = 60;
-      const x = (canvas.width - cardWidth) / 2;
-      const radius = 25;
-      ctx.beginPath();
-      ctx.moveTo(x + radius, y);
-      ctx.lineTo(x + cardWidth - radius, y);
-      ctx.quadraticCurveTo(x + cardWidth, y, x + cardWidth, y + radius);
-      ctx.lineTo(x + cardWidth, y + cardHeight - radius);
-      ctx.quadraticCurveTo(x + cardWidth, y + cardHeight, x + cardWidth - radius, y + cardHeight);
-      ctx.lineTo(x + radius, y + cardHeight);
-      ctx.quadraticCurveTo(x, y + cardHeight, x, y + cardHeight - radius);
-      ctx.lineTo(x, y + radius);
-      ctx.quadraticCurveTo(x, y, x + radius, y);
-      ctx.closePath();
-      ctx.fill();
+    let y = logoY + 215.3 + 100;
+    ctx.fillText("Here's what we have cooked up for you", canvas.width / 2, y);
+    y += 80;
 
-      ctx.fillStyle = "#fff";
-      ctx.font = "20px sans-serif";
-      ctx.fillText(`${updatedForm[1]} + ${updatedForm[2]} + ${updatedForm[3]}`, canvas.width / 2, y + cardHeight / 2 + 5);
+    // Draw card background
+    const cardWidth = 676;
+    const cardHeight = 150; // Increased height
+    const x = (canvas.width - cardWidth) / 2;
+    const radius = 25;
 
-      y += cardHeight + 65;
-      ctx.fillStyle = "#000";
-      ctx.font = "bold 30px sans-serif";
-      ctx.fillText("Spice things up", canvas.width / 2, y);
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + cardWidth - radius, y);
+    ctx.quadraticCurveTo(x + cardWidth, y, x + cardWidth, y + radius);
+    ctx.lineTo(x + cardWidth, y + cardHeight - radius);
+    ctx.quadraticCurveTo(x + cardWidth, y + cardHeight, x + cardWidth - radius, y + cardHeight);
+    ctx.lineTo(x + radius, y + cardHeight);
+    ctx.quadraticCurveTo(x, y + cardHeight, x, y + cardHeight - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
 
-      y += 56;
-      ctx.fillText(`Grab a plate of ${updatedForm.fullName}'s ${updatedForm.chaatName}!`, canvas.width / 2, y);
+    ctx.fillStyle = "black"; // Light background for card
+    ctx.fill();
 
-      const dataURL = canvas.toDataURL("image/png");
-      await handleApi(dataURL, updatedForm);
-    };
+    ctx.strokeStyle = "#000"; // Optional border
+    ctx.lineWidth = 2;
+    ctx.stroke();
 
-    bgImage.onload = () => { bgLoaded = true; draw(); };
-    logoImage.onload = () => { logoLoaded = true; draw(); };
-    bgImage.onerror = logoImage.onerror = (e) => console.error("Image load error", e);
+    // Text inside card
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 33px sans-serif";
+    ctx.fillText(
+      `${updatedForm[1]} + ${updatedForm[2]} + ${updatedForm[3]}`,
+      canvas.width / 2,
+      y + cardHeight / 2 + 5
+    );
+
+    y += cardHeight + 87;
+    ctx.fillStyle = "#000";
+    // Additional text
+    ctx.fillText(`Grab a plate of`, canvas.width / 2, y);
+    y += 78;
+      ctx.font = "bold 35px sans-serif";
+    ctx.fillText(`${updatedForm.fullName}'s ${updatedForm.chaatName}!`, canvas.width / 2, y);
+
+    // Export canvas
+    const dataURL = canvas.toDataURL("image/png");
+    console.log(dataURL);
+    await handleApi(dataURL, updatedForm);
   };
+
+  bgImage.onload = () => { bgLoaded = true; draw(); };
+  logoImage.onload = () => { logoLoaded = true; draw(); };
+  bgImage.onerror = logoImage.onerror = (e) => console.error("Image load error", e);
+};
+
 
   const handleApi = async (base64Image, data) => {
     try {

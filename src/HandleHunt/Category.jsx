@@ -50,7 +50,7 @@ function Category({ handleClick, data, handleBack, handleHome }) {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 },
               }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
+              transition={{ duration: 1.8, ease: 'easeOut' }}
               className="flex justify-center"
             >
               <Button
