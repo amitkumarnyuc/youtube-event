@@ -4,7 +4,7 @@ import { Button } from "../components/ui/Buttons";
 import back from "../assets/back.svg";
 import home from "../assets/home.svg";
 import Footer from "../components/ui/Footer";
-
+import bg from '../assets/bg.png'
 function Creator({ handleClick, data, handleBack, handleHome, Category }) {
   const [selectedCreator, setSelectedCreator] = useState(null);
   const [visibleGrid, setVisibleGrid] = useState([]);
@@ -154,6 +154,13 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+
+             style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+      }}
           >
             <div className="relative bg-transparent w-full h-full flex flex-col items-center space-y-20 p-4 pt-16">
               <button
@@ -182,12 +189,12 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
                 Scan the QR code to download your channel art.
               </p>
             </div>
-            <Footer />
+        
           </motion.div>
         )}
       </AnimatePresence>
 
-      <Footer />
+    
     </div>
   );
 }

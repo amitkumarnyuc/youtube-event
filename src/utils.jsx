@@ -63,7 +63,7 @@ export const ChaatBotQuestion=[
   },
     {
     "type":"Tell us your taste preference?",
-    "question": "What's your chaat flavour today?",
+    "question": "How would you like your chaat today?",
     "options": ["🧂 Salty", "🍬 Sweet", "😋 Tangy", "🥵 Chilli"],
   },
 ]
@@ -71,7 +71,7 @@ export const ChaatBotQuestion=[
 export const chaatNamesByFlavour = {
   Salty: [
     "Desi Crunch Aloo Tikki Chaat",
-    "Snack Mode Chan Jor Garam Chaat",
+    "Snack Mode Chana Jor Garam Chaat",
     "Salt Pop Papdi Chaat",
     "Salt Swirl Dahi Bhalla Chaat",
     "Flavour Pop Dahi Makhana Chaat",
@@ -88,7 +88,7 @@ export const chaatNamesByFlavour = {
   ],
   Tangy: [
     "Sassy Tang-a-licious Aloo Tikki Chaat",
-    "Zingy Chan Jor Garam Chaat",
+    "Zingy Chana Jor Garam Chaat",
     "Crackle Pop Papdi Chaat",
     "Zesty Dip Dahi Bhalla Chaat",
     "Zingy Corn Peanut Chaat",
@@ -98,7 +98,7 @@ export const chaatNamesByFlavour = {
   ],
   Chilli: [
     "Mirchi Mash Aloo Tikki Chaat",
-    "Heatwave Crunch Chan Jor Garam Chaat",
+    "Heatwave Crunch Chana Jor Garam Chaat",
     "Teekha Twist Papdi Chaat",
     "Fiery Samosa Chaat",
     "Red-Hot Razzle Ragda Tikki Chaat",

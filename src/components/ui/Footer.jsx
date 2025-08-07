@@ -7,9 +7,9 @@ function Footer() {
     const height = window.innerHeight;
 
     if (height < 700) {
-      setStyle({ fontSize: '0.75rem', bottom: '0.25rem' }); // small
+      setStyle({ fontSize: '1.5rem', bottom: '0.25rem' }); // small
     } else if (height < 1920) {
-      setStyle({ fontSize: '1rem', bottom: '1rem' }); // medium
+      setStyle({ fontSize: '1.6rem', bottom: '0.8rem' }); // medium
     } else {
       setStyle({ fontSize: '2rem', bottom: '1.3rem' , left:'1rem'}); // large
     }
@@ -17,7 +17,7 @@ function Footer() {
 
   return (
     <p
-      className="absolute text-white left-2 z-50 "
+      className="absolute text-white left-4 z-50 "
       style={style}
     >
       Made with Google Gemini

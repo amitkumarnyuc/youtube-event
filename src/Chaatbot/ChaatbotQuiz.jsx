@@ -9,7 +9,8 @@ import { TypingText } from '../components/ui/TypingText';
 import { ChaatbotStart } from './ChaatbotStart';
 import ChaatbotForm from './ChaatbotForm';
 import { Button } from "../components/ui/Buttons";
-
+import back from '../assets/back.svg';
+import home from '../assets/home.svg'
 export default function ChaatbotQuiz() {
   const [step, setStep] = useState("intro");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,6 +43,26 @@ const handleOptionClick = (option) => {
 };
 
 
+const wrapText = (ctx, text, x, y, maxWidth, lineHeight) => {
+  const words = text.split(" ");
+  let line = "";
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + " ";
+    const metrics = ctx.measureText(testLine);
+    const testWidth = metrics.width;
+
+    if (testWidth > maxWidth && n > 0) {
+      ctx.fillText(line, x, y);
+      line = words[n] + " ";
+      y += lineHeight;
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line, x, y);
+  return y; // Return updated y position
+};
+
 const generateCanvasAndQr = (data) => {
   const flavour = data[3]?.split(" ")[1];
   const chaatOptions = chaatNamesByFlavour[flavour] || [];
@@ -66,10 +87,7 @@ const generateCanvasAndQr = (data) => {
   const draw = async () => {
     if (!bgLoaded || !logoLoaded) return;
 
-    // Clear previous drawing
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw background image
     ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
     // Draw logo
@@ -80,15 +98,15 @@ const generateCanvasAndQr = (data) => {
     // Title
     ctx.fillStyle = "#000";
     ctx.textAlign = "center";
-    ctx.font = "bold 30px sans-serif";
+    ctx.font = "30px sans-serif";
 
     let y = logoY + 215.3 + 100;
     ctx.fillText("Here's what we have cooked up for you", canvas.width / 2, y);
     y += 80;
 
-    // Draw card background
+    // Card
     const cardWidth = 676;
-    const cardHeight = 150; // Increased height
+    const cardHeight = 150;
     const x = (canvas.width - cardWidth) / 2;
     const radius = 25;
 
@@ -104,34 +122,36 @@ const generateCanvasAndQr = (data) => {
     ctx.quadraticCurveTo(x, y, x + radius, y);
     ctx.closePath();
 
-    ctx.fillStyle = "black"; // Light background for card
+    ctx.fillStyle = "black";
     ctx.fill();
-
-    ctx.strokeStyle = "#000"; // Optional border
+    ctx.strokeStyle = "#000";
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // Text inside card
+    // Text inside card (with wrapping)
     ctx.fillStyle = "#fff";
     ctx.font = "bold 33px sans-serif";
-    ctx.fillText(
-      `${updatedForm[1]} + ${updatedForm[2]} + ${updatedForm[3]}`,
-      canvas.width / 2,
-      y + cardHeight / 2 + 5
-    );
+    ctx.textAlign = "center";
 
-    y += cardHeight + 87;
+    const comboText = `${updatedForm[1]} + ${updatedForm[2]} + ${updatedForm[3]}`;
+    const comboY = y + cardHeight / 2 + 5;
+    wrapText(ctx, comboText, canvas.width / 2, comboY, 620, 40); // wrapped text
+
+    // Main dish text
+    y += cardHeight + 90;
     ctx.fillStyle = "#000";
-    // Additional text
+    ctx.font = "30px sans-serif";
     ctx.fillText(`Grab a plate of`, canvas.width / 2, y);
-    y += 78;
-      ctx.font = "bold 35px sans-serif";
-    ctx.fillText(`${updatedForm.fullName}'s ${updatedForm.chaatName}!`, canvas.width / 2, y);
 
-      y =1340;
-      ctx.font = "bold 20px sans-serif";
-       ctx.fillStyle = "#fff";
-    ctx.fillText(`Made With Google Gemini`, 150, y);
+    y += 73;
+    ctx.font = "bold 45px sans-serif";
+    wrapText(ctx, `${updatedForm.fullName}'s ${updatedForm.chaatName}!`, canvas.width / 2, y, 800, 50);
+
+    // Gemini footer
+    ctx.font = " 25px sans-serif";
+    ctx.fillStyle = "#fff";
+    ctx.textAlign = "left";
+    ctx.fillText(`Made With Google Gemini`, 30, canvas.height - 30);
 
     // Export canvas
     const dataURL = canvas.toDataURL("image/png");
@@ -143,6 +163,7 @@ const generateCanvasAndQr = (data) => {
   logoImage.onload = () => { logoLoaded = true; draw(); };
   bgImage.onerror = logoImage.onerror = (e) => console.error("Image load error", e);
 };
+
 
 
   const handleApi = async (base64Image, data) => {
@@ -190,14 +211,46 @@ const generateCanvasAndQr = (data) => {
     setQrValue('');
   };
 
+  const handleBack = () => {
+  if (step === "quiz" && currentIndex > 0) {
+    setCurrentIndex((prev) => prev - 1);
+  } else if (step === "quiz" && currentIndex === 0) {
+    setStep("form");
+  } else if (step === "form") {
+    setStep("intro");
+  } else if (step === "final") {
+    setStep("quiz");
+  }
+};
+
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-2" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className=" relative flex flex-col items-center justify-center min-h-screen p-2" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+<div className="absolute top-10 left-0 w-full flex justify-between items-center h-20 px-6 z-100">
+  {(step === "quiz"  || step==="final") && (
+    <img
+      src={back}
+      alt="Back"
+      className="h-16 cursor-pointer"
+      onClick={handleBack}
+    />
+  )}
+  {step !== "intro" && (<img
+    src={home}
+    alt="Home"
+    className="h-16 cursor-pointer"
+    onClick={resetQuiz}
+  />)
+}
+</div>
+
+
       <canvas ref={canvasRef} style={{ display: 'none' }} />
       <AnimatePresence mode="wait">
         {step === "loading" && (
           <motion.div key="loading" className="flex flex-col items-center min-h-screen gap-16 p-24 flex-1 w-full">
             <img src={logo} className="w-60 cursor-pointer pb-20" alt="Loading..." onClick={resetQuiz} />
-            <TypingText text={"Reading your vibe...\nmixing the perfect chaat..."} speed={50} pause={1500} />
+            <TypingText text={"Reading your vibe...\nmaking the perfect chaat..."} speed={50} pause={1500} />
           </motion.div>
         )}
 
@@ -237,22 +290,25 @@ const generateCanvasAndQr = (data) => {
         {step === "final" && (
           <motion.div key="final" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-10 text-center flex flex-col items-center gap-14 flex-1">
             <img src={logo} className="w-4/12 cursor-pointer" alt="Creator Logo" onClick={resetQuiz} />
-            <p className="text-3xl font-bold">Here's what we have cooked up for you</p>
+            <p className="text-2xl text-black">Here’s the chaat you should have today!</p>
             <Button onClick={() => generateCanvasAndQr(formData)} className="px-6 py-8 text-white bg-black tracking-wide text-3xl font-bold">
               {formData[1]} + {formData[2]} + {formData[3]}
             </Button>
             {/* <p className="text-3xl font-bold">Spice things up</p> */}
-            <p className="text-4xl font-bold">
-              <span className='text-3xl font-normal'>
-                Grab a plate of 
-                </span><br></br>{formData.fullName}'s {formData.chaatName}!</p>
+           <p className="text-4xl font-bold">
+            <span className="block text-2xl font-normal mb-3 text-black">
+              Grab a plate of
+            </span>
+            {formData.fullName}'s {formData.chaatName}!
+          </p>
+
             {qrValue && (
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-2 text-2xl">
                 <QRCodeSVG value={qrValue} size={180} />
-                <a href={qrValue} download="chaat-result.png" className="text-black text-xl mt-6 ">
+                <h1 className="text-black text-2xl mt-6 ">
                   Here’s a QR code to download your custom chaat! <br />
                   Show this to the chef to get it.
-                </a>
+                </h1>
               </div>
             )}
           </motion.div>
