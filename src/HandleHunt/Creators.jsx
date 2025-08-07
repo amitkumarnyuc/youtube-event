@@ -8,11 +8,14 @@ import Footer from "../components/ui/Footer";
 function Creator({ handleClick, data, handleBack, handleHome, Category }) {
   const [selectedCreator, setSelectedCreator] = useState(null);
   const [visibleGrid, setVisibleGrid] = useState([]);
+  const [shuffledIndices, setShuffledIndices] = useState([]);
   const previousGridRef = useRef([]);
   const timerRef = useRef(null);
 
+  const MAX_GRID = 18;
+  const SHUFFLE_PERCENT = 0.6; // 30%
+
   const getNewGrid = () => {
-    const MAX_GRID = 18;
     if (!data || data.length === 0) return [];
 
     const placeholdersNeeded = Math.max(0, MAX_GRID - data.length);
@@ -24,33 +27,44 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
       id: `placeholder-${i}`,
     }));
 
-    const combined = [...realItems, ...placeholders].sort(() => Math.random() - 0.5);
+    const combined = [...realItems, ...placeholders].slice(0, MAX_GRID);
 
-    // Ensure no item stays in the same index
-    const previousGrid = previousGridRef.current;
-    let attempt = 0;
-    const maxAttempts = 20;
+    return combined;
+  };
 
-    while (attempt < maxAttempts) {
-      const changed = combined.some((item, index) => {
-        return item.handle !== previousGrid[index]?.handle;
-      });
-      if (changed) break;
-      combined.sort(() => Math.random() - 0.5);
-      attempt++;
+  const shuffleGrid = (currentGrid) => {
+    const numToShuffle = Math.floor(MAX_GRID * SHUFFLE_PERCENT);
+    const indices = Array.from({ length: MAX_GRID }, (_, i) => i);
+    const indicesToShuffle = [];
+
+    // Choose unique random indices
+    while (indicesToShuffle.length < numToShuffle) {
+      const randIndex = Math.floor(Math.random() * indices.length);
+      const idx = indices.splice(randIndex, 1)[0];
+      indicesToShuffle.push(idx);
     }
 
-    previousGridRef.current = combined;
-    return combined;
+    const newGrid = [...currentGrid];
+    const shuffledItems = indicesToShuffle.map((i) => newGrid[i]);
+    const shuffled = shuffledItems.sort(() => Math.random() - 0.5);
+
+    indicesToShuffle.forEach((i, idx) => {
+      newGrid[i] = shuffled[idx];
+    });
+
+    return { grid: newGrid, changedIndices: indicesToShuffle };
   };
 
   useEffect(() => {
     const initialGrid = getNewGrid();
     setVisibleGrid(initialGrid);
+    previousGridRef.current = initialGrid;
 
     const interval = setInterval(() => {
-      const newGrid = getNewGrid();
+      const { grid: newGrid, changedIndices } = shuffleGrid(previousGridRef.current);
       setVisibleGrid(newGrid);
+      setShuffledIndices(changedIndices);
+      previousGridRef.current = newGrid;
     }, 2500);
 
     return () => clearInterval(interval);
@@ -93,38 +107,42 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-3 gap-y-20">
-          {visibleGrid.map((creator, index) => (
-            <div key={index} className="flex items-center justify-center h-24 sm:h-28 bg-transparent">
-              <AnimatePresence mode="popLayout">
-                {creator && (
-                  <motion.div
-                    key={creator.handle + index}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.85 }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                    className="w-full px-2"
-                  >
-                    <Button
-                      onClick={() => {
-                        if (!creator.isPlaceholder) {
-                          setSelectedCreator(creator);
-                        }
-                      }}
-                      disabled={creator.isPlaceholder}
-                      className={`w-full h-20 transition duration-200 text-2xl whitespace-normal break-words text-center px-2 font-semibold ${
-                        creator.isPlaceholder
-                          ? "display-none"
-                          : "bg-black text-white hover:bg-opacity-100 bg-opacity-90"
-                      }`}
+          {visibleGrid.map((creator, index) => {
+            const shouldAnimate = shuffledIndices.includes(index);
+
+            return (
+              <div key={index} className="flex items-center justify-center h-24 sm:h-28 bg-transparent">
+                <AnimatePresence mode="popLayout">
+                  {creator && (
+                    <motion.div
+                      key={creator.id || creator.handle || index}
+                      initial={shouldAnimate ? { opacity: 0, scale: 0 } : false}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.85 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                      className="w-full px-2"
                     >
-                      {creator.isPlaceholder ? "‎" : creator.handle}
-                    </Button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                      <Button
+                        onClick={() => {
+                          if (!creator.isPlaceholder) {
+                            setSelectedCreator(creator);
+                          }
+                        }}
+                        disabled={creator.isPlaceholder}
+                        className={`w-full h-20 transition duration-200 text-2xl whitespace-normal break-words text-center px-2 font-semibold ${
+                          creator.isPlaceholder
+                            ? "display-none"
+                            : "bg-black text-white hover:bg-opacity-100 bg-opacity-90"
+                        }`}
+                      >
+                        {creator.isPlaceholder ? "‎" : creator.handle}
+                      </Button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </motion.div>
 

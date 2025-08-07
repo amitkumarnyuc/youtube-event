@@ -20,7 +20,7 @@ export const QuizStart = ({ onStart }) => (
   >
     <img src={logo} className="w-4/12" alt="Creator Logo" />
    
-       <h1 className="text-8xl font-bold ">Quiz & <br></br>Conquer</h1>
+       <h1 className="text-8xl font-bold ">Quiz & Conquer</h1>
 
     <Button
   onClick={onStart}
