@@ -1550,6 +1550,37 @@ export const creatorsByCategory = {
 };
 
 
+export const categories1=[
+  'Art',
+  'Business & Entrepreneurship',
+  'Cooking',
+  'Dance',
+  'Education & Learning',
+  'Entertainment',
+  'Food',
+  'Gaming',
+  'Health',
+  'Lifestyle',
+  'Music',
+  'News & Information',
+  'Technology'
+]
+
+export const categories2=[
+  'News & Information',
+  'Entertainment',
+  'Food',
+  'Lifestyle',
+  'Art',
+  'Gaming',
+  'Education & Learning',
+  'Technology',
+  'Business & Entrepreneurship',
+  'Sports',
+  'Others',
+  'Cooking'
+]
+
 export const categories = [
   'Art',
   'Automobile',

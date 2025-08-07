@@ -3,7 +3,7 @@ import ChaatbotQuiz from "./Chaatbot/ChaatbotQuiz";
 import QuizApp from "./Quiz/Quiz";
 import HandleHunt from "./HandleHunt/HandleHunt";
 import LeaderBoard from "./Quiz/LeaderBoard";
-import { creatorsByCategory, creatorsByCategory2 } from "./utils";
+import { categories1, categories2, creatorsByCategory, creatorsByCategory2 } from "./utils";
 import Footer from "./components/ui/Footer";
 
 function Home() {
@@ -51,8 +51,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/chaat" element={<ChaatbotQuiz />} />
         <Route path="/quiz" element={<QuizApp />} />
-         <Route path="/handleHunt1" element={<HandleHunt creators={creatorsByCategory}/>} />
-          <Route path="/handleHunt2" element={<HandleHunt creators={creatorsByCategory2}/>} />
+         <Route path="/handleHunt1" element={<HandleHunt creators={creatorsByCategory} categories={categories1}/>} />
+          <Route path="/handleHunt2" element={<HandleHunt creators={creatorsByCategory2} categories={categories2}/>} />
          <Route path="/leaderboard" element={<LeaderBoard/>}/>
       </Routes>
       <Footer/>
