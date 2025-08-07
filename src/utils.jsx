@@ -1589,948 +1589,1406 @@ export const base64ToFile = (base64Data, filename) => {
 };
 
 export const creatorsByCategory2 = {
+  "News & Information": [
+    {
+      "fullName": "Neha Neha",
+      "handle": 11071,
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2F11071%20(Neha%20Neha)%2FUisNFZvZ_11071.png?alt=media&token=b50a63fa-3e89-4009-9daa-aa8d06a9c141",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2F11071%20(Neha%20Neha)%2F11071.jpeg?alt=media&token=53c11787-c67f-4e95-ad02-ba68685886c3"
+    },
+    {
+      "fullName": "Yasin Diwan",
+      "handle": "coolesttechyt",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcoolesttechyt%20(Yasin%20Diwan)%2FAvkcYbIG_coolesttechyt.png?alt=media&token=f617e37a-5aff-4002-8a3b-7cdd73f7cefe",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcoolesttechyt%20(Yasin%20Diwan)%2Fcoolesttechyt.jpeg?alt=media&token=c7ba3ddb-97be-4dc5-b64c-92283ca17e56"
+    },
+    {
+      "fullName": "Dc News",
+      "handle": "dcnews01",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdcnews01%20(Dc%20News)%2FcTbgcOFn_dcnews01.png?alt=media&token=dc7c7eee-3f38-4f6d-bf1a-1fd420806919",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdcnews01%20(Dc%20News)%2Fdcnews01.jpg?alt=media&token=e7e89bb8-c116-4aa9-8e67-b810fa1cdce9"
+    },
+    {
+      "fullName": "Dc Production",
+      "handle": "dcprediction01",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdcprediction01%20(Dc%20Production)%2F7SmolNrT_dcprediction01.png?alt=media&token=5544e72f-e704-4cc6-80a5-a6774dd536d8",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdcprediction01%20(Dc%20Production)%2Fdcprediction01.jpg?alt=media&token=f815ea5f-d2bd-42b0-a4af-bc3a859060a9"
+    },
+    {
+      "fullName": "Japan Pathak",
+      "handle": "deshgujarathd",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdeshgujarathd%20(Japan%20Pathak)%2FpnfTqcJV_deshgujarathd.png?alt=media&token=7fb21925-78f7-45c3-a7c3-49dd9430c90c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdeshgujarathd%20(Japan%20Pathak)%2Fdeshgujarathd.jpg?alt=media&token=eb7c5caa-23be-4bde-9f6f-9e4e93fe654e"
+    },
+    {
+      "fullName": "Abhishek Pandey",
+      "handle": "gridabh",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgridabh%20(Abhishek%20Pandey)%2Ff2FeY6ui_gridabh.png?alt=media&token=63c229e8-562b-47cd-bf88-5cf6ea956ca6",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgridabh%20(Abhishek%20Pandey)%2Fgridabh.jpg?alt=media&token=e803ec12-5371-4c14-9b5f-267f010c1f0d"
+    },
+    {
+      "fullName": "Jigar Patel",
+      "handle": "jigarsview",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fjigarsview%20(Jigar%20Patel)%2FDrBnbH8h_jigarsview.png?alt=media&token=f72876a7-50d8-409e-8451-999fe2551730",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fjigarsview%20(Jigar%20Patel)%2Fjigarsview.jpg?alt=media&token=8b2be14d-3c24-4ec9-ae5b-4d2fa61cf18c"
+    },
+    {
+      "fullName": "Karthik Bimagani",
+      "handle": "kmedia24",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkmedia24%20(Karthik%20Bimagani)%2FYZHcrVub_kmedia24.png?alt=media&token=a3c98f26-45ed-454d-a3a7-62bd8e6a15b5",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkmedia24%20(Karthik%20Bimagani)%2Fkmedia24.jpeg?alt=media&token=c8bfdfd7-294a-4570-b205-da06d2b9303c"
+    },
+    {
+      "fullName": "Rohit Sargar",
+      "handle": "marathiiworld.",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmarathiiworld.%20(Rohit%20Sargar)%2FBHtV8awn_marathiiworld..png?alt=media&token=68d4f2bb-211f-4a2f-bb60-625a2fb61374",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmarathiiworld.%20(Rohit%20Sargar)%2Fmarathiiworld.jpeg?alt=media&token=9dc32b0d-2048-4893-b871-ebfa0241021e"
+    },
+    {
+      "fullName": "Janardan Pandey",
+      "handle": "prabhatkhabartv",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprabhatkhabartv%20(Janardan%20Pandey)%2Fer3jiAjw_prabhatkhabartv.png?alt=media&token=506f8ca8-030a-4da8-a688-d989fcb7cdc5",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprabhatkhabartv%20(Janardan%20Pandey)%2Fprabhatkhabartv.jpeg?alt=media&token=2d891fef-2a76-41a9-a6d4-eb4fe8bf6a12"
+    },
+    {
+      "fullName": "Shailendra Kumar Singh",
+      "handle": "shailendrakireport",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshailendrakireport%20(Shailendra%20Kumar%20Singh)%2FcPi517Fr_shailendrakireport.png?alt=media&token=b1643930-5629-4455-9e6d-a4474351f9d6",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshailendrakireport%20(Shailendra%20Kumar%20Singh)%2Fshailendrakireport.jpeg?alt=media&token=e3bd1a29-605b-4e87-92e8-10843f5f68ea"
+    },
+    {
+      "fullName": "Shyam Singh",
+      "handle": "shyammeerasingh1",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshyammeerasingh1%20(Shyam%20Singh)%2FsNIMZDi4_shyammeerasingh1.png?alt=media&token=075165ab-316c-4b04-bad7-aabcbe11f580",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshyammeerasingh1%20(Shyam%20Singh)%2Fshyammeerasingh1.jpeg?alt=media&token=9260ec2c-e7cd-4e87-8c8a-1945c3b2373a"
+    },
+    {
+      "fullName": "Nikul Prajapati",
+      "handle": "thecuriousbanda",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthecuriousbanda%20(Nikul%20Prajapati)%2FpCfwBVUU_thecuriousbanda.png?alt=media&token=c5d16aa8-7d6a-407e-849c-44e3a3ead99b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthecuriousbanda%20(Nikul%20Prajapati)%2Fthecuriousbanda.jpeg?alt=media&token=64b5e7d9-9294-48bb-ad53-8cf9a7ed538a"
+    },
+    {
+      "fullName": "Sumit Tiwari",
+      "handle": "therashtraniti",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftherashtraniti%20(Sumit%20Tiwari)%2FwMYqVhMa_therashtraniti.png?alt=media&token=eb1e909f-e0ad-46a6-b711-99882539dc9a",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftherashtraniti%20(Sumit%20Tiwari)%2Ftherashtraniti.jpeg?alt=media&token=bb9bc3f0-3c2a-4f02-8718-212c4f943239"
+    },
+    {
+      "fullName": "Hemlata Bhatt",
+      "handle": "topnewsnetworks",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftopnewsnetworks%20(Hemlata%20Bhatt)%2FHNV45vOM_topnewsnetworks.png?alt=media&token=0874b531-fb22-49e5-97eb-67396a2d3559",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftopnewsnetworks%20(Hemlata%20Bhatt)%2Ftopnewsnetworks.jpeg?alt=media&token=67c8bd06-8b9f-4621-84ee-c2a9ae42bf97"
+    },
+    {
+      "fullName": "Shashank Singh",
+      "handle": "triplesewenfacts",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftriplesewenfacts%20(Shashank%20Singh)%2Fna8KgKuK_triplesewenfacts.png?alt=media&token=46681933-70d2-459f-a76c-405ebafc4a44",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftriplesewenfacts%20(Shashank%20Singh)%2Ftriplesewenfacts.jpeg?alt=media&token=c19a31f7-4831-4e43-a3c8-f2cb99c38057"
+    },
+    {
+      "fullName": "Rais Khan",
+      "handle": "valeriamexico1",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvaleriamexico1%20(Rais%20Khan)%2FTuh4QWcQ_valeriamexico1.png?alt=media&token=f9ac831d-d4de-45ef-abc6-2baefd5172de",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvaleriamexico1%20(Rais%20Khan)%2Fvaleriamexico1.jpeg?alt=media&token=959da978-1c11-4ef1-9396-194e8e538202"
+    },
+    {
+      "fullName": "Vivek More",
+      "handle": "viralinindia1",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fviralinindia1%20(Vivek%20More)%2FIv9HsIse_viralinindia1.png?alt=media&token=5e5587b4-4f17-435a-8368-dc434f266a80",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fviralinindia1%20(Vivek%20More)%2Fviralinindia1.jpeg?alt=media&token=f350ffa6-153b-432d-8f32-f2fd5f41854f"
+    }
+  ],
+  "Entertainment": [
+    {
+      "fullName": "Abhishek Rai",
+      "handle": "abhishekanimations8888",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fabhishekanimations8888%20(Abhishek%20Rai)%2Fabhishekanimations8888.png?alt=media&token=41906d44-de26-4717-8d65-3ec21c5e03c3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fabhishekanimations8888%20(Abhishek%20Rai)%2Fabhishekanimations8888.jpeg?alt=media&token=a570c23a-238f-424e-bf09-881fa1914d1d"
+    },
+    {
+      "fullName": "Actor Brajesh",
+      "handle": "actorbrijesh4247",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Factorbrijesh4247%20(Actor%20Brajesh)%2Fldp0Y9Vc_actorbrijesh4247.png?alt=media&token=6105edae-e353-4a96-b431-20e28619485b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Factorbrijesh4247%20(Actor%20Brajesh)%2Factorbrijesh4247.png?alt=media&token=13e29e1b-32e7-4222-a9c8-af0bceba689f"
+    },
+    {
+      "fullName": "Shabdashri Murhe",
+      "handle": "aifunwithv",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Faifunwithv%20(Shabdashri%20Murhe)%2FkAUgC364_aifunwithv.png?alt=media&token=d8d41cc8-3dc6-417a-b107-a8ded6f9628a",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Faifunwithv%20(Shabdashri%20Murhe)%2Faifunwithv.jpeg?alt=media&token=fcc28b9b-17bc-4b92-92b1-423ba4db9bc6"
+    },
+    {
+      "fullName": "Akshay Makwana",
+      "handle": "akshaymakwanadance",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fakshaymakwanadance%20(Akshay%20Makwana)%2FVyatpTDm_akshaymakwanadance.png?alt=media&token=38a7a63c-9345-45f7-82a9-101032e37643",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fakshaymakwanadance%20(Akshay%20Makwana)%2Fakshaymakwanadance.jpeg?alt=media&token=b8218bba-044a-476a-b59d-c7470b6db583"
+    },
+    {
+      "fullName": "Seetaravamma Enugula",
+      "handle": "ammathokaburlu6226",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fammathokaburlu6226%20(Seetaravamma%20Enugula)%2FdsStInJu_ammathokaburlu6226.png?alt=media&token=e4d30adc-b649-4311-add8-47ddb2065e78",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fammathokaburlu6226%20(Seetaravamma%20Enugula)%2Fammathokaburlu6226.png?alt=media&token=8cfdff47-3f93-4e11-9293-dd93d252f063"
+    },
+    {
+      "fullName": "Anshu Kushwaha",
+      "handle": "anaisytt",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fanaisytt%20(Anshu%20Kushwaha)%2FlkV73P9E_anaisytt.png?alt=media&token=78caad01-2eed-4f6b-9164-00142608de3a",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fanaisytt%20(Anshu%20Kushwaha)%2Fanaisytt.jpeg?alt=media&token=ce4de64d-f31e-440d-a9a0-2f746562ed7f"
+    },
+    {
+      "fullName": "Ankit Upadhyay",
+      "handle": "ankitupadhyay8-wf9xi",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fankitupadhyay8-wf9xi%20(Ankit%20Upadhyay)%2F4gu47eMp_ankitupadhyay8-wf9xi.png?alt=media&token=95173f8e-868e-4ebd-b211-4aa1a7a351b1",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fankitupadhyay8-wf9xi%20(Ankit%20Upadhyay)%2Fankitupadhyay8-wf9xi.jpeg?alt=media&token=57f208b0-301e-4623-ba1b-dadbdbeeb27f"
+    },
+    {
+      "fullName": "Kamini Bhati",
+      "handle": "artstube0",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fartstube0%20(Kamini%20Bhati)%2FxtJYwyPs_artstube0.png?alt=media&token=478897d9-99f7-4b7e-9c42-a8c98964ffeb",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fartstube0%20(Kamini%20Bhati)%2Fartstube0.jpeg?alt=media&token=9c1bb504-4ccc-4941-983c-e57d9fc83e6b"
+    },
+    {
+      "fullName": "Aswathy Pj",
+      "handle": "aswathyamarnath",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Faswathyamarnath%20(Aswathy%20Pj)%2Fz6RHllJE_aswathyamarnath.png?alt=media&token=78d4b325-a4d3-412d-9b59-c3a670e4ef34",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Faswathyamarnath%20(Aswathy%20Pj)%2Faswathyamarnath.jpeg?alt=media&token=b9f3e4ce-bba0-4b4b-aa8c-f48ed256b032"
+    },
+    {
+      "fullName": "Biplonath Das",
+      "handle": "bforbiplob",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbforbiplob%20(Biplonath%20Das)%2F2ws97UFy_bforbiplob.png?alt=media&token=4e6804dc-89be-497f-a0c4-b3889ea8ac4c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbforbiplob%20(Biplonath%20Das)%2Fbforbiplob.jpeg?alt=media&token=3d15d639-d77a-4b09-9ed7-9421a2a12c35"
+    },
+    {
+      "fullName": "Bhawani Singh Rathor",
+      "handle": "bhawani_97",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbhawani_97%20(Bhawani%20Singh%20Rathor)%2F7TDi4eJs_bhawani_97.png?alt=media&token=c201c9a3-e43b-41ad-ad26-e1a4ee47240b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbhawani_97%20(Bhawani%20Singh%20Rathor)%2Fbhawani_97.jpeg?alt=media&token=49b99764-4290-48c5-b6fb-2a46b9a6f830"
+    },
+    {
+      "fullName": "Amaresh Kumar",
+      "handle": "comedyk",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcomedyk%20(Amaresh%20Kumar)%2F5isIN4xy_comedyk.png?alt=media&token=c6308f59-cd11-48b9-9056-8ad73d068c02",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcomedyk%20(Amaresh%20Kumar)%2Fcomedyk.jpeg?alt=media&token=565c5227-ee00-4d8f-b9cc-a95f1d97a12f"
+    },
+    {
+      "fullName": "Divy Agrawal",
+      "handle": "dantehindustani",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdantehindustani%20(Divy%20Agrawal)%2FnuCUp0IP_dantehindustani.png?alt=media&token=af3b543e-7fd9-4920-b35d-5d5db3fdb5f8",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdantehindustani%20(Divy%20Agrawal)%2Fdantehindustani.jpg?alt=media&token=68efe5fc-70f6-4544-8da1-5700e98e5600"
+    },
+    {
+      "fullName": "Deepak Kumar",
+      "handle": "deepakmbbs04",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdeepakmbbs04%20(Deepak%20Kumar)%2FuOFCCmAf_deepakmbbs04.png?alt=media&token=c9c672ab-4bfd-464d-907e-dfda5f29e59f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdeepakmbbs04%20(Deepak%20Kumar)%2Fdeepakmbbs04.jpg?alt=media&token=2535f975-5e9b-4efd-990a-f4604497a464"
+    },
+    {
+      "fullName": "Sagar Radadiya",
+      "handle": "dhruhi",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdhruhi%20(Sagar%20Radadiya)%2FdOGVU86v_dhruhi.png?alt=media&token=91684272-66ac-476a-b440-bf6c6c62b952",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdhruhi%20(Sagar%20Radadiya)%2Fdhruhi.jpg?alt=media&token=5e6de920-f7f9-48bf-9a5f-6c6e2261d6ce"
+    },
+    {
+      "fullName": "Richa Patel",
+      "handle": "dhruhi2",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdhruhi2%20(Richa%20Patel)%2FtiDuMeoK_dhruhi2.png?alt=media&token=da9c248f-c6c3-470c-a618-cf1e7bfe01d7",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdhruhi2%20(Richa%20Patel)%2Fdhruhi2.jpg?alt=media&token=a13dfa5e-6b8d-4091-9152-162e8e0e8558"
+    },
+    {
+      "fullName": "Divan Singh",
+      "handle": "divansinghandbabitasingh",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdivansinghandbabitasingh%20(Divan%20Singh)%2FQTdJaw9d_divansinghandbabitasingh.png?alt=media&token=e6b51d67-c86f-4806-b18e-67e9142a6c40",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdivansinghandbabitasingh%20(Divan%20Singh)%2Fdivansinghandbabitasingh.jpg?alt=media&token=ac6da6ee-e44e-46cc-ad16-b0a500f9797e"
+    },
+    {
+      "fullName": "Rupal Lakkad",
+      "handle": "divyagatha",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdivyagatha%20(Rupal%20Lakkad)%2FRWDfGS97_divyagatha.png?alt=media&token=b8bf7a73-d566-4ab3-9d00-c2fc287394de",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdivyagatha%20(Rupal%20Lakkad)%2Fdivyagatha.jpg?alt=media&token=b9244287-9dd8-40e0-b3e5-43c5f6910caa"
+    },
+    {
+      "fullName": "Harsh Talaviya",
+      "handle": "evergreensongsm1",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fevergreensongsm1%20(Harsh%20Talaviya)%2FZ2i7Kqz8_evergreensongsm1.png?alt=media&token=4e32a4b9-6bcf-4568-a272-a6c63534d852",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fevergreensongsm1%20(Harsh%20Talaviya)%2Fevergreensongsm1.jpg?alt=media&token=ac093c62-4f2b-4421-be13-c15ce4b9af9b"
+    },
+    {
+      "fullName": "Ravi Gupta",
+      "handle": "filmifever",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffilmifever%20(Ravi%20Gupta)%2FAe1m9DAp_filmifever.png?alt=media&token=92c19bb0-6ff3-4cd8-801f-37ba4f4c20fb",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffilmifever%20(Ravi%20Gupta)%2Ffilmifever.jpg?alt=media&token=111d8804-d018-426f-92ae-5d7b0478a391"
+    },
+    {
+      "fullName": "Sajalkumar Ray",
+      "handle": "filmyuncle",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffilmyuncle%20(Sajalkumar%20Ray)%2F8c0ft0Bv_filmyuncle.png?alt=media&token=6e484c9e-b9bc-4959-b6c8-d3cb9c439e70",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffilmyuncle%20(Sajalkumar%20Ray)%2Ffilmyuncle.jpg?alt=media&token=47315788-7c86-471e-9c6e-809939ec72b3"
+    },
+    {
+      "fullName": "Umang Tyagi",
+      "handle": "ghungroo4444uv",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fghungroo4444uv%20(ghungroo4444uv)%2FRo9mWG7V_ghungroo4444uv.png?alt=media&token=6ca2e88a-1859-49f7-a891-6dd614eacc34",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fghungroo4444uv%20(ghungroo4444uv)%2Fghungroo4444uv.jpg?alt=media&token=a75f3ceb-9708-4397-b5df-d80389e68f6d"
+    },
+    {
+      "fullName": "Veena Kumari",
+      "handle": "gouriaastha111",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgouriaastha111%20(Veena%20Kumari)%2Fgouriaastha111.jpg?alt=media&token=ecfbc3ed-8bec-4c2d-83da-97916cfea4c8",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgouriaastha111%20(Veena%20Kumari)%2Fgouriaastha111.jpg?alt=media&token=ecfbc3ed-8bec-4c2d-83da-97916cfea4c8"
+    },
+    {
+      "fullName": "Ahsan Ahmad",
+      "handle": "hungamastudio",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fhungamastudio%20(Ahsan%20Ahmad)%2FgxepQQ2B_hungamastudio.png?alt=media&token=5368acb1-d8b9-4c66-aaea-047edab97f6d",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fhungamastudio%20(Ahsan%20Ahmad)%2Fhungamastudio.jpg?alt=media&token=cd955428-c033-4de7-9850-fc828716d8ad"
+    },
+    {
+      "fullName": "Sarfaraz Kadir",
+      "handle": "iamsarfaraz70",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fiamsarfaraz70%20(Sarfaraz%20Kadir)%2FO6OobUta_iamsarfaraz70.png?alt=media&token=52982199-03e1-495c-a84e-f440731cc3b1",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fiamsarfaraz70%20(Sarfaraz%20Kadir)%2Fiamsarfaraz70.jpg?alt=media&token=4ee0b22b-daa1-4527-b90e-142ffe4d0885"
+    },
+    {
+      "fullName": "Shashi Kant",
+      "handle": "icrookz",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ficrookz%20(Shashi%20Kant%2FyJtw7QI3_icrookz.png?alt=media&token=56eeb8b9-4947-48d6-ba16-5f0cd091c06e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ficrookz%20(Shashi%20Kant%2Ficrookz.jpg?alt=media&token=58f79d44-6922-4646-97c2-53477bf483cf"
+    },
+    {
+      "fullName": "Rohit Singh Diya",
+      "handle": "Idealfectory",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2FIdealfectory%20(Rohit%20Singh%20Diya)%2FvnWXwIPg_Idealfectory.png?alt=media&token=8cb7815b-a289-49de-a699-ba61a6291c5d",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2FIdealfectory%20(Rohit%20Singh%20Diya)%2FIdealfectory.jpg?alt=media&token=5b47d273-ad1c-4233-903d-b504c4ebbca7"
+    },
+    {
+      "fullName": "Babita Madhu Mandal",
+      "handle": "ishanormistihappylifestyle",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fishanormistihappylifestyle%20(Babita%20Madhu%20Mandal)%2F9pOQpxxs_ishanormistihappylifestyle.png?alt=media&token=87821288-5c91-45b5-84ad-875194a9724b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fishanormistihappylifestyle%20(Babita%20Madhu%20Mandal)%2Fishanormistihappylifestyle.jpg?alt=media&token=f7b86387-51f8-4aa8-84aa-efd1ded87ec2"
+    },
+    {
+      "fullName": "Pankaj Shukla",
+      "handle": "kidsonreel",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkidsonreel%20(Pankaj%20Shukla)%2FYpOHQ5HL_kidsonreel.png?alt=media&token=426e3cce-eed0-4880-a371-7d608e501946",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkidsonreel%20(Pankaj%20Shukla)%2Fkidsonreel.png?alt=media&token=b64cb388-2330-4f62-8f3d-2f900c760747"
+    },
+    {
+      "fullName": "Dhanalakshmi Ranganathan",
+      "handle": "lakshmiriyer",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Flakshmiriyer%20(Dhanalakshmi%20Ranganathan)%2FXAY8hDUU_lakshmiriyer.png?alt=media&token=19fbdc15-0457-4a8d-9a83-44327ba1d107",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Flakshmiriyer%20(Dhanalakshmi%20Ranganathan)%2Flakshmiriyer.jpeg?alt=media&token=803863e9-b392-4d0d-8cca-67cfd73d0fd6"
+    },
+    {
+      "fullName": "Sravanthi Battula",
+      "handle": "maachinniprapancham",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmaachinniprapancham%20(Sravanthi%20Battula)%2FmKE86ks5_maachinniprapancham.png?alt=media&token=2e9112e4-2f01-42b2-b3a9-be18244714aa",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmaachinniprapancham%20(Sravanthi%20Battula)%2Fmaachinniprapancham.jpeg?alt=media&token=b02bc4a7-17b1-4547-8166-f8756173c862"
+    },
+    {
+      "fullName": "Namita Tiwari",
+      "handle": "mahitiwari23",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmahitiwari23%20(Namita%20Tiwari)%2FlGM6IgRp_mahitiwari23.png?alt=media&token=1aefe943-fd29-4473-b0f3-9467acf8ede4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmahitiwari23%20(Namita%20Tiwari)%2Fmahitiwari23.jpeg?alt=media&token=81d6e4b4-af1c-49e7-ac6f-2b3851e857d1"
+    },
+    {
+      "fullName": "Malayalam Voice Over",
+      "handle": "malayalam_voice_over",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmalayalam_voice_over%20(Malayalam%20Voice%20Over)%2F7JIPXMqb_malayalam_voice_over.png?alt=media&token=3aa5bbe1-4993-4385-98a5-7c4db4bda31e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmalayalam_voice_over%20(Malayalam%20Voice%20Over)%2Fmalayalam_voice_over.jpeg?alt=media&token=b652b660-1ca8-4aeb-88df-a95ce190e5c1"
+    },
+    {
+      "fullName": "Manish Kumar Verma",
+      "handle": "manishk55553",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmanishk55553%20(Manish%20Kumar%20Verma)%2FYl22Vnvw_manishk55553.png?alt=media&token=c058a480-36d1-4161-aad7-2b24b400311b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmanishk55553%20(Manish%20Kumar%20Verma)%2Fmanishk55553.jpeg?alt=media&token=210b4c37-a2e1-4978-b9af-6d8538ecd92f"
+    },
+    {
+      "fullName": "Mayank Kumar",
+      "handle": "mayankcontentcreator",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmayankcontentcreator%20(Mayank%20Kumar)%2FHdomteo2_mayankcontentcreator.png?alt=media&token=fc511e57-058a-466c-b577-403b525a99b8",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmayankcontentcreator%20(Mayank%20Kumar)%2Fmayankcontentcreator.jpeg?alt=media&token=c1524d1e-3941-4051-b9fc-afc5d5e1a36e"
+    },
+    {
+      "fullName": "Rahul Sharma",
+      "handle": "minivlogs-uk",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fminivlogs-uk%20(Rahul%20Sharma)%2F6c6hzTMV_minivlogs-uk.png?alt=media&token=98073a0f-5996-42f7-92c3-03cc11120fdb",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fminivlogs-uk%20(Rahul%20Sharma)%2Fminivlogs-uk.jpeg?alt=media&token=1240a8ed-68da-4b78-adb9-7857186d4cbe"
+    },
+    {
+      "fullName": "Ashutoshkumar Prasad",
+      "handle": "mkraa1",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmkraa1%20(Ashutoshkumar%20Prasad)%2Fzf2IOxbk_mkraa1.png?alt=media&token=1feea3a6-37ba-403d-bb49-543ed21beb28",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmkraa1%20(Ashutoshkumar%20Prasad)%2Fmkraa1.jpeg?alt=media&token=2e1e6398-6a8c-4b29-9fb9-2f160fcae7c8"
+    },
+    {
+      "fullName": "Mona Biswas",
+      "handle": "mona-biswas",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmona-biswas%20(Mona%20Biswas)%2F6phXhcxa_mona-biswas.png?alt=media&token=930de1d1-f525-482e-a4ec-a04886eeef64",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmona-biswas%20(Mona%20Biswas)%2Fmona-biswas.png?alt=media&token=c86439bc-167f-481f-8b6a-ed515b311aae"
+    },
+    {
+      "fullName": "Prince Maniya",
+      "handle": "monkeymind2025",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmonkeymind2025%20(Prince%20Maniya)%2FnbKwk6MY_monkeymind2025.png?alt=media&token=1eb94c36-ab32-4278-8029-3777c43647b2",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmonkeymind2025%20(Prince%20Maniya)%2Fmonkeymind2025.jpeg?alt=media&token=4cd58ccd-45b3-4e1d-a9b1-1a882d5db351"
+    },
+    {
+      "fullName": "Kundan Jha",
+      "handle": "motovloggerkundanjha",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmotovloggerkundanjha%20(Kundan%20Jha)%2FxPLcwDtZ_motovloggerkundanjha.png?alt=media&token=15ce4f35-22ba-462e-9fce-4d767f8983c1",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmotovloggerkundanjha%20(Kundan%20Jha)%2Fmotovloggerkundanjha.jpeg?alt=media&token=fdedaf6e-e53c-4f9a-ab3c-6044633d0af4"
+    },
+    {
+      "fullName": "Namrata Tiwari",
+      "handle": "namrata.tiwarii",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnamrata.tiwarii%20(Namrata%20Tiwari)%2Fxx5JS7V4_namrata.tiwarii.png?alt=media&token=cdcea40b-2636-4304-8bcf-16ea1854127d",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnamrata.tiwarii%20(Namrata%20Tiwari)%2Fnamrata.tiwarii.jpeg?alt=media&token=9da8605f-728e-463c-b083-f405f65b3b9d"
+    },
+    {
+      "fullName": "Chandni .",
+      "handle": "narendra7010",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnarendra7010%20(Chandni%20.)%2F5CJhaRjy_narendra7010.png?alt=media&token=6db8114e-37cf-4bf8-9a3e-a47ad36db9fa",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnarendra7010%20(Chandni%20.)%2Fnarendra7010.jpeg?alt=media&token=6dd4d98e-5f81-4e47-8d30-e564dd567abc"
+    },
+    {
+      "fullName": "Navneet Gupta",
+      "handle": "navneetsumohanmusic",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnavneetsumohanmusic%20(Navneet%20Gupta)%2FO72FHVMH_navneetsumohanmusic.png?alt=media&token=363ea15f-cd51-444b-b25d-68b90aea24bf",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnavneetsumohanmusic%20(Navneet%20Gupta)%2Fnavneetsumohanmusic.jpeg?alt=media&token=db469843-91c0-4335-b162-3b1ab1dd25d6"
+    },
+    {
+      "fullName": "Vishal Kumar",
+      "handle": "pihuvishalvlogs4468",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpihuvishalvlogs4468%20(Vishal%20Kumar)%2FrcqE6YUy_pihuvishalvlogs4468.png?alt=media&token=9f0f5319-f4d4-49f6-aedb-3f735854c8e4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpihuvishalvlogs4468%20(Vishal%20Kumar)%2Fpihuvishalvlogs4468.jpeg?alt=media&token=fb194188-5793-4874-8d8a-67399d96bb3e"
+    },
+    {
+      "fullName": "Pinky Pandey",
+      "handle": "pinkypandey-0099",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpinkypandey-0099%20(Pinky%20Pandey)%2FFVcPgzKb_pinkypandey-0099.png?alt=media&token=adadc6a2-837f-4b77-b252-3d20d0eef7f3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpinkypandey-0099%20(Pinky%20Pandey)%2Fpinkypandey-0099.png?alt=media&token=e212c959-2820-4031-b903-8d1f71e75bc3"
+    },
+    {
+      "fullName": "Siddhesh Shelke",
+      "handle": "politicalflex",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpoliticalflex%20(Siddhesh%20Shelke)%2FBnrIO3iq_politicalflex.png?alt=media&token=c59de914-a056-46bf-b21c-f26d974e0225",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpoliticalflex%20(Siddhesh%20Shelke)%2Fpoliticalflex.jpeg?alt=media&token=dd475dec-6c18-4138-a301-0bcf3b3c8d0b"
+    },
+    {
+      "fullName": "Pramod Singh",
+      "handle": "pramodsinghshivguru",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpramodsinghshivguru%20(Pramod%20Singh)%2FaoW9WilN_pramodsinghshivguru.png?alt=media&token=d30d79ba-e1a6-42dc-b07d-c60a36e8cfae",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpramodsinghshivguru%20(Pramod%20Singh)%2Fpramodsinghshivguru.png?alt=media&token=14d47a98-6880-4303-b7a9-e32d15bd2f47"
+    },
+    {
+      "fullName": "Prince Telor",
+      "handle": "prince.namdev_",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprince.namdev_%20(Prince%20Telor)%2Ft4QlRy8m_prince.namdev_.png?alt=media&token=7f18cf87-b808-4d70-b209-cf4e7111aaef",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprince.namdev_%20(Prince%20Telor)%2Fprince.namdev_.jpeg?alt=media&token=2fa33cce-4149-43a9-90b1-287e3049baf2"
+    },
+    {
+      "fullName": "Ehtesham Mukri",
+      "handle": "psychemindss",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpsychemindss%20(Ehtesham%20Mukri)%2FyboKJgs6_psychemindss.png?alt=media&token=97c0eec9-1aaf-45d2-81fe-7adeb2b3b553",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpsychemindss%20(Ehtesham%20Mukri)%2Fpsychemindss.jpeg?alt=media&token=8489083c-24df-4a86-9c12-9ac7ee477281"
+    },
+    {
+      "fullName": "Rahul Dubey",
+      "handle": "rahulbhaiyashort",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frahulbhaiyashort%20(Rahul%20Dubey)%2F0yMDCa36_rahulbhaiyashort.png?alt=media&token=93222a22-2415-4a3b-b2fd-e2c8e5b925e0",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frahulbhaiyashort%20(Rahul%20Dubey)%2Frahulbhaiyashort.png?alt=media&token=684725e7-670a-4cfb-8736-7f4ed0da3315"
+    },
+    {
+      "fullName": "Narendra Daiya",
+      "handle": "rc_7010",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frc_7010%20(Narendra%20Daiya)%2FHuRoHua4_rc_7010.png?alt=media&token=6aa90915-23c0-4f8a-8afd-c92d68c8e06f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frc_7010%20(Narendra%20Daiya)%2Frc_7010.jpeg?alt=media&token=69ec6930-e171-49cb-a19b-adaf7543b2f2"
+    },
+    {
+      "fullName": "Bhavik Gandhi",
+      "handle": "realbadogameplay",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frealbadogameplay%20(Bhavik%20Gandhi)%2FPloOkEze_realbadogameplay.png?alt=media&token=269e9b2c-23b2-430d-ae72-9e8672c49ea0",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frealbadogameplay%20(Bhavik%20Gandhi)%2Frealbadogameplay.jpeg?alt=media&token=d99552d4-8893-44b4-8760-d9fe7f78a969"
+    },
+    {
+      "fullName": "Review With Nik",
+      "handle": "reviewwithnik",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Freviewwithnik%20(Review%20With%20Nik)%2FGh7vnocO_reviewwithnik.png?alt=media&token=53ed5be3-cbf2-4733-98a0-71efc0229aa7",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Freviewwithnik%20(Review%20With%20Nik)%2Freviewwithnik.jpeg?alt=media&token=40a08823-3c70-4f06-9ff8-cf65ede04cad"
+    },
+    {
+      "fullName": "Rituraj Dwivedi",
+      "handle": "rituraz-gaming",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frituraz-gaming%20(Rituraj%20Dwivedi)%2FKEvFGXTe_rituraz-gaming.png?alt=media&token=356d8bbc-3d95-472a-ae96-bd83192b2aee",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frituraz-gaming%20(Rituraj%20Dwivedi)%2Frituraz-gaming.jpeg?alt=media&token=30c36368-3fd2-43cf-800a-f02f238e80d3"
+    },
+    {
+      "fullName": "Sandip Samanta",
+      "handle": "sagarruidasvlogs",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsagarruidasvlogs%20(Sandip%20Samanta)%2FAEYw5UQx_sagarruidasvlogs.png?alt=media&token=32948b6d-0a34-4865-90b9-1d8351b868e5",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsagarruidasvlogs%20(Sandip%20Samanta)%2Fsagarruidasvlogs.jpeg?alt=media&token=40373d68-39af-4332-b984-26b6e99e71f8"
+    },
+    {
+      "fullName": "Sahil Dagar",
+      "handle": "sahildagarvlogs",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsahildagarvlogs%20(Sahil%20Dagar)%2FzARO2MdT_sahildagarvlogs.png?alt=media&token=b8347a31-3c0d-447c-a474-c932f0e5c1a0",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsahildagarvlogs%20(Sahil%20Dagar)%2Fsahildagarvlogs.jpeg?alt=media&token=5b0fe741-8990-4418-8253-8d9c4082b813"
+    },
+    {
+      "fullName": "Vansh Chapadia",
+      "handle": "savagsgaming",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsavagsgaming%20(Vansh%20Chapadia)%2Fw78NYDMX_savagsgaming.png?alt=media&token=b74787bd-0bcb-4b5a-a22f-463a0c0aa4de",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsavagsgaming%20(Vansh%20Chapadia)%2Fsavagsgaming.jpeg?alt=media&token=e4431f90-7cf4-4066-ae85-54bdd68c46f4"
+    },
+    {
+      "fullName": "Shivam Bisen",
+      "handle": "shivambisen83974",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshivambisen83974%20(Shivam%20Bisen)%2FUlQMEQhH_shivambisen83974.png?alt=media&token=2cac8808-2a43-41d7-bbed-e15f0defdfd6",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshivambisen83974%20(Shivam%20Bisen)%2Fshivambisen83974.png?alt=media&token=2cbdb669-579b-4d83-b712-b881e690c1a6"
+    },
+    {
+      "fullName": "Speedy Hrk",
+      "handle": "speedyhrk",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fspeedyhrk%20(Speedy%20Hrk)%2FAddS21PR_speedyhrk.png?alt=media&token=22bc7e94-80c9-49a6-bdd5-aab41703a480",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fspeedyhrk%20(Speedy%20Hrk)%2Fspeedyhrk.png?alt=media&token=e3c63fde-09ca-4def-95a5-dea45cb7bfa4"
+    },
+    {
+      "fullName": "Suchita Tiwari",
+      "handle": "suchitiwari13",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsuchitiwari13%20(Suchita%20Tiwari)%2FUhOejkD9_suchitiwari13.png?alt=media&token=7c836a44-2d23-4248-b621-3a8de88c842a",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsuchitiwari13%20(Suchita%20Tiwari)%2Fsuchitiwari13.jpeg?alt=media&token=686c1e4b-51b2-4c6a-8969-344e5cc6e306"
+    },
+    {
+      "fullName": "Surumi Bross",
+      "handle": "surumibross",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsurumibross%20(Surumi%20Bross)%2FTuQLu5nG_surumibross.png?alt=media&token=208d448b-38c6-4019-9bd6-e34a742fe17b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsurumibross%20(Surumi%20Bross)%2Fsurumibross.png?alt=media&token=a579be0a-02e7-44af-89ce-517dce82846d"
+    },
+    {
+      "fullName": "Taranjeet Singh",
+      "handle": "taranjietsinghnamdhari",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftaranjietsinghnamdhari%20(Taranjeet%20Singh)%2FBeFFdCJC_taranjietsinghnamdhari.png?alt=media&token=25c4f80f-4727-4875-9a96-6d3ba8cedd90",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftaranjietsinghnamdhari%20(Taranjeet%20Singh)%2Ftaranjietsinghnamdhari.jpeg?alt=media&token=f8607301-02e8-4986-86d5-a422e6e6dfaf"
+    },
+    {
+      "fullName": "Suraj Rajput",
+      "handle": "teamactors",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fteamactors%20(Suraj%20Rajput)%2FyMvuF4OT_teamactors.png?alt=media&token=e183f19e-1723-4588-ab95-4fa4f1842d9a",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fteamactors%20(Suraj%20Rajput)%2Fteamactors.jpeg?alt=media&token=87412bb3-7861-45d1-87a9-a7aed0bd2a82"
+    },
+    {
+      "fullName": "Kamlesh Prajapati",
+      "handle": "thegamexkiller",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthegamexkiller%20(Kamlesh%20Prajapati)%2FdykXGV13_thegamexkiller.png?alt=media&token=6b0e5c40-1fb8-4a72-89ec-c10b74711d74",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthegamexkiller%20(Kamlesh%20Prajapati)%2Fthegamexkiller.jpeg?alt=media&token=ac9f96dd-432b-4ffe-8eeb-a87f3ec156b5"
+    },
+    {
+      "fullName": "Aditya Gupta",
+      "handle": "Theimpostervlogs",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2FTheimpostervlogs%20(Aditya%20Gupta)%2Fj8YzkeIM_Theimpostervlogs.png?alt=media&token=f2c8ad4d-49a5-4acb-8e7f-104ab091917e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2FTheimpostervlogs%20(Aditya%20Gupta)%2Ftheimpostervlogs.png?alt=media&token=cce7fef5-594e-4dfd-ab85-84aaaba40483"
+    },
+    {
+      "fullName": "Bhavik Gandhi",
+      "handle": "therealityyt",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftherealityyt%20(Bhavik%20Gandhi)%2FyinAIDrG_therealityyt.png?alt=media&token=8fd83f9c-fc3d-4c0f-af82-9ab258fa1405",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftherealityyt%20(Bhavik%20Gandhi)%2Ftherealityyt.jpeg?alt=media&token=30b33e70-f7f6-4b5e-9f6d-0142be5e6eb3"
+    },
+    {
+      "fullName": "Akil Shah",
+      "handle": "tinyspidy",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftinyspidy%20(Akil%20Shah)%2FiDDCPLQ9_tinyspidy.png?alt=media&token=048a68c4-4c91-49f9-86c1-c6791cd5cf41",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftinyspidy%20(Akil%20Shah)%2Ftinyspidy.png?alt=media&token=c7347fd5-3605-4ca8-865c-e8bdb2d3aabe"
+    },
+    {
+      "fullName": "Veer Bahadur",
+      "handle": "veerveer5512",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fveerveer5512%20(Veer%20Bahadur)%2F7tNcmLb0_veerveer5512.png?alt=media&token=479572fc-084d-47ad-8fe3-d18fa6b59fda",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fveerveer5512%20(Veer%20Bahadur)%2Fveerveer5512.png?alt=media&token=8aee28b5-6551-47e9-a33e-ba16c7fa1087"
+    },
+    {
+      "fullName": "Vishu Bhandari",
+      "handle": "viishubhandari",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fviishubhandari%20(Vishu%20Bhandari)%2Fn20jR1ub_viishubhandari.png?alt=media&token=a894b64f-1921-4bfe-93a0-8359d1c982dd",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fviishubhandari%20(Vishu%20Bhandari)%2Fviishubhandari.png?alt=media&token=ad965294-e6c3-4f6b-9d2e-8d81c8178073"
+    },
+    {
+      "fullName": "Satish Chand",
+      "handle": "vishalbarsana",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvishalbarsana%20(Satish%20Chand)%2Fe0Voo3Jt_vishalbarsana.png?alt=media&token=7a275e17-2d3f-4905-b50e-61dc068e903b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvishalbarsana%20(Satish%20Chand)%2Fvishalbarsana.png?alt=media&token=d01e1664-dc7d-4eb4-bf09-2d349977cdf0"
+    },
+    {
+      "fullName": "Abhay Tank",
+      "handle": "wafer-the-dog",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fwafer-the-dog%20(Abhay%20Tank)%2Fh1X41rKx_wafer-the-dog.png?alt=media&token=01d17742-20a3-48d8-be06-577cdede7513",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fwafer-the-dog%20(Abhay%20Tank)%2Fwafer-the-dog.jpeg?alt=media&token=9550edb3-f620-499a-9244-df6e071e03a9"
+    },
+    {
+      "fullName": "Jenish Boss",
+      "handle": "zufflooo",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fzufflooo%20(Jenish%20Boss)%2FIOuSyu7W_zufflooo.png?alt=media&token=503ad921-9ed2-412a-8078-8a0e7ed36314",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fzufflooo%20(Jenish%20Boss)%2Fzufflooo.png?alt=media&token=90b41605-05a0-4730-8d82-1256f0b25d03"
+    }
+  ],
+  "Food": [
+    {
+      "fullName": "Anjana Dixit",
+      "handle": "anjanadixitkiaasaanrecipe6351",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fanjanadixitkiaasaanrecipe6351%20(Anjana%20Dixit)%2FnWRBqU35_anjanadixitkiaasaanrecipe6351.png?alt=media&token=b035de04-0899-4540-81bf-3110a1dbb27e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fanjanadixitkiaasaanrecipe6351%20(Anjana%20Dixit)%2Fanjanadixitkiaasaanrecipe6351.jpeg?alt=media&token=7155f4c3-bff8-408c-816c-5b81190b054d"
+    },
+    {
+      "fullName": "Ankit Barnwal",
+      "handle": "chatoraankit",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchatoraankit%20(Ankit%20Barnwal)%2FeppSQ92J_chatoraankit.png?alt=media&token=d05d09b8-4ca1-4b1c-9ab1-8af2a761b663",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchatoraankit%20(Ankit%20Barnwal)%2Fchatoraankit.jpeg?alt=media&token=dc191b02-6e5f-45c5-bcd4-0b81849cb322"
+    },
+    {
+      "fullName": "Devanshi Manihar",
+      "handle": "devanshigaggar7860",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdevanshigaggar7860%20(Devanshi%20Manihar)%2FQyZ9IvRJ_devanshigaggar7860.png?alt=media&token=c6e48adb-6bd5-4442-b3dd-83f18c7c2558",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdevanshigaggar7860%20(Devanshi%20Manihar)%2Fdevanshigaggar7860.jpg?alt=media&token=0fe4b6f3-4718-40df-a57f-0ff9e0fdc719"
+    },
+    {
+      "fullName": "Mayur Surti",
+      "handle": "foodieaddicted",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffoodieaddicted%20(Mayur%20Surti)%2FZppE3mus_foodieaddicted.png?alt=media&token=0ac1e899-adbf-476e-8bb5-ce0c7f724de6",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffoodieaddicted%20(Mayur%20Surti)%2Ffoodieaddicted.jpg?alt=media&token=aea95c2a-4a88-4316-baa7-aa053b1e21a4"
+    },
+    {
+      "fullName": "Kuldeep Saraswat",
+      "handle": "ifoodasmr.",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fifoodasmr.%20(Kuldeep%20Saraswat)%2F6LuWkAMV_ifoodasmr..png?alt=media&token=004ca0c4-be82-4d0e-a19f-728dabf12d89",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fifoodasmr.%20(Kuldeep%20Saraswat)%2Fifoodasmr..jpg?alt=media&token=db584255-2e84-405e-8bee-e427204c3cfd"
+    },
+    {
+      "fullName": "Jigar Patel",
+      "handle": "jigarpatelvlogs",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fjigarpatelvlogs%20(Jigar%20Patel)%2Fhg97beaC_jigarpatelvlogs.png?alt=media&token=57c6f9c9-121d-4ae1-934a-8cc8f9afb0d3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fjigarpatelvlogs%20(Jigar%20Patel)%2Fjigarpatelvlogs.jpg?alt=media&token=ce133384-d6cf-48c3-a05c-8ec84b9f546d"
+    },
+    {
+      "fullName": "Ruthwik Durgam",
+      "handle": "nomnomfoodie",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnomnomfoodie%20(Ruthwik%20Durgam)%2FqwEDWRqP_nomnomfoodie.png?alt=media&token=bf50c05f-dff3-4a06-8dbc-53a42e7cd5a3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnomnomfoodie%20(Ruthwik%20Durgam)%2Fnomnomfoodie.jpeg?alt=media&token=8f69cbd6-7b16-4e01-971c-1a4a986b30cd"
+    },
+    {
+      "fullName": "Ashish Agrawal",
+      "handle": "thefooodiepanda",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthefooodiepanda%20(Ashish%20Agrawal)%2FhDXordcg_thefooodiepanda.png?alt=media&token=cad8d8ae-5541-4b2f-b1f8-fb84b12297ea",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthefooodiepanda%20(Ashish%20Agrawal)%2Fthefooodiepanda.jpeg?alt=media&token=5267b975-23b4-44fc-9c8a-c0689d9712b6"
+    },
+    {
+      "fullName": "Sheetal Harsora",
+      "handle": "thekitchenseries",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthekitchenseries%20(Sheetal%20Harsora)%2FGiQgsf3X_thekitchenseries.png?alt=media&token=d5872bef-5c50-4ad4-9345-f5167ac92d6b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthekitchenseries%20(Sheetal%20Harsora)%2Fthekitchenseries.jpeg?alt=media&token=14a1d6b6-a491-43b1-8a61-31110125eff4"
+    }
+  ],
+  "Lifestyle": [
+    {
+      "fullName": "Shabnam Chalanga",
+      "handle": "anushkahairstylet",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fanushkahairstylet%20(Shabnam%20Chalanga)%2FW8Z3ZnxG_anushkahairstylet.png?alt=media&token=64751bc6-d0b1-4d28-8eaa-fbcb3d558631",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fanushkahairstylet%20(Shabnam%20Chalanga)%2Fanushkahairstylet.jpeg?alt=media&token=cfc1c596-d97b-45be-8b12-c5921a7d4a1c"
+    },
+    {
+      "fullName": "Benifer Gandhi",
+      "handle": "beautybybenifer",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbeautybybenifer%20(Benifer%20Gandhi)%2FpfpYKkJQ_beautybybenifer.png?alt=media&token=1955ad76-898b-4799-a03e-6f14e0bfe3c4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbeautybybenifer%20(Benifer%20Gandhi)%2Fbeautybybenifer.jpeg?alt=media&token=95c598db-c8f7-404e-93d1-9cc50de64902"
+    },
+    {
+      "fullName": "Chanchal Manghani",
+      "handle": "chanchalmanghani",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchanchalmanghani%20(Chanchal%20Manghani)%2F0dEsklJn_chanchalmanghani.png?alt=media&token=1d946889-a712-4e96-8c89-5cc61e4d703e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchanchalmanghani%20(Chanchal%20Manghani)%2Fchanchalmanghani.jpeg?alt=media&token=59959c4d-de25-42f9-85ae-9c245178248c"
+    },
+    {
+      "fullName": "Nikunj Vasoya",
+      "handle": "crazyforindianfood",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcrazyforindianfood%20(Nikunj%20Vasoya)%2FNO6fHkux_crazyforindianfood.png?alt=media&token=d72421a7-02e6-4b04-909f-e1cff7be805f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcrazyforindianfood%20(Nikunj%20Vasoya)%2Fcrazyforindianfood.jpeg?alt=media&token=7c0ec914-77a7-4016-be44-b27923ac913e"
+    },
+    {
+      "fullName": "Devyani Chaubey",
+      "handle": "devyanichaubey",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdevyanichaubey%20(Devyani%20Chaubey)%2FjjH9ap1P_devyanichaubey.png?alt=media&token=e801eb1a-7456-4f6b-aca1-af5742927459",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdevyanichaubey%20(Devyani%20Chaubey)%2Fdevyanichaubey.jpg?alt=media&token=663e017d-1ca5-408e-ab83-8a950f27ecff"
+    },
+    {
+      "fullName": "Dhaval Patil",
+      "handle": "dpsvlog",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdpsvlog%20(Dhaval%20Patil)%2FYpKt9AVY_dpsvlog.png?alt=media&token=78781a74-764e-4c44-98a5-d6e55043b270",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdpsvlog%20(Dhaval%20Patil)%2Fdpsvlog.jpg?alt=media&token=c230776e-3231-4b0f-a7d6-2f32f2c0de3a"
+    },
+    {
+      "fullName": "Paritosh Trivedi",
+      "handle": "drparitoshtrivedi",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdrparitoshtrivedi%20(Paritosh%20Trivedi)%2FkdCizzlS_drparitoshtrivedi.png?alt=media&token=27ac3ea5-76a0-4d42-a63d-ec46442f1c5c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdrparitoshtrivedi%20(Paritosh%20Trivedi)%2Fdrparitoshtrivedi.jpg?alt=media&token=ce2a4600-dda1-4fad-8f5f-229479a00fd7"
+    },
+    {
+      "fullName": "Sandeep Singh Parihar",
+      "handle": "explorewithsanjusingh",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fexplorewithsanjusingh%20(Sandeep%20Singh%20Parihar)%2FNUsXQzHD_explorewithsanjusingh.png?alt=media&token=f19f1813-297d-4afb-9b04-d619fe9cd5cb",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fexplorewithsanjusingh%20(Sandeep%20Singh%20Parihar)%2Fexplorewithsanjusingh.jpg?alt=media&token=7a68d1af-8227-47ce-9bb3-59321ee286b0"
+    },
+    {
+      "fullName": "Komal Patel",
+      "handle": "fashiontalesbykomal",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffashiontalesbykomal%20(Komal%20Patel)%2FRkvcPcXJ_fashiontalesbykomal.png?alt=media&token=ea103108-94da-482c-9c20-dfedb577e64f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffashiontalesbykomal%20(Komal%20Patel)%2Ffashiontalesbykomal.jpg?alt=media&token=8617543e-2f99-4e2a-9e17-42f1de6a31ba"
+    },
+    {
+      "fullName": "Himanshu Yadav",
+      "handle": "itshyvlogs",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fitshyvlogs%20(Himanshu%20Yadav)%2FxEOeBhzU_itshyvlogs.png?alt=media&token=cfe3aaba-2733-43e3-91f5-6eb0a2d340a4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fitshyvlogs%20(Himanshu%20Yadav)%2Fitshyvlogs.jpg?alt=media&token=29c6a0d3-fcb6-436a-928a-e95438cef126"
+    },
+    {
+      "fullName": "Megha Deshmukh",
+      "handle": "itsmylifestoryy",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fitsmylifestoryy%20(Megha%20Deshmukh)%2FI7hTVIMa_itsmylifestoryy.png?alt=media&token=5a30e634-e1d3-4e64-acba-35b531476485",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fitsmylifestoryy%20(Megha%20Deshmukh)%2Fitsmylifestoryy.jpg?alt=media&token=cbaea1e0-6970-4134-8894-9dc0ad798f37"
+    },
+    {
+      "fullName": "Kajal Yogi",
+      "handle": "kajalyogi369",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fkajalyogi369%20(Kajal%20Yogi)%2FC8eRXjZE_kajalyogi369.png?alt=media&token=d421cf56-4183-475c-835d-d9ef766e3224",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fkajalyogi369%20(Kajal%20Yogi)%2Fkajalyogi369.jpg?alt=media&token=1a07ae8c-5287-443f-b1b2-fa7a80f6ce8d"
+    },
+    {
+      "fullName": "Kamlesh Modi Vlogs",
+      "handle": "kamleshmodivlogs",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fkamleshmodivlogs%20(Kamlesh%20Modi%20Vlogs)%2FNuVlyaTV_kamleshmodivlogs.png?alt=media&token=65de937d-df59-44d7-ba38-cb94e080db58",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fkamleshmodivlogs%20(Kamlesh%20Modi%20Vlogs)%2Fkamleshmodivlogs.jpg?alt=media&token=bc9a0f0e-42d9-4dd2-a2e3-69398c727ffc"
+    },
+    {
+      "fullName": "Nita Modi",
+      "handle": "kathiyawadivlogs",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkathiyawadivlogs%20(Nita%20Modi)%2FsoM9mCBK_kathiyawadivlogs.png?alt=media&token=fcf75f1c-df76-4590-8fd5-7a6c72ff7ba6",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkathiyawadivlogs%20(Nita%20Modi)%2Fkathiyawadivlogs.jpeg?alt=media&token=d93b3698-818a-4603-b7c2-0412b06b0779"
+    },
+    {
+      "fullName": "Keerthana Ravindran",
+      "handle": "keerthanaravindran",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkeerthanaravindran%20(Keerthana%20Ravindran)%2FcArmrJmj_keerthanaravindran.png?alt=media&token=27327ada-1df2-450c-a3fd-6a098ce40586",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkeerthanaravindran%20(Keerthana%20Ravindran)%2Fkeerthanaravindran.png?alt=media&token=c39a3947-3e39-46cd-8a2f-ff01a24d83ac"
+    },
+    {
+      "fullName": "Falguni Chatterjee",
+      "handle": "kothaikifc",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkothaikifc%20(Falguni%20Chatterjee)%2FsX3VmiPv_kothaikifc.png?alt=media&token=1a22ccb2-971a-4239-9031-3508191ed361",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkothaikifc%20(Falguni%20Chatterjee)%2Fkothaikifc.jpeg?alt=media&token=27b2292f-357b-4252-b793-198d7d10b9d5"
+    },
+    {
+      "fullName": "Chaitanya Samse",
+      "handle": "mh23vlooger",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmh23vlooger%20(Chaitanya%20Samse)%2F1oudXKH1_mh23vlooger.png?alt=media&token=38be2333-eed4-4f07-bad9-b2340475740f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmh23vlooger%20(Chaitanya%20Samse)%2Fmh23vlooger.jpeg?alt=media&token=03878ffd-de87-47d4-81b1-4eddc2e4529a"
+    },
+    {
+      "fullName": "Rishabh Yadav",
+      "handle": "mr.yadavjifashioncode4079",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmr.yadavjifashioncode4079%20(Rishabh%20Yadav)%2FSmCLLOn7_mr.yadavjifashioncode4079.png?alt=media&token=979852fe-50e7-4bf2-80ef-cd2e180036b3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmr.yadavjifashioncode4079%20(Rishabh%20Yadav)%2Fmr.yadavjifashioncode4079.jpeg?alt=media&token=e7c9b624-99ae-460f-83c1-f7cf7037ae14"
+    },
+    {
+      "fullName": "Sakshi Kulshrestha",
+      "handle": "naturalcarewithsakshi",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnaturalcarewithsakshi%20(Sakshi%20Kulshrestha)%2FlHzSWXvh_naturalcarewithsakshi.png?alt=media&token=e67eb6fb-58f4-4381-972d-b88d2a556902",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnaturalcarewithsakshi%20(Sakshi%20Kulshrestha)%2Fnaturalcarewithsakshi.jpeg?alt=media&token=16e50490-6fef-4055-a99d-2856b5627a7f"
+    },
+    {
+      "fullName": "Animesh Nandy",
+      "handle": "paradisepetvlogs7125",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fparadisepetvlogs7125%20(Animesh%20Nandy)%2Fy8F0ME7g_paradisepetvlogs7125.png?alt=media&token=eb5ab91b-c6dc-44bb-9604-2cf615b388f7",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fparadisepetvlogs7125%20(Animesh%20Nandy)%2Fparadisepetvlogs7125.jpeg?alt=media&token=1e56ed91-80ac-4d04-9512-e9b973a3ce5c"
+    },
+    {
+      "fullName": "Prachi Sinha",
+      "handle": "prachiglamm",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprachiglamm%20(Prachi%20Sinha)%2FySzJBNLy_prachiglamm.png?alt=media&token=318bb462-7a84-48f4-af94-e82f77803443",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprachiglamm%20(Prachi%20Sinha)%2Fprachiglamm.jpeg?alt=media&token=6e468f33-8b37-403d-9870-ac94b98db879"
+    },
+    {
+      "fullName": "Krish Arora",
+      "handle": "proudopinions",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fproudopinions%20(Krish%20Arora)%2FRfDIrkTa_proudopinions.png?alt=media&token=468cd951-667b-4920-afbd-3f7324005886",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fproudopinions%20(Krish%20Arora)%2Fproudopinions.jpeg?alt=media&token=a4b81324-7974-4f9a-9a13-db3467f96719"
+    },
+    {
+      "fullName": "Rafik Islam",
+      "handle": "rafiqulvillageofficial8077",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frafiqulvillageofficial8077%20(Rafik%20Islam)%2F3dRh7veb_rafiqulvillageofficial8077.png?alt=media&token=2b6625bf-004d-4943-b99a-41f7b9c9c843",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frafiqulvillageofficial8077%20(Rafik%20Islam)%2Frafiqulvillageofficial8077.jpeg?alt=media&token=79cd9dc5-ca9f-4c3c-acda-31126ad142e2"
+    },
+    {
+      "fullName": "Sahil Rajoria",
+      "handle": "sahilrajoria",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsahilrajoria%20(Sahil%20Rajoria)%2FrOJ5UmjG_sahilrajoria.png?alt=media&token=83e6ed06-ab4c-470e-a6db-146e01ed7386",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsahilrajoria%20(Sahil%20Rajoria)%2Fsahilrajoria.jpeg?alt=media&token=89622cab-437b-40a5-ae03-1acd8a884f22"
+    },
+    {
+      "fullName": "Sana Saifi",
+      "handle": "sanasaifi__",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsanasaifi__%20(Sana%20Saifi)%2FYBEXSRPv_sanasaifi__.png?alt=media&token=f47a28bf-6c00-4432-9e19-da5b4902ddc2",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsanasaifi__%20(Sana%20Saifi)%2Fsanasaifi__.jpeg?alt=media&token=7b2289b6-a826-4dd7-94a5-cd95a4b6d6db"
+    },
+    {
+      "fullName": "Talaviya Sandip",
+      "handle": "sandiptalaviyaofficials",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsandiptalaviyaofficials%20(Talaviya%20Sandip)%2FBdLa8FWn_sandiptalaviyaofficials.png?alt=media&token=5e59e3a2-cfb7-453c-a55c-2f993731b422",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsandiptalaviyaofficials%20(Talaviya%20Sandip)%2Fsandiptalaviyaofficials.jpeg?alt=media&token=e3c2be55-5872-4909-898d-71737552c3b7"
+    },
+    {
+      "fullName": "Mohd Tabish",
+      "handle": "skykinghealthlifestyle",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fskykinghealthlifestyle%20(Mohd%20Tabish)%2FEtsJHsih_skykinghealthlifestyle.png?alt=media&token=904c41da-496c-427d-959e-7cc85768e870",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fskykinghealthlifestyle%20(Mohd%20Tabish)%2Fskykinghealthlifestyle.jpeg?alt=media&token=dfc70a8c-215d-4e52-87c9-e360c2536fae"
+    },
+    {
+      "fullName": "Sneha Mahamuni",
+      "handle": "snehpravas",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsnehpravas%20(Sneha%20Mahamuni)%2FXmZe7EeM_snehpravas.png?alt=media&token=dcfac065-7389-426e-a6af-6c2461f0c66e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsnehpravas%20(Sneha%20Mahamuni)%2Fsnehpravas.jpeg?alt=media&token=b26ff234-23dd-482a-9101-31e5101124c1"
+    },
+    {
+      "fullName": "Bilkish Pathan",
+      "handle": "sony.makeover3054",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsony.makeover3054%20(Bilkish%20Pathan)%2F8gcMklyg_sony.makeover3054.png?alt=media&token=940209d4-b24e-4ab3-9c39-6eadb504d4b6",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsony.makeover3054%20(Bilkish%20Pathan)%2Fsony.makeover3054.jpeg?alt=media&token=6101525c-ec01-4d1a-8f3d-c257226365a6"
+    },
+    {
+      "fullName": "Sudhir Panwar",
+      "handle": "sudhya",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsudhya%20(Sudhir%20Panwar)%2FGhwAeqo2_sudhya.png?alt=media&token=c4160310-e2c8-4b62-b9b3-76ce8c0194f0",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsudhya%20(Sudhir%20Panwar)%2Fsudhya.png?alt=media&token=1aae5207-e006-4633-8cb0-3d95b737a1df"
+    },
+    {
+      "fullName": "Tarique Choudhury",
+      "handle": "tariquefragrance",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftariquefragrance%20(Tarique%20Choudhury)%2Fr9n8BKsL_tariquefragrance.png?alt=media&token=69ef53a2-5e01-4a84-9dec-26ebbd83a379",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftariquefragrance%20(Tarique%20Choudhury)%2Ftariquefragrance.png?alt=media&token=f58486af-0964-42ec-bf9b-32e1e0b66ca0"
+    },
+    {
+      "fullName": "Vipin Kumar Chauhan",
+      "handle": "The_Highwaymen",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2FThe_Highwaymen%20(Vipin%20Kumar%20Chauhan)%2FMmfFCj5M_The_Highwaymen.png?alt=media&token=a8fd0d82-67ac-407c-9e23-b6e9790ccab7",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2FThe_Highwaymen%20(Vipin%20Kumar%20Chauhan)%2FThe_Highwaymen.png?alt=media&token=20b793e3-29a4-41ee-a267-280078f02dc2"
+    },
+    {
+      "fullName": "Sakrapani Kotteeswaran",
+      "handle": "travelife1",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftravelife1%20(Sakrapani%20Kotteeswaran)%2Fbwx2QBVd_travelife1.png?alt=media&token=d794759c-67d1-4615-b5e4-238e69409225",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftravelife1%20(Sakrapani%20Kotteeswaran)%2Ftravelife1.jpeg?alt=media&token=dfd2e68d-35df-4cf5-8e8a-5ec866fe3ec2"
+    },
+    {
+      "fullName": "Mehul Solanki",
+      "handle": "travelingeyesight",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftravelingeyesight%20(Mehul%20Solanki)%2FopXDxxOq_travelingeyesight.png?alt=media&token=5b198fa0-84da-497b-bb1f-36a707e2cab9",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftravelingeyesight%20(Mehul%20Solanki)%2Ftravelingeyesight.jpeg?alt=media&token=0c499904-9be8-4f4f-9c52-12d2a0ee02ae"
+    },
+    {
+      "fullName": "Tejasvi Gawde",
+      "handle": "travelwithtejasvi",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftravelwithtejasvi%20(Tejasvi%20Gawde)%2FBaKNBjfu_travelwithtejasvi.png?alt=media&token=b86b90af-380b-4481-bc97-7760587554c1",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftravelwithtejasvi%20(Tejasvi%20Gawde)%2Ftravelwithtejasvi.jpeg?alt=media&token=e4765eaf-996a-4dec-9715-1485bd7e1cdc"
+    },
+    {
+      "fullName": "Vandana Goswami",
+      "handle": "vandanagoswami",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvandanagoswami%20(Vandana%20Goswami)%2F7quxDmWp_vandanagoswami.png?alt=media&token=f35b1cf6-6fdb-4fb9-9798-80f82f3113d2",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvandanagoswami%20(Vandana%20Goswami)%2Fvandanagoswami.png?alt=media&token=7ca6ec7e-913c-433f-ba60-a492ff6507db"
+    },
+    {
+      "fullName": "Vishvjeetsinh Chauhan",
+      "handle": "vcvlogs7877",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvcvlogs7877%20(Vishvjeetsinh%20Chauhan)%2FMvRWp655_vcvlogs7877.png?alt=media&token=9166163a-53e7-45aa-a898-280d3821346b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvcvlogs7877%20(Vishvjeetsinh%20Chauhan)%2Fvcvlogs7877.jpeg?alt=media&token=0c4108e3-4307-4b34-ab44-72e6ed15d2ec"
+    }
+  ],
   "Art": [
     {
-      "fullName": "Kieana Enterprises",
-      "handle": "kieana"
-    },
-    {
-      "fullName": "Sunita Rawat",
-      "handle": "sunita_creativeworld"
-    },
-    {
-      "fullName": "Ranjana Chauhan",
-      "handle": "humsafarart"
+      "fullName": "Sahil Kol",
+      "handle": "artbysahil",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fartbysahil%20(Sahil%20Kol)%2FBZnWVcWn_artbysahil.png?alt=media&token=9e7166c5-de59-4721-8e31-2c59167092bd",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fartbysahil%20(Sahil%20Kol)%2Fartbysahil.png?alt=media&token=67999e53-ac2f-433e-a672-ffa5d989d8c3"
     },
     {
       "fullName": "Maitri Dave",
-      "handle": "artistinyou.1708"
+      "handle": "artistinyou.1708",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fartistinyou.1708%20(Maitri%20Dave)%2FqZfUDSCB_artistinyou.1708.png?alt=media&token=32e833a0-670f-40bf-94f9-7a658a6189f2",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fartistinyou.1708%20(Maitri%20Dave)%2Fartistinyou.1708.jpeg?alt=media&token=601d1afe-42c1-427e-87ef-34c5d5d060dd"
     },
     {
       "fullName": "Tanisha Jhaveri",
-      "handle": "handletteringisfun"
+      "handle": "handletteringisfun",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2FTanisha%20Jhaveri%20(handletteringisfun)%2FyWNu4u5X_handletteringisfun.png?alt=media&token=fa3fd07d-fb32-4533-825b-5917b42a3caf",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2FTanisha%20Jhaveri%20(handletteringisfun)%2Fhandletteringisfun.jpg?alt=media&token=5d927d75-9a94-4f58-9562-3c6a2296fb16"
     },
     {
-      "fullName": "Sahil Kol",
-      "handle": "artbysahil"
+      "fullName": "Ranjana Chauhan",
+      "handle": "humsafarart",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fhumsafarart%20(Ranjana%20Chauhan)%2FKfusk8uy_humsafarart.png?alt=media&token=bc76d764-410c-4a3a-adb9-13eb1571ed64",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fhumsafarart%20(Ranjana%20Chauhan)%2Fhumsafarart.jpg?alt=media&token=736ea0c8-2b6b-4153-8280-c7605094837c"
+    },
+    {
+      "fullName": "Kieana Enterprises",
+      "handle": "kieana",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkieana%20(Kieana%20Enterprises)%2FlOx9y4zV_kieana.png?alt=media&token=cd484889-b597-4aec-810e-95cdb7214ff9",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkieana%20(Kieana%20Enterprises)%2Fkieana.jpeg?alt=media&token=1130b616-4224-48bb-9ab8-24afdac9e9c8"
     },
     {
       "fullName": "Pratibha Yadav",
-      "handle": "naman_drawing"
-    }
-  ],
-  "Others": [
-    {
-      "fullName": "Mukesh Vats",
-      "handle": "mukeshvats"
+      "handle": "naman_drawing",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnaman_drawing%20(Pratibha%20Yadav)%2FSiNsRDjz_naman_drawing.png?alt=media&token=087e134e-8b01-438f-b7a7-12063fced2d3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnaman_drawing%20(Pratibha%20Yadav)%2Fnaman_drawing.jpeg?alt=media&token=c67f9a9e-48d4-469d-9767-12c08399f43d"
     },
     {
-      "fullName": "Dali Pandey",
-      "handle": "dollykireaction"
+      "fullName": "Sunita Rawat",
+      "handle": "sunita_creativeworld",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsunita_creativeworld%20(Sunita%20Rawat)%2FORcxEvcf_sunita_creativeworld.png?alt=media&token=b097b056-936d-4a44-8640-556445d5fa6a",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsunita_creativeworld%20(Sunita%20Rawat)%2Fsunita_creativeworld.jpeg?alt=media&token=68ef734e-61ed-4a88-b076-6e88eac867bb"
     }
   ],
-  "Automobile": [
+  "Gaming": [
     {
-      "fullName": "Technical Gyan",
-      "handle": "technicalgyan1919"
+      "fullName": "Shashank Singh",
+      "handle": "avengerrises3502",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Favengerrises3502%20(Shashank%20Singh)%2FCdsXwdTy_avengerrises3502.png?alt=media&token=562533e2-a91a-431c-8a37-4770cd0e5d90",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Favengerrises3502%20(Shashank%20Singh)%2Favengerrises3502.jpeg?alt=media&token=14056fe0-781a-4b2e-955c-d0b95d452e71"
+    },
+    {
+      "fullName": "Satish Vasava",
+      "handle": "dopegameplays",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdopegameplays%20(Satish%20Vasava)%2F0GDdEhJi_dopegameplays.png?alt=media&token=a15a5ae6-0b5b-4530-9762-f80d3e4bfc8f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdopegameplays%20(Satish%20Vasava)%2Fdopegameplays.jpg?alt=media&token=952953ae-95b2-4774-b0a1-9e1f0c53f525"
+    },
+    {
+      "fullName": "Ayush Chouhan",
+      "handle": "eraserboygaming",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Feraserboygaming%20(Ayush%20Chouhan)%2Fo6HM6jMT_eraserboygaming.png?alt=media&token=d6e3ce8e-e556-48c8-86fd-290b827fafec",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Feraserboygaming%20(Ayush%20Chouhan)%2Feraserboygaming.jpg?alt=media&token=da2dbeff-e47c-4034-93f6-f2c4d6bbab7e"
+    },
+    {
+      "fullName": "Pallav Joshi",
+      "handle": "frustratedbande",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffrustratedbande%20(Pallav%20Joshi)%2FI0rUoLWK_frustratedbande.png?alt=media&token=0ccce97d-4ca6-4c1d-bb39-ff2039703ed4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffrustratedbande%20(Pallav%20Joshi)%2Ffrustratedbande.jpg?alt=media&token=b102c962-5c93-4c53-b579-b395d0adc175"
+    },
+    {
+      "fullName": "Hasrat Mimlana",
+      "handle": "hasrat9557",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fhasrat9557%20(Hasrat%20Mimlana)%2FRbyrZDyD_hasrat9557.png?alt=media&token=983d2914-deaa-43ce-89f6-ca747c4debc2",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fhasrat9557%20(Hasrat%20Mimlana)%2Fhasrat9557.jpg?alt=media&token=ad9bb9a0-3243-472e-a158-432b838d98ce"
+    },
+    {
+      "fullName": "Shailendra Prajapati",
+      "handle": "igamerzog",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Figamerzog%20(Shailendra%20Prajapati)%2FnRwO1Tkb_igamerzog.png?alt=media&token=94a95bf3-68a3-448e-a863-9b3571972709",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Figamerzog%20(Shailendra%20Prajapati)%2Figamerzog.jpg?alt=media&token=32b7bd45-11d3-41f3-b004-51ab5fc484b6"
+    },
+    {
+      "fullName": "Ayush Goel",
+      "handle": "lazyassassin",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Flazyassassin%20(Ayush%20Goel)%2FcTn4ApQf_lazyassassin.png?alt=media&token=e09a459d-068a-482b-b2a1-665664976369",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Flazyassassin%20(Ayush%20Goel)%2Flazyassassin.jpeg?alt=media&token=9eb480b8-590d-4f1c-a612-0f3613303dc5"
+    },
+    {
+      "fullName": "Mohit Motiyani",
+      "handle": "notmohitxd89",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnotmohitxd89%20(Mohit%20Motiyani)%2FfpLbFDtZ_notmohitxd89.png?alt=media&token=0a132b3e-d30a-4221-b26a-2d0415cb31e9",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnotmohitxd89%20(Mohit%20Motiyani)%2Fnotmohitxd89.jpeg?alt=media&token=86b15312-2ffe-4454-8525-9188f3f4355d"
+    },
+    {
+      "fullName": "Royal Yadav",
+      "handle": "royalyadavgamer",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Froyalyadavgamer%20(Royal%20Yadav)%2Fz6kYnxtc_royalyadavgamer.png?alt=media&token=380e0bb0-f4fe-4642-92c9-43dc86c61fbc",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Froyalyadavgamer%20(Royal%20Yadav)%2Froyalyadavgamer.jpeg?alt=media&token=2e6cf54f-a300-44e2-99f5-282d0d350884"
+    },
+    {
+      "fullName": "Smit Patel",
+      "handle": "smitmasking",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsmitmasking%20(Smit%20Patel)%2F4MonayHF_smitmasking.png?alt=media&token=ef6171e1-055f-4b4e-9f40-7cfc5e5fe3ab",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsmitmasking%20(Smit%20Patel)%2Fsmitmasking.jpeg?alt=media&token=48762b20-cfd0-4e47-8fa3-b014f164c13e"
+    },
+    {
+      "fullName": "Jay Khatri",
+      "handle": "toastyaf",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftoastyaf%20(Jay%20Khatri)%2FpcHKPeLR_toastyaf.png?alt=media&token=683a6b6e-57bc-4229-9e93-6b3696a08665",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftoastyaf%20(Jay%20Khatri)%2Ftoastyaf.jpeg?alt=media&token=5134a410-2d17-4fad-9f75-75b85d58e303"
+    }
+  ],
+  "Education & Learning": [
+    {
+      "fullName": "Ayush Shroff",
+      "handle": "ayushshroff.1",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fayushshroff.1%20(Ayush%20Shroff)%2FbDESnzuU_ayushshroff.1.png?alt=media&token=7f715b10-d459-4c3e-95d0-fed1cabe000c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fayushshroff.1%20(Ayush%20Shroff)%2Fayushshroff.1.png?alt=media&token=b8e7c0dd-a389-43e1-8980-fe499d017f75"
+    },
+    {
+      "fullName": "Anant Patel",
+      "handle": "bapujidashrathbhaipatel",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbapujidashrathbhaipatel%20(Anant%20Patel)%2FQNui3Kdn_bapujidashrathbhaipatel.png?alt=media&token=7b3e2f02-78e3-4938-920f-6474a02c6f63",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbapujidashrathbhaipatel%20(Anant%20Patel)%2Fbapujidashrathbhaipatel.jpeg?alt=media&token=da73593c-89fb-4822-8b53-c9732cc8bba9"
+    },
+    {
+      "fullName": "Anshoo Kushwaha",
+      "handle": "billionaireanshuz",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbillionaireanshuz%20(Anshoo%20Kushwaha)%2FOFoyKkER_billionaireanshuz.png?alt=media&token=0bbb0e1e-38f1-49c3-b36f-1edcb38ac216",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbillionaireanshuz%20(Anshoo%20Kushwaha)%2Fbillionaireanshuz.jpeg?alt=media&token=370e0646-331e-41ec-8a12-2451498f8699"
+    },
+    {
+      "fullName": "Ajay Kumar Sharma",
+      "handle": "blessedsutra",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fblessedsutra%20(Ajay%20Kumar%20Sharma)%2FdspEY8gg_blessedsutra.png?alt=media&token=ffa84947-a64c-4262-add0-54841a31e73e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fblessedsutra%20(Ajay%20Kumar%20Sharma)%2Fblessedsutra.png?alt=media&token=0db939f7-fc88-4410-bc90-b796156fc241"
+    },
+    {
+      "fullName": "Sagar Joshi",
+      "handle": "bmc_guide",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbmc_guide%20(Sagar%20Joshi)%2FUGJOJT76_bmc_guide.png?alt=media&token=e0f9b88d-2682-4dbc-8721-8d32fa60cf00",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbmc_guide%20(Sagar%20Joshi)%2Fbmc_guide.png?alt=media&token=6b5bc03b-3dc2-4805-a10c-97e6d3258f40"
+    },
+    {
+      "fullName": "Sakun Devi Kushwah",
+      "handle": "braidhairdo",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbraidhairdo%20(Sakun%20Devi%20Kushwah)%2FwLVsUOeM_braidhairdo.png?alt=media&token=f11990aa-fa97-42a5-91a8-4c5e4c0e470d",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbraidhairdo%20(Sakun%20Devi%20Kushwah)%2Fbraidhairdo.jpeg?alt=media&token=6fa38c99-6eff-4fff-bdf4-f5add445b8bb"
+    },
+    {
+      "fullName": "Kshipra Singh",
+      "handle": "careerrideofficial",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcareerrideofficial%20(Kshipra%20Singh)%2FvLCuvN8D_careerrideofficial.png?alt=media&token=06eb66c3-eb38-4f63-950f-8394f7b8b7a1",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcareerrideofficial%20(Kshipra%20Singh)%2Fcareerrideofficial.jpeg?alt=media&token=61c170ae-e25a-4347-9c9e-4d46b9f80df9"
+    },
+    {
+      "fullName": "Kalyani Dwivedi",
+      "handle": "chandrakantavlog",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchandrakantavlog%20(Kalyani%20Dwivedi)%2FqS0xSyb5_chandrakantavlog.png?alt=media&token=9128e503-e3c8-4f64-82fc-7d3d4e028237",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchandrakantavlog%20(Kalyani%20Dwivedi)%2Fchandrakantavlog.jpeg?alt=media&token=c69ec3bc-fa41-4d4a-98c3-f040fb2bf715"
+    },
+    {
+      "fullName": "Aminaz Wadhwaniya",
+      "handle": "chetchathomies",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchetchathomies%20(Aminaz%20Wadhwaniya)%2F1MxtlSW0_chetchathomies.png?alt=media&token=93b8e209-eff5-4b25-8e20-ca8f52e91d6c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchetchathomies%20(Aminaz%20Wadhwaniya)%2Fchetchathomies.jpeg?alt=media&token=d760270d-4ba2-4f7a-a3f0-aeca73af1377"
+    },
+    {
+      "fullName": "Md Ashfak",
+      "handle": "creatorashfak",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcreatorashfak%20(Md%20Ashfak)%2FFhnR8qCN_creatorashfak.png?alt=media&token=d1f0ff0e-b893-4e80-93b7-aff479762f38",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcreatorashfak%20(Md%20Ashfak)%2Fcreatorashfak.jpeg?alt=media&token=909d7590-ae10-4919-8b2a-685e65634fcf"
+    },
+    {
+      "fullName": "Abhay Kushwaha",
+      "handle": "curi0",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcuri0%20(Abhay%20Kushwaha)%2F0Qb6T7wV_curi0.png?alt=media&token=b5e6ed49-c0c6-4d15-a933-36f6ceb2f8a5",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fcuri0%20(Abhay%20Kushwaha)%2Fcuri0.jpeg?alt=media&token=727c0823-7ccd-443d-9c2d-c0cf176139ae"
+    },
+    {
+      "fullName": "Damini Tripathi",
+      "handle": "daminitripathi",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdaminitripathi%20(Damini%20Tripathi)%2FzfzHCdYl_daminitripathi.png?alt=media&token=890b3337-6c60-4143-9e1c-7d25b4685ef7",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdaminitripathi%20(Damini%20Tripathi)%2FDamini.jpg?alt=media&token=0c4b26e9-e044-4776-ac4d-e570f1342e49"
+    },
+    {
+      "fullName": "Deepak Bajaj",
+      "handle": "deepakbajaj",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdeepakbajaj%20(Deepak%20Bajaj)%2FD7Y8tV0s_deepakbajaj.png?alt=media&token=efe8ab9d-9a39-444d-b027-56adbc6cf792",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdeepakbajaj%20(Deepak%20Bajaj)%2Fdeepakbajaj.jpg?alt=media&token=44d67219-f5b6-46d4-b078-658352b2b16d"
+    },
+    {
+      "fullName": "Deepa Lalwani",
+      "handle": "deepanlalwani",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdeepanlalwani%20(Deepa%20Lalwani)%2F0YDNlE8a_deepanlalwani.png?alt=media&token=2fb5749f-bcfb-4b6a-a266-77d90898cb7d",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdeepanlalwani%20(Deepa%20Lalwani)%2Fdeepanlalwani.jpg?alt=media&token=9feb90f6-b6a5-4daf-bf21-718a0f6db258"
+    },
+    {
+      "fullName": "Asharafkhan Bihari",
+      "handle": "DigitalShalaOfficial",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2FDigitalShalaOfficial%20(Asharafkhan%20Bihari)%2FiQMPPI1Y_DigitalShalaOfficial.png?alt=media&token=fe32cb12-54a7-49f4-ad27-00584701ef15",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2FDigitalShalaOfficial%20(Asharafkhan%20Bihari)%2FDigitalShalaOfficial.jpg?alt=media&token=fa228dae-6e2d-4638-99f8-4a5d6ad3b749"
+    },
+    {
+      "fullName": "Deepthi Gomatam",
+      "handle": "dreamiasforbeginners3042",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdreamiasforbeginners3042%20(Deepthi%20Gomatam)%2FcNJ8BCA3_dreamiasforbeginners3042.png?alt=media&token=bcf41c6f-7624-4000-9403-f259d62a904f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdreamiasforbeginners3042%20(Deepthi%20Gomatam)%2Fdreamiasforbeginners3042.jpg?alt=media&token=884c242c-94ed-4562-b7d3-5643a1aa8ba9"
+    },
+    {
+      "fullName": "Subhangi Patil",
+      "handle": "drshubhangiphysio",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdrshubhangiphysio%20(Subhangi%20Patil)%2FYdEnoufj_drshubhangiphysio.png?alt=media&token=5fd9a86b-fb22-4908-aa37-dec96f2d11cf",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdrshubhangiphysio%20(Subhangi%20Patil)%2Fdrshubhangiphysio.jpg?alt=media&token=ef1a6c12-b313-4b8b-a8fb-27abbcfc1ddb"
+    },
+    {
+      "fullName": "Sakun Devi Kushwah",
+      "handle": "easyarthub-e2q",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Feasyarthub-e2q%20(Sakun%20Devi%20Kushwah)%2FstaDgpe0_easyarthub-e2q.png?alt=media&token=79304a48-620b-4953-90eb-27b516c39d15",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Feasyarthub-e2q%20(Sakun%20Devi%20Kushwah)%2Feasyarthub-e2q.jpg?alt=media&token=f660ac9c-5efc-468b-b089-136f195dbc97"
+    },
+    {
+      "fullName": "Ruta Borkar",
+      "handle": "fabstudioruta",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffabstudioruta%20(Ruta%20Borkar)%2F3CBm7g9e_fabstudioruta.png?alt=media&token=0ae37500-d983-481f-9fd0-ecb23d181dcd",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffabstudioruta%20(Ruta%20Borkar)%2Ffabstudioruta.jpg?alt=media&token=42788892-44cd-40f7-a1f8-fb43b4f0c9b3"
+    },
+    {
+      "fullName": "Swapnil Khatal",
+      "handle": "fwcnetwork",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffwcnetwork%20(Swapnil%20Khatal)%2FFDNQr8bQ_fwcnetwork.png?alt=media&token=f078f0ee-fff2-49e5-8b65-95cba15ee9bb",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Ffwcnetwork%20(Swapnil%20Khatal)%2Ffwcnetwork.jpg?alt=media&token=60d53b73-8115-43d6-951d-e596a7127623"
+    },
+    {
+      "fullName": "Ganesh Kumar",
+      "handle": "ganeshallclassesofficial",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fganeshallclassesofficial%20(Ganesh%20Kumar)%2FnpVeEks4_ganeshallclassesofficial.png?alt=media&token=85a85dde-0c1c-43ad-a939-7933a6855f95",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fganeshallclassesofficial%20(Ganesh%20Kumar)%2Fganeshallclassesofficial.jpg?alt=media&token=0d8dbeb8-cd31-4038-8319-e0f241683edd"
+    },
+    {
+      "fullName": "Gururaj Sonwane",
+      "handle": "growthguru06",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgrowthguru06%20(Gururaj%20Sonwane)%2FEnEk9qOu_growthguru06.png?alt=media&token=ca4fef27-3f51-410c-b493-e2851c6a87a2",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgrowthguru06%20(Gururaj%20Sonwane)%2Fgrowthguru06.jpg?alt=media&token=3134fd16-a270-40c8-9974-9a2a9252cede"
+    },
+    {
+      "fullName": "Yash Naliyapara",
+      "handle": "gujarath360",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgujarath360%20(Yash%20Naliyapara)%2Fgujarath360.jpg?alt=media&token=63c8929a-d2a4-4066-956b-79864d86412c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgujarath360%20(Yash%20Naliyapara)%2Fgujarath360.jpg?alt=media&token=63c8929a-d2a4-4066-956b-79864d86412c"
+    },
+    {
+      "fullName": "Dhruvin Shah",
+      "handle": "iamdhruvinshah",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fiamdhruvinshah(Dhruvin%20Shah)%2F24IGJWxs_iamdhruvinshah.png?alt=media&token=43052469-426c-4791-b688-355c9528c6e2",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fiamdhruvinshah(Dhruvin%20Shah)%2Fiamdhruvinshah.jpg?alt=media&token=969d0239-f956-4466-9b38-b339cd395ebe"
+    },
+    {
+      "fullName": "Shahejad Shekh",
+      "handle": "islamicshortbayan",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2FShahejad%20Shekh%20(islamicshortbayan)%2FAuu9K17L_islamicshortbayan.png?alt=media&token=8a0c5107-a12a-4c5e-994a-e6e10583f4c4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2FShahejad%20Shekh%20(islamicshortbayan)%2Fislamicshortbayan.jpg?alt=media&token=e46adf9b-a6c0-4628-a9a2-10ddf7fb3d4f"
+    },
+    {
+      "fullName": "Jeet Rana",
+      "handle": "jeetranasirgs",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fjeetranasirgs%20(Jeet%20Rana)%2FWIogykiq_jeetranasirgs.png?alt=media&token=789bc4d0-3a43-4e71-81a7-3533dad3d866",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fjeetranasirgs%20(Jeet%20Rana)%2Fjeetranasirgs.jpg?alt=media&token=56f7f51b-fea5-4225-8c0d-bbdecefeb8d0"
+    },
+    {
+      "fullName": "Himanshu Kumar",
+      "handle": "jrennis boss",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fjrennis%20boss%20(%20Himanshu%20Kumar)%2FHAlQ5GYd_jrennis%20boss.png?alt=media&token=a55ab818-76df-4c1d-8e29-1f307b0a665c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fjrennis%20boss%20(%20Himanshu%20Kumar)%2Fjrennis%20boss.jpg?alt=media&token=4f1bbff3-6fdb-4a49-8340-f074a72573a0"
+    },
+    {
+      "fullName": "Akash Deep",
+      "handle": "karateking_a",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkarateking_a%20(Akash%20Deep)%2Flc2179X1_karateking_a.png?alt=media&token=566e8122-f9e9-4664-875c-78d17fc6cf2a",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkarateking_a%20(Akash%20Deep)%2Fkarateking_a.png?alt=media&token=6f0764f4-af50-4682-aa2d-3af1be9aaf28"
+    },
+    {
+      "fullName": "Dali Patel",
+      "handle": "khushbustyle",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkhushbustyle%20(Dali%20Patel)%2FdQF5Czac_khushbustyle.png?alt=media&token=48e35bdc-5f39-45b5-b06e-59929dde4ccc",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkhushbustyle%20(Dali%20Patel)%2Fkhushbustyle.jpeg?alt=media&token=b977daef-a9f3-4d63-adfa-496e5c82e931"
+    },
+    {
+      "fullName": "Kushal Baragi",
+      "handle": "kushalbaragi",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkushalbaragi%20(Kushal%20Baragi)%2F5aS0IcvF_kushalbaragi.png?alt=media&token=dc2c233f-364f-4bee-8667-9fc7f08a15a3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkushalbaragi%20(Kushal%20Baragi)%2Fkushalbaragi.jpeg?alt=media&token=ac57c54a-178d-4196-b192-7a20963acfcd"
+    },
+    {
+      "fullName": "Rajveer Sharma",
+      "handle": "maayashodaclasses",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmaayashodaclasses%20(Rajveer%20Sharma)%2FUu6MZi2f_maayashodaclasses.png?alt=media&token=7be1cbc5-4e21-48c2-8dcd-d30c4b91a565",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmaayashodaclasses%20(Rajveer%20Sharma)%2Fmaayashodaclasses.jpeg?alt=media&token=2fc9e8b7-d2b7-47bc-93a2-4fe85fbf34b5"
+    },
+    {
+      "fullName": "Mind Boggler",
+      "handle": "mindboggler",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmindboggler%20(Mind%20Boggler)%2FcofGTe18_mindboggler.png?alt=media&token=d3f9d077-b1da-4621-915d-5a5c8ba7e824",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmindboggler%20(Mind%20Boggler)%2Fmindboggler.jpeg?alt=media&token=012b2e92-614e-4308-a646-346888c50a03"
+    },
+    {
+      "fullName": "Jitendra Patil",
+      "handle": "mostlyjitu",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmostlyjitu%20(Jitendra%20Patil)%2FU5NWDBPh_mostlyjitu.png?alt=media&token=bd156f76-be7b-401e-b2c6-d720312d50bc",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmostlyjitu%20(Jitendra%20Patil)%2Fmostlyjitu.jpeg?alt=media&token=6a4109e9-63ee-4368-9e7f-e6b4c0749aad"
+    },
+    {
+      "fullName": "Parth Solanki",
+      "handle": "mr.artist_parth",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmr.artist_parth%20(Parth%20Solanki)%2Fn1BWjGqc_mr.artist_parth.png?alt=media&token=64d69f91-c5d8-47f1-9b6f-4fb9491de7fa",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmr.artist_parth%20(Parth%20Solanki)%2Fmr.artist_parth.jpeg?alt=media&token=38134362-a70a-4e7c-9cdb-2debbd9148f3"
+    },
+    {
+      "fullName": "Manish Verma",
+      "handle": "mvsfoundationcbse",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmvsfoundationcbse%20(Manish%20Verma)%2F6gc8lUEJ_mvsfoundationcbse.png?alt=media&token=0e46ecc6-c3d8-47cb-92ad-9c17541fb56d",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmvsfoundationcbse%20(Manish%20Verma)%2Fmvsfoundationcbse.png?alt=media&token=ed9dfdaa-ac7c-4e62-8b32-de11d2c76123"
+    },
+    {
+      "fullName": "Priya Yadav",
+      "handle": "priyaskitchen_",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpriyaskitchen_%20(Priya%20Yadav)%2FRR2C2K2N_priyaskitchen_.png?alt=media&token=b0dabb1c-8fec-44bc-8e9e-3cdb6dc66aa1",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fpriyaskitchen_%20(Priya%20Yadav)%2Fpriyaskitchen_.jpeg?alt=media&token=00bbce5a-2219-4a25-9b0d-2e8ad4af677b"
+    },
+    {
+      "fullName": "Ravi Dilawari",
+      "handle": "rebornyourself",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frebornyourself%20(Ravi%20Dilawari)%2FcvluT0S1_rebornyourself.png?alt=media&token=2eda1bf7-c973-4cf5-8559-ecb5c3facf02",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Frebornyourself%20(Ravi%20Dilawari)%2Frebornyourself.jpeg?alt=media&token=e6aaaa03-0dad-4fd9-9915-1b35d43b0e1b"
+    },
+    {
+      "fullName": "Rahul Mehta",
+      "handle": "sapabapbyrahulmehta",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsapabapbyrahulmehta%20(Rahul%20Mehta)%2F5Ap4Fgw8_sapabapbyrahulmehta.png?alt=media&token=60f0ee35-d3a8-4a77-ae6e-67aed43b1aa9",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsapabapbyrahulmehta%20(Rahul%20Mehta)%2Fsapabapbyrahulmehta.jpeg?alt=media&token=afad0775-32ca-46bf-995b-c6c2d72c9b06"
+    },
+    {
+      "fullName": "Naveen Malviya",
+      "handle": "scrollwith_naveen",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fscrollwith_naveen%20(Naveen%20Malviya)%2FVrlYierk_scrollwith_naveen.png?alt=media&token=f02a1ee5-cb9a-48e3-baa1-4be532d406eb",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fscrollwith_naveen%20(Naveen%20Malviya)%2Fscrollwith_naveen.jpeg?alt=media&token=b336b695-cd01-4ce4-968a-3c5511094710"
+    },
+    {
+      "fullName": "Abhishek Kushwah",
+      "handle": "shakunfashionbeauty",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshakunfashionbeauty%20(Abhishek%20Kushwah)%2FyOhjDA0P_shakunfashionbeauty.png?alt=media&token=c2bbeb25-fa6c-4afc-a9a7-1d7b082f420d",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshakunfashionbeauty%20(Abhishek%20Kushwah)%2Fshakunfashionbeauty.jpeg?alt=media&token=874d4c79-57c2-4a03-9ff4-e46fb5178993"
+    },
+    {
+      "fullName": "Ravi Singh",
+      "handle": "sherepublish",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsherepublish%20(Ravi%20Singh)%2FgNAZmVBu_sherepublish.png?alt=media&token=45599cde-15d7-40b9-bae4-39b70133f6b5",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsherepublish%20(Ravi%20Singh)%2Fsherepublish.jpeg?alt=media&token=5c036cbb-b77f-4386-805d-7d225e1713ce"
+    },
+    {
+      "fullName": "Roopesh Yadav",
+      "handle": "shripradeepmisrajibhakti",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshripradeepmisrajibhakti%20(Roopesh%20Yadav)%2FJ4S2x7Ve_shripradeepmisrajibhakti.png?alt=media&token=052b8466-b82e-4385-a13b-47e29ccc969b",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fshripradeepmisrajibhakti%20(Roopesh%20Yadav)%2Fshripradeepmisrajibhakti.jpeg?alt=media&token=f7bd133c-5626-4f2e-b7c4-ca4f98965885"
+    },
+    {
+      "fullName": "Kirtika Kushwah",
+      "handle": "starbeautyfashion",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fstarbeautyfashion%20(Kirtika%20Kushwah)%2Fem0cR0nb_starbeautyfashion.png?alt=media&token=5b965d9e-4fd4-4a8a-ae25-970ab85c86ab",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fstarbeautyfashion%20(Kirtika%20Kushwah)%2Fstarbeautyfashion.jpeg?alt=media&token=2e23b338-3d02-4e15-8ce5-a0b6d38feb23"
+    },
+    {
+      "fullName": "Yogesh Kumar",
+      "handle": "studyindia24x7",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fstudyindia24x7%20(Yogesh%20Kumar)%2F8JFR67ZS_studyindia24x7.png?alt=media&token=f2a41dd9-3c55-4cb4-b5ee-859518424080",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fstudyindia24x7%20(Yogesh%20Kumar)%2Fstudyindia24x7.jpeg?alt=media&token=20daf32d-47a5-4d32-9a07-ca3eefa3ce73"
+    },
+    {
+      "fullName": "Md Arman Khan",
+      "handle": "techfinalguru",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechfinalguru%20(Md%20Arman%20Khan)%2FEzvc44OV_techfinalguru.png?alt=media&token=772c6b1d-3794-456e-bc20-79bc9e9d918c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechfinalguru%20(Md%20Arman%20Khan)%2Ftechfinalguru.jpeg?alt=media&token=6adf0f12-fb24-4074-9290-7badee884700"
+    },
+    {
+      "fullName": "Raj Gyanee",
+      "handle": "thecurrencypediaofficial",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthecurrencypediaofficial%20(Raj%20Gyanee)%2FSK8mTFKz_thecurrencypediaofficial.png?alt=media&token=dc7c8c53-6a20-4503-b0cc-2e4b26562ed4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthecurrencypediaofficial%20(Raj%20Gyanee)%2Fthecurrencypediaofficial.jpeg?alt=media&token=2fce0aa4-36d7-45ca-86c8-e946c4da30b6"
+    },
+    {
+      "fullName": "Sankit Soni",
+      "handle": "thesankitsoni",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthesankitsoni%20(Sankit%20Soni)%2FmUNvMjuI_thesankitsoni.png?alt=media&token=9de3fe25-d830-4fab-b626-d19b74ef6a9f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthesankitsoni%20(Sankit%20Soni)%2Fthesankitsoni.jpeg?alt=media&token=a058643c-2de9-4e65-95e6-8b82ceca9c23"
+    },
+    {
+      "fullName": "Vibhor Varshney",
+      "handle": "vibhorvarshney",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvibhorvarshney%20(Vibhor%20Varshney)%2FZaDsYQ7I_vibhorvarshney.png?alt=media&token=a699724f-c513-4f61-9a7e-37c3b85b7ee3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvibhorvarshney%20(Vibhor%20Varshney)%2Fvibhorvarshney.jpeg?alt=media&token=943090c8-c2ac-4622-90ad-eb3b32d36899"
+    },
+    {
+      "fullName": "Dadukiya Vikrambhai",
+      "handle": "vikramdadukiya",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvikramdadukiya%20(Dadukiya%20Vikrambhai)%2F9uEvdWQO_vikramdadukiya.png?alt=media&token=a087f8bf-7031-45fe-8eb7-b8db294aa4b0",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fvikramdadukiya%20(Dadukiya%20Vikrambhai)%2Fvikramdadukiya.jpeg?alt=media&token=4a56ce46-2a40-4ce8-9542-744191ad8395"
+    }
+  ],
+  "Technology": [
+    {
+      "fullName": "Nikhil Sharma",
+      "handle": "buzz2daytech",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbuzz2daytech%20(Nikhil%20Sharma)%2F1anpr6nI_buzz2daytech.png?alt=media&token=b30b8867-6bfb-4c71-a642-5f79a8848be4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fbuzz2daytech%20(Nikhil%20Sharma)%2Fbuzz2daytech.jpeg?alt=media&token=3ab3216d-3e3d-4db2-b479-aaaa8fbaaafb"
+    },
+    {
+      "fullName": "Saiyed Irfan",
+      "handle": "itechirfan",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fitechirfan%20(Saiyed%20Irfan)%2FKNgP2d01_itechirfan.png?alt=media&token=94601aa8-2edc-44ca-8ff2-84f82a4a3de3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fitechirfan%20(Saiyed%20Irfan)%2Fitechirfan.jpg?alt=media&token=d40ab252-93f5-4e8d-ae8b-10675b2973eb"
+    },
+    {
+      "fullName": "Kishan Sheth",
+      "handle": "kishansheth21",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkishansheth21%20(Kishan%20Sheth)%2FkiVLteNO_kishansheth21.png?alt=media&token=c9507584-2f29-48cc-a50a-45ca4253ee73",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fkishansheth21%20(Kishan%20Sheth)%2Fkishansheth21.jpeg?alt=media&token=625b68ff-9444-4f8b-a980-7c6505c20949"
+    },
+    {
+      "fullName": "Nag Anusha",
+      "handle": "naganusha234",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnaganusha234%20(Nag%20Anusha)%2F2kPCF8UK_naganusha234.png?alt=media&token=4fc9f388-12ed-4da4-973a-4cf08efc3f94",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnaganusha234%20(Nag%20Anusha)%2Fnaganusha234.jpeg?alt=media&token=7a9fe305-ffb1-408d-9ebb-70fc2f47994c"
+    },
+    {
+      "fullName": "Ishan Khedkar",
+      "handle": "onespottech",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fonespottech%20(Ishan%20Khedkar)%2FpmrRSHRN_onespottech.png?alt=media&token=b311446f-5363-4972-a462-a06e9f4211cc",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fonespottech%20(Ishan%20Khedkar)%2Fonespottech.jpeg?alt=media&token=5cab387a-8c46-4379-9f67-6f63aba3869f"
+    },
+    {
+      "fullName": "Popat Chauhan",
+      "handle": "prakashchauhanofficial",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprakashchauhanofficial%20(Popat%20Chauhan)%2FzJnzTQYs_prakashchauhanofficial.png?alt=media&token=059e3c87-0db7-455d-9bcf-b0e707b72d0e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprakashchauhanofficial%20(Popat%20Chauhan)%2Fprakashchauhanofficial.png?alt=media&token=24d2381d-c05e-452e-8f1c-7636c4885718"
+    },
+    {
+      "fullName": "Rajaram Prasad",
+      "handle": "sikheallinhindi",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsikheallinhindi%20(Rajaram%20Prasad)%2FoDKihlwh_sikheallinhindi.png?alt=media&token=5995be43-b0be-45d7-bcec-1a23860506b3",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsikheallinhindi%20(Rajaram%20Prasad)%2Fsikheallinhindi.jpeg?alt=media&token=03cd2549-7427-4062-9175-73e99d543678"
+    },
+    {
+      "fullName": "Sachin Singh Rathour",
+      "handle": "technicalromyo",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechnicalromyo%20(Sachin%20Singh%20Rathour)%2FddhYCpjT_technicalromyo.png?alt=media&token=63c81288-1a80-42ed-bfe5-30b318a60104",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechnicalromyo%20(Sachin%20Singh%20Rathour)%2Ftechnicalromyo.jpeg?alt=media&token=ce21efea-43f6-4f46-8399-9fc3d973c1c1"
+    },
+    {
+      "fullName": "Popat Chauhan",
+      "handle": "technonews23",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechnonews23%20(Popat%20Chauhan)%2FbSAEA9Th_technonews23.png?alt=media&token=2c5cb2c1-cf77-4bd6-bc7b-a7eea2d88f47",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechnonews23%20(Popat%20Chauhan)%2Ftechnonews23.png?alt=media&token=0218935e-064b-4c17-ab8d-ccb8f2d7ce8f"
+    },
+    {
+      "fullName": "Abid Khan",
+      "handle": "techsore2",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechsore2%20(Abid%20Khan)%2Fjr6c2pAZ_techsore2.png?alt=media&token=821c5232-1f3f-40dd-87c6-5392c719dbb8",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechsore2%20(Abid%20Khan)%2Ftechsore2.jpeg?alt=media&token=bdfe6559-ed43-4cdd-a4fe-889adaff8d3b"
     }
   ],
   "Business & Entrepreneurship": [
     {
-      "fullName": "Devesh Verma",
-      "handle": "thesavagehumans"
-    },
-    {
-      "fullName": "Yellapu Satya Sai",
-      "handle": "satyainfotech"
-    },
-    {
-      "fullName": "Krishnendu Chakraborty",
-      "handle": "@stillirisemotivation"
-    },
-    {
       "fullName": "Anu Mehta",
-      "handle": "chiragmehtaecom"
-    },
-    {
-      "fullName": "Anita Gupta",
-      "handle": "self_anita"
+      "handle": "chiragmehtaecom",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchiragmehtaecom%20(Anu%20Mehta)%2FdjBh3esK_chiragmehtaecom.png?alt=media&token=53a2e5c9-ab43-450d-b46a-aef4fb6f1b43",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fchiragmehtaecom%20(Anu%20Mehta)%2Fchiragmehtaecom.png?alt=media&token=dc53d8c2-991d-4ecb-be53-adbf0beeb7ef"
     },
     {
       "fullName": "Saurabh Gangwar",
-      "handle": "ibsaurabh"
+      "handle": "ibsaurabh",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fibsaurabh%20(Saurabh%20Gangwar%2FzTMQ77hp_ibsaurabh.png?alt=media&token=cef67196-99bc-48d6-9212-a03cd08d8c59",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fibsaurabh%20(Saurabh%20Gangwar%2Fibsaurabh.jpg?alt=media&token=c39d8dd9-0f97-4fa2-bda9-2c349f8f839f"
+    },
+    {
+      "fullName": "Yellapu Satya Sai",
+      "handle": "satyainfotech",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsatyainfotech%20(Yellapu%20Satya%20Sai)%2F560xQeDC_satyainfotech.png?alt=media&token=2d3aa53c-e4bf-4e9b-9f16-35968a7f26b4",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fsatyainfotech%20(Yellapu%20Satya%20Sai)%2Fsatyainfotech.jpeg?alt=media&token=5fac1244-63f9-4f6d-9958-e5c2591c1957"
+    },
+    {
+      "fullName": "Anita Gupta",
+      "handle": "self_anita",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fself_anita%20(Anita%20Gupta)%2FW6ZcRl1C_self_anita.png?alt=media&token=1297bd82-2900-4290-8243-f077e02b7080",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fself_anita%20(Anita%20Gupta)%2Fself_anita.jpeg?alt=media&token=13b1af2f-af71-4af1-a3c7-b576ba32b30f"
+    },
+    {
+      "fullName": "Krishnendu Chakraborty",
+      "handle": "stillirisemotivation",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fstillirisemotivation%20(Krishnendu%20Chakraborty)%2FgY8lAsHv_stillirisemotivation.png?alt=media&token=a191d435-cdf2-428b-8f3b-a9a51963f6f2",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fstillirisemotivation%20(Krishnendu%20Chakraborty)%2Fstillirisemotivation.jpeg?alt=media&token=b7aa4934-7abe-4bf4-92da-691b2d3ce38b"
+    },
+    {
+      "fullName": "Devesh Verma",
+      "handle": "thesavagehumans",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthesavagehumans%20(Devesh%20Verma)%2F77KzxCP1_thesavagehumans.png?alt=media&token=e67c00d8-febe-4b60-bf0f-15a3cf83c7c0",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthesavagehumans%20(Devesh%20Verma)%2Fthesavagehumans.jpeg?alt=media&token=76546afa-cda7-43c0-9d9d-4eb5d2e00136"
+    }
+  ],
+  "Sports": [
+    {
+      "fullName": "Gaurav Chadha",
+      "handle": "ctablive",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fctablive%20(Gaurav%20Chadha)%2Fr6XYgvC8_ctablive.png?alt=media&token=89070d12-1392-436c-a6f6-8742f1e0efef",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fctablive%20(Gaurav%20Chadha)%2Fctablive.jpeg?alt=media&token=fd32d3a9-2d3c-4aa7-a70f-958226e9662d"
+    },
+    {
+      "fullName": "Kaushal Srivastva",
+      "handle": "grandleagueexpert7227",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgrandleagueexpert7227%20(Kaushal%20Srivastva)%2Fgrandleagueexpert7227.jpg?alt=media&token=c196a377-cb80-4a84-b0db-9e663bb88398",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fgrandleagueexpert7227%20(Kaushal%20Srivastva)%2Fgrandleagueexpert7227.jpg?alt=media&token=c196a377-cb80-4a84-b0db-9e663bb88398"
+    },
+    {
+      "fullName": "Dikshant Suthar",
+      "handle": "perfectwin",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fperfectwin%20(Dikshant%20Suthar)%2Flg4XExJy_perfectwin.png?alt=media&token=34e6eb77-f3a5-48bc-9e6e-50bcdee16d23",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fperfectwin%20(Dikshant%20Suthar)%2Fperfectwin.jpeg?alt=media&token=5a629d04-263e-4e36-ac94-eb600caa8caa"
+    },
+    {
+      "fullName": "Yash Kumar Gupta",
+      "handle": "thefutbolsimulator",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthefutbolsimulator%20(Yash%20Kumar%20Gupta%20)%2FUO9WUGJe_thefutbolsimulator.png?alt=media&token=ffa61709-1669-40f6-8dc7-ea945c20403f",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fthefutbolsimulator%20(Yash%20Kumar%20Gupta%20)%2Fthefutbolsimulator.jpeg?alt=media&token=8696fa7f-821b-4558-9cfa-569eb81a8b66"
+    }
+  ],
+  "Others": [
+    {
+      "fullName": "Dali Pandey",
+      "handle": "dollykireaction",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdollykireaction%20(Dali%20Pandey)%2FahUlCKdi_dollykireaction.png?alt=media&token=0e62ca6a-b7fe-4174-b49b-7533db862b76",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20Pm%20session%20-%202%2Fdollykireaction%20(Dali%20Pandey)%2Fdollykireaction.jpg?alt=media&token=97a18ce9-f7b3-4003-8879-f91ed90cd0c2"
+    },
+    {
+      "fullName": "Mukesh Vats",
+      "handle": "mukeshvats",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmukeshvats%20(Mukesh%20Vats)%2FPfbvT8rC_mukeshvats.png?alt=media&token=c1028ffc-65fd-4eec-a92b-9f9cc6c56dca",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fmukeshvats%20(Mukesh%20Vats)%2Fmukeshvats.jpeg?alt=media&token=253eb54c-7983-4e8a-b4e8-06b08b1613cb"
     }
   ],
   "Cooking": [
     {
       "fullName": "Nikita Sarvaiya",
-      "handle": "nikieskitchen"
+      "handle": "nikieskitchen",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnikieskitchen%20(Nikita%20Sarvaiya)%2Fkmu9eXcz_nikieskitchen.png?alt=media&token=7de3030f-6d89-4124-9aa8-1a9e7f0b177e",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fnikieskitchen%20(Nikita%20Sarvaiya)%2Fnikieskitchen.jpeg?alt=media&token=20bdf577-555d-4cd0-9d4c-7eaf8ab0bc2b"
     },
     {
       "fullName": "Priya Lohia",
-      "handle": "prishugarg"
-    }
-  ],
-  "Education & Learning": [
-    {
-      "fullName": "Dadukiya Vikrambhai",
-      "handle": "vikramdadukiya"
-    },
-    {
-      "fullName": "Anshoo Kushwaha",
-      "handle": "billionaireanshuz"
-    },
-    {
-      "fullName": "Parth Solanki",
-      "handle": "mr.artist_parth"
-    },
-    {
-      "fullName": "Aminaz Wadhwaniya",
-      "handle": "chetchathomies"
-    },
-    {
-      "fullName": "Anant Patel",
-      "handle": "bapujidashrathbhaipatel"
-    },
-    {
-      "fullName": "Shahejad Shekh",
-      "handle": "islamicshortbayan"
-    },
-    {
-      "fullName": "Subhangi Patil",
-      "handle": "drshubhangiphysio"
-    },
-    {
-      "fullName": "Ruta Borkar",
-      "handle": "fabstudioruta"
-    },
-    {
-      "fullName": "Swapnil Khatal",
-      "handle": "fwcnetwork"
-    },
-    {
-      "fullName": "Vibhor Varshney",
-      "handle": "vibhorvarshney"
-    },
-    {
-      "fullName": "Sankit Soni",
-      "handle": "thesankitsoni"
-    },
-    {
-      "fullName": "Roopesh Yadav",
-      "handle": "shripradeepmisrajibhakti"
-    },
-    {
-      "fullName": "Kshipra Singh",
-      "handle": "careerrideofficial"
-    },
-    {
-      "fullName": "Priya Yadav",
-      "handle": "priyaskitchen_"
-    },
-    {
-      "fullName": "Abhishek Kushwah",
-      "handle": "shakunfashionbeauty"
-    },
-    {
-      "fullName": "Deepak Bajaj",
-      "handle": "deepakbajaj"
-    },
-    {
-      "fullName": "Gururaj Sonwane",
-      "handle": "growthguru06"
-    },
-    {
-      "fullName": "Dali Patel",
-      "handle": "khushbustyle"
-    },
-    {
-      "fullName": "Dhruvin Shah",
-      "handle": "iamdhruvinshah"
-    },
-    {
-      "fullName": "Yogesh Kumar",
-      "handle": "studyindia24x7"
-    },
-    {
-      "fullName": "Raj Gyanee",
-      "handle": "thecurrencypediaofficial"
-    },
-    {
-      "fullName": "Abhay Kushwaha",
-      "handle": "curi0"
-    },
-    {
-      "fullName": "Rahul Mehta",
-      "handle": "sapabapbyrahulmehta"
-    },
-    {
-      "fullName": "Mind Boggler",
-      "handle": "mindboggler"
-    },
-    {
-      "fullName": "Damini Tripathi",
-      "handle": "daminitripathi"
-    },
-    {
-      "fullName": "Sakun Devi Kushwah",
-      "handle": "braidhairdo"
-    },
-    {
-      "fullName": "Sakun Devi Kushwah",
-      "handle": "easyarthub-e2q"
-    },
-    {
-      "fullName": "Kirtika Kushwah",
-      "handle": "starbeautyfashion"
-    },
-    {
-      "fullName": "Md Arman Khan",
-      "handle": "techfinalguru"
-    },
-    {
-      "fullName": "Md Ashfak",
-      "handle": "creatorashfak"
-    },
-    {
-      "fullName": "Manish Verma",
-      "handle": "mvsfoundationcbse"
-    },
-    {
-      "fullName": "Ajay Kumar Sharma",
-      "handle": "blessedsutra"
-    },
-    {
-      "fullName": "Akash Deep",
-      "handle": "karateking_a"
-    },
-    {
-      "fullName": "Asharafkhan Bihari",
-      "handle": "@DigitalShalaOfficial"
-    },
-    {
-      "fullName": "Deepthi Gomatam",
-      "handle": "dreamiasforbeginners3042"
-    },
-    {
-      "fullName": "Sagar Joshi",
-      "handle": "bmc_guide"
-    },
-    {
-      "fullName": "Himanshu Kumar",
-      "handle": "jrennis boss"
-    },
-    {
-      "fullName": "Ayush Shroff",
-      "handle": "ayushshroff.1"
-    },
-    {
-      "fullName": "Naveen Malviya",
-      "handle": "scrollwith_naveen"
-    },
-    {
-      "fullName": "Deepa Lalwani",
-      "handle": "deepanlalwani"
-    },
-    {
-      "fullName": "Jeet Rana",
-      "handle": "jeetranasirgs"
-    },
-    {
-      "fullName": "Kushal Baragi",
-      "handle": "kushalbaragi"
-    },
-    {
-      "fullName": "Kalyani Dwivedi",
-      "handle": "chandrakantavlog"
-    },
-    {
-      "fullName": "Ganesh Kumar",
-      "handle": "ganeshallclassesofficial"
-    },
-    {
-      "fullName": "Ravi Dilawari",
-      "handle": "rebornyourself"
-    },
-    {
-      "fullName": "Yash Naliyapara",
-      "handle": "gujarath360"
-    },
-    {
-      "fullName": "Ravi Singh",
-      "handle": "sherepublish"
-    },
-    {
-      "fullName": "Rajveer Sharma",
-      "handle": "maayashodaclasses"
-    },
-    {
-      "fullName": "Jitendra Patil",
-      "handle": "mostlyjitu"
-    }
-  ],
-  "Entertainment": [
-    {
-      "fullName": "Dhanalakshmi Ranganathan",
-      "handle": "lakshmiriyer"
-    },
-    {
-      "fullName": "Vansh Chapadia",
-      "handle": "savagsgaming"
-    },
-    {
-      "fullName": "Akshay Makwana",
-      "handle": "akshaymakwanadance"
-    },
-    {
-      "fullName": "Mayank Kumar",
-      "handle": "mayankcontentcreator"
-    },
-    {
-      "fullName": "Bhavik Gandhi",
-      "handle": "therealityyt"
-    },
-    {
-      "fullName": "Prince Telor",
-      "handle": "prince.namdev_"
-    },
-    {
-      "fullName": "Bhavik Gandhi",
-      "handle": "realbadogameplay"
-    },
-    {
-      "fullName": "Sahil Dagar",
-      "handle": "sahildagarvlogs"
-    },
-    {
-      "fullName": "Bhawani Singh Rathor",
-      "handle": "bhawani_97"
-    },
-    {
-      "fullName": "Kamlesh Prajapati",
-      "handle": "thegamexkiller"
-    },
-    {
-      "fullName": "Suraj Rajput",
-      "handle": "teamactors"
-    },
-    {
-      "fullName": "Anshu Kushwaha",
-      "handle": "anaisytt"
-    },
-    {
-      "fullName": "Abhay Tank",
-      "handle": "wafer-the-dog"
-    },
-    {
-      "fullName": "Rupal Lakkad",
-      "handle": "divyagatha"
-    },
-    {
-      "fullName": "Ehtesham Mukri",
-      "handle": "psychemindss"
-    },
-    {
-      "fullName": "Ravi Gupta",
-      "handle": "filmifever"
-    },
-    {
-      "fullName": "Shashi Kant",
-      "handle": "icrookz"
-    },
-    {
-      "fullName": "Richa Patel",
-      "handle": "dhruhi2"
-    },
-    {
-      "fullName": "Chandni .",
-      "handle": "narendra7010"
-    },
-    {
-      "fullName": "Suchita Tiwari",
-      "handle": "suchitiwari13"
-    },
-    {
-      "fullName": "Sagar Radadiya",
-      "handle": "dhruhi"
-    },
-    {
-      "fullName": "Narendra Daiya",
-      "handle": "rc_7010"
-    },
-    {
-      "fullName": "Abhishek Rai",
-      "handle": "abhishekanimations8888"
-    },
-    {
-      "fullName": "Shabdashri Murhe",
-      "handle": "aifunwithv"
-    },
-    {
-      "fullName": "Review With Nik",
-      "handle": "reviewwithnik"
-    },
-    {
-      "fullName": "Prince Maniya",
-      "handle": "monkeymind2025"
-    },
-    {
-      "fullName": "Namrata Tiwari",
-      "handle": "namrata.tiwarii"
-    },
-    {
-      "fullName": "Namita Tiwari",
-      "handle": "mahitiwari23"
-    },
-    {
-      "fullName": "Rohit Singh Diya",
-      "handle": "@Idealfectory"
-    },
-    {
-      "fullName": "Ahsan Ahmad",
-      "handle": "hungamastudio"
-    },
-    {
-      "fullName": "Ashutoshkumar Prasad",
-      "handle": "mkraa1"
-    },
-    {
-      "fullName": "Harsh Talaviya",
-      "handle": "evergreensongsm1"
-    },
-    {
-      "fullName": "Aswathy Pj",
-      "handle": "aswathyamarnath"
-    },
-    {
-      "fullName": "Pramod Singh",
-      "handle": "pramodsinghshivguru"
-    },
-    {
-      "fullName": "Sarfaraz Kadir",
-      "handle": "iamsarfaraz70"
-    },
-    {
-      "fullName": "Satish Chand",
-      "handle": "vishalbarsana"
-    },
-    {
-      "fullName": "Rahul Dubey",
-      "handle": "rahulbhaiyashort"
-    },
-    {
-      "fullName": "Akil Shah",
-      "handle": "tinyspidy"
-    },
-    {
-      "fullName": "Mona Biswas",
-      "handle": "mona-biswas"
-    },
-    {
-      "fullName": "Jenish Boss",
-      "handle": "zufflooo"
-    },
-    {
-      "fullName": "Surumi Bross",
-      "handle": "surumibross"
-    },
-    {
-      "fullName": "Actor Brajesh",
-      "handle": "@actorbrijesh4247"
-    },
-    {
-      "fullName": "Divy Agrawal",
-      "handle": "@dantehindustani"
-    },
-    {
-      "fullName": "Veer Bahadur",
-      "handle": "veerveer5512"
-    },
-    {
-      "fullName": "Pankaj Shukla",
-      "handle": "kidsonreel"
-    },
-    {
-      "fullName": "Aditya Gupta",
-      "handle": "@Theimpostervlogs"
-    },
-    {
-      "fullName": "Vishu Bhandari",
-      "handle": "viishubhandari"
-    },
-    {
-      "fullName": "Deepak Kumar",
-      "handle": "deepakmbbs04"
-    },
-    {
-      "fullName": "Shivam Bisen",
-      "handle": "shivambisen83974"
-    },
-    {
-      "fullName": "Seetaravamma Enugula",
-      "handle": "ammathokaburlu6226"
-    },
-    {
-      "fullName": "Pinky Pandey",
-      "handle": "pinkypandey-0099"
-    },
-    {
-      "fullName": "Speedy Hrk",
-      "handle": "speedyhrk"
-    },
-    {
-      "fullName": "Amaresh Kumar",
-      "handle": "comedyk"
-    },
-    {
-      "fullName": "Babita Madhu Mandal",
-      "handle": "ishanormistihappylifestyle"
-    },
-    {
-      "fullName": "Biplonath Das",
-      "handle": "bforbiplob"
-    },
-    {
-      "fullName": "Taranjeet Singh",
-      "handle": "taranjietsinghnamdhari"
-    },
-    {
-      "fullName": "Kamini Bhati",
-      "handle": "artstube0"
-    },
-    {
-      "fullName": "Navneet Gupta",
-      "handle": "navneetsumohanmusic"
-    },
-    {
-      "fullName": "Sravanthi Battula",
-      "handle": "maachinniprapancham"
-    },
-    {
-      "fullName": "Malayalam Voice Over",
-      "handle": "malayalam_voice_over"
-    },
-    {
-      "fullName": "Kundan Jha",
-      "handle": "motovloggerkundanjha"
-    },
-    {
-      "fullName": "Siddhesh Shelke",
-      "handle": "politicalflex"
-    },
-    {
-      "fullName": "Sandip Samanta",
-      "handle": "sagarruidasvlogs"
-    },
-    {
-      "fullName": "Ankit Upadhyay",
-      "handle": "ankitupadhyay8-wf9xi"
-    },
-    {
-      "fullName": "Divan Singh",
-      "handle": "divansinghandbabitasingh"
-    },
-    {
-      "fullName": "Rituraj Dwivedi",
-      "handle": "rituraz-gaming"
-    },
-    {
-      "fullName": "Vishal Kumar",
-      "handle": "pihuvishalvlogs4468"
-    },
-    {
-      "fullName": "Veena Kumari",
-      "handle": "gouriaastha111"
-    },
-    {
-      "fullName": "Umang Tyagi",
-      "handle": "ghungroo4444uv"
-    },
-    {
-      "fullName": "Sajalkumar Ray",
-      "handle": "filmyuncle"
-    },
-    {
-      "fullName": "Rahul Sharma",
-      "handle": "minivlogs-uk"
-    },
-    {
-      "fullName": "Manish Kumar Verma",
-      "handle": "manishk55553"
-    }
-  ],
-  "Food": [
-    {
-      "fullName": "Mayur Surti",
-      "handle": "foodieaddicted"
-    },
-    {
-      "fullName": "Ashish Agrawal",
-      "handle": "thefooodiepanda"
-    },
-    {
-      "fullName": "Ruthwik Durgam",
-      "handle": "nomnomfoodie"
-    },
-    {
-      "fullName": "Sheetal Harsora",
-      "handle": "thekitchenseries"
-    },
-    {
-      "fullName": "Ankit Barnwal",
-      "handle": "chatoraankit"
-    },
-    {
-      "fullName": "Devanshi Manihar",
-      "handle": "devanshigaggar7860"
-    },
-    {
-      "fullName": "Jigar Patel",
-      "handle": "jigarpatelvlogs"
-    },
-    {
-      "fullName": "Kuldeep Saraswat",
-      "handle": "ifoodasmr."
-    },
-    {
-      "fullName": "Anjana Dixit",
-      "handle": "anjanadixitkiaasaanrecipe6351"
-    }
-  ],
-  "Gaming": [
-    {
-      "fullName": "Mohit Motiyani",
-      "handle": "notmohitxd89"
-    },
-    {
-      "fullName": "Jay Khatri",
-      "handle": "toastyaf"
-    },
-    {
-      "fullName": "Satish Vasava",
-      "handle": "dopegameplays"
-    },
-    {
-      "fullName": "Shailendra Prajapati",
-      "handle": "igamerzog"
-    },
-    {
-      "fullName": "Ayush Chouhan",
-      "handle": "eraserboygaming"
-    },
-    {
-      "fullName": "Ayush Goel",
-      "handle": "lazyassassin"
-    },
-    {
-      "fullName": "Pallav Joshi",
-      "handle": "frustratedbande"
-    },
-    {
-      "fullName": "Smit Patel",
-      "handle": "smitmasking"
-    },
-    {
-      "fullName": "Hasrat Mimlana",
-      "handle": "hasrat9557"
-    },
-    {
-      "fullName": "Royal Yadav",
-      "handle": "royalyadavgamer"
-    },
-    {
-      "fullName": "Shashank Singh",
-      "handle": "avengerrises3502"
-    }
-  ],
-  "Lifestyle": [
-    {
-      "fullName": "Sandeep Singh Parihar",
-      "handle": "explorewithsanjusingh"
-    },
-    {
-      "fullName": "Tejasvi Gawde",
-      "handle": "travelwithtejasvi"
-    },
-    {
-      "fullName": "Benifer Gandhi",
-      "handle": "beautybybenifer"
-    },
-    {
-      "fullName": "Dhaval Patil",
-      "handle": "dpsvlog"
-    },
-    {
-      "fullName": "Megha Deshmukh",
-      "handle": "itsmylifestoryy"
-    },
-    {
-      "fullName": "Mohd Tabish",
-      "handle": "skykinghealthlifestyle"
-    },
-    {
-      "fullName": "Kajal Yogi",
-      "handle": "kajalyogi369"
-    },
-    {
-      "fullName": "Prachi Sinha",
-      "handle": "prachiglamm"
-    },
-    {
-      "fullName": "Sahil Rajoria",
-      "handle": "sahilrajoria"
-    },
-    {
-      "fullName": "Nita Modi",
-      "handle": "kathiyawadivlogs"
-    },
-    {
-      "fullName": "Himanshu Yadav",
-      "handle": "itshyvlogs"
-    },
-    {
-      "fullName": "Mehul Solanki",
-      "handle": "travelingeyesight"
-    },
-    {
-      "fullName": "Kamlesh Modi Vlogs",
-      "handle": "kamleshmodivlogs"
-    },
-    {
-      "fullName": "Devyani Chaubey",
-      "handle": "devyanichaubey"
-    },
-    {
-      "fullName": "Vishvjeetsinh Chauhan",
-      "handle": "vcvlogs7877"
-    },
-    {
-      "fullName": "Nikunj Vasoya",
-      "handle": "crazyforindianfood"
-    },
-    {
-      "fullName": "Chaitanya Samse",
-      "handle": "mh23vlooger"
-    },
-    {
-      "fullName": "Shabnam Chalanga",
-      "handle": "anushkahairstylet"
-    },
-    {
-      "fullName": "Talaviya Sandip",
-      "handle": "sandiptalaviyaofficials"
-    },
-    {
-      "fullName": "Sudhir Panwar",
-      "handle": "sudhya"
-    },
-    {
-      "fullName": "Vandana Goswami",
-      "handle": "vandanagoswami"
-    },
-    {
-      "fullName": "Keerthana Ravindran",
-      "handle": "keerthanaravindran"
-    },
-    {
-      "fullName": "Vipin Kumar Chauhan",
-      "handle": "@The_Highwaymen"
-    },
-    {
-      "fullName": "Paritosh Trivedi",
-      "handle": "drparitoshtrivedi"
-    },
-    {
-      "fullName": "Tarique Choudhury",
-      "handle": "tariquefragrance"
-    },
-    {
-      "fullName": "Rafik Islam",
-      "handle": "rafiqulvillageofficial8077"
-    },
-    {
-      "fullName": "Rishabh Yadav",
-      "handle": "mr.yadavjifashioncode4079"
-    },
-    {
-      "fullName": "Sakrapani Kotteeswaran",
-      "handle": "travelife1"
-    },
-    {
-      "fullName": "Falguni Chatterjee",
-      "handle": "kothaikifc"
-    },
-    {
-      "fullName": "Sakshi Kulshrestha",
-      "handle": "naturalcarewithsakshi"
-    },
-    {
-      "fullName": "Komal Patel",
-      "handle": "fashiontalesbykomal"
-    },
-    {
-      "fullName": "Krish Arora",
-      "handle": "proudopinions"
-    },
-    {
-      "fullName": "Animesh Nandy",
-      "handle": "paradisepetvlogs7125"
-    },
-    {
-      "fullName": "Sana Saifi",
-      "handle": "sanasaifi__"
-    },
-    {
-      "fullName": "Bilkish Pathan",
-      "handle": "sony.makeover3054"
-    },
-    {
-      "fullName": "Sneha Mahamuni",
-      "handle": "snehpravas"
-    },
-    {
-      "fullName": "Chanchal Manghani",
-      "handle": "chanchalmanghani"
-    }
-  ],
-  "News & Information": [
-    {
-      "fullName": "Yasin Diwan",
-      "handle": "coolesttechyt"
-    },
-    {
-      "fullName": "Japan Pathak",
-      "handle": "deshgujarathd"
-    },
-    {
-      "fullName": "Shashank Singh",
-      "handle": "triplesewenfacts"
-    },
-    {
-      "fullName": "Rais Khan",
-      "handle": "valeriamexico1"
-    },
-    {
-      "fullName": "Jigar Patel",
-      "handle": "jigarsview"
-    },
-    {
-      "fullName": "Hemlata Bhatt",
-      "handle": "topnewsnetworks"
-    },
-    {
-      "fullName": "Janardan Pandey",
-      "handle": "prabhatkhabartv"
-    },
-    {
-      "fullName": "Karthik Bimagani",
-      "handle": "kmedia24"
-    },
-    {
-      "fullName": "Vivek More",
-      "handle": "viralinindia1"
-    },
-    {
-      "fullName": "Dc News",
-      "handle": "dcnews01"
-    },
-    {
-      "fullName": "Dc Production",
-      "handle": "dcprediction01"
-    },
-    {
-      "fullName": "Shyam Singh",
-      "handle": "shyammeerasingh1"
-    },
-    {
-      "fullName": "Rohit Sargar",
-      "handle": "marathiiworld."
-    },
-    {
-      "fullName": "Sumit Tiwari",
-      "handle": "therashtraniti"
-    },
-    {
-      "fullName": "Neha Neha",
-      "handle": 11071
-    },
-    {
-      "fullName": "Nikul Prajapati",
-      "handle": "thecuriousbanda"
-    },
-    {
-      "fullName": "Abhishek Pandey",
-      "handle": "gridabh"
-    },
-    {
-      "fullName": "Shailendra Kumar Singh",
-      "handle": "shailendrakireport"
+      "handle": "prishugarg",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprishugarg%20(Priya%20Lohia)%2FgwDyw9d6_prishugarg.png?alt=media&token=785bccdd-437d-44f5-862a-101a8dd594e7",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Fprishugarg%20(Priya%20Lohia)%2Fprishugarg.jpeg?alt=media&token=b7349744-a081-473e-824b-fe40ec57afa3"
     }
   ],
   "Pets and Animals": [
     {
       "fullName": "Roni Chakraborty",
-      "handle": "@RONIAVIARY"
+      "handle": "RONIAVIARY",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2FRONIAVIARY%20(Roni%20Chakraborty)%2FdGFbS5gc_RONIAVIARY.png?alt=media&token=80f1d810-6b9b-4401-aa84-2d0c0b78ab53",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2FRONIAVIARY%20(Roni%20Chakraborty)%2FRONIAVIARY.png?alt=media&token=d18478cb-4f52-4c44-8f7d-d4494ca809f0"
     }
   ],
-  "Sports": [
+  "Automobile": [
     {
-      "fullName": "Kaushal Srivastva",
-      "handle": "grandleagueexpert7227"
-    },
-    {
-      "fullName": "Dikshant Suthar",
-      "handle": "perfectwin"
-    },
-    {
-      "fullName": "Yash Kumar Gupta",
-      "handle": "thefutbolsimulator"
-    },
-    {
-      "fullName": "Gaurav Chadha",
-      "handle": "ctablive"
-    }
-  ],
-  "Technology": [
-    {
-      "fullName": "Kishan Sheth",
-      "handle": "kishansheth21"
-    },
-    {
-      "fullName": "Abid Khan",
-      "handle": "techsore2"
-    },
-    {
-      "fullName": "Ishan Khedkar",
-      "handle": "onespottech"
-    },
-    {
-      "fullName": "Nikhil Sharma",
-      "handle": "buzz2daytech"
-    },
-    {
-      "fullName": "Rajaram Prasad",
-      "handle": "sikheallinhindi"
-    },
-    {
-      "fullName": "Popat Chauhan",
-      "handle": "prakashchauhanofficial"
-    },
-    {
-      "fullName": "Popat Chauhan",
-      "handle": "technonews23"
-    },
-    {
-      "fullName": "Saiyed Irfan",
-      "handle": "itechirfan"
-    },
-    {
-      "fullName": "Nag Anusha",
-      "handle": "naganusha234"
-    },
-    {
-      "fullName": "Sachin Singh Rathour",
-      "handle": "technicalromyo"
+      "fullName": "Technical Gyan",
+      "handle": "technicalgyan1919",
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechfinalguru%20(Md%20Arman%20Khan)%2FEzvc44OV_techfinalguru.png?alt=media&token=772c6b1d-3794-456e-bc20-79bc9e9d918c",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/3%20PM%20Session%2Ftechnicalgyan1919%20(Technical%20Gyan)%2Ftechnicalgyan1919.jpeg?alt=media&token=325f375c-6433-4c56-bd17-96c2e21a8a25"
     }
   ]
 };
