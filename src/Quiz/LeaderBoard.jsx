@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { url } from "../utils";
 import { motion, AnimatePresence } from "framer-motion";
-import bg from "../assets/video.mp4"; // Video file
 
 function LeaderBoard() {
   const [data, setData] = useState([]);
@@ -40,7 +39,7 @@ function LeaderBoard() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src={bg} type="video/mp4" />
+        <source src="https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/Assets%2FLeader%20board%20For%20animation.mp4?alt=media&token=34ddbf65-99dc-4a3e-9ed6-502466e5b045" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
