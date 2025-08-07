@@ -105,10 +105,10 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
                     //   duration: 0.3,
                     // }}
 
-                      initial={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0 }}
   animate={{ opacity: 1, scale: 1 }}
   exit={{ opacity: 0, scale: 0.85 }}
-  transition={{ duration: 0.4, ease: "easeInOut" }}
+  transition={{ duration: 0.6, ease: "easeInOut" }}
                     className="w-full px-2"
                   >
                    <Button
