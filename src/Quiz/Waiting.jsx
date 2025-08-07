@@ -19,7 +19,7 @@ export const Waiting = ({ onStart }) => (
   >
     <img src={logo} className="w-60 mb-20" alt="Creator Logo" />
       <h1 className="text-5xl font-extrabold ">Great!</h1>
-       <h1 className="text-5xl font-extrabold capitalize">Quiz will start shortly!</h1>
+       <h1 className="text-5xl font-extrabold ">Quiz will start shortly!</h1>
     
 
   </motion.div>
