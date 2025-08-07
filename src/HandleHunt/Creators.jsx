@@ -46,7 +46,7 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
     const interval = setInterval(() => {
       const newGrid = getNewGrid()
       setVisibleGrid(newGrid)
-    }, 1500)
+    }, 2500)
 
     return () => clearInterval(interval)
   }, [data])
@@ -95,15 +95,20 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
                 {creator && (
                   <motion.div
                     key={creator.handle + index}
-                    initial={{ opacity: 0, y: 30, scale: 0 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 30, scale: 0 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 600,
-                      damping: 25,
-                      duration: 0.3,
-                    }}
+                    // initial={{ opacity: 0, y: 30, scale: 0 }}
+                    // animate={{ opacity: 1, y: 0, scale: 1 }}
+                    // exit={{ opacity: 0, y: 30, scale: 0 }}
+                    // transition={{
+                    //   type: 'spring',
+                    //   stiffness: 600,
+                    //   damping: 25,
+                    //   duration: 0.3,
+                    // }}
+
+                      initial={{ opacity: 0, scale: 0.95 }}
+  animate={{ opacity: 1, scale: 1 }}
+  exit={{ opacity: 0, scale: 0.95 }}
+  transition={{ duration: 0.8, ease: "easeInOut" }}
                     className="w-full px-2"
                   >
                    <Button
