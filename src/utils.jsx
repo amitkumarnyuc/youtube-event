@@ -62,7 +62,7 @@ export const ChaatBotQuestion=[
     "options": ["🌶️ Mild", "🌶️🌶️ Medium", "🌶️🌶️🌶️ Hot"],
   },
     {
-    "type":"Tell us your taste preference?",
+    "type":"Tell preference?",
     "question": "How would you like your chaat today?",
     "options": ["🧂 Salty", "🍬 Sweet", "😋 Tangy", "🥵 Chilli"],
   },

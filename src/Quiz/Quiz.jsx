@@ -310,7 +310,7 @@ const handleNext = (score) => {
             transition={{ duration: 0.5 }}
             className="p-10 text-center"
           >
-            <h1 className="text-5xl font-extrabold ">Well Done, {teamName}</h1>
+            <h1 className="text-5xl font-extrabold ">Well done, {teamName}</h1>
             <h2 className="text-5xl font-extrabold  mt-16 mb-16">Your final score is</h2>
             <div className="text-6xl font-bold text-white">⭐{score}</div>
           </motion.div>

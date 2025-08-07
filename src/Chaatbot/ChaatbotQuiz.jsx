@@ -101,7 +101,7 @@ const generateCanvasAndQr = (data) => {
     ctx.font = "30px sans-serif";
 
     let y = logoY + 215.3 + 100;
-    ctx.fillText("Here's what we have cooked up for you", canvas.width / 2, y);
+    ctx.fillText("Here’s the chaat you should have today!", canvas.width / 2, y);
     y += 80;
 
     // Card
@@ -226,7 +226,9 @@ const generateCanvasAndQr = (data) => {
 
   return (
     <div className=" relative flex flex-col items-center justify-center min-h-screen p-2" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-<div className="absolute top-10 left-0 w-full flex justify-between items-center h-20 px-6 z-100">
+<div className="absolute top-10 left-0 w-full flex justify-between items-center h-20 px-6 " style={{
+  zIndex:10000
+}}>
   {(step === "quiz"  || step==="final") && (
     <img
       src={back}
