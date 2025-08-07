@@ -24,6 +24,7 @@ export default function QuizApp() {
   const [showQuiz, setShowQuiz] = useState(false);
   const [showFinalScore, setShowFinalScore] = useState(false);
   const [isWaiting, setIsWaiting] = useState(false);
+const [isloading, setIsLoading] = useState(false);
 
   const [teamName, setTeamName] = useState("");
   const [id, setID] = useState("");
@@ -86,35 +87,41 @@ export default function QuizApp() {
     setTimeout(() => handleNext(s), 1000);
   };
 
-  const handleNext = (score) => {
-    setSelectedOption(null);
-    setHasSubmitted(false);
-    setTimeLeft(20);
-    const timeSpentOnThisQuestion = 20 - timeLeft;
-const updatedTotalTime = totalTimeSpent + timeSpentOnThisQuestion;
-setTotalTimeSpent(updatedTotalTime);
+const handleNext = (score) => {
+  setSelectedOption(null);
+  setHasSubmitted(false);
+  const timeSpentOnThisQuestion = 20 - timeLeft;
+  const updatedTotalTime = totalTimeSpent + timeSpentOnThisQuestion;
+  setTotalTimeSpent(updatedTotalTime);
+  setTimeLeft(20);
 
+  if (currentIndex + 1 < questions.length) {
+    setCurrentIndex((prev) => prev + 1);
+  } else {
+    setIsLoading(true); // Show loading screen
 
-    if (currentIndex + 1 < questions.length) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      fetch(`${url}/api/score`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          score: score,
-          timeTaken: totalTimeSpent,
-          id: id,
-        }),
+    fetch(`${url}/api/score`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        score: score,
+        timeTaken: totalTimeSpent,
+        id: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setShowFinalScore(true);
       })
-        .then((res) => res.json())
-        .then(() => setShowFinalScore(true))
-        .catch((err) => {
-          console.error("Score update failed", err);
-          setShowFinalScore(true);
-        });
-    }
-  };
+      .catch((err) => {
+        console.error("Score update failed", err);
+        setShowFinalScore(true);
+      })
+      .finally(() => {
+        setIsLoading(false); // Hide loading screen
+      });
+  }
+};
 
   return (
     <div
@@ -126,6 +133,22 @@ setTotalTimeSpent(updatedTotalTime);
       }}
     >
       <AnimatePresence mode="wait">
+
+        {isloading && (
+  <motion.div
+    key="loading"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.3 }}
+    className="flex flex-col items-center justify-center min-h-screen text-white text-4xl font-bold"
+  >
+    <div className="animate-spin rounded-full h-24 w-24 border-t-4 border-b-4 border-white mb-6"></div>
+    Submitting your score...
+  </motion.div>
+)}
+
+
         {showLanding && (
           <Tableno
             tableno={tableNo}
