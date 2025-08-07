@@ -97,7 +97,7 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
 
         {/* Title */}
         <motion.h1
-          className="uppercase font-bold text-6xl mb-28 text-center text-black"
+          className=" font-bold text-6xl mb-28 text-center text-black"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
