@@ -90,7 +90,10 @@ export default function QuizApp() {
     setSelectedOption(null);
     setHasSubmitted(false);
     setTimeLeft(20);
-    setTotalTimeSpent((prev) => prev + (20 - timeLeft));
+    const timeSpentOnThisQuestion = 20 - timeLeft;
+const updatedTotalTime = totalTimeSpent + timeSpentOnThisQuestion;
+setTotalTimeSpent(updatedTotalTime);
+
 
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex((prev) => prev + 1);

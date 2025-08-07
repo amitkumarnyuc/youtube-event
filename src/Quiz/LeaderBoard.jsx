@@ -45,10 +45,11 @@ function LeaderBoard() {
         <table className="min-w-full text-white table-fixed border-separate border-spacing-y-3">
           <thead className="bg-black/60 text-xl">
             <tr>
-              <th className="px-4 py-2 text-center w-1/4">Rank</th>
-              <th className="px-4 py-2 text-center w-1/4">Team Name</th>
-              <th className="px-4 py-2 text-center w-1/4">Table No</th>
-              <th className="px-4 py-2 text-center w-1/4">Score</th>
+              <th className="px-4 py-2 text-center w-1/5">Rank</th>
+              <th className="px-4 py-2 text-center w-1/5">Team Name</th>
+              <th className="px-4 py-2 text-center w-1/5">Table No</th>
+               <th className="px-4 py-2 text-center w-1/5">Time Taken</th>
+              <th className="px-4 py-2 text-center w-1/5">Score</th>
             </tr>
           </thead>
           <tbody>
@@ -77,7 +78,7 @@ function LeaderBoard() {
                       className="overflow-hidden rounded-md"
                     >
                       {/* Each td has top-to-bottom gradient */}
-                      <td className="w-1/4 rounded-l-md p-0">
+                      <td className="w-1/5 rounded-l-md p-0">
                         <div className="py-4 text-center text-xl font-semibold bg-gradient-to-b from-black/70 to-zinc-800 rounded-l-md">
                           <motion.div
                             animate={{
@@ -94,17 +95,23 @@ function LeaderBoard() {
                           </motion.div>
                         </div>
                       </td>
-                      <td className="w-1/4 p-0">
+                      <td className="w-1/5 p-0">
                         <div className="py-4 text-center text-xl font-semibold bg-gradient-to-b from-black/70 to-zinc-800">
                           {player.teamName || player.name}
                         </div>
                       </td>
-                      <td className="w-1/4 p-0">
+                      <td className="w-1/5 p-0">
                         <div className="py-4 text-center text-xl font-semibold bg-gradient-to-b from-black/70 to-zinc-800">
                           {player.tableNo}
                         </div>
                       </td>
-                      <td className="w-1/4 rounded-r-md p-0">
+
+                       <td className="w-1/5 p-0">
+                        <div className="py-4 text-center text-xl font-semibold bg-gradient-to-b from-black/70 to-zinc-800">
+                          {player.timeTaken}
+                        </div>
+                      </td>
+                      <td className="w-1/5 rounded-r-md p-0">
                         <div className="py-4 text-center text-xl font-bold bg-gradient-to-b from-black/70 to-zinc-800 rounded-r-md">
                           {player.score}
                         </div>
