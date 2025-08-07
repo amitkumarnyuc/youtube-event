@@ -1,6 +1,5 @@
 import { Button } from "../components/ui/Buttons";
 import { motion } from "framer-motion";
-import gemini from '../assets/chaatbot.png';
 import logo from '../assets/creator-logo.svg';
 import bg from '../assets/bg2.png'
 import btn from '../assets/btn.svg'

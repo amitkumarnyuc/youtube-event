@@ -10,7 +10,7 @@ import { QuizStart } from "./QuizStart";
 import btn from "../assets/btn.svg";
 import Tableno from "./Tableno";
 import { Waiting } from "./Waiting";
-import Footer from "../components/ui/Footer";
+
 
 export default function QuizApp() {
   const [currentIndex, setCurrentIndex] = useState(0);

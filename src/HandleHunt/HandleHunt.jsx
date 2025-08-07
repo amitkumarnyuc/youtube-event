@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import HandleHuntStart from './HandleHuntStart'
 import bg from '../assets/bg.png'
 import Category from './Category'
-import { categories, creatorsByCategory } from '../utils'
+import { categories } from '../utils'
 import Creator from './Creators'
-import Footer from '../components/ui/Footer'
+
 function HandleHunt({creators}) {
   const [page, setPage] = useState(0)
   const [selectedCategory, setSelectedCategory] = useState("")
