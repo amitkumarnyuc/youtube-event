@@ -37,7 +37,7 @@ function Category({ handleClick, data, handleBack, handleHome }) {
         </motion.h1>
 
        <div className="max-h-[80vh] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200 px-2">
-  <div className="flex flex-col gap-y-20 mt-10 " style={{height:"1090px", overflow:"scroll"}}>
+  <div className="flex flex-col gap-y-20 mt-10 " style={{height:"1090px"}}>
     {/* Full rows (3 buttons per row) */}
     {Array.from({ length: fullRows }).map((_, rowIndex) => (
       <div key={rowIndex} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6">
