@@ -1564,13 +1564,13 @@ export const categories = [
   'Lifestyle',
   'Music',
   'News & Information',
-  'Others',
   'Pets & Animals',
   'Podcast',
   'Religious',
   'Spiritual',
   'Sports',
   'Technology',
+   'Others',
 ]
 
 

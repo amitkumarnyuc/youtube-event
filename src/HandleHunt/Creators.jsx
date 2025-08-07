@@ -7,24 +7,47 @@ import Footer from '../components/ui/Footer'
 
 function Creator({ handleClick, data, handleBack, handleHome, Category }) {
   const [selectedCreator, setSelectedCreator] = useState(null)
-  const [visibleGrid, setVisibleGrid] = useState(Array(18).fill(null))
+  const [visibleGrid, setVisibleGrid] = useState([])
+  const previousGridRef = useRef([])
   const timerRef = useRef(null)
 
-  // Shuffle 6 creators into 18 grid slots randomly
-  const shuffleGrid = () => {
-    const newGrid = Array(18).fill(null)
-    const shuffledCreators = [...data].sort(() => 0.5 - Math.random()).slice(0, 6)
-    const gridIndexes = Array.from({ length: 18 }, (_, i) => i).sort(() => 0.5 - Math.random())
+  const getNewGrid = () => {
+    const MAX_GRID = 18
+    if (!data || data.length < MAX_GRID) return []
 
-    for (let i = 0; i < shuffledCreators.length; i++) {
-      newGrid[gridIndexes[i]] = shuffledCreators[i]
+    const shuffled = [...data].sort(() => Math.random() - 0.5)
+    const newSelection = shuffled.slice(0, MAX_GRID)
+
+    // Ensure no item stays in the same position as before
+    const previousGrid = previousGridRef.current
+    let attempt = 0
+    const maxAttempts = 20
+
+    while (attempt < maxAttempts) {
+      const changed = newSelection.some((item, index) => {
+        return item.handle !== previousGrid[index]?.handle
+      })
+
+      if (changed) break
+
+      // Retry shuffle if any handle is still in the same index
+      newSelection.sort(() => Math.random() - 0.5)
+      attempt++
     }
-    setVisibleGrid(newGrid)
+
+    previousGridRef.current = newSelection
+    return newSelection
   }
 
   useEffect(() => {
-    shuffleGrid()
-    const interval = setInterval(shuffleGrid, 2000) // reshuffle every 2s
+    const initialGrid = getNewGrid()
+    setVisibleGrid(initialGrid)
+
+    const interval = setInterval(() => {
+      const newGrid = getNewGrid()
+      setVisibleGrid(newGrid)
+    }, 1500)
+
     return () => clearInterval(interval)
   }, [data])
 
@@ -48,28 +71,26 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
         }}
       >
         {/* Header */}
-        <div className="w-full flex justify-between items-center h-20 px-6 mb-12">
-          <img src={back} alt="Back" className="h-16 sm:h-24 cursor-pointer" onClick={handleBack} />
-          <img src={home} alt="Home" className="h-16 sm:h-24 cursor-pointer" onClick={handleHome} />
-        </div>
+              <div className="w-full flex justify-between items-center h-20 px-6 mb-32">
+  <img src={back} alt="Back" className="h-24 cursor-pointer" onClick={handleBack}/>
+  <img src={home} alt="Home" className="h-24 cursor-pointer" onClick={handleHome}/>
+</div>
 
         {/* Title */}
         <motion.h1
-          className="uppercase font-bold text-4xl sm:text-6xl mb-16 sm:mb-20 text-center text-black"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-        >
+                className="uppercase font-bold text-6xl mb-28 text-center text-black"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
           Find your handle and tap to reveal your surprise
         </motion.h1>
 
-        {/* 6x3 Grid */}
-        <div className="grid grid-cols-3 grid-rows-6 gap-4 w-full max-w-[900px] mx-auto">
+        {/* Grid */}
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-3 gap-y-20">
           {visibleGrid.map((creator, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center h-24 sm:h-28 bg-transparent"
-            >
+            <div key={index} className="flex items-center justify-center h-24 sm:h-28 bg-transparent ">
               <AnimatePresence mode="popLayout">
                 {creator && (
                   <motion.div
@@ -85,12 +106,13 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
                     }}
                     className="w-full px-2"
                   >
-                    <Button
-                      onClick={() => setSelectedCreator(creator)}
-                      className="w-full bg-black h-20 bg-opacity-90 text-white hover:bg-opacity-100 transition duration-200 font-semibold text-2xl sm:text-xl"
-                    >
-                      {creator.handle}
-                    </Button>
+                   <Button
+                    onClick={() => setSelectedCreator(creator)}
+                    className="w-full bg-black h-20 bg-opacity-90 text-white hover:bg-opacity-100 transition duration-200 font-semibold text-2xl whitespace-normal break-words text-center px-2"
+                  >
+                    {creator.handle}
+                  </Button>
+
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -123,7 +145,7 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
               />
 
               <h3 className="text-white font-semibold text-left text-2xl">
-                Prompt:<br></br>
+                Prompt:<br />
                 Create a fun channel drawing art image for my YouTube channel in 2560x1440, 16:9 dimension about {Category}, hosted by {selectedCreator.fullName}. The overall vibe should be happy.
               </h3>
 
