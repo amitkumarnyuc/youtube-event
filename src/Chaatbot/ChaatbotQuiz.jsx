@@ -128,6 +128,11 @@ const generateCanvasAndQr = (data) => {
       ctx.font = "bold 35px sans-serif";
     ctx.fillText(`${updatedForm.fullName}'s ${updatedForm.chaatName}!`, canvas.width / 2, y);
 
+      y =1340;
+      ctx.font = "bold 20px sans-serif";
+       ctx.fillStyle = "#fff";
+    ctx.fillText(`Made With Google Gemini`, 150, y);
+
     // Export canvas
     const dataURL = canvas.toDataURL("image/png");
     console.log(dataURL);
