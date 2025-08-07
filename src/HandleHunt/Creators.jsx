@@ -169,7 +169,7 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
                 className="w-full rounded-xl shadow-md m-2"
               />
 
-              <h3 className="text-white font-semibold text-left text-2xl">
+              <h3 className="text-white font-semibold text-justify text-2xl">
                 Prompt:
                 <br />
                 Create a fun channel drawing art image for my YouTube channel in 2560x1440, 16:9 dimension about{" "}
