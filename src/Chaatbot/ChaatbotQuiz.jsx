@@ -225,7 +225,8 @@ const generateCanvasAndQr = (data) => {
 
 
   return (
-    <div className=" relative flex flex-col items-center justify-center min-h-screen p-2" style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className=" relative flex flex-col items-center justify-center min-h-screen p-2" 
+    style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
 <div className="absolute top-10 left-0 w-full flex justify-between items-center h-20 px-6 " style={{
   zIndex:10000
 }}>
