@@ -305,12 +305,12 @@ const generateCanvasAndQr = (data) => {
           </p>
 
             {qrValue && (
-              <div className="flex flex-col items-center gap-2 text-2xl">
-                <QRCodeSVG value={qrValue} size={180} />
-                <h1 className="text-black text-2xl mt-6 ">
+              <div className="flex flex-col items-center gap-1 text-2xl">
+                <QRCodeSVG value={qrValue} size={200} />
+                <p className="text-black text-2xl mt-6 ">
                   Here’s a QR code to download your custom chaat! <br />
                   Show this to the chef to get it.
-                </h1>
+                </p>
               </div>
             )}
           </motion.div>
