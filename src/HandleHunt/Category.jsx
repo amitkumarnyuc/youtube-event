@@ -33,7 +33,7 @@ function Category({ handleClick, data, handleBack, handleHome }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          Select your Category
+          Select your category
         </motion.h1>
 
        <div className="max-h-[80vh] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200 px-2">
