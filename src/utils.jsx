@@ -421,8 +421,8 @@ export const creatorsByCategory = {
     {
       "fullName": "Vijendra Singh",
       "handle": "rajgurujiraj",
-      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/rajgurujiraj%20(Vijendra%20Singh)%2FjCWKfMso_rajgurujiraj.png?alt=media&token=8fbafa1d-e94f-43b6-b6f1-bcad8bd3566f",
-      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/rajgurujiraj%20(Vijendra%20Singh)%2Frajgurujiraj.jpeg?alt=media&token=651b5a74-88c6-4c65-a400-4ab3f7e866c0"
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/rajgurujiraj%20(Vijendra%20Singh)%2Fqr-code%20(4).png?alt=media&token=bcefea65-e3b2-4ca1-b53e-0bfdce707919",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/rajgurujiraj%20(Vijendra%20Singh)%2Frajgurujiraj.jpeg?alt=media&token=9933ce4e-7104-4b66-808e-ebd507d20c05"
     },
     {
       "fullName": "Profits First",
@@ -1548,7 +1548,6 @@ export const creatorsByCategory = {
     }
   ]
 };
-
 export const categories1=[
   'Art',
   'Business & Entrepreneurship',

@@ -55,20 +55,51 @@ function Creator({ handleClick, data, handleBack, handleHome, Category }) {
     return { grid: newGrid, changedIndices: indicesToShuffle };
   };
 
-  useEffect(() => {
-    const initialGrid = getNewGrid();
-    setVisibleGrid(initialGrid);
-    previousGridRef.current = initialGrid;
+useEffect(() => {
+  const initialGrid = getNewGrid();
+  setVisibleGrid(initialGrid);
+  previousGridRef.current = initialGrid;
 
-    const interval = setInterval(() => {
-      const { grid: newGrid, changedIndices } = shuffleGrid(previousGridRef.current);
-      setVisibleGrid(newGrid);
-      setShuffledIndices(changedIndices);
-      previousGridRef.current = newGrid;
-    }, 2500);
+  const interval = setInterval(() => {
+    const updatedGrid = [...previousGridRef.current];
+    const changedIndices = [];
 
-    return () => clearInterval(interval);
-  }, [data]);
+    if (data.length >= MAX_GRID) {
+      // Replace 50% of items with new ones from getNewGrid()
+      const newRandomGrid = getNewGrid();
+      const numToReplace = Math.floor(MAX_GRID * 0.5);
+      const indices = Array.from({ length: MAX_GRID }, (_, i) => i);
+
+      for (let i = 0; i < numToReplace; i++) {
+        const randIdx = Math.floor(Math.random() * indices.length);
+        const gridIdx = indices.splice(randIdx, 1)[0];
+
+        updatedGrid[gridIdx] = newRandomGrid[gridIdx];
+        changedIndices.push(gridIdx);
+      }
+    } else {
+      // Shuffle only existing non-placeholder items
+      const realIndices = updatedGrid
+        .map((item, idx) => (!item.isPlaceholder ? idx : null))
+        .filter((idx) => idx !== null);
+
+      const shuffledRealItems = realIndices
+        .map((i) => updatedGrid[i])
+        .sort(() => Math.random() - 0.5);
+
+      realIndices.forEach((i, idx) => {
+        updatedGrid[i] = shuffledRealItems[idx];
+        changedIndices.push(i);
+      });
+    }
+
+    setVisibleGrid(updatedGrid);
+    setShuffledIndices(changedIndices);
+    previousGridRef.current = updatedGrid;
+  }, 2500);
+
+  return () => clearInterval(interval);
+}, [data]);
 
   useEffect(() => {
     if (selectedCreator) {
