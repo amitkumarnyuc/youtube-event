@@ -133,6 +133,13 @@ function LeaderBoard() {
           </table>
         </div>
       </div>
+
+      <p
+      className="absolute text-white z-50 w-full text-center text-3xl"
+     
+    >
+      Made with Google Gemini
+    </p>
     </div>
   );
 }
