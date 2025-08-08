@@ -759,8 +759,8 @@ export const creatorsByCategory = {
     {
       "fullName": "Sonu Singh",
       "handle": "mixbhakti",
-      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/mixbhakti%20(Sonu%20Singh)%2F2mT6byFc_mixbhakti.png?alt=media&token=ccf83cc1-0128-46d9-bc7f-c7f46c74874e",
-      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/mixbhakti%20(Sonu%20Singh)%2Fmixbhakti.jpeg?alt=media&token=232bbbb1-7328-452d-9f51-2e062569e01d"
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/mixbhakti%20(Sonu%20Singh)%2Fqr-code%20(3).png?alt=media&token=fc636408-6f86-48f4-aede-708ed3cf6e4a",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/mixbhakti%20(Sonu%20Singh)%2Fmixbhakti.jpeg?alt=media&token=4598e28c-6868-4983-ae8c-b96ff67bb28a"
     },
     {
       "fullName": "Rohit Verma",
