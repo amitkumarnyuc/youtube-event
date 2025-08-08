@@ -957,8 +957,8 @@ export const creatorsByCategory = {
     {
       "fullName": "Nilrajsinh The Nilraj",
       "handle": "thenilraj",
-      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/thenilraj%20(Nilrajsinh%20The%20Nilraj)%2FliVI5kCE_thenilraj.png?alt=media&token=9833eead-1205-469a-8504-035ddf15fd80",
-      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/thenilraj%20(Nilrajsinh%20The%20Nilraj)%2Fthenilraj.jpeg?alt=media&token=b4e924ad-a090-4bdb-b9c0-b9e228fbb69d"
+      "qr": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/thenilraj%20(Nilrajsinh%20The%20Nilraj)%2Fqr-code%20(6).png?alt=media&token=5df85930-7851-432d-874d-ad5d259d0465",
+      "banner": "https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/thenilraj%20(Nilrajsinh%20The%20Nilraj)%2Fthenilraj.jpeg?alt=media&token=a90011d9-6ce9-4bad-987a-6fc550491b98"
     },
     {
       "fullName": "Sunil Verma",
