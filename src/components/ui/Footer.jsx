@@ -23,7 +23,7 @@ function Footer() {
 
   return (
     <p
-      className="absolute text-white left-4 z-50"
+      className="absolute text-white left-4 z-50 "
       style={style}
     >
       Made with Google Gemini

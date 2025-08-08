@@ -135,7 +135,7 @@ function LeaderBoard() {
       </div>
 
       <p
-      className="absolute text-white z-50 w-full text-center text-3xl"
+      className="absolute text-white z-50 w-full text-center text-3xl bottom-2"
      
     >
       Made with Google Gemini
