@@ -37,7 +37,10 @@ function LeaderBoard() {
         muted
         loop
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        className="absolute  left-0 w-full h-full object-cover z-0"
+        style={{
+          top:'-6px'
+        }}
       >
         <source src="https://firebasestorage.googleapis.com/v0/b/gemini-17e87.firebasestorage.app/o/Assets%2FLeader%20board%20For%20animation.mp4?alt=media&token=75d2f449-1bac-47b5-878d-fda1e2fb9bb7" type="video/mp4" />
         Your browser does not support the video tag.
@@ -47,9 +50,9 @@ function LeaderBoard() {
       <div className="absolute top-0 left-0 w-full h-full z-0"></div>
 
       {/* ⚪ Foreground content */}
-      <div className="relative z-10 p-4 pt-[22vh]">
-        <div className="overflow-x-auto rounded-lg w-full p-4">
-          <table className="min-w-full text-white table-fixed border-separate border-spacing-y-3">
+      <div className="relative z-10 pl-4 pr-4 pt-[27vh]">
+        <div className="overflow-x-auto rounded-lg w-full pl-4 pr-4">
+          <table className="min-w-full text-white table-fixed border-separate border-spacing-y-2">
             <thead className="bg-black/60 text-xl">
               <tr>
                 <th className="px-4 py-2 text-center w-1/5">Rank</th>
