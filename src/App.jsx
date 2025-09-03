@@ -5,6 +5,8 @@ import HandleHunt from "./HandleHunt/HandleHunt";
 import LeaderBoard from "./Quiz/LeaderBoard";
 import { categories1, categories2, creatorsByCategory, creatorsByCategory2 } from "./utils";
 import Footer from "./components/ui/Footer";
+import Form from "./Game/Form";
+import Game from "./Game/Game";
 
 function Home() {
   return (
@@ -47,7 +49,7 @@ function Home() {
 function App() {
   return (
     <Router>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chaat" element={<ChaatbotQuiz />} />
         <Route path="/quiz" element={<QuizApp />} />
@@ -55,7 +57,12 @@ function App() {
           <Route path="/handleHunt2" element={<HandleHunt creators={creatorsByCategory2} categories={categories2}/>} />
          <Route path="/leaderboard" element={<LeaderBoard/>}/>
       </Routes>
-      <Footer/>
+      <Footer/> */}
+
+      <Routes>
+        <Route path="/" element={<Form />} />
+        <Route path="/game" element={<Game />} />
+        </Routes>
     </Router>
   );
 }
