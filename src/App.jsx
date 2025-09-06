@@ -6,7 +6,10 @@ import LeaderBoard from "./Quiz/LeaderBoard";
 import { categories1, categories2, creatorsByCategory, creatorsByCategory2 } from "./utils";
 import Footer from "./components/ui/Footer";
 import Form from "./Game/Form";
+import Form2 from "./Game/Form2";
 import Game from "./Game/Game";
+import Game2 from "./Game/Game2";
+import SelectControllerOrScreen from "./Game/selectControllerOrScreen";
 
 function Home() {
   return (
@@ -60,9 +63,12 @@ function App() {
       <Footer/> */}
 
       <Routes>
-        <Route path="/" element={<Form />} />
+        <Route path="/" element={<SelectControllerOrScreen />} />
+        <Route path="/form1" element={<Form />} />
+        <Route path="/form2" element={<Form2 />} />
         <Route path="/game" element={<Game />} />
-        </Routes>
+        <Route path="/game2" element={<Game2 />} />
+      </Routes>
     </Router>
   );
 }

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 import icon1 from "../assets/Icons/icons-01.png";
 import icon2 from "../assets/Icons/icons-02.png";
 import icon3 from "../assets/Icons/icons-03.png";
@@ -21,6 +22,7 @@ const items = [
 ];
 
 function Game() {
+
   const gameDuration = 20000;        // 20 s
   const baseBubbleLifetime = 1500;
   const baseSpawnInterval = 800;
@@ -43,7 +45,7 @@ function Game() {
   // CONNECT SOCKET
   useEffect(() => {
     socketRef.current = io("http://localhost:3001");
-    socketRef.current.on("screen1", () => {
+    socketRef.current.on("screen2", () => {
       resetGame();
       setGameStarted(true);
     });

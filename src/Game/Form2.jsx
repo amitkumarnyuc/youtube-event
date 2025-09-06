@@ -1,30 +1,15 @@
 // src/components/Form.jsx
-import { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { io } from "socket.io-client";
+
 
 function Form() {
-  const [step, setStep] = useState("choose"); 
+  const [step, setStep] = useState("choose"); // "choose" | "names"
   const [numPlayers, setNumPlayers] = useState(1);
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
   const [loading, setLoading] = useState(false);
   const [serverMsg, setServerMsg] = useState("");
-  const [statuses, setStatuses] = useState({ isScreen1Busy: false, isScreen2Busy: false });
-
-
-    const socketRef = useRef(null);
-
-  useEffect(() => {
-    socketRef.current = io("http://localhost:3001");
-    socketRef.current.emit("controller1");
-    socketRef.current.on("controller1", (data) => {
-      console.log("Received statuses:", data);
-      setStatuses(data); 
-    });
-
-    return () => socketRef.current.disconnect();
-  }, []);
 
   const handleChoose = (n) => {
     setNumPlayers(n);
@@ -43,7 +28,7 @@ function Form() {
         : { player1, player2 };
 
     try {
-      const res = await fetch("http://localhost:3001/api/screen1", {
+      const res = await fetch("http://localhost:3001/api/screen2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: payload }),
@@ -101,11 +86,10 @@ function Form() {
 
     if(numPlayers===1)
     {
-      await handleSubmit1(e);
-      return;
+
     }
     else{
-       await Promise.all([handleSubmit1(e), handleSubmit2(e)]);
+      const [x, y]= await new Promise.all[handleSubmit1, handleSubmit2];
     }
   }
 
