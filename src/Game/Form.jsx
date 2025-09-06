@@ -4,26 +4,46 @@ import { motion, AnimatePresence } from "framer-motion";
 import { io } from "socket.io-client";
 
 function Form() {
-  const [step, setStep] = useState("choose"); 
+  const [step, setStep] = useState("choose");
   const [numPlayers, setNumPlayers] = useState(1);
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
   const [loading, setLoading] = useState(false);
   const [serverMsg, setServerMsg] = useState("");
-  const [statuses, setStatuses] = useState({ isScreen1Busy: false, isScreen2Busy: false });
+  const [statuses, setStatuses] = useState({
+    isScreen1Busy: false,
+    isScreen2Busy: false,
+  });
 
-
-    const socketRef = useRef(null);
+  const socketRef = useRef(null);
 
   useEffect(() => {
+    // Initialize socket connection
     socketRef.current = io("http://localhost:3001");
-    socketRef.current.emit("controller1");
-    socketRef.current.on("controller1", (data) => {
-      console.log("Received statuses:", data);
-      setStatuses(data); 
-    });
 
-    return () => socketRef.current.disconnect();
+    // Set up event listeners
+    const handleStatusUpdate = (data) => {
+      setStatuses((prevStatuses) => ({
+        ...prevStatuses,
+        ...data,
+      }));
+    };
+
+    // Listen for status updates
+    socketRef.current.on("controller1", handleStatusUpdate);
+    socketRef.current.on("statusUpdate", handleStatusUpdate);
+
+    // Request initial status
+    socketRef.current.emit("controller1");
+
+    // Cleanup function
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.off("controller1", handleStatusUpdate);
+        socketRef.current.off("statusUpdate", handleStatusUpdate);
+        socketRef.current.disconnect();
+      }
+    };
   }, []);
 
   const handleChoose = (n) => {
@@ -37,10 +57,7 @@ function Form() {
     setServerMsg("");
 
     // build payload like curl
-    const payload =
-      numPlayers === 1
-        ? { player1 }
-        : { player1, player2 };
+    const payload = numPlayers === 1 ? { player1 } : { player1, player2 };
 
     try {
       const res = await fetch("http://localhost:3001/api/screen1", {
@@ -52,6 +69,10 @@ function Form() {
       const json = await res.json().catch(() => ({}));
       if (res.ok) {
         setServerMsg("✅ Sent successfully");
+        // Request updated status after successful submission
+        if (socketRef.current) {
+          socketRef.current.emit("controller1");
+        }
       } else {
         setServerMsg("⚠️ Error: " + (json.message || res.status));
       }
@@ -62,17 +83,13 @@ function Form() {
     }
   };
 
-
-    const handleSubmit2 = async (e) => {
+  const handleSubmit2 = async (e) => {
     e.preventDefault();
     setLoading(true);
     setServerMsg("");
 
     // build payload like curl
-    const payload =
-      numPlayers === 1
-        ? { player1 }
-        : { player1, player2 };
+    const payload = numPlayers === 1 ? { player1 } : { player1, player2 };
 
     try {
       const res = await fetch("http://localhost:3001/api/screen2", {
@@ -84,6 +101,10 @@ function Form() {
       const json = await res.json().catch(() => ({}));
       if (res.ok) {
         setServerMsg("✅ Sent successfully");
+        // Request updated status after successful submission
+        if (socketRef.current) {
+          socketRef.current.emit("controller1");
+        }
       } else {
         setServerMsg("⚠️ Error: " + (json.message || res.status));
       }
@@ -94,21 +115,28 @@ function Form() {
     }
   };
 
-  const handleSubmit=async(e)=>{
-      e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     setServerMsg("");
 
-    if(numPlayers===1)
-    {
+    if (numPlayers === 1) {
       await handleSubmit1(e);
       return;
+    } else {
+      await Promise.all([handleSubmit1(e), handleSubmit2(e)]);
     }
-    else{
-       await Promise.all([handleSubmit1(e), handleSubmit2(e)]);
-    }
-  }
+  };
 
+  // Reset to choose step when both screens become available
+  useEffect(() => {
+    if (
+      step === "names" &&
+      !statuses.isScreen1Busy &&
+      !statuses.isScreen2Busy
+    ) {
+    }
+  }, [statuses, step]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-200 via-indigo-200 to-purple-200 p-4">
@@ -135,23 +163,50 @@ function Form() {
                 <p className="text-gray-500 mb-4 text-center">
                   How many players will be playing?
                 </p>
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => handleChoose(1)}
-                    className="px-6 py-3 rounded-xl bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition"
-                  >
-                    1 Player
-                  </button>
-                  <button
-                    onClick={() => handleChoose(2)}
-                    className="px-6 py-3 rounded-xl bg-green-500 text-white font-semibold shadow hover:bg-green-600 transition"
-                  >
-                    2 Players
-                  </button>
-                </div>
+
+                {statuses.isScreen1Busy && statuses.isScreen2Busy ? (
+                  <p className="text-red-600 font-semibold">
+                    Screen is busy, please try on the other Ipad or wait for
+                    some time.
+                  </p>
+                ) : (
+                  <div className="flex gap-4">
+                    {!statuses.isScreen1Busy && !statuses.isScreen2Busy && (
+                      <>
+                        <button
+                          onClick={() => handleChoose(1)}
+                          className="px-6 py-3 rounded-xl bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition"
+                        >
+                          1 Player
+                        </button>
+                        <button
+                          onClick={() => handleChoose(2)}
+                          className="px-6 py-3 rounded-xl bg-green-500 text-white font-semibold shadow hover:bg-green-600 transition"
+                        >
+                          2 Players
+                        </button>
+                      </>
+                    )}
+
+                    {statuses.isScreen1Busy && !statuses.isScreen2Busy && (
+                      <p className="text-red-600 font-semibold">
+                        Screen is busy, please try on the other Ipad or wait for
+                        some time.
+                      </p>
+                    )}
+
+                    {!statuses.isScreen1Busy && statuses.isScreen2Busy && (
+                      <button
+                        onClick={() => handleChoose(1)}
+                        className="px-6 py-3 rounded-xl bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition"
+                      >
+                        Play on Screen 1
+                      </button>
+                    )}
+                  </div>
+                )}
               </motion.div>
             )}
-
             {step === "names" && (
               <motion.form
                 key="names"
@@ -203,6 +258,14 @@ function Form() {
                     {serverMsg}
                   </p>
                 )}
+
+                <button
+                  type="button"
+                  onClick={() => setStep("choose")}
+                  className="mt-2 px-4 py-2 rounded-xl bg-gray-300 text-gray-700 font-semibold shadow hover:bg-gray-400 transition"
+                >
+                  Back
+                </button>
               </motion.form>
             )}
           </AnimatePresence>

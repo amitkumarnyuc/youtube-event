@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import  { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../components/ui/Buttons";
 import back from "../assets/back.svg";
 import home from "../assets/home.svg";
-import Footer from "../components/ui/Footer";
 import bg from '../assets/bg.png'
 function Creator({ handleClick, data, handleBack, handleHome, Category }) {
   const [selectedCreator, setSelectedCreator] = useState(null);

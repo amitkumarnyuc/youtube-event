@@ -16,16 +16,26 @@ import icon11 from "../assets/Icons/icons-11.png";
 import icon12 from "../assets/Icons/icons-12.png";
 
 const items = [
-  icon1, icon2, icon3, icon4, icon5, icon6,
-  icon7, icon8, icon9, icon10, icon11, icon12
+  icon1,
+  icon2,
+  icon3,
+  icon4,
+  icon5,
+  icon6,
+  icon7,
+  icon8,
+  icon9,
+  icon10,
+  icon11,
+  icon12,
 ];
 
 function Game() {
-  const gameDuration = 20000;        // 20 s
+  const gameDuration = 20000; // 20 s
   const baseBubbleLifetime = 1500;
   const baseSpawnInterval = 800;
 
-  const bubbleSize = 80;             // px — master knob
+  const bubbleSize = 80; // px — master knob
 
   const [bubbles, setBubbles] = useState([]);
   const [score, setScore] = useState(0);
@@ -55,7 +65,7 @@ function Game() {
     if (!gameStarted) return;
 
     const countdown = setInterval(() => {
-      setTimeLeft(prev => {
+      setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(countdown);
           endGame();
@@ -79,7 +89,10 @@ function Game() {
   useEffect(() => {
     if (score > 0 && score % 3 === 0) {
       spawnIntervalRef.current = Math.max(200, spawnIntervalRef.current - 100);
-      bubbleLifetimeRef.current = Math.max(400, bubbleLifetimeRef.current - 150);
+      bubbleLifetimeRef.current = Math.max(
+        400,
+        bubbleLifetimeRef.current - 150
+      );
 
       if (!gameOver && gameStarted) {
         clearInterval(timerRef.current);
@@ -98,8 +111,18 @@ function Game() {
     bubbleLifetimeRef.current = baseBubbleLifetime;
   };
 
-  const endGame = () => {
+  const endGame = async () => {
     clearInterval(timerRef.current);
+
+    // call API
+    await fetch("http://localhost:3001/api/resetScreens", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ screen1: true }),
+    });
+
     setGameOver(true);
     setBubbles([]);
   };
@@ -128,32 +151,32 @@ function Game() {
         burst: false,
       };
 
-      safe = bubbles.every(b => {
-        const dx = (x - b.x) * window.innerWidth / 100;
-        const dy = (y - b.y) * window.innerHeight / 100;
+      safe = bubbles.every((b) => {
+        const dx = ((x - b.x) * window.innerWidth) / 100;
+        const dy = ((y - b.y) * window.innerHeight) / 100;
         return Math.sqrt(dx * dx + dy * dy) > bubbleSize;
       });
     }
 
     if (!safe) return;
 
-    setBubbles(prev => [...prev, newBubble]);
+    setBubbles((prev) => [...prev, newBubble]);
     setTimeout(() => {
-      setBubbles(prev => prev.filter(b => b.id !== id));
+      setBubbles((prev) => prev.filter((b) => b.id !== id));
     }, bubbleLifetimeRef.current);
   };
 
   const handleTap = (id) => {
     if (gameOver) return;
 
-    setBubbles(prev =>
-      prev.map(b => {
+    setBubbles((prev) =>
+      prev.map((b) => {
         if (b.id === id) {
           if (b.trap) {
-            setScore(s => Math.max(0, s - 1));
+            setScore((s) => Math.max(0, s - 1));
             setMessage("Oops! -1 ❌");
           } else {
-            setScore(s => s + 1);
+            setScore((s) => s + 1);
             setMessage("Great! 🎉");
           }
           return { ...b, burst: true, text: "💥" };
@@ -164,7 +187,7 @@ function Game() {
 
     setTimeout(() => setMessage(""), 800);
     setTimeout(() => {
-      setBubbles(prev => prev.filter(b => b.id !== id));
+      setBubbles((prev) => prev.filter((b) => b.id !== id));
     }, 400);
   };
 
@@ -172,7 +195,9 @@ function Game() {
   return (
     <div className="w-screen h-screen bg-blue-100 relative overflow-hidden flex flex-col items-center justify-center select-none">
       {!gameStarted && (
-        <div className="text-3xl font-bold">Waiting for START from server...</div>
+        <div className="text-3xl font-bold">
+          Waiting for START from server...
+        </div>
       )}
 
       {gameStarted && (

@@ -1,10 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import ChaatbotQuiz from "./Chaatbot/ChaatbotQuiz";
-import QuizApp from "./Quiz/Quiz";
-import HandleHunt from "./HandleHunt/HandleHunt";
-import LeaderBoard from "./Quiz/LeaderBoard";
-import { categories1, categories2, creatorsByCategory, creatorsByCategory2 } from "./utils";
-import Footer from "./components/ui/Footer";
 import Form from "./Game/Form";
 import Form2 from "./Game/Form2";
 import Game from "./Game/Game";
@@ -66,7 +60,7 @@ function App() {
         <Route path="/" element={<SelectControllerOrScreen />} />
         <Route path="/form1" element={<Form />} />
         <Route path="/form2" element={<Form2 />} />
-        <Route path="/game" element={<Game />} />
+        <Route path="/game1" element={<Game />} />
         <Route path="/game2" element={<Game2 />} />
       </Routes>
     </Router>
