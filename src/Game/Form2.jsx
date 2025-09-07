@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { io } from "socket.io-client";
+import { url } from "../globalVariable";
 
 function Form() {
   const [step, setStep] = useState("choose");
@@ -19,7 +20,7 @@ function Form() {
 
   useEffect(() => {
     // Initialize socket connection
-    socketRef.current = io("http://localhost:3001");
+    socketRef.current = io(url);
 
     // Set up event listeners
     const handleStatusUpdate = (data) => {
@@ -60,7 +61,7 @@ function Form() {
     const payload = numPlayers === 1 ? { player1 } : { player1, player2 };
 
     try {
-      const res = await fetch("http://localhost:3001/api/screen1", {
+      const res = await fetch(`${url}/api/screen1`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: payload }),
@@ -70,6 +71,7 @@ function Form() {
       if (res.ok) {
         setServerMsg("✅ Sent successfully");
         // Request updated status after successful submission
+         window.location.reload()
         if (socketRef.current) {
           socketRef.current.emit("controller1");
         }
@@ -92,7 +94,7 @@ function Form() {
     const payload = numPlayers === 1 ? { player1 } : { player1, player2 };
 
     try {
-      const res = await fetch("http://localhost:3001/api/screen2", {
+      const res = await fetch(`${url}/api/screen2`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: payload }),
@@ -139,7 +141,7 @@ function Form() {
   }, [statuses, step]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-200 via-indigo-200 to-purple-200 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-cyan-100 to-cyan-200 p-4">
       <motion.div
         className="w-full max-w-md rounded-2xl shadow-xl bg-white overflow-hidden"
         initial={{ opacity: 0, scale: 0.9 }}

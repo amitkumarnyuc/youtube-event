@@ -14,7 +14,7 @@ function SelectControllerOrScreen() {
         navigate("/form2");
         break;
       case "Game Screen 1":
-        navigate("/game");
+        navigate("/game1");
         break;
       case "Game Screen 2":
         navigate("/game2");

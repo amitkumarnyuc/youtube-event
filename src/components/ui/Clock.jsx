@@ -4,8 +4,8 @@ export const ClockIcon = () => (
     width="65"            // Increased from 48
     height="65"           // Increased from 48
     viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
+    fill="white"
+    stroke="red"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
