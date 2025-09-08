@@ -3,8 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { io } from "socket.io-client";
 import { url } from "../globalVariable";
-
+// import bg from '../assets/TabGraphics/Tabscreen-01.png'
 function Form() {
+
+  const [page, setPgae]=useState(0)
   const [step, setStep] = useState("choose");
   const [numPlayers, setNumPlayers] = useState(1);
   const [player1, setPlayer1] = useState("");
@@ -140,6 +142,8 @@ function Form() {
     ) {
     }
   }, [statuses, step]);
+
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-cyan-100 to-cyan-200 p-4">

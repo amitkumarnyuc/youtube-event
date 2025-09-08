@@ -2,7 +2,8 @@
 import { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 import { motion, AnimatePresence } from "framer-motion";
-
+import bg from '../assets/gamescreenpage-07.png'
+import bg1 from '../assets/gamescreenpage-08.png'
 // icon assets
 import icon1 from "../assets/Icons/icons-01.png";
 import icon2 from "../assets/Icons/icons-02.png";
@@ -24,61 +25,73 @@ const items = [
   icon7, icon8, icon9, icon10, icon11, icon12
 ];
 
-function Game() {
-  const BUBBLE_SIZE = 100;
-  const GAME_DURATION = 30; // seconds
-  const BASE_BUBBLE_LIFETIME = 1500;
-  const BASE_SPAWN_INTERVAL = 800;
-  const SPAWN_HEIGHT = 1400;
-  const PRE_GAME_COUNTDOWN = 3; // seconds before game starts
+// GRID CONFIG
+const GRID_ROWS = 4;
+const GRID_COLS = 4;
+const TOTAL_CELLS = GRID_ROWS * GRID_COLS;
+const CELL_SIZE = 210; // 🔹 Adjustable width/height of each block (px)
 
-  const [bubbles, setBubbles] = useState([]);
+function Game() {
+  const GAME_DURATION = 30; // seconds
+  const BASE_BUBBLE_LIFETIME = 1200;
+  const BASE_SPAWN_INTERVAL = 600; // 🔹 faster spawns (more bubbles)
+  const PRE_GAME_COUNTDOWN = 4;
+
+  const [bubbles, setBubbles] = useState([]); 
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [gameOver, setGameOver] = useState(false);
   const [message, setMessage] = useState("");
   const [gameStarted, setGameStarted] = useState(false);
   const [countdown, setCountdown] = useState(0);
-  const [waiting, setWaiting] = useState(true); // initial waiting screen
+  const [waiting, setWaiting] = useState(true);
+  const[player,setPlayer]=useState({name1:"", name2:""})
 
   const timerRef = useRef(null);
   const bubbleIdRef = useRef(0);
   const spawnIntervalRef = useRef(BASE_SPAWN_INTERVAL);
   const bubbleLifetimeRef = useRef(BASE_BUBBLE_LIFETIME);
   const socketRef = useRef(null);
-  const spawnAreaRef = useRef(null);
 
-  // SOCKET CONNECTION
+  // SOCKET SETUP
   useEffect(() => {
     socketRef.current = io(url);
-    socketRef.current.on("screen1", () => startPreGame());
+    socketRef.current.on("screen1", (data) => {
+      console.log(data);
+      startPreGame();
+
+      setPlayer({
+        name1:data.data?.player1,
+        name2:data.data?.player2
+      })
+    }
+    );
     return () => socketRef.current.disconnect();
   }, []);
 
-  // START PRE-GAME COUNTDOWN
   const startPreGame = () => {
     resetGame();
     setWaiting(false);
     setCountdown(PRE_GAME_COUNTDOWN);
 
     let count = PRE_GAME_COUNTDOWN;
-    const countdownInterval = setInterval(() => {
+    const interval = setInterval(() => {
       count -= 1;
       setCountdown(count);
       if (count <= 0) {
-        clearInterval(countdownInterval);
+        clearInterval(interval);
         setCountdown(0);
         setGameStarted(true);
       }
-    }, 1000);
+    }, 2000);
   };
 
-  // MAIN GAME LOOP
+  // GAME LOOP
   useEffect(() => {
     if (!gameStarted) return;
 
     const countdownTimer = setInterval(() => {
-      setTimeLeft(prev => {
+      setTimeLeft((prev) => {
         if (prev <= 1) {
           clearInterval(countdownTimer);
           endGame();
@@ -96,11 +109,12 @@ function Game() {
     };
   }, [gameStarted]);
 
-  // DIFFICULTY ADJUSTMENT
+  // DIFFICULTY SCALING
   useEffect(() => {
-    if (score > 0 && score % 5 === 0) {
+    if (score > 0 && score % 15 === 0) {
       spawnIntervalRef.current = Math.max(200, spawnIntervalRef.current - 100);
       bubbleLifetimeRef.current = Math.max(400, bubbleLifetimeRef.current - 150);
+
       if (!gameOver && gameStarted) {
         clearInterval(timerRef.current);
         timerRef.current = setInterval(spawnBubble, spawnIntervalRef.current);
@@ -108,7 +122,6 @@ function Game() {
     }
   }, [score, gameOver, gameStarted]);
 
-  // RESET GAME
   const resetGame = () => {
     setScore(0);
     setBubbles([]);
@@ -120,114 +133,111 @@ function Game() {
     setWaiting(true);
   };
 
-  // END GAME
-
-    const endGame = async () => {
+  const endGame = async () => {
     clearInterval(timerRef.current);
-
-    // call API
     await fetch(`${url}/api/resetScreens`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ screen1: true }),
     });
     setGameOver(true);
     setBubbles([]);
-
-     setTimeout(() => {
-      resetGame();
-    }, 3000);
+    setTimeout(() => resetGame(), 3000);
   };
 
-
-  // SPAWN BUBBLE WITH COLLISION CHECK
+  // SPAWN MULTIPLE BUBBLES
   const spawnBubble = () => {
-    if (gameOver || !spawnAreaRef.current) return;
+    if (gameOver) return;
 
-    const area = spawnAreaRef.current.getBoundingClientRect();
-    const id = bubbleIdRef.current++;
-    let newBubble;
-    let safe = false;
-    let attempts = 0;
+    const numToSpawn = 2; // 🔹 spawn 2 bubbles each tick
+    let spawned = 0;
 
-    while (!safe && attempts < 50) {
-      attempts++;
-      const x = Math.random() * (area.width - BUBBLE_SIZE) + BUBBLE_SIZE / 2;
-      const y = Math.random() * (area.height - BUBBLE_SIZE) + BUBBLE_SIZE / 2;
+    while (spawned < numToSpawn) {
+      const id = bubbleIdRef.current++;
+      const cellIndex = Math.floor(Math.random() * TOTAL_CELLS);
 
-      newBubble = {
+      // skip if cell is already occupied
+      if (bubbles.some((b) => b.cellIndex === cellIndex)) continue;
+
+      const newBubble = {
         id,
-        xPx: x,
-        yPx: y,
+        cellIndex,
         burst: false,
         text: items[Math.floor(Math.random() * items.length)],
       };
 
-      safe = bubbles.every(b => {
-        const dx = x - b.xPx;
-        const dy = y - b.yPx;
-        return Math.sqrt(dx * dx + dy * dy) > BUBBLE_SIZE;
-      });
+      setBubbles((prev) => [...prev, newBubble]);
+
+      setTimeout(() => {
+        setBubbles((prev) => prev.filter((b) => b.id !== id));
+      }, bubbleLifetimeRef.current);
+
+      spawned++;
     }
-
-    if (!safe) return;
-
-    setBubbles(prev => [...prev, newBubble]);
-    setTimeout(() => setBubbles(prev => prev.filter(b => b.id !== id)), bubbleLifetimeRef.current);
   };
 
-  // TAP HANDLER WITH ANIMATION
+  // CLICK HANDLER
   const handleTap = (id) => {
     if (gameOver) return;
 
-    setScore(s => s + 1);
+    setScore((s) => s + 1);
     setMessage("Great! 🎉");
 
-    setBubbles(prev =>
-      prev.map(b =>
+    setBubbles((prev) =>
+      prev.map((b) =>
         b.id === id
-          ? { ...b, burst: true, animate: { scale: 1.5, rotate: [0, 20, -20, 0], opacity: 0 }, text: "💥" }
+          ? {
+              ...b,
+              burst: true,
+              animate: {
+                scale: 1.5,
+                rotate: [0, 20, -20, 0],
+                opacity: 0,
+                transition: { duration: 1.2 }, // slower disappearance
+              },
+              text: "💥",
+            }
           : b
       )
     );
 
-    setTimeout(() => setMessage(""), 800);
-    setTimeout(() => setBubbles(prev => prev.filter(b => b.id !== id)), 500);
+    setTimeout(() => setMessage(""), 1000);
+    setTimeout(() => setBubbles((prev) => prev.filter((b) => b.id !== id)), 1200);
   };
+if(countdown===1)
+{
+  return <div  style={{
+      backgroundImage:`url(${bg1})`,
+      backgroundPosition:'center',
+      backgroundRepeat:'no-repeat',
+      backgroundSize:'cover',
+      height:'100vh',
+      width:'100vw'
+    }}>
 
+  </div>
+}
   return (
-    <div className="w-screen h-screen bg-gradient-to-b from-cyan-100 to-cyan-200 relative overflow-hidden flex flex-col items-center justify-center select-none">
-      {/* WAITING SCREEN */}
+    <div className="w-screen h-screen bg-gradient-to-b from-cyan-100 to-cyan-200 flex flex-col items-center justify-center"
+    style={{
+      backgroundImage:`url(${bg})`,
+      backgroundPosition:'center',
+      backgroundRepeat:'no-repeat',
+      backgroundSize:'cover'
+    }}>
+      {/* WAITING */}
       {waiting && countdown === 0 && (
-        <div className="text-4xl font-bold text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          Waiting for START from server...
-        </div>
+        <div className="text-4xl font-bold">Waiting for START...</div>
       )}
 
-      {/* PRE-GAME COUNTDOWN */}
+      {/* COUNTDOWN */}
       {!gameStarted && countdown > 0 && (
-        <div className="text-8xl font-bold text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse">
-          {countdown}
-        </div>
+        <div className="text-8xl font-bold animate-pulse">{countdown-1}</div>
       )}
 
-      {/* GAME STARTED */}
+      {/* GAME */}
       {gameStarted && (
         <>
-          {/* HEADER */}
-          <div className="absolute top-10 flex justify-between w-full px-10 text-5xl font-bold flex-col gap-12">
-            <div className="flex justify-between w-full">
-              <span className="px-4 py-2 flex flex-row items-center gap-3 w-1/3">Player 1</span>
-              <span className="bg-red-500 text-white px-4 py-2 rounded-full shadow text-center flex flex-row items-center gap-3 w-72 justify-end font-mono">
-                <ClockIcon />
-                <span className="tabular-nums">00:{timeLeft.toString().padStart(2, "0")}sec</span>
-              </span>
-            </div>
-            <p className="font-semibold text-center text-6xl">Interactive Bubble Game</p>
-          </div>
-
           {/* FEEDBACK */}
           {message && (
             <div className="absolute top-20 text-2xl font-bold animate-bounce text-green-600">
@@ -235,51 +245,130 @@ function Game() {
             </div>
           )}
 
-          {/* SPAWN AREA */}
+          {/* HEADER with circular timer */}
+
+         <div className="relative w-64 h-64 flex items-center justify-center">
+  <svg className="absolute inset-0 w-64 h-64 transform -rotate-90">
+    <defs>
+      <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#ef4444" />
+        <stop offset="50%" stopColor="#f87171" />
+        <stop offset="100%" stopColor="#ef4444" />
+        <animateTransform
+          attributeName="gradientTransform"
+          type="rotate"
+          from="0 0.5 0.5"
+          to="360 0.5 0.5"
+          dur="3s"
+          repeatCount="indefinite"
+        />
+      </linearGradient>
+    </defs>
+
+    {/* Filled background circle */}
+    <circle cx="128" cy="128" r="120" fill="#7ee8dd" />
+
+    {/* Gray background ring */}
+    <circle
+      cx="128"
+      cy="128"
+      r="110"
+      stroke="#e5e7eb"
+      strokeWidth="12"
+      fill="none"
+    />
+
+    {/* Animated gradient progress ring */}
+    <circle
+      cx="128"
+      cy="128"
+      r="110"
+      stroke="url(#borderGradient)"
+      strokeWidth="12"
+      fill="none"
+      strokeLinecap="round"
+      strokeDasharray={2 * Math.PI * 110}
+      strokeDashoffset={
+        (2 * Math.PI * 110 * (GAME_DURATION - timeLeft)) / GAME_DURATION
+      }
+    />
+  </svg>
+
+  {/* Score + Time in center */}
+  <div className="flex flex-col items-center justify-center text-center absolute">
+    <span className="text-6xl font-extrabold text-black mb-5 font-mono">
+      {score}
+    </span>
+    <span className="text-2xl font-mono text-black">
+      00:{timeLeft.toString().padStart(2, "0")}
+    </span>
+  </div>
+</div>
+
+
+          {/* GRID AREA */}
           <div
-            ref={spawnAreaRef}
-            className="absolute top-28 left-0"
-            style={{ width: "90%", height: SPAWN_HEIGHT, border: "4px solid rgba(0,0,0,0.3)", position: "relative" }}
+            className="grid mt-32"
+            style={{
+              gridTemplateColumns: `repeat(${GRID_COLS}, ${CELL_SIZE}px)`,
+              gridTemplateRows: `repeat(${GRID_ROWS}, ${CELL_SIZE}px)`,
+            }}
           >
-            <AnimatePresence>
-              {bubbles.map(bubble => (
-                <motion.div
-                  key={bubble.id}
-                  onClick={() => handleTap(bubble.id)}
-                  onTouchStart={() => handleTap(bubble.id)}
-                  initial={{ opacity: 0, scale: 0.4 }}
-                  animate={bubble.burst ? bubble.animate : { opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0 }}
-                  whileHover={{ scale: bubble.burst ? 1.5 : 1.1 }}
-                  className="absolute flex items-center justify-center rounded-full"
-                  style={{
-                    top: bubble.yPx,
-                    left: bubble.xPx,
-                    width: `${BUBBLE_SIZE}px`,
-                    height: `${BUBBLE_SIZE}px`,
-                    transform: "translate(-50%, -50%)",
-                    border: "2px solid rgba(255,255,255,0.3)",
-                    background: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.1) 70%)",
-                    boxShadow: "inset 0 6px 12px rgba(255,255,255,0.6), 0 4px 12px rgba(0,0,0,0.4)",
-                    backdropFilter: "blur(6px)",
-                  }}
+            {Array.from({ length: TOTAL_CELLS }).map((_, idx) => {
+              const bubble = bubbles.find((b) => b.cellIndex === idx);
+              return (
+                <div
+                  key={idx}
+                  className="border-2 border-gray-300 flex items-center justify-center relative bg-white/20"
+                  style={{ width: CELL_SIZE, height: CELL_SIZE }}
                 >
-                  <motion.img
-                    src={bubble.text !== "💥" ? bubble.text : ""}
-                    alt=""
-                    className="pointer-events-none"
-                    animate={{ rotate: bubble.burst ? [0, 20, -20, 0] : [0, 5, -5, 0] }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    style={{ maxWidth: "50%", maxHeight: "50%", filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.4))" }}
-                  />
-                  {bubble.text === "💥" && (
-                    <span className="text-red-500 text-2xl font-bold animate-ping">💥</span>
-                  )}
-                </motion.div>
-              ))}
-            </AnimatePresence>
+                  <AnimatePresence>
+                    {bubble && (
+                      <motion.div
+                        key={bubble.id}
+                        onClick={() => handleTap(bubble.id)}
+                        onTouchStart={() => handleTap(bubble.id)}
+                        initial={{ opacity: 0, scale: 0.4 }}
+                        animate={bubble.burst ? bubble.animate : { opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0, transition: { duration: 0.6 } }}
+                        className="absolute inset-0 flex items-center justify-center rounded-full "
+                      >
+                        {bubble.text !== "💥" ? (
+                          <motion.img
+                            src={bubble.text}
+                            alt=""
+                            className="w-44 h-44 pointer-events-none"
+                            animate={{
+                              rotate: bubble.burst ? [0, 20, -20, 0] : [0, 5, -5, 0],
+                            }}
+                            transition={{ repeat: Infinity, duration: 2 }}
+                          />
+                        ) : (
+                          <span className="text-red-500 text-2xl font-bold animate-ping">
+                            💥
+                          </span>
+                        )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+
+
+          <div style={{
+            position:'absolute',
+            width:'100%',
+            fontSize:'31px',
+            bottom:'11.6vh',
+            fontWeight:'bold',
+            textAlign:'center'
+          }}>
+            <h3>{player.name1}</h3>
           </div>
         </>
+
       )}
 
       {/* GAME OVER */}
@@ -287,7 +376,6 @@ function Game() {
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-70 text-white text-5xl font-bold">
           <p>Game Over!</p>
           <p>Your Score: {score}</p>
-         
         </div>
       )}
     </div>
