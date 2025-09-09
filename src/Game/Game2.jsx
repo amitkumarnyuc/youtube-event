@@ -2,8 +2,17 @@
 import { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 import { motion, AnimatePresence } from "framer-motion";
-import bg from '../assets/gamescreenpage-07.png'
-import bg1 from '../assets/gamescreenpage-08.png'
+import { useWindowSize } from "react-use";
+import ReactConfetti from "react-confetti";
+
+import bg from "../assets/gamescreenpage-07.png";
+import gammerOver from "../assets/gamescreenpage-09GAMEOVER.png";
+import v1 from "../assets/Countdown-3.mp4";
+import v2 from "../assets/Loading-Screen-2.mp4";
+import line from "../assets/gamescreenpage-07line.png";
+
+import { url } from "../globalVariable";
+
 // icon assets
 import icon1 from "../assets/Icons/icons-01.png";
 import icon2 from "../assets/Icons/icons-02.png";
@@ -17,8 +26,7 @@ import icon9 from "../assets/Icons/icons-09.png";
 import icon10 from "../assets/Icons/icons-10.png";
 import icon11 from "../assets/Icons/icons-11.png";
 import icon12 from "../assets/Icons/icons-12.png";
-import { ClockIcon } from "../components/ui/Clock";
-import { url } from "../globalVariable";
+import { hypeMessages } from "../utils";
 
 const items = [
   icon1, icon2, icon3, icon4, icon5, icon6,
@@ -29,15 +37,15 @@ const items = [
 const GRID_ROWS = 4;
 const GRID_COLS = 4;
 const TOTAL_CELLS = GRID_ROWS * GRID_COLS;
-const CELL_SIZE = 210; // 🔹 Adjustable width/height of each block (px)
+const CELL_SIZE = 210;
 
 function Game() {
-  const GAME_DURATION = 30; // seconds
+  const GAME_DURATION = 30; 
   const BASE_BUBBLE_LIFETIME = 1200;
-  const BASE_SPAWN_INTERVAL = 600; // 🔹 faster spawns (more bubbles)
+  const BASE_SPAWN_INTERVAL = 600;
   const PRE_GAME_COUNTDOWN = 4;
 
-  const [bubbles, setBubbles] = useState([]); 
+  const [bubbles, setBubbles] = useState([]);
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [gameOver, setGameOver] = useState(false);
@@ -45,7 +53,7 @@ function Game() {
   const [gameStarted, setGameStarted] = useState(false);
   const [countdown, setCountdown] = useState(0);
   const [waiting, setWaiting] = useState(true);
-  const[player,setPlayer]=useState({name1:"", name2:""})
+  const [player, setPlayer] = useState({ name1: "", name2: "" });
 
   const timerRef = useRef(null);
   const bubbleIdRef = useRef(0);
@@ -57,15 +65,12 @@ function Game() {
   useEffect(() => {
     socketRef.current = io(url);
     socketRef.current.on("screen2", (data) => {
-      console.log(data);
       startPreGame();
-
       setPlayer({
-        name1:data.data?.player1,
-        name2:data.data?.player2
-      })
-    }
-    );
+        name1: data.data?.player1,
+        name2: data.data?.player2,
+      });
+    });
     return () => socketRef.current.disconnect();
   }, []);
 
@@ -83,7 +88,7 @@ function Game() {
         setCountdown(0);
         setGameStarted(true);
       }
-    }, 2000);
+    }, 1000);
   };
 
   // GAME LOOP
@@ -111,7 +116,7 @@ function Game() {
 
   // DIFFICULTY SCALING
   useEffect(() => {
-    if (score > 0 && score % 15 === 0) {
+    if (score > 0 && score % 150 === 0) {
       spawnIntervalRef.current = Math.max(200, spawnIntervalRef.current - 100);
       bubbleLifetimeRef.current = Math.max(400, bubbleLifetimeRef.current - 150);
 
@@ -142,21 +147,18 @@ function Game() {
     });
     setGameOver(true);
     setBubbles([]);
-    setTimeout(() => resetGame(), 3000);
+    setTimeout(() => resetGame(), 5000);
   };
 
-  // SPAWN MULTIPLE BUBBLES
+  // SPAWN BUBBLES
   const spawnBubble = () => {
     if (gameOver) return;
-
-    const numToSpawn = 2; // 🔹 spawn 2 bubbles each tick
+    const numToSpawn = 2;
     let spawned = 0;
 
     while (spawned < numToSpawn) {
       const id = bubbleIdRef.current++;
       const cellIndex = Math.floor(Math.random() * TOTAL_CELLS);
-
-      // skip if cell is already occupied
       if (bubbles.some((b) => b.cellIndex === cellIndex)) continue;
 
       const newBubble = {
@@ -176,12 +178,11 @@ function Game() {
     }
   };
 
-  // CLICK HANDLER
   const handleTap = (id) => {
     if (gameOver) return;
-
-    setScore((s) => s + 1);
-    setMessage("Great! 🎉");
+    setScore((s) => s + 10);
+    const random = Math.floor(Math.random() * hypeMessages.length);
+    setMessage(hypeMessages[random]);
 
     setBubbles((prev) =>
       prev.map((b) =>
@@ -193,7 +194,7 @@ function Game() {
                 scale: 1.5,
                 rotate: [0, 20, -20, 0],
                 opacity: 0,
-                transition: { duration: 1.2 }, // slower disappearance
+                transition: { duration: 1.2 },
               },
               text: "💥",
             }
@@ -204,180 +205,194 @@ function Game() {
     setTimeout(() => setMessage(""), 1000);
     setTimeout(() => setBubbles((prev) => prev.filter((b) => b.id !== id)), 1200);
   };
-if(countdown===1)
-{
-  return <div  style={{
-      backgroundImage:`url(${bg1})`,
-      backgroundPosition:'center',
-      backgroundRepeat:'no-repeat',
-      backgroundSize:'cover',
-      height:'100vh',
-      width:'100vw'
-    }}>
 
-  </div>
-}
+  const { width, height } = useWindowSize();
+
   return (
-    <div className="w-screen h-screen bg-gradient-to-b from-cyan-100 to-cyan-200 flex flex-col items-center justify-center"
-    style={{
-      backgroundImage:`url(${bg})`,
-      backgroundPosition:'center',
-      backgroundRepeat:'no-repeat',
-      backgroundSize:'cover'
-    }}>
-      {/* WAITING */}
-      {waiting && countdown === 0 && (
-        <div className="text-4xl font-bold">Waiting for START...</div>
-      )}
+    <div
+      className="w-screen h-screen flex items-center justify-center relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <AnimatePresence mode="sync">
+        {/* WAITING / COUNTDOWN SCREEN */}
+        {!gameStarted && !gameOver && (
+          <motion.div
+            key="waiting"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            {waiting && (
+              <video
+                src={v2}
+                autoPlay
+                muted
+                playsInline
+                onEnded={() => setCountdown(0)}
+                style={{ width: "100vw", height: "100vh", objectFit: "cover" }}
+              />
+            )}
+            {countdown > 0 && (
+              <video
+                src={v1}
+                autoPlay
+                muted
+                playsInline
+                onEnded={() => setCountdown(0)}
+                style={{ width: "100vw", height: "100vh", objectFit: "cover" }}
+              />
+            )}
+          </motion.div>
+        )}
 
-      {/* COUNTDOWN */}
-      {!gameStarted && countdown > 0 && (
-        <div className="text-8xl font-bold animate-pulse">{countdown-1}</div>
-      )}
+        {/* GAMEPLAY SCREEN */}
+        {gameStarted && !gameOver && (
+          <motion.div
+            key="gameplay"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 flex flex-col items-center justify-center gap-16"
+          >
+            {/* Feedback */}
+            {message && (
+              <div className="absolute text-2xl font-bold animate-bounce text-green-600" style={{ top: "34%" }}>
+                {message}
+              </div>
+            )}
 
-      {/* GAME */}
-      {gameStarted && (
-        <>
-          {/* FEEDBACK */}
-          {message && (
-            <div className="absolute top-20 text-2xl font-bold animate-bounce text-green-600">
-              {message}
+            {/* Score + Timer */}
+            <div className="relative w-64 h-64 flex items-center justify-center">
+              <svg className="absolute inset-0 w-64 h-64 transform -rotate-90">
+                <circle cx="128" cy="128" r="120" fill="#7ee8dd" />
+                <circle cx="128" cy="128" r="110" stroke="#e5e7eb" strokeWidth="12" fill="none" />
+                <circle
+                  cx="128"
+                  cy="128"
+                  r="110"
+                  stroke="red"
+                  strokeWidth="12"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeDasharray={2 * Math.PI * 110}
+                  strokeDashoffset={(2 * Math.PI * 110 * (GAME_DURATION - timeLeft)) / GAME_DURATION}
+                />
+              </svg>
+              <div className="flex flex-col items-center justify-center text-center absolute">
+                <span className="text-6xl font-extrabold text-black">{score}</span>
+                 <img src={line} style={{width:'70%', margin:'10px 0'}}/>
+                <span className="text-2xl text-black">00:{timeLeft.toString().padStart(2, "0")}</span>
+              </div>
             </div>
-          )}
 
-          {/* HEADER with circular timer */}
+            {/* Grid */}
+            <div
+              className="grid mt-20"
+              style={{
+                gridTemplateColumns: `repeat(${GRID_COLS}, ${CELL_SIZE}px)`,
+                gridTemplateRows: `repeat(${GRID_ROWS}, ${CELL_SIZE}px)`,
+              }}
+            >
+              {Array.from({ length: TOTAL_CELLS }).map((_, idx) => {
+                const bubble = bubbles.find((b) => b.cellIndex === idx);
+                return (
+                  <div
+                    key={idx}
+                    className="border-2 border-gray-300 flex items-center justify-center relative bg-white/20"
+                    style={{ width: CELL_SIZE, height: CELL_SIZE }}
+                  >
+                    <AnimatePresence>
+                      {bubble && (
+                        <motion.div
+                          key={bubble.id}
+                          onClick={() => handleTap(bubble.id)}
+                          onTouchStart={() => handleTap(bubble.id)}
+                          initial={{ opacity: 0, scale: 0.4 }}
+                          animate={bubble.burst ? bubble.animate : { opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0, transition: { duration: 0.6 } }}
+                          className="absolute inset-0 flex items-center justify-center rounded-full "
+                        >
+                          {bubble.text !== "💥" ? (
+                            <motion.img
+                              src={bubble.text}
+                              alt=""
+                              className="w-44 h-44 pointer-events-none"
+                              animate={{
+                                rotate: bubble.burst ? [0, 20, -20, 0] : [0, 5, -5, 0],
+                              }}
+                              transition={{ repeat: Infinity, duration: 2 }}
+                            />
+                          ) : (
+                            <span className="text-red-500 text-2xl font-bold animate-ping">💥</span>
+                          )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
 
-         <div className="relative w-64 h-64 flex items-center justify-center">
-  <svg className="absolute inset-0 w-64 h-64 transform -rotate-90">
-    <defs>
-      <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#ef4444" />
-        <stop offset="50%" stopColor="#f87171" />
-        <stop offset="100%" stopColor="#ef4444" />
-        <animateTransform
-          attributeName="gradientTransform"
-          type="rotate"
-          from="0 0.5 0.5"
-          to="360 0.5 0.5"
-          dur="3s"
-          repeatCount="indefinite"
-        />
-      </linearGradient>
-    </defs>
+            <div
+              style={{
+                position: "absolute",
+                width: "100%",
+                fontSize: "31px",
+                bottom: "11.6vh",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              <h3>{player.name1}</h3>
+            </div>
+          </motion.div>
+        )}
 
-    {/* Filled background circle */}
-    <circle cx="128" cy="128" r="120" fill="#7ee8dd" />
-
-    {/* Gray background ring */}
-    <circle
-      cx="128"
-      cy="128"
-      r="110"
-      stroke="#e5e7eb"
-      strokeWidth="12"
-      fill="none"
-    />
-
-    {/* Animated gradient progress ring */}
-    <circle
-      cx="128"
-      cy="128"
-      r="110"
-      stroke="url(#borderGradient)"
-      strokeWidth="12"
-      fill="none"
-      strokeLinecap="round"
-      strokeDasharray={2 * Math.PI * 110}
-      strokeDashoffset={
-        (2 * Math.PI * 110 * (GAME_DURATION - timeLeft)) / GAME_DURATION
-      }
-    />
-  </svg>
-
-  {/* Score + Time in center */}
-  <div className="flex flex-col items-center justify-center text-center absolute">
-    <span className="text-6xl font-extrabold text-black mb-5 font-mono">
-      {score}
-    </span>
-    <span className="text-2xl font-mono text-black">
-      00:{timeLeft.toString().padStart(2, "0")}
-    </span>
-  </div>
-</div>
-
-
-          {/* GRID AREA */}
-          <div
-            className="grid mt-32"
+        {/* GAME OVER SCREEN */}
+        {gameOver && (
+          <motion.div
+            key="gameover"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 flex flex-col items-center justify-center"
             style={{
-              gridTemplateColumns: `repeat(${GRID_COLS}, ${CELL_SIZE}px)`,
-              gridTemplateRows: `repeat(${GRID_ROWS}, ${CELL_SIZE}px)`,
+              backgroundImage: `url(${gammerOver})`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              color: "black",
+              textAlign: "center",
             }}
           >
-            {Array.from({ length: TOTAL_CELLS }).map((_, idx) => {
-              const bubble = bubbles.find((b) => b.cellIndex === idx);
-              return (
-                <div
-                  key={idx}
-                  className="border-2 border-gray-300 flex items-center justify-center relative bg-white/20"
-                  style={{ width: CELL_SIZE, height: CELL_SIZE }}
-                >
-                  <AnimatePresence>
-                    {bubble && (
-                      <motion.div
-                        key={bubble.id}
-                        onClick={() => handleTap(bubble.id)}
-                        onTouchStart={() => handleTap(bubble.id)}
-                        initial={{ opacity: 0, scale: 0.4 }}
-                        animate={bubble.burst ? bubble.animate : { opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0, transition: { duration: 0.6 } }}
-                        className="absolute inset-0 flex items-center justify-center rounded-full "
-                      >
-                        {bubble.text !== "💥" ? (
-                          <motion.img
-                            src={bubble.text}
-                            alt=""
-                            className="w-44 h-44 pointer-events-none"
-                            animate={{
-                              rotate: bubble.burst ? [0, 20, -20, 0] : [0, 5, -5, 0],
-                            }}
-                            transition={{ repeat: Infinity, duration: 2 }}
-                          />
-                        ) : (
-                          <span className="text-red-500 text-2xl font-bold animate-ping">
-                            💥
-                          </span>
-                        )}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-
-
-          <div style={{
-            position:'absolute',
-            width:'100%',
-            fontSize:'31px',
-            bottom:'11.6vh',
-            fontWeight:'bold',
-            textAlign:'center'
-          }}>
-            <h3>{player.name1}</h3>
-          </div>
-        </>
-
-      )}
-
-      {/* GAME OVER */}
-      {gameOver && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-70 text-white text-5xl font-bold">
-          <p>Game Over!</p>
-          <p>Your Score: {score}</p>
-        </div>
-      )}
+            <ReactConfetti width={width} height={height} />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "center",
+                paddingTop: "23%",
+                gap: "30px",
+              }}
+            >
+              <h1 style={{ color: "red", fontSize: "90px", marginBottom: "40px", fontWeight: "bold" }}>
+                Winner
+              </h1>
+              <h1 style={{ fontSize: "81px" }}>{player?.name1}</h1>
+              <img src={line} style={{ width: "70%", margin: "35px 0" }} />
+              <h1 style={{ fontSize: "81px" }}>{player?.name2}</h1>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

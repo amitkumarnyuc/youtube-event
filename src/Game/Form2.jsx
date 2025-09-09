@@ -1,11 +1,25 @@
 // src/components/Form.jsx
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { io } from "socket.io-client";
 import { url } from "../globalVariable";
+import { motion, AnimatePresence } from "framer-motion";
+
+// assets
+import bg from "../assets/TabScreenhexa-10.png";
+import tab from "../assets/Tab-08.png";
+import tab9 from "../assets/Tab-09.png";
+import readyToPlay from "../assets/Tab-04.png";
+import how from "../assets/Tab-05.png";
+import single from "../assets/Tab-06.png";
+import double from "../assets/Tab-07.png";
+import or from "../assets/Tab-11.png";
+import singlebg from "../assets/Tabscreen-03.png";
+import doublebg from "../assets/Tabscreen-04.png";
+import submit from "../assets/submit.png";
+import tab5 from "../assets/Tabscreen-05.png";
 
 function Form() {
-  const [step, setStep] = useState("choose");
+  const [page, setPgae] = useState(1);
   const [numPlayers, setNumPlayers] = useState(1);
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
@@ -19,25 +33,17 @@ function Form() {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    // Initialize socket connection
     socketRef.current = io(url);
 
-    // Set up event listeners
     const handleStatusUpdate = (data) => {
-      setStatuses((prevStatuses) => ({
-        ...prevStatuses,
-        ...data,
-      }));
+      setStatuses((prev) => ({ ...prev, ...data }));
     };
 
-    // Listen for status updates
     socketRef.current.on("controller2", handleStatusUpdate);
     socketRef.current.on("statusUpdate", handleStatusUpdate);
 
-    // Request initial status
     socketRef.current.emit("controller2");
 
-    // Cleanup function
     return () => {
       if (socketRef.current) {
         socketRef.current.off("controller2", handleStatusUpdate);
@@ -49,231 +55,435 @@ function Form() {
 
   const handleChoose = (n) => {
     setNumPlayers(n);
-    setStep("names");
+    setPgae(3);
   };
 
-  const handleSubmit1 = async (e) => {
-    e.preventDefault();
+  const submitToScreen = async (screen) => {
     setLoading(true);
     setServerMsg("");
 
-    // build payload like curl
     const payload = numPlayers === 1 ? { player1 } : { player1, player2 };
 
     try {
-      const res = await fetch(`${url}/api/screen1`, {
+      const res = await fetch(`${url}/api/${screen}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: payload }),
       });
 
       const json = await res.json().catch(() => ({}));
-      if (res.ok) {
-        setServerMsg("✅ Sent successfully");
-        // Request updated status after successful submission
-         window.location.reload()
-        if (socketRef.current) {
-          socketRef.current.emit("controller1");
-        }
-      } else {
+    if (res.ok) {
+  setServerMsg("✅ Sent successfully");
+  if (socketRef.current) socketRef.current.emit("controller1");
+  setPgae(4);
+
+  // optional: reload after 3 seconds
+  if (screen === "screen2") {
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+  }
+}
+else {
         setServerMsg("⚠️ Error: " + (json.message || res.status));
       }
-    } catch (err) {
+    } catch {
       setServerMsg("❌ Network error");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSubmit2 = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setServerMsg("");
+  const handleSubmit1 = () => submitToScreen("screen2");
+  const handleSubmit2 = () => submitToScreen("screen1");
 
-    // build payload like curl
-    const payload = numPlayers === 1 ? { player1 } : { player1, player2 };
-
-    try {
-      const res = await fetch(`${url}/api/screen2`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: payload }),
-      });
-
-      const json = await res.json().catch(() => ({}));
-      if (res.ok) {
-        setServerMsg("✅ Sent successfully");
-        // Request updated status after successful submission
-        if (socketRef.current) {
-          socketRef.current.emit("controller1");
-        }
-      } else {
-        setServerMsg("⚠️ Error: " + (json.message || res.status));
-      }
-    } catch (err) {
-      setServerMsg("❌ Network error");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async () => {
+    
     setLoading(true);
     setServerMsg("");
 
     if (numPlayers === 1) {
-      await handleSubmit2(e);
+      await handleSubmit1();
       return;
     } else {
-      await Promise.all([handleSubmit1(e), handleSubmit2(e)]);
+      await Promise.all([handleSubmit1(), handleSubmit2()]);
     }
   };
 
-  // Reset to choose step when both screens become available
-  useEffect(() => {
-    if (
-      step === "names" &&
-      !statuses.isScreen1Busy &&
-      !statuses.isScreen2Busy
-    ) {
-    }
-  }, [statuses, step]);
+  // Animation variants
+  const pageVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.4 } },
+  };
 
+  const inputVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  // PAGE 1
+if (page === 1) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-cyan-100 to-cyan-200 p-4">
+    <AnimatePresence mode="wait">
       <motion.div
-        className="w-full max-w-md rounded-2xl shadow-xl bg-white overflow-hidden"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
+        key="page1"
+        variants={pageVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        <div className="p-6">
-          <AnimatePresence mode="wait">
-            {step === "choose" && (
-              <motion.div
-                key="choose"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.3 }}
-                className="flex flex-col items-center gap-4"
-              >
-                <h1 className="text-2xl font-bold text-gray-800 mb-2">
-                  Select Number of Players
-                </h1>
-                <p className="text-gray-500 mb-4 text-center">
-                  How many players will be playing?
-                </p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "13%",
+            width: "80%",
+            height: "70%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* Title */}
+          <motion.div whileHover={{ scale: 1.05, rotate: 1 }}>
+            <img src={readyToPlay} alt="Ready to Play" />
+          </motion.div>
 
-                {statuses.isScreen1Busy && statuses.isScreen2Busy ? (
-                  <p className="text-red-600 font-semibold">
-                    Screen is busy, please try on the other Ipad or wait for
-                    some time.
-                  </p>
-                ) : (
-                  <div className="flex gap-4">
-                    {!statuses.isScreen1Busy && !statuses.isScreen2Busy && (
-                      <>
-                        <button
-                          onClick={() => handleChoose(1)}
-                          className="px-6 py-3 rounded-xl bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition"
-                        >
-                          1 Player
-                        </button>
-                        <button
-                          onClick={() => handleChoose(2)}
-                          className="px-6 py-3 rounded-xl bg-green-500 text-white font-semibold shadow hover:bg-green-600 transition"
-                        >
-                          2 Players
-                        </button>
-                      </>
-                    )}
+          {/* Tab Image */}
+          <motion.div
+            style={{ width: "50%" }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <img src={tab} alt="Tab" style={{ width: "100%" }} />
+          </motion.div>
 
-                    {statuses.isScreen1Busy && !statuses.isScreen2Busy && (
-                      <button
-                        onClick={() => handleChoose(1)}
-                        className="px-6 py-3 rounded-xl bg-green-500 text-white font-semibold shadow hover:bg-green-600 transition"
-                      >
-                        Play on Screen 2
-                      </button>
-                    )}
-
-                    {!statuses.isScreen1Busy && statuses.isScreen2Busy && (
-                      <p className="text-red-600 font-semibold">
-                        Screen is busy, please try on the other Ipad or wait for
-                        some time.
-                      </p>
-                    )}
-                  </div>
-                )}
-              </motion.div>
-            )}
-            {step === "names" && (
-              <motion.form
-                key="names"
-                onSubmit={handleSubmit}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.3 }}
-                className="flex flex-col gap-4"
-              >
-                <h2 className="text-xl font-semibold text-gray-800">
-                  Enter Player Name{numPlayers > 1 && "s"}
-                </h2>
-
-                <input
-                  type="text"
-                  placeholder="Player 1 Name"
-                  value={player1}
-                  onChange={(e) => setPlayer1(e.target.value)}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  required
-                />
-
-                {numPlayers === 2 && (
-                  <input
-                    type="text"
-                    placeholder="Player 2 Name"
-                    value={player2}
-                    onChange={(e) => setPlayer2(e.target.value)}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
-                    required
-                  />
-                )}
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className={`mt-2 px-6 py-3 rounded-xl text-white font-semibold shadow transition ${
-                    loading
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-indigo-600 hover:bg-indigo-700"
-                  }`}
-                >
-                  {loading ? "Sending..." : "Enter"}
-                </button>
-
-                {serverMsg && (
-                  <p className="text-center text-sm text-gray-600 mt-2">
-                    {serverMsg}
-                  </p>
-                )}
-
-                <button
-                  type="button"
-                  onClick={() => setStep("choose")}
-                  className="mt-2 px-4 py-2 rounded-xl bg-gray-300 text-gray-700 font-semibold shadow hover:bg-gray-400 transition"
-                >
-                  Back
-                </button>
-              </motion.form>
-            )}
-          </AnimatePresence>
+          {/* Next Button */}
+          <motion.div
+            style={{ width: "65%" }}
+            whileHover={{ scale: 1.1, rotate: -2 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <img
+              src={tab9}
+              alt="Tab9"
+              onClick={() => setPgae(2)}
+              style={{ width: "100%", cursor: "pointer" }}
+            />
+          </motion.div>
         </div>
       </motion.div>
-    </div>
+    </AnimatePresence>
+  );
+}
+
+
+// PAGE 2
+if (page === 2) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key="page2"
+        variants={pageVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "15%",
+            width: "80%",
+            height: "70%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <motion.div whileHover={{ scale: 1.05, rotate: 2 }}>
+            <img src={how} alt="How To Play" />
+          </motion.div>
+
+          {/* ✅ Busy status logic here */}
+          {statuses.isScreen1Busy && statuses.isScreen2Busy ? (
+            <p
+              style={{
+                color: "red",
+                fontWeight: "bold",
+                background: "rgba(255,255,255,0.7)",
+                padding: "10px 20px",
+                borderRadius: "12px",
+              }}
+            >
+              Screen is busy, please try on the other iPad or wait for some time.
+            </p>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                gap:'13%'
+              }}
+            >
+              {/* Case: Both free */}
+              {!statuses.isScreen1Busy && !statuses.isScreen2Busy && (
+                <>
+                  <motion.div
+                    style={{ width: "40%" }}
+                    whileHover={{ scale: 1.1, rotate: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <img
+                      src={single}
+                      alt="Single Player"
+                      onClick={() => handleChoose(1)}
+                      style={{ width: "100%", cursor: "pointer" }}
+                    />
+                  </motion.div>
+
+                  <div style={{ width: "10%" }}>
+                    <img src={or} alt="Or" style={{ width: "100%" }} />
+                  </div>
+
+                  <motion.div
+                    style={{ width: "40%" }}
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <img
+                      src={double}
+                      alt="Double Player"
+                      onClick={() => handleChoose(2)}
+                      style={{ width: "100%", cursor: "pointer" }}
+                    />
+                  </motion.div>
+                </>
+              )}
+
+              {/* Case: Screen1 busy, Screen2 free */}
+              {statuses.isScreen1Busy && !statuses.isScreen2Busy && (
+                <motion.div
+                  style={{ width: "50%" }}
+                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <img
+                    src={single}
+                    alt="Play on Screen 2"
+                    onClick={() => handleChoose(1)}
+                    style={{ width: "100%", cursor: "pointer" }}
+                  />
+                </motion.div>
+              )}
+
+              {/* Case: Screen2 busy, Screen1 free */}
+              {!statuses.isScreen1Busy && statuses.isScreen2Busy && (
+                <motion.div
+                  style={{ width: "50%" }}
+                  whileHover={{ scale: 1.1, rotate: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <img
+                    src={single}
+                    alt="Play on Screen 1"
+                    onClick={() => handleChoose(1)}
+                    style={{ width: "100%", cursor: "pointer" }}
+                  />
+                </motion.div>
+              )}
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+
+
+  // PAGE 3 - Single Player
+  if (page === 3 && numPlayers === 1) {
+    return (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="page3-single"
+          variants={pageVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          style={{
+            backgroundImage: `url(${singlebg})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: "60px",
+            paddingTop: "17%",
+          }}
+        >
+          <motion.input
+            type="text"
+            value={player1}
+            onChange={(e) => setPlayer1(e.target.value)}
+            variants={inputVariants}
+            initial="hidden"
+            animate="visible"
+            style={{
+              width: "70%",
+              border: "none",
+              borderBottom: "2px solid #333",
+              outline: "none",
+              padding: "10px",
+              fontSize: "2em",
+              background: "transparent",
+              color: "#000",
+              textAlign: "center",
+            }}
+            required
+          />
+
+          <motion.div style={{ width: "30%" }} whileHover={{ scale: 1.1 }}>
+            <img src={submit} alt="Tab9" onClick={handleSubmit} />
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
+    );
+  }
+
+  // PAGE 3 - Two Players
+  if (page === 3 && numPlayers === 2) {
+    return (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="page3-double"
+          variants={pageVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          style={{
+            backgroundImage: `url(${doublebg})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: "25px",
+            paddingTop: "10%",
+          }}
+        >
+          <motion.div
+            style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "80%", gap: "20px" }}
+            variants={inputVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <h1 style={{ fontSize: "50px", fontFamily: "youtube-sans-bold" }}>Player 1</h1>
+            <input
+              type="text"
+              value={player1}
+              onChange={(e) => setPlayer1(e.target.value)}
+              style={{
+                width: "65%",
+                border: "none",
+                borderBottom: "2px solid #333",
+                outline: "none",
+                padding: "0px",
+                fontSize: "2em",
+                background: "transparent",
+                color: "#000",
+                textAlign: "center",
+              }}
+              required
+            />
+          </motion.div>
+
+          <motion.div
+            style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "80%", gap: "20px" }}
+            variants={inputVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <h1 style={{ fontSize: "50px", fontFamily: "youtube-sans-bold" }}>Player 2</h1>
+            <input
+              type="text"
+              value={player2}
+              onChange={(e) => setPlayer2(e.target.value)}
+              style={{
+                width: "65%",
+                border: "none",
+                borderBottom: "2px solid #333",
+                outline: "none",
+                padding: "0px",
+                fontSize: "2em",
+                background: "transparent",
+                color: "#000",
+                textAlign: "center",
+              }}
+              required
+            />
+          </motion.div>
+
+          <motion.div style={{ width: "35%", marginTop: "40px" }} whileHover={{ scale: 1.1 }}>
+            <img src={submit} alt="Tab9" onClick={handleSubmit} />
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
+    );
+  }
+
+  // PAGE 4+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key="page4"
+        variants={pageVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        style={{
+          backgroundImage: `url(${tab5})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: "25px",
+          paddingTop: "10%",
+        }}
+      ></motion.div>
+    </AnimatePresence>
   );
 }
 

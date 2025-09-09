@@ -1,3 +1,13 @@
+export const hypeMessages = [
+  "You’re on fire!",
+  "Star power unlocked!",
+  "Creator energy maxed!",
+  "Keep tapping!",
+  "Tap Star!",
+  "On Fire!"
+];
+
+
 export const questions=[
   {
     "question": "Which of these Gujarati phrases is commonly used by youngsters in Ahmedabad to express 'everything is going great' or 'all good'?",

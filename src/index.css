@@ -11,6 +11,10 @@
   src: url('../public/assets/Fonts/YouTubeSans-Medium.otf') format("opentype");
 }
 
+@font-face {
+  font-family: youtube-sans-bold;
+  src: url('../public/assets/Fonts/YouTubeSans-Bold.otf') format("opentype");
+}
 
 @keyframes pulse {
   0% { opacity: 0.4; transform: scale(0.95); }
@@ -20,10 +24,29 @@
 
 
 *{
- font-family: youtube-sans
+ font-family: youtube-sans;
+
 }
 
 body{
   overflow: hidden;
  
+}
+
+.gradient-line {
+  width: 100%;
+  height: 40px; /* adjust thickness */
+  background: linear-gradient(to right, #ff003c, #00e5e5);
+  background-size: 200% 100%;
+  animation: moveGradient 3s linear infinite;
+  border-radius: 4px; /* optional, for smoother edges */
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
