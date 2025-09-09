@@ -1,5 +1,5 @@
 // src/components/Game.jsx
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import { io } from "socket.io-client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWindowSize } from "react-use";
@@ -29,8 +29,18 @@ import icon12 from "../assets/Icons/icons-12.png";
 import { hypeMessages } from "../utils";
 
 const items = [
-  icon1, icon2, icon3, icon4, icon5, icon6,
-  icon7, icon8, icon9, icon10, icon11, icon12
+  icon1,
+  icon2,
+  icon3,
+  icon4,
+  icon5,
+  icon6,
+  icon7,
+  icon8,
+  icon9,
+  icon10,
+  icon11,
+  icon12,
 ];
 
 // GRID CONFIG
@@ -40,13 +50,14 @@ const TOTAL_CELLS = GRID_ROWS * GRID_COLS;
 const CELL_SIZE = 210;
 
 function Game() {
-  const GAME_DURATION = 30; 
+  const GAME_DURATION = 30;
   const BASE_BUBBLE_LIFETIME = 1200;
   const BASE_SPAWN_INTERVAL = 600;
   const PRE_GAME_COUNTDOWN = 4;
 
   const [bubbles, setBubbles] = useState([]);
   const [score, setScore] = useState(0);
+  const scoreRef = useRef(0);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [gameOver, setGameOver] = useState(false);
   const [message, setMessage] = useState("");
@@ -54,7 +65,8 @@ function Game() {
   const [countdown, setCountdown] = useState(0);
   const [waiting, setWaiting] = useState(true);
   const [player, setPlayer] = useState({ name1: "", name2: "" });
-
+  const [userID, setUserID] = useState(null);
+  const [winner, setWinner] = useState(null);
   const timerRef = useRef(null);
   const bubbleIdRef = useRef(0);
   const spawnIntervalRef = useRef(BASE_SPAWN_INTERVAL);
@@ -65,6 +77,7 @@ function Game() {
   useEffect(() => {
     socketRef.current = io(url);
     socketRef.current.on("screen1", (data) => {
+      setUserID(data?.sendPlayer);
       startPreGame();
       setPlayer({
         name1: data.data?.player1,
@@ -118,7 +131,10 @@ function Game() {
   useEffect(() => {
     if (score > 0 && score % 150 === 0) {
       spawnIntervalRef.current = Math.max(200, spawnIntervalRef.current - 100);
-      bubbleLifetimeRef.current = Math.max(400, bubbleLifetimeRef.current - 150);
+      bubbleLifetimeRef.current = Math.max(
+        400,
+        bubbleLifetimeRef.current - 150
+      );
 
       if (!gameOver && gameStarted) {
         clearInterval(timerRef.current);
@@ -129,6 +145,7 @@ function Game() {
 
   const resetGame = () => {
     setScore(0);
+    scoreRef.current = 0;
     setBubbles([]);
     setGameOver(false);
     setTimeLeft(GAME_DURATION);
@@ -143,8 +160,19 @@ function Game() {
     await fetch(`${url}/api/resetScreens`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ screen1: true }),
+      body: JSON.stringify({ screen1: true, userID, score: scoreRef.current }),
     });
+
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    try {
+      const res = await fetch(`${url}/api/winner`);
+      const data = await res.json();
+      console.log("Winner data:", data);
+    } catch (err) {
+      console.error("Error fetching winner:", err);
+    }
+
     setGameOver(true);
     setBubbles([]);
     setTimeout(() => resetGame(), 5000);
@@ -180,7 +208,10 @@ function Game() {
 
   const handleTap = (id) => {
     if (gameOver) return;
-    setScore((s) => s + 10);
+    setScore((s) => {
+      scoreRef.current = s + 10;
+      return s + 10;
+    });
     const random = Math.floor(Math.random() * hypeMessages.length);
     setMessage(hypeMessages[random]);
 
@@ -203,7 +234,10 @@ function Game() {
     );
 
     setTimeout(() => setMessage(""), 1000);
-    setTimeout(() => setBubbles((prev) => prev.filter((b) => b.id !== id)), 1200);
+    setTimeout(
+      () => setBubbles((prev) => prev.filter((b) => b.id !== id)),
+      1200
+    );
   };
 
   const { width, height } = useWindowSize();
@@ -263,7 +297,10 @@ function Game() {
           >
             {/* Feedback */}
             {message && (
-              <div className="absolute text-4xl font-bold animate-bounce text-green-600" style={{ top: "34%" }}>
+              <div
+                className="absolute text-4xl font-bold animate-bounce text-green-600"
+                style={{ top: "34%" }}
+              >
                 {message}
               </div>
             )}
@@ -272,7 +309,14 @@ function Game() {
             <div className="relative w-64 h-64 flex items-center justify-center">
               <svg className="absolute inset-0 w-64 h-64 transform -rotate-90">
                 <circle cx="128" cy="128" r="120" fill="#7ee8dd" />
-                <circle cx="128" cy="128" r="110" stroke="#e5e7eb" strokeWidth="12" fill="none" />
+                <circle
+                  cx="128"
+                  cy="128"
+                  r="110"
+                  stroke="#e5e7eb"
+                  strokeWidth="12"
+                  fill="none"
+                />
                 <circle
                   cx="128"
                   cy="128"
@@ -282,13 +326,20 @@ function Game() {
                   fill="none"
                   strokeLinecap="round"
                   strokeDasharray={2 * Math.PI * 110}
-                  strokeDashoffset={(2 * Math.PI * 110 * (GAME_DURATION - timeLeft)) / GAME_DURATION}
+                  strokeDashoffset={
+                    (2 * Math.PI * 110 * (GAME_DURATION - timeLeft)) /
+                    GAME_DURATION
+                  }
                 />
               </svg>
               <div className="flex flex-col items-center justify-center text-center absolute">
-                <span className="text-6xl font-extrabold text-black ">{score}</span>
-                <img src={line} style={{width:'70%', margin:'10px 0'}}/>
-                <span className="text-2xl text-black">00:{timeLeft.toString().padStart(2, "0")}</span>
+                <span className="text-6xl font-extrabold text-black ">
+                  {score}
+                </span>
+                <img src={line} style={{ width: "70%", margin: "10px 0" }} />
+                <span className="text-2xl text-black">
+                  00:{timeLeft.toString().padStart(2, "0")}
+                </span>
               </div>
             </div>
 
@@ -315,8 +366,16 @@ function Game() {
                           onClick={() => handleTap(bubble.id)}
                           onTouchStart={() => handleTap(bubble.id)}
                           initial={{ opacity: 0, scale: 0.4 }}
-                          animate={bubble.burst ? bubble.animate : { opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0, transition: { duration: 0.6 } }}
+                          animate={
+                            bubble.burst
+                              ? bubble.animate
+                              : { opacity: 1, scale: 1 }
+                          }
+                          exit={{
+                            opacity: 0,
+                            scale: 0,
+                            transition: { duration: 0.6 },
+                          }}
                           className="absolute inset-0 flex items-center justify-center rounded-full "
                         >
                           {bubble.text !== "💥" ? (
@@ -325,12 +384,16 @@ function Game() {
                               alt=""
                               className="w-44 h-44 pointer-events-none"
                               animate={{
-                                rotate: bubble.burst ? [0, 20, -20, 0] : [0, 5, -5, 0],
+                                rotate: bubble.burst
+                                  ? [0, 20, -20, 0]
+                                  : [0, 5, -5, 0],
                               }}
                               transition={{ repeat: Infinity, duration: 2 }}
                             />
                           ) : (
-                            <span className="text-red-500 text-2xl font-bold animate-ping">💥</span>
+                            <span className="text-red-500 text-2xl font-bold animate-ping">
+                              💥
+                            </span>
                           )}
                         </motion.div>
                       )}
@@ -383,7 +446,14 @@ function Game() {
                 gap: "30px",
               }}
             >
-              <h1 style={{ color: "red", fontSize: "90px", marginBottom: "40px", fontWeight: "bold" }}>
+              <h1
+                style={{
+                  color: "red",
+                  fontSize: "90px",
+                  marginBottom: "40px",
+                  fontWeight: "bold",
+                }}
+              >
                 Winner
               </h1>
               <h1 style={{ fontSize: "81px" }}>{player?.name1}</h1>
