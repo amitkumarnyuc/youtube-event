@@ -79,7 +79,6 @@ function Form() {
         if (socketRef.current) socketRef.current.emit("controller1");
         setPgae(4);
 
-        // optional: reload after 3 seconds
         if (screen === "screen1") {
           setTimeout(() => {
             window.location.reload();

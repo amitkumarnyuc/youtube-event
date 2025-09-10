@@ -13,7 +13,6 @@ import line from "../assets/gamescreenpage-07line.png";
 
 import { url } from "../globalVariable";
 
-// icon assets
 import icon1 from "../assets/Icons/icons-01.png";
 import icon2 from "../assets/Icons/icons-02.png";
 import icon3 from "../assets/Icons/icons-03.png";
