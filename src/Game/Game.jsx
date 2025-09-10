@@ -49,7 +49,7 @@ const TOTAL_CELLS = GRID_ROWS * GRID_COLS;
 const CELL_SIZE = 210;
 
 function Game() {
-  const GAME_DURATION = 30;
+  const GAME_DURATION = 3;
   const BASE_BUBBLE_LIFETIME = 1200;
   const BASE_SPAWN_INTERVAL = 600;
   const PRE_GAME_COUNTDOWN = 4;
@@ -65,7 +65,7 @@ function Game() {
   const [waiting, setWaiting] = useState(true);
   const [player, setPlayer] = useState({ name1: "", name2: "" });
   const [userID, setUserID] = useState(null);
-  const [winner, setWinner] = useState(null);
+  const [winner, setWinner] = useState([]);
   const timerRef = useRef(null);
   const bubbleIdRef = useRef(0);
   const spawnIntervalRef = useRef(BASE_SPAWN_INTERVAL);
@@ -76,11 +76,12 @@ function Game() {
   useEffect(() => {
     socketRef.current = io(url);
     socketRef.current.on("screen1", (data) => {
+
+      console.log(data)
       setUserID(data?.sendPlayer);
       startPreGame();
       setPlayer({
-        name1: data.data?.player1,
-        name2: data.data?.player2,
+        name1: data?.name,
       });
     });
     return () => socketRef.current.disconnect();
@@ -100,7 +101,7 @@ function Game() {
         setCountdown(0);
         setGameStarted(true);
       }
-    }, 1000);
+    }, 2000);
   };
 
   // GAME LOOP
@@ -167,6 +168,10 @@ function Game() {
     try {
       const res = await fetch(`${url}/api/winner`);
       const data = await res.json();
+     setWinner([
+ ...data.players
+])
+
       console.log("Winner data:", data);
     } catch (err) {
       console.error("Error fetching winner:", err);
@@ -221,7 +226,7 @@ function Game() {
               ...b,
               burst: true,
               animate: {
-                scale: 1.5,
+                scale: 2,
                 rotate: [0, 20, -20, 0],
                 opacity: 0,
                 transition: { duration: 1.2 },
@@ -435,30 +440,38 @@ function Game() {
             }}
           >
             <ReactConfetti width={width} height={height} />
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-                alignItems: "center",
-                paddingTop: "23%",
-                gap: "30px",
-              }}
-            >
-              <h1
-                style={{
-                  color: "red",
-                  fontSize: "90px",
-                  marginBottom: "40px",
-                  fontWeight: "bold",
-                }}
-              >
-                Winner
-              </h1>
-              <h1 style={{ fontSize: "81px" }}>{player?.name1}</h1>
-              <img src={line} style={{ width: "70%", margin: "35px 0" }} />
-              <h1 style={{ fontSize: "81px" }}>{player?.name2}</h1>
-            </div>
+          <div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    paddingTop: "23%",
+    gap: "30px",
+    textAlign: "center",
+  }}
+>
+  <h1
+    style={{
+      color: "red",
+      fontSize: "90px",
+      marginBottom: "40px",
+      fontWeight: "bold",
+    }}
+  >
+    Winner
+  </h1>
+
+  <h1 style={{ fontSize: "81px" }}>
+    {winner?.[0]?.name} &nbsp; {winner?.[0]?.score}
+  </h1>
+
+  <img src={line} alt="divider" style={{ width: "70%", margin: "35px 0" }} />
+
+  <h1 style={{ fontSize: "81px" }}>
+    {winner?.[1]?.name} &nbsp; {winner?.[1]?.score}
+  </h1>
+</div>
+
           </motion.div>
         )}
       </AnimatePresence>
